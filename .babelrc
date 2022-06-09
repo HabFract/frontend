@@ -1,0 +1,34 @@
+{
+  "presets": [
+    ["@babel/preset-env", {"targets": {"node": "current"}}],
+    "@babel/preset-typescript",
+    "@babel/preset-react"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          // "@Actions": "./src/Actions",
+          "@components": "./src/components",
+          "@definitions": "./src/definitions",
+          // "@Interfaces": "./src/Interfaces",
+          "@pages": "./src/components/organisms/pages",
+          // "@Reducers": "./src/Redux/Reducers",
+          // "@Redux": "./src/Redux",
+          // "@Services": "./src/Services",
+          // "@Server": "./server",
+          // "@Static": "./public/static",
+          "@stories": "./src/stories",
+          "@styled": "./src/styled"
+        }
+      }
+    ],
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true
+      }
+    ]
+  ]
+}
