@@ -1,59 +1,18 @@
-type Query {
-  apiVersion: String!
-  domain(id: ID!): Domain!
-  domains: DomainConnection!
-  # item(id: ID!): Domain!
-  # items(id: ID!): ItemConnection!
-  # node(id: ID!): Node!
-}
-
-type Mutation {
-  # createList(input: CreateListInput!): CrudListPayload!
-  createDomain(input: CreateDomainInput!): CrudDomainPayload!
-  # updateDomain(input: UpdateDomainInput!): CrudDomainPayload!
-  # toggleDomainDone(input: ToggleDomainDoneInput!): CrudDomainPayload!
-  # deleteDomain(input: DeleteDomainInput!): CrudDomainPayload!
-}
-
-input CreateDomainInput {
-  description: String!
-  hashtag: String!
-}
-
-type CrudDomainPayload {
-  agent_address: String!
-  domain: DomainEdge!
-}
-
-# input UpdateDomainInput {
-#   id: ID!
-#   description: String!
-#   hashtag: String!
-# }
-
-interface Node {
+type Habit {
   id: ID!
+  name: String!
+  timeframe: TimeFrame!
+  metadata: HabitMetaData
 }
 
-type Domain implements Node {
-  id: ID!
+type HabitMetaData {
   description: String!
-  hashtag: String!
+  isAtomic: Boolean!
+  atomicListEntryHash: String!
 }
 
-type DomainConnection {
-  edges: [DomainEdge!]!
-  pageInfo: PageInfo!
-}
-
-type DomainEdge {
-  cursor: String!
-  node: Domain!
-}
-
-type PageInfo {
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String!
-  endCursor: String!
+scalar DateTime
+interface TimeFrame {
+  startTime: DateTime!
+  endTime: DateTime!
 }
