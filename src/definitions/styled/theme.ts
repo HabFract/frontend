@@ -12,6 +12,7 @@ const theme: DefaultTheme = {
     offwhite: '#fefefe',
     warning: '#fcdcb0',
     destructive: '#ee6950',
+    neutralPrimary: 'rgba(255, 0, 0, 0.3)',
   },
 }
 

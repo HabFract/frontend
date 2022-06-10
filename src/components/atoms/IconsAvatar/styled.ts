@@ -3,5 +3,5 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const IconContainer = styled.div`
-    background-color: ${({ theme }) => theme.colors.dgray};
+    background-color: ${({ theme }) => theme.colors.neutralPrimary};
 `
