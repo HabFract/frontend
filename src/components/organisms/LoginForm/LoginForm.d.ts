@@ -4,12 +4,12 @@ export declare namespace ILoginForm {
     username: string
   }
 
-  export interface IState {}
+  // export interface IState {}
 
-  export interface IStateProps {}
+  // export interface IStateProps {}
 
-  namespace Actions {
-    export interface IMapPayload {}
-    export interface IMapResponse {}
-  }
+  // namespace Actions {
+  //   export interface IMapPayload {}
+  //   export interface IMapResponse {}
+  // }
 }
