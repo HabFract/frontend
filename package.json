@@ -30,6 +30,7 @@
     "@apollo/client": "^3.5.10",
     "@holochain/client": "^0.3.2",
     "@reduxjs/toolkit": "^1.8.0",
+    "antd": "^4.21.0",
     "formik": "^2.2.9",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.12.6",

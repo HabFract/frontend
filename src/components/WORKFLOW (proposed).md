@@ -9,4 +9,6 @@
    - see 'finding-the-antd-component'
 9 - In the component index.tsx, import the component from antd
    - Reference: https://ant.design/components/overview/
-10 -
+10 - Delete component body, import antd component using intellisense
+11 - Copy a storybook .stories.tsx file from component-ideal to replace current (Avatar is typed, LoginForm is not, use either). Update component imports.
+12 - 
