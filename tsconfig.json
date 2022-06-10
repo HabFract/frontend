@@ -19,9 +19,18 @@
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*",],
+      "@contexts/*": ["./src/app/contexts/*",],
+      "@definitions/*": ["./src/definitions/*",],
+      "@graphql/*": ["./src/graphql/*",],
+      "@pages/*": ["./src/components/organisms/pages/*",],
+      "@styled/*": ["./src/styled/*"]
+    }
   },
   "include": [
     "./src"
-  ],
+  ]
 }

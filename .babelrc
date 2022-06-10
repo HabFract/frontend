@@ -11,7 +11,9 @@
         "alias": {
           // "@Actions": "./src/Actions",
           "@components": "./src/components",
+          "@contexts": "./src/app/contexts",
           "@definitions": "./src/definitions",
+          "@graphql": "./src/graphql",
           // "@Interfaces": "./src/Interfaces",
           "@pages": "./src/components/organisms/pages",
           // "@Reducers": "./src/Redux/Reducers",
@@ -19,7 +21,6 @@
           // "@Services": "./src/Services",
           // "@Server": "./server",
           // "@Static": "./public/static",
-          "@stories": "./src/stories",
           "@styled": "./src/styled"
         }
       }
