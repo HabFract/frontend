@@ -2,8 +2,8 @@ import React from 'react'
 import {
   useAddDomainMutation,
   useGetDomainsQuery,
-} from '../../graphql/generated'
-import { Container } from '../../styled'
+} from '@graphql/generated'
+import { Container } from '@styled/index'
 
 interface ProfileProps {
   username: string

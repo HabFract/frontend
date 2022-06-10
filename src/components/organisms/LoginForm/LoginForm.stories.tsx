@@ -15,5 +15,3 @@ export default {
 export const Default = () => (
     <LoginForm />
 )
-
-export { }
