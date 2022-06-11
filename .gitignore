@@ -6,3 +6,4 @@ dist-ssr
 .vscode
 .env
 settings.json
+src/assets/styles.css
