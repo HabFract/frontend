@@ -4,7 +4,7 @@ import {Story} from "@storybook/react";
 // #endregion Global Imports
 
 // #region Local Imports
-import { Theme } from "@contexts/themeContext";
+import { Theme } from "../../../app/contexts/themeContext";
 import { Avatar } from '.'
 // #endregion Local Imports
 

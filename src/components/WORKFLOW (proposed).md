@@ -24,3 +24,4 @@
     - Reference: https://storybook.js.org/docs/react/get-started/whats-a-story
 
 13 - Tweak the styled components, feeding the colors from the theme.
+   -  Reference: https://styled-components.com/docs/basics#styling-any-component
