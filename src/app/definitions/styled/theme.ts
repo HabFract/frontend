@@ -4,7 +4,7 @@ import { DefaultTheme } from 'styled-components'
 
 const theme: DefaultTheme = {
   colors: {
-    primary: '#cf6a93',
+    primary: '#10B981',
     secondary: '#bbd8ef',
     tertiary: '#868e76',
     dgray: '#868e96',
@@ -12,7 +12,7 @@ const theme: DefaultTheme = {
     offwhite: '#fefefe',
     warning: '#fcdcb0',
     destructive: '#ee6950',
-    neutralPrimary: 'rgba(255, 0, 0, 0.3)',
+    neutralPrimary: 'rgba(0, 0, 0, 0.03)',
   },
 }
 

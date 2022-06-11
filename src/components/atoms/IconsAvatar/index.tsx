@@ -1,5 +1,6 @@
 // #region Global Imports
 import React from 'react'
+import { Avatar as AntAvatar } from 'antd';
 import {
   UserOutlined 
 } from '@ant-design/icons';
@@ -14,11 +15,11 @@ import { IconContainer } from './styled'
 // #endregion Local Imports
 
 export const Avatar: React.FunctionComponent<IAvatar.IProps> = (
-  _props: IAvatar.IProps,
+  {backgroundColor}: IAvatar.IProps,
 ) => {
   return (
     <IconContainer>
-      <UserOutlined />
+       <AntAvatar size="large" shape='circle' alt='a user' icon={<UserOutlined />} />
     </IconContainer>
   )
 }
