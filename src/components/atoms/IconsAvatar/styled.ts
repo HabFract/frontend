@@ -2,9 +2,10 @@
 import styled from 'styled-components'
 // #endregion Global Imports
 
-export const IconContainer = styled.div`
+export const IconContainer = styled.div.attrs({
+  className: "w-4",
+})`
     background-color: ${({ theme }) => theme.colors.primary};
-    width: 200px;
+    width: 400px;
     color: white;
-    @apply rounded-xl;
 `

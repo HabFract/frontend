@@ -1,5 +1,6 @@
 module.exports = {
-  purge: ['./src/**/*.html', './src/**/*.vue', './src/**/*.tsx'],
+  purge: ['./src/**/*.html', './src/**/*.vue', './src/**/*.tsx', './src/**/*.ts'],
+  content: ['./src/**/*.css', './src/**/styled.ts', './src/**/*.tsx', './src/**/*.js'],
   darkMode: 'class',
   mode: 'jit',
   important: true, // important in prod is must be
