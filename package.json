@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
-    "@holochain/client": "^0.3.2",
+    "@holochain/client": "0.4.1",
     "@reduxjs/toolkit": "^1.8.0",
     "formik": "^2.2.9",
     "graphql": "^15.0.0",
