@@ -7,7 +7,7 @@ import { Theme } from './app/contexts/themeContext'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Home } from './components/pages/Home'
-import { Profile } from './components/pages/Profile'
+// import { Profile } from './components/pages/Profile'
 
 import './index.scss'
 
@@ -18,12 +18,12 @@ const App: FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route
+        {/* <Route
           path="/profile"
           element={
             <Profile username={localStorage.getItem('username') || ''} />
           }
-        ></Route>
+        ></Route> */}
       </Routes>
     </BrowserRouter>
   )

@@ -1,5 +1,5 @@
 export declare namespace IAvatar {
-  export interface IProps { description: string,  rounded: boolean }
+  export interface IProps { description: string,  rounded: boolean, type: string }
 
   // export interface IState {}
 

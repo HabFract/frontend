@@ -5,8 +5,8 @@ import { DefaultTheme } from 'styled-components'
 export const Theme: DefaultTheme = {
   colors: {
     primary: '#10B981',
-    secondary: '#bbd8ef',
-    tertiary: '#868e76',
+    secondary: '#F759AB',
+    tertiary: '#bbd8ef',
     dgray: '#868e96',
     lgray: '#E5E6E4',
     offwhite: '#fefefe',

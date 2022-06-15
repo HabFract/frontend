@@ -1,0 +1,19 @@
+query getHabits {
+  habits {
+    edges {
+      node {
+        id
+        name
+        timeframe {
+          startTime
+          endTime
+        }
+        metadata {
+          description
+          isAtomic
+          atomicListEntryHash
+        }
+      }
+    }
+  }
+}

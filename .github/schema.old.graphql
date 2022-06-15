@@ -57,3 +57,7 @@ type PageInfo {
   startCursor: String!
   endCursor: String!
 }
+type DomainConnection {
+  edges: [DomainEdge!]!
+  pageInfo: PageInfo!
+}

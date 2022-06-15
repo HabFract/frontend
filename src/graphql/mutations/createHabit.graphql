@@ -1,0 +1,12 @@
+# mutation addHabit($input: CreateHabitInput!) {
+#   createHabit(input: $input) {
+#     agent_address
+#     domain {
+#       node {
+#         id
+#         description
+#         hashtag
+#       }
+#     }
+#   }
+# }

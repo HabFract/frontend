@@ -22,8 +22,11 @@ const Template: Story<IAvatar.IProps> = (args) => <Theme>
   <Avatar {...args} />
 </Theme>;
 
+export const Default = Template.bind({});
+Default.args = { rounded: true, description: 'a user' }
+
 export const Primary = Template.bind({});
-Primary.args = { rounded: true, description: 'a user' }
+Primary.args = { rounded: true, description: 'a user', type: 'primary' }
 
 export const Secondary = Template.bind({});
-Secondary.args = { rounded: false, description: 'a user' }
+Secondary.args = { rounded: false, description: 'a user', type: 'secondary' }

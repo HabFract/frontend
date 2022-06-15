@@ -1,241 +1,181 @@
-import * as Apollo from '@apollo/client'
-import { gql } from '@apollo/client'
-export type Maybe<T> = T | null
-export type InputMaybe<T> = Maybe<T>
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K]
-}
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>
-}
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>
-}
-const defaultOptions = {} as const
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string
-  String: string
-  Boolean: boolean
-  Int: number
-  Float: number
-}
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
+  DateTime: any;
+};
 
-export type CreateDomainInput = {
-  description: Scalars['String']
-  hashtag: Scalars['String']
-}
+export type Habit = {
+  __typename?: 'Habit';
+  id: Scalars['ID'];
+  metadata?: Maybe<HabitMetaData>;
+  name: Scalars['String'];
+  timeframe: TimeFrame;
+};
 
-export type CrudDomainPayload = {
-  __typename?: 'CrudDomainPayload'
-  agent_address: Scalars['String']
-  domain: DomainEdge
-}
+export type HabitConnection = {
+  __typename?: 'HabitConnection';
+  edges: Array<HabitEdge>;
+  pageInfo: PageInfo;
+};
 
-export type Domain = Node & {
-  __typename?: 'Domain'
-  description: Scalars['String']
-  hashtag: Scalars['String']
-  id: Scalars['ID']
-}
+export type HabitEdge = {
+  __typename?: 'HabitEdge';
+  cursor: Scalars['String'];
+  node: Habit;
+};
 
-export type DomainConnection = {
-  __typename?: 'DomainConnection'
-  edges: Array<DomainEdge>
-  pageInfo: PageInfo
-}
-
-export type DomainEdge = {
-  __typename?: 'DomainEdge'
-  cursor: Scalars['String']
-  node: Domain
-}
+export type HabitMetaData = {
+  __typename?: 'HabitMetaData';
+  atomicListEntryHash: Scalars['String'];
+  description: Scalars['String'];
+  isAtomic: Scalars['Boolean'];
+};
 
 export type Mutation = {
-  __typename?: 'Mutation'
-  createDomain: CrudDomainPayload
-}
-
-export type MutationCreateDomainArgs = {
-  input: CreateDomainInput
-}
-
-export type Node = {
-  id: Scalars['ID']
-}
+  __typename?: 'Mutation';
+  apiVersion: Scalars['String'];
+};
 
 export type PageInfo = {
-  __typename?: 'PageInfo'
-  endCursor: Scalars['String']
-  hasNextPage: Scalars['Boolean']
-  hasPreviousPage: Scalars['Boolean']
-  startCursor: Scalars['String']
-}
+  __typename?: 'PageInfo';
+  endCursor: Scalars['String'];
+  hasNextPage: Scalars['Boolean'];
+  hasPreviousPage: Scalars['Boolean'];
+  startCursor: Scalars['String'];
+};
 
 export type Query = {
-  __typename?: 'Query'
-  apiVersion: Scalars['String']
-  domain: Domain
-  domains: DomainConnection
-}
+  __typename?: 'Query';
+  habits: HabitConnection;
+};
 
-export type QueryDomainArgs = {
-  id: Scalars['ID']
-}
+export type TimeFrame = {
+  endTime: Scalars['DateTime'];
+  startTime: Scalars['DateTime'];
+};
 
-export type AddDomainMutationVariables = Exact<{
-  input: CreateDomainInput
-}>
+export type GetHabitsQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type AddDomainMutation = {
-  __typename?: 'Mutation'
-  createDomain: {
-    __typename?: 'CrudDomainPayload'
-    agent_address: string
-    domain: {
-      __typename?: 'DomainEdge'
-      node: {
-        __typename?: 'Domain'
-        id: string
-        description: string
-        hashtag: string
-      }
-    }
-  }
-}
 
-export type GetDomainsQueryVariables = Exact<{ [key: string]: never }>
+export type GetHabitsQuery = { __typename?: 'Query', habits: { __typename?: 'HabitConnection', edges: Array<{ __typename?: 'HabitEdge', node: { __typename?: 'Habit', id: string, name: string, timeframe: never, metadata?: { __typename?: 'HabitMetaData', description: string, isAtomic: boolean, atomicListEntryHash: string } | null } }> } };
 
-export type GetDomainsQuery = {
-  __typename?: 'Query'
-  domains: {
-    __typename?: 'DomainConnection'
-    edges: Array<{
-      __typename?: 'DomainEdge'
-      node: {
-        __typename?: 'Domain'
-        id: string
-        description: string
-        hashtag: string
-      }
-    }>
-  }
-}
 
-export const AddDomainDocument = gql`
-  mutation addDomain($input: CreateDomainInput!) {
-    createDomain(input: $input) {
-      agent_address
-      domain {
-        node {
-          id
+export const GetHabitsDocument = gql`
+    query getHabits {
+  habits {
+    edges {
+      node {
+        id
+        name
+        timeframe {
+          startTime
+          endTime
+        }
+        metadata {
           description
-          hashtag
+          isAtomic
+          atomicListEntryHash
         }
       }
     }
   }
-`
-export type AddDomainMutationFn = Apollo.MutationFunction<
-  AddDomainMutation,
-  AddDomainMutationVariables
->
-
-/**
- * __useAddDomainMutation__
- *
- * To run a mutation, you first call `useAddDomainMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useAddDomainMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [addDomainMutation, { data, loading, error }] = useAddDomainMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useAddDomainMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddDomainMutation,
-    AddDomainMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<AddDomainMutation, AddDomainMutationVariables>(
-    AddDomainDocument,
-    options,
-  )
 }
-export type AddDomainMutationHookResult = ReturnType<
-  typeof useAddDomainMutation
->
-export type AddDomainMutationResult = Apollo.MutationResult<AddDomainMutation>
-export type AddDomainMutationOptions = Apollo.BaseMutationOptions<
-  AddDomainMutation,
-  AddDomainMutationVariables
->
-export const GetDomainsDocument = gql`
-  query getDomains {
-    domains {
-      edges {
-        node {
-          id
-          description
-          hashtag
-        }
-      }
-    }
-  }
-`
+    `;
 
 /**
- * __useGetDomainsQuery__
+ * __useGetHabitsQuery__
  *
- * To run a query within a React component, call `useGetDomainsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetDomainsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetHabitsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHabitsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetDomainsQuery({
+ * const { data, loading, error } = useGetHabitsQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetDomainsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetDomainsQuery,
-    GetDomainsQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetDomainsQuery, GetDomainsQueryVariables>(
-    GetDomainsDocument,
-    options,
-  )
-}
-export function useGetDomainsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetDomainsQuery,
-    GetDomainsQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetDomainsQuery, GetDomainsQueryVariables>(
-    GetDomainsDocument,
-    options,
-  )
-}
-export type GetDomainsQueryHookResult = ReturnType<typeof useGetDomainsQuery>
-export type GetDomainsLazyQueryHookResult = ReturnType<
-  typeof useGetDomainsLazyQuery
->
-export type GetDomainsQueryResult = Apollo.QueryResult<
-  GetDomainsQuery,
-  GetDomainsQueryVariables
->
+export function useGetHabitsQuery(baseOptions?: Apollo.QueryHookOptions<GetHabitsQuery, GetHabitsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetHabitsQuery, GetHabitsQueryVariables>(GetHabitsDocument, options);
+      }
+export function useGetHabitsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHabitsQuery, GetHabitsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetHabitsQuery, GetHabitsQueryVariables>(GetHabitsDocument, options);
+        }
+export type GetHabitsQueryHookResult = ReturnType<typeof useGetHabitsQuery>;
+export type GetHabitsLazyQueryHookResult = ReturnType<typeof useGetHabitsLazyQuery>;
+export type GetHabitsQueryResult = Apollo.QueryResult<GetHabitsQuery, GetHabitsQueryVariables>;
+
+export const aHabit = (overrides?: Partial<Habit>): Habit => {
+    return {
+        id: overrides && overrides.hasOwnProperty('id') ? overrides.id! : '40329ca5-e4a6-41a7-9938-6f67a92c7f6a',
+        metadata: overrides && overrides.hasOwnProperty('metadata') ? overrides.metadata! : aHabitMetaData(),
+        name: overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'odit',
+        timeframe: overrides && overrides.hasOwnProperty('timeframe') ? overrides.timeframe! : aTimeFrame(),
+    };
+};
+
+export const aHabitConnection = (overrides?: Partial<HabitConnection>): HabitConnection => {
+    return {
+        edges: overrides && overrides.hasOwnProperty('edges') ? overrides.edges! : [aHabitEdge()],
+        pageInfo: overrides && overrides.hasOwnProperty('pageInfo') ? overrides.pageInfo! : aPageInfo(),
+    };
+};
+
+export const aHabitEdge = (overrides?: Partial<HabitEdge>): HabitEdge => {
+    return {
+        cursor: overrides && overrides.hasOwnProperty('cursor') ? overrides.cursor! : 'omnis',
+        node: overrides && overrides.hasOwnProperty('node') ? overrides.node! : aHabit(),
+    };
+};
+
+export const aHabitMetaData = (overrides?: Partial<HabitMetaData>): HabitMetaData => {
+    return {
+        atomicListEntryHash: overrides && overrides.hasOwnProperty('atomicListEntryHash') ? overrides.atomicListEntryHash! : 'eos',
+        description: overrides && overrides.hasOwnProperty('description') ? overrides.description! : 'quia',
+        isAtomic: overrides && overrides.hasOwnProperty('isAtomic') ? overrides.isAtomic! : false,
+    };
+};
+
+export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
+    return {
+        apiVersion: overrides && overrides.hasOwnProperty('apiVersion') ? overrides.apiVersion! : 'quia',
+    };
+};
+
+export const aPageInfo = (overrides?: Partial<PageInfo>): PageInfo => {
+    return {
+        endCursor: overrides && overrides.hasOwnProperty('endCursor') ? overrides.endCursor! : 'id',
+        hasNextPage: overrides && overrides.hasOwnProperty('hasNextPage') ? overrides.hasNextPage! : true,
+        hasPreviousPage: overrides && overrides.hasOwnProperty('hasPreviousPage') ? overrides.hasPreviousPage! : false,
+        startCursor: overrides && overrides.hasOwnProperty('startCursor') ? overrides.startCursor! : 'eum',
+    };
+};
+
+export const aQuery = (overrides?: Partial<Query>): Query => {
+    return {
+        habits: overrides && overrides.hasOwnProperty('habits') ? overrides.habits! : aHabitConnection(),
+    };
+};
+
+export const aTimeFrame = (overrides?: Partial<TimeFrame>): TimeFrame => {
+    return {
+        endTime: overrides && overrides.hasOwnProperty('endTime') ? overrides.endTime! : 'facilis',
+        startTime: overrides && overrides.hasOwnProperty('startTime') ? overrides.startTime! : 'quae',
+    };
+};
