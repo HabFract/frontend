@@ -7,7 +7,12 @@ generates:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-react-apollo'
+  src/graphql/mocks/generated-mocks.ts:
+    plugins:
       - typescript-mock-data:
+          typesFile: '../generated/index.tsx'
+          enumValues: upper-case#upperCase
+          typenames: keep
           scalars:
             Date: # gets translated to casual.date('YYYY-MM-DD')
               generator: date

@@ -10,6 +10,7 @@ import { Avatar } from '.'
 
 // #region Interface Imports
 import { IAvatar } from './Avatar'
+import { aHabit } from '../../../graphql/mocks/generated-mocks';
 // #endregion Interface Imports
 
 export default {
@@ -23,10 +24,10 @@ const Template: Story<IAvatar.IProps> = (args) => <Theme>
 </Theme>;
 
 export const Default = Template.bind({});
-Default.args = { rounded: true, description: 'a user' }
+Default.args = { rounded: true, description: aHabit().id }
 
 export const Primary = Template.bind({});
-Primary.args = { rounded: true, description: 'a user', type: 'primary' }
+Primary.args = { rounded: true, description: aHabit().id, type: 'primary' }
 
 export const Secondary = Template.bind({});
-Secondary.args = { rounded: false, description: 'a user', type: 'secondary' }
+Secondary.args = { rounded: false, description: aHabit().id, type: 'secondary' }
