@@ -23,7 +23,7 @@ const Template: Story<IAvatar.IProps> = (args) => <Theme>
 </Theme>;
 
 export const Primary = Template.bind({});
-Primary.args = { backgroundColor: '#10B981' }
+Primary.args = { rounded: true, description: 'a user' }
 
 export const Secondary = Template.bind({});
-Secondary.args = { backgroundColor: '#F759AB' }
+Secondary.args = { rounded: false, description: 'a user' }

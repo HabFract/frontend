@@ -15,11 +15,11 @@ import { IconContainer } from './styled'
 // #endregion Local Imports
 
 export const Avatar: React.FunctionComponent<IAvatar.IProps> = (
-  {backgroundColor}: IAvatar.IProps,
+  {rounded, description}: IAvatar.IProps,
 ) => {
   return (
-    <IconContainer>
-       <AntAvatar size="large" shape='circle' alt='a user' icon={<UserOutlined />} />
+    <IconContainer primary>
+       <AntAvatar className="avatar place-items-center grid" size={64} shape={rounded ? 'circle' : 'square'} alt={description} icon={<UserOutlined  />} />
     </IconContainer>
   )
 }

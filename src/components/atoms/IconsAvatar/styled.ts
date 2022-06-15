@@ -3,9 +3,8 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const IconContainer = styled.div.attrs({
-  className: "w-4",
+  className: "grid place-items-center w-24 h-24",
 })`
-    background-color: ${({ theme }) => theme.colors.primary};
-    width: 400px;
+    background-color: ${({ primary, secondary, theme }) =>( primary || secondary ? theme.colors[secondary ? 'secondary' : 'primary'] : theme.colors.neutralPrimary)};
     color: white;
 `

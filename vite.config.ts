@@ -3,7 +3,6 @@ import {
   themePreprocessorPlugin,
   themePreprocessorHmrPlugin,
 } from "@zougt/vite-plugin-theme-preprocessor";
-import vitePluginImp from 'vite-plugin-imp';
 import path from "path";
 import tsconfigPaths from 'vite-tsconfig-paths'
 import Checker from 'vite-plugin-checker'
@@ -11,6 +10,21 @@ import reactRefresh from '@vitejs/plugin-react-refresh'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: [
+      { find: /^~/, replacement: "" },
+    ],
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          'primary-color': '#1DA57A',
+        },
+        javascriptEnabled: true
+      },
+    },
+  },
   plugins: [
     reactRefresh(),
     tsconfigPaths(),
@@ -107,25 +121,5 @@ export default defineConfig({
     }),
     // development need theme HMR
     themePreprocessorHmrPlugin(),
-    // vitePluginImp({
-    //   libList: [
-    //     {
-    //       libName: 'antd',
-    //       style: (name) => `antd/es/${name}/style/index.less`,
-    //     },
-    //   ],
-    // }),
-  ],
-  resolve: {
-    alias: [
-      { find: /^~/, replacement: "" },
-    ],
-  },
-  css: {
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-      },
-    },
-  },
+  ]
 })

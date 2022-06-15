@@ -1,7 +1,12 @@
 {
   "presets": [
     ["@babel/preset-env", {"targets": {"node": "current"}}],
-    ["babel-plugin-styled-components"],
+    [
+      "babel-plugin-styled-components",
+      {
+        "fileName": false
+      }
+    ],
     "@babel/preset-typescript",
     "@babel/preset-react"],
   "plugins": [
@@ -11,6 +16,7 @@
         "root": ["./"],
         "alias": {
           // "@Actions": "./src/Actions",
+          "@app": "./src/app",
           "@components": "./src/components",
           "@contexts": "./src/app/contexts",
           "@definitions": "./src/definitions",

@@ -1,14 +1,10 @@
 @use 'sass:meta';
 html.theme-default {
-  $primary-color:#F48421 !default;
-  $body-background:#fff !default;
-  @include meta.load-css('~antd/dist/antd.css', $with: null);
+  @include meta.load-css('/node_modules/antd/dist/antd.min.css', $with: null);
 }
 
 html:not(.theme-default) {
-  @include meta.load-css('~antd/dist/antd.dark.css', $with: null);
-  $primary-color:red !default;
-  $body-background:black !default;
+  @include meta.load-css('/node_modules/antd/dist/antd.dark.min.css', $with: null);
 }
 
 @import './assets/tailwind.css';

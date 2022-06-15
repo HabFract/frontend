@@ -1,9 +1,9 @@
 // #region Global Imports
 import { Field, Form, Formik } from 'formik'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 // import { LoginFormActions } from "@Actions";
-import { Badge , Button, Tooltip } from 'antd';import { SearchOutlined } from '@ant-design/icons';
+import { Button, Tooltip } from 'antd';import { SearchOutlined } from '@ant-design/icons';
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
 // #endregion Global Imports
 
@@ -19,7 +19,7 @@ export const LoginForm: React.FunctionComponent<ILoginForm.IProps> = (
   _props: ILoginForm.IProps,
 ) => {
   const initialValues: ILoginForm.LoginFormValues = { username: '' }
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
 const setTheme = (scopeName) => {
   toggleTheme({
@@ -33,9 +33,14 @@ const setTheme = (scopeName) => {
       </Top>
       <Middle>
         <SubText>Create a username and start managing your habits!</SubText>
-        <SubText><Badge size='small'>Hi</Badge><Button type="primary" onClick={() => 
-setTheme('theme-default')}>Light Mode</Button><Button type="primary" onClick={() => 
-setTheme('theme-dark')}>Dark Mode</Button></SubText>
+        <SubText>
+          <Button type="primary" onClick={() => setTheme('theme-default')}>
+            Light Mode
+          </Button>
+          <Button type="primary" onClick={() => setTheme('theme-dark')}>
+            Dark Mode
+          </Button>
+        </SubText>
       </Middle>
       <Bottom>
         <Formik
@@ -43,7 +48,7 @@ setTheme('theme-dark')}>Dark Mode</Button></SubText>
           onSubmit={(values, actions) => {
             console.log({ values, actions })
             localStorage.setItem('username', values.username)
-            navigate('/profile')
+            // navigate('/profile')
             actions.setSubmitting(false)
           }}
         >

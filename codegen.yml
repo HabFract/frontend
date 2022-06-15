@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'src/definitions/schema.graphql'
+schema: 'src/graphql/schema.graphql'
 documents: 'src/graphql/**/*.graphql'
 generates:
   src/graphql/generated/index.tsx:
@@ -7,3 +7,8 @@ generates:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-react-apollo'
+      - typescript-mock-data:
+          scalars:
+            Date: # gets translated to casual.date('YYYY-MM-DD')
+              generator: date
+              arguments: 'YYYY-MM-DD'

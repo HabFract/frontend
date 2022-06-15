@@ -1,3 +1,16 @@
+type Query {
+  apiVersion: String!
+}
+
+type Mutation {
+}
+
+scalar DateTime
+interface TimeFrame {
+  startTime: DateTime!
+  endTime: DateTime!
+}
+
 type Habit {
   id: ID!
   name: String!
@@ -9,10 +22,4 @@ type HabitMetaData {
   description: String!
   isAtomic: Boolean!
   atomicListEntryHash: String!
-}
-
-scalar DateTime
-interface TimeFrame {
-  startTime: DateTime!
-  endTime: DateTime!
 }

@@ -2,7 +2,7 @@
 import { DefaultTheme } from 'styled-components'
 // #endregion Global Imports
 
-const theme: DefaultTheme = {
+export const Theme: DefaultTheme = {
   colors: {
     primary: '#10B981',
     secondary: '#bbd8ef',
@@ -15,5 +15,3 @@ const theme: DefaultTheme = {
     neutralPrimary: 'rgba(0, 0, 0, 0.03)',
   },
 }
-
-export { theme }
