@@ -1,5 +1,11 @@
 export declare namespace IAvatar {
-  export interface IProps { description: string,  rounded: boolean, type: string }
+  export enum Type {
+    'primary',
+    'secondary',
+    'default',
+  }
+
+  export interface IProps { description: string,  rounded: boolean, type: Type }
 
   // export interface IState {}
 

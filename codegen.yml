@@ -7,7 +7,7 @@ generates:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-react-apollo'
-  src/graphql/mocks/generated-mocks.ts:
+  src/graphql/generated/mocks.ts:
     plugins:
       - typescript-mock-data:
           typesFile: '../generated/index.tsx'

@@ -18,7 +18,7 @@
     "isolatedModules": true,
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
@@ -28,7 +28,7 @@
       "@definitions/*": ["src/app/definitions/*",],
       "@graphql/*": ["./src/graphql/*",],
       "@pages/*": ["./src/components/organisms/pages/*",],
-      "@styled/*": ["./src/styled/*"]
+      "@styled/*": ["src/app/styled/*"]
     }
   },
   "include": [

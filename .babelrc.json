@@ -1,16 +1,39 @@
 {
   "sourceType": "unambiguous",
   "presets": [
+    ["@babel/preset-env", {"targets": {"node": "current"}}],
     [
-      "@babel/preset-env",
+      "babel-plugin-styled-components",
       {
-        "shippedProposals": true,
-        "loose": true
+        "fileName": false
       }
     ],
-    "@babel/preset-typescript"
+    "@babel/preset-typescript",
+    "@babel/preset-react"
   ],
   "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          // "@Actions": "./src/Actions",
+          "@app": "./src/app",
+          "@components": "./src/components",
+          "@contexts": "./src/app/contexts",
+          "@definitions": "./src/definitions",
+          "@graphql": "./src/graphql",
+          // "@Interfaces": "./src/Interfaces",
+          "@pages": "./src/components/organisms/pages",
+          // "@Reducers": "./src/Redux/Reducers",
+          // "@Redux": "./src/Redux",
+          // "@Services": "./src/Services",
+          // "@Server": "./server",
+          // "@Static": "./public/static",
+          "@styled": "./src/styled"
+        }
+      }
+    ],
     "@babel/plugin-transform-shorthand-properties",
     "@babel/plugin-transform-block-scoping",
     [

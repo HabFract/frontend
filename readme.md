@@ -12,8 +12,8 @@ This template provide toolchain below:
 # Usage
 
 ```sh
-pnpm i
-pnpm dev
+npm i --legacy-peer-deps
+npm run c-dev
 ```
 
 # Screenshot

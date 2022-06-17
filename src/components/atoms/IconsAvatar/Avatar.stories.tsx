@@ -4,13 +4,13 @@ import {Story} from "@storybook/react";
 // #endregion Global Imports
 
 // #region Local Imports
-import { Theme } from "../../../app/contexts/themeContext";
+import { Theme } from "@app/contexts/themeContext";
 import { Avatar } from '.'
 // #endregion Local Imports
 
 // #region Interface Imports
 import { IAvatar } from './Avatar'
-import { aHabit } from '../../../graphql/mocks/generated-mocks';
+import { aHabit } from '@graphql/generated/mocks'
 // #endregion Interface Imports
 
 export default {
@@ -27,7 +27,7 @@ export const Default = Template.bind({});
 Default.args = { rounded: true, description: aHabit().id }
 
 export const Primary = Template.bind({});
-Primary.args = { rounded: true, description: aHabit().id, type: 'primary' }
+Primary.args = { rounded: true, description: aHabit().id, type: IAvatar.Type.primary }
 
 export const Secondary = Template.bind({});
-Secondary.args = { rounded: false, description: aHabit().id, type: 'secondary' }
+Secondary.args = { rounded: false, description: aHabit().id, type: IAvatar.Type.secondary }

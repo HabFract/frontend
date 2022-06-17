@@ -1,5 +1,5 @@
 // #region Global Imports
-import { Theme } from "../../../app/contexts/themeContext";
+import { Theme } from "@app/contexts/themeContext";
 import { Button, Tooltip } from 'antd';import { SearchOutlined } from '@ant-design/icons';
 // #endregion Global Imports
 
