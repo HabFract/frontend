@@ -1,5 +1,20 @@
 {
   "extends": [
     "config:base"
+  ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["eslint"],
+      "labels": ["linting"]
+    },
+    {
+      "matchDepTypes": ["optionalDependencies"],
+      "addLabels": ["optional"]
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "devDependencies (non-major)"
+    }
   ]
 }
