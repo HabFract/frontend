@@ -5,11 +5,11 @@ import {Story} from "@storybook/react";
 
 // #region Local Imports
 import { Theme } from "@app/contexts/themeContext";
-import { Avatar } from '.'
+import Avatar from './Avatar'
 // #endregion Local Imports
 
 // #region Interface Imports
-import { IAvatar } from './Avatar'
+import { IAvatar } from './types'
 import { aHabit } from '@graphql/generated/mocks'
 // #endregion Interface Imports
 

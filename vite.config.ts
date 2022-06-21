@@ -6,7 +6,7 @@ import {
 import path from "path";
 import tsconfigPaths from 'vite-tsconfig-paths'
 import Checker from 'vite-plugin-checker'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import reactRefresh from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({

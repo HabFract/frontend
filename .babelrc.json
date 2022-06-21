@@ -1,37 +1,20 @@
 {
   "sourceType": "unambiguous",
   "presets": [
-    ["@babel/preset-env", {"targets": {"node": "current"}}],
     [
-      "babel-plugin-styled-components",
+      "@babel/preset-env",
       {
-        "fileName": false
+        "shippedProposals": true,
+        "loose": true
       }
     ],
-    "@babel/preset-typescript",
-    "@babel/preset-react"
+    "@babel/preset-typescript"
   ],
   "plugins": [
     [
-      "module-resolver",
+      "babel-plugin-styled-components",
       {
-        "root": ["./"],
-        "alias": {
-          // "@Actions": "./src/Actions",
-          "@app": "./src/app",
-          "@components": "./src/components",
-          "@contexts": "./src/app/contexts",
-          "@definitions": "./src/definitions",
-          "@graphql": "./src/graphql",
-          // "@Interfaces": "./src/Interfaces",
-          "@pages": "./src/components/organisms/pages",
-          // "@Reducers": "./src/Redux/Reducers",
-          // "@Redux": "./src/Redux",
-          // "@Services": "./src/Services",
-          // "@Server": "./server",
-          // "@Static": "./public/static",
-          "@styled": "./src/styled"
-        }
+        "ssr": false
       }
     ],
     "@babel/plugin-transform-shorthand-properties",
@@ -83,7 +66,7 @@
       {
         "method": "usage-global",
         "absoluteImports": "core-js",
-        "version": "3.23.1"
+        "version": "3.23.2"
       }
     ]
   ]

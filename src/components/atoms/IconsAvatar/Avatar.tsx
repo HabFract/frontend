@@ -7,14 +7,14 @@ import {
 // #endregion Global Imports
 
 // #region Interface Imports
-import { IAvatar } from './Avatar'
+import { IAvatar } from './types';
 // #endregion Interface Imports
 
 // #region Local Imports
 import { IconContainer } from './styled'
 // #endregion Local Imports
 
-export const Avatar: React.FunctionComponent<IAvatar.IProps> = (
+const Avatar: React.FunctionComponent<IAvatar.IProps> = (
   {rounded, description, type}: IAvatar.IProps,
 ) => {
   return (
@@ -23,3 +23,5 @@ export const Avatar: React.FunctionComponent<IAvatar.IProps> = (
     </IconContainer>
   )
 }
+
+export default Avatar

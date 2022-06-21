@@ -1,4 +1,4 @@
-export declare namespace IAvatar {
+export namespace IAvatar {
   export enum Type {
     'primary',
     'secondary',
