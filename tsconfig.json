@@ -19,7 +19,7 @@
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
     "noEmit": false,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "@app/*": ["./src/app/*",],
