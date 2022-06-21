@@ -1,5 +1,9 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const path = require('path')
+
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default
+const styledComponentsTransformer = createStyledComponentsTransformer()
 
 module.exports = {
   webpackFinal: async config => {
@@ -25,7 +29,13 @@ module.exports = {
           include: path.resolve(__dirname, '../')
         },
         // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-        { test: /\.tsx?$/, loader: 'ts-loader' }
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+          options: {
+            getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
+          }
+        }
       ]
     }
     return config

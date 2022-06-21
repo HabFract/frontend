@@ -107,6 +107,7 @@
     "ts-loader": "^6",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "4.4.3",
+    "typescript-plugin-styled-components": "^2.0.0",
     "vite": "^2.9.12",
     "vite-plugin-checker": "0.3.4",
     "vite-tsconfig-paths": "3.3.14"

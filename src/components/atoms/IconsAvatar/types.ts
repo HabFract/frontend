@@ -1,8 +1,8 @@
 export namespace IAvatar {
   export enum Type {
-    'primary',
-    'secondary',
-    'default',
+    Primary = 'primary',
+    Secondary = 'secondary',
+    Default = 'default',
   }
 
   export interface IProps { description: string,  rounded: boolean, type: Type }
