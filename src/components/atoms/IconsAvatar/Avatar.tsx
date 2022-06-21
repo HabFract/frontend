@@ -6,6 +6,8 @@ import {
 } from '@ant-design/icons';
 // #endregion Global Imports
 
+import { StorySwitcher } from '@app/theme/switch'
+
 // #region Interface Imports
 import { IAvatar } from './types';
 // #endregion Interface Imports
@@ -19,6 +21,7 @@ const Avatar: React.FunctionComponent<IAvatar.IProps> = (
 ) => {
   return (
     <IconContainer type={type}>
+      <StorySwitcher />
        <AntAvatar className="avatar place-items-center grid" size={64} shape={rounded ? 'circle' : 'square'} alt={description} icon={<UserOutlined  />} />
     </IconContainer>
   )
