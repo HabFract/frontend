@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@apollo/client": "^3.5.10",
-    "@holochain/client": "^0.3.2",
+    "@apollo/client": "3.6.6",
+    "@holochain/client": "0.4.1",
     "@reduxjs/toolkit": "^1.8.0",
     "antd": "^4.21.0",
     "formik": "^2.2.9",
