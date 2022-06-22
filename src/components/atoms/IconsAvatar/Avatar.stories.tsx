@@ -4,7 +4,7 @@ import {Story} from "@storybook/react";
 // #endregion Global Imports
 
 // #region Local Imports
-import { Theme } from "@app/contexts/themeContext";
+// import { Theme } from "@app/contexts/themeContext";
 import Avatar from './Avatar'
 // #endregion Local Imports
 
@@ -19,9 +19,8 @@ export default {
 }
 
 //👇 We create a “template” of how args map to rendering
-const Template: Story<IAvatar.IProps> = (args) => <Theme>
+const Template: Story<IAvatar.IProps> = (args) => 
   <Avatar {...args} />
-</Theme>;
 
 export const Default = Template.bind({});
 Default.args = { rounded: true, description: aHabit().id, type: IAvatar.Type.Primary }

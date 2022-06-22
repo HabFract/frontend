@@ -1,23 +1,27 @@
-// import React from "react";
-// import { addDecorator } from "@storybook/react";
-// import { Theme as ThemeDef } from "@app/theme/theme.ts"
-// import { ThemeProvider } from "styled-components";
+import React from 'react'
+import { Theme } from '@app/contexts/themeContext'
+import { StorySwitcher } from '@app/theme/switch'
 import '/src/index.scss'
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
+      date: /Date$/
+    }
+  }
 }
 
-// const themeDecorator = (storyFn) => (
-//     <ThemeProvider theme={ThemeDef}>
-//       {storyFn()}
-//     </ThemeProvider>
-//   )
+const themeDecorator = storyFn =>
+  React.createElement(
+    Theme,
+    null,
+    React.createElement('div', { className: 'flex flex-col', style: { gap: '2rem' } }, [
+      React.createElement(StorySwitcher),
+      storyFn()
+    ])
+  )
 
-// addDecorator(themeDecorator);
+const decorators = [themeDecorator]
+export { decorators }
