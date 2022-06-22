@@ -71,7 +71,7 @@
     "eslint-plugin-storybook": "^0.5.12",
     "husky": "7.0.2",
     "jest": "^28.1.1",
-    "lint-staged": "11.1.2",
+    "lint-staged": "11.2.6",
     "postcss": "8.3.6",
     "postcss-nested": "5.0.6",
     "prettier": "2.4.0",
