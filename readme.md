@@ -12,7 +12,7 @@ This template provide toolchain below:
 # Usage
 
 ```sh
-npm i --legacy-peer-deps
+npm i
 npm run c-dev
 ```
 
