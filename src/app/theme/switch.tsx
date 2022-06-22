@@ -30,10 +30,10 @@ export const StorySwitcher: React.FunctionComponent<any> = (
   ) => {
     return (
         <div>
-            <Button type="primary" onClick={() => setTheme('theme-default')}>
+            <Button type="primary" onClick={(e) => (e.target as HTMLButtonElement).closest('html')!.className = 'theme-default'}>
             Light Mode
             </Button>
-            <Button type="default" onClick={() => setTheme('theme-dark')}>
+            <Button type="default" onClick={(e) => (e.target as HTMLButtonElement).closest('html')!.className = 'theme-dark'}>
             Dark Mode
             </Button>
         </div>
