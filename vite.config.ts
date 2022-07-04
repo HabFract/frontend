@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import gql from 'vite-plugin-simple-gql';
 import {
   themePreprocessorPlugin,
   themePreprocessorHmrPlugin,
@@ -121,5 +122,15 @@ export default defineConfig({
     }),
     // development need theme HMR
     themePreprocessorHmrPlugin(),
-  ]
+    gql()
+  ],
+  optimizeDeps: {
+    esbuildOptions: {
+      logOverride: { 'this-is-undefined-in-esm': 'silent' },
+      // Node.js global to browser globalThis
+      define: {
+          global: 'globalThis'
+      },
+    }
+}
 })

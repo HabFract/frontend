@@ -32,13 +32,9 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@apollo/client": "3.6.6",
-    "@apollo/link-schema": "2.0.0-beta.3",
     "@graphql-tools/schema": "^8.3.14",
-    "@graphql-tools/utils": "^8.6.13",
     "@holochain/client": "0.4.1",
     "@reduxjs/toolkit": "1.8.2",
-    "@valueflows/vf-graphql-holochain": "0.0.1-alpha.4",
-    "@vf-ui/graphql-client-holochain": "0.0.1-alpha.4",
     "antd": "4.21.0",
     "deep-for-each": "^3.0.0",
     "fecha": "^4.2.3",
@@ -93,11 +89,13 @@
     "autoprefixer": "10.4.7",
     "babel-jest": "28.1.1",
     "babel-loader": "8.2.5",
+    "babel-plugin-import-graphql": "^2.8.1",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-styled-components": "^2.0.7",
     "concurrently": "^7.2.2",
     "css-loader": "^5.2.7",
+    "esbuild": "^0.14.48",
     "eslint": "7.32.0",
     "eslint-plugin-storybook": "^0.5.12",
     "graphql-codegen-typescript-mock-data": "^2.2.3",
@@ -131,6 +129,7 @@
     "typescript-plugin-styled-components": "^2.0.0",
     "vite": "^2.9.12",
     "vite-plugin-checker": "0.3.4",
+    "vite-plugin-simple-gql": "^0.5.0",
     "vite-tsconfig-paths": "3.3.14"
   }
 }

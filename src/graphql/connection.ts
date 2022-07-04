@@ -21,7 +21,6 @@ import deepForEach from 'deep-for-each'
 import { format, parse } from 'fecha'
 import isObject from 'is-object'
 
-
 type RecordId = [HoloHash, HoloHash]
 
 type ActualInstalledCell = {  // :TODO: remove this when fixed in tryorama

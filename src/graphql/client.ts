@@ -1,7 +1,8 @@
+import { APP_WS_PORT } from '@/app/constants'
 import { InMemoryCache, ApolloClient } from '@apollo/client'
-import { SchemaLink } from '@apollo/link-schema'
+import { SchemaLink } from '@apollo/client/link/schema'
 
-import bindSchema, { autoConnect, APIOptions, DNAIdMappings } from '@valueflows/vf-graphql-holochain'
+import bindSchema, { autoConnect, APIOptions, DNAIdMappings } from '.'
 
 // Same as OpenConnectionOptions but for external client where dnaConfig may be autodetected
 interface AutoConnectionOptions {
@@ -11,7 +12,7 @@ interface AutoConnectionOptions {
 export type ClientOptions = APIOptions & AutoConnectionOptions
 
 export async function initGraphQLClient(options: APIOptions) {
-  const schema = await bindSchema(options/* modules, DNA id bindings */)
+  const schema = await bindSchema({conductorUri: `ws://localhost:${APP_WS_PORT}`} as APIOptions)
 
   return new ApolloClient({
     cache: new InMemoryCache(),

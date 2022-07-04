@@ -23,6 +23,7 @@
         "ssr": false
       }
     ],
+    "import-graphql",
     "@babel/plugin-transform-shorthand-properties",
     "@babel/plugin-transform-block-scoping",
     [

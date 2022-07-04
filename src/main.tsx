@@ -1,7 +1,10 @@
 import React, { FC } from 'react'
 import ReactDOM from 'react-dom'
 
-import connect from './graphql/client'
+// import { Buffer } from 'buffer'
+// globalThis.Buffer = Buffer
+
+import connect, { ClientOptions } from './graphql/client'
 import { ApolloProvider } from '@apollo/client'
 import { Theme } from './app/contexts/themeContext'
 
@@ -31,7 +34,7 @@ const App: FC = () => {
 
 ReactDOM.render(
   <Theme>
-    <ApolloProvider client={client}>
+    <ApolloProvider client={(await connect({} as ClientOptions))}>
       <App />
     </ApolloProvider>
   </Theme>,

@@ -10,8 +10,8 @@ import { makeExecutableSchema } from '@graphql-tools/schema'
 import { APIOptions, ResolverOptions,  DNAIdMappings, CellId } from './types.js'
 import generateResolvers from './resolvers'
 import { mapZomeFn, autoConnect, openConnection, sniffHolochainAppCells } from './connection.js'
-// @ts-ignore
-import { typeDefs } from './schema'
+
+import typeDefs from '../../schema.graphql'
 
 export {
   // direct access to resolver callbacks generator for apps that need to bind to other GraphQL schemas
