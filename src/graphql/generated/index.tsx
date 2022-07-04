@@ -30,6 +30,16 @@ export type HabitConnection = {
   pageInfo: PageInfo;
 };
 
+/** Mutations */
+export type HabitCreateParams = {
+  name: Scalars['String'];
+};
+
+export type HabitCreateResponse = {
+  __typename?: 'HabitCreateResponse';
+  habit: Habit;
+};
+
 export type HabitEdge = {
   __typename?: 'HabitEdge';
   cursor: Scalars['String'];
@@ -45,7 +55,12 @@ export type HabitMetaData = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  apiVersion: Scalars['String'];
+  createHabit: HabitCreateResponse;
+};
+
+
+export type MutationCreateHabitArgs = {
+  input?: InputMaybe<HabitCreateParams>;
 };
 
 export type PageInfo = {
@@ -58,7 +73,12 @@ export type PageInfo = {
 
 export type Query = {
   __typename?: 'Query';
-  habits: HabitConnection;
+  habit: Habit;
+};
+
+
+export type QueryHabitArgs = {
+  id: Scalars['ID'];
 };
 
 export type TimeFrame = {
@@ -73,57 +93,88 @@ export type Todo = {
   status: Scalars['Boolean'];
 };
 
-export type GetHabitsQueryVariables = Exact<{ [key: string]: never; }>;
+export type AddHabitMutationVariables = Exact<{
+  variables: HabitCreateParams;
+}>;
 
 
-export type GetHabitsQuery = { __typename?: 'Query', habits: { __typename?: 'HabitConnection', edges: Array<{ __typename?: 'HabitEdge', node: { __typename?: 'Habit', id: string, name: string, timeframe: never, metadata?: { __typename?: 'HabitMetaData', description: string, isAtomic: boolean, atomicListEntryHash: string } | null } }> } };
+export type AddHabitMutation = { __typename?: 'Mutation', createHabit: { __typename?: 'HabitCreateResponse', habit: { __typename?: 'Habit', id: string } } };
+
+export type GetHabitQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
-export const GetHabitsDocument = gql`
-    query getHabits {
-  habits {
-    edges {
-      node {
-        id
-        name
-        timeframe {
-          startTime
-          endTime
-        }
-        metadata {
-          description
-          isAtomic
-          atomicListEntryHash
-        }
-      }
+export type GetHabitQuery = { __typename?: 'Query', habit: { __typename?: 'Habit', id: string } };
+
+
+export const AddHabitDocument = gql`
+    mutation addHabit($variables: HabitCreateParams!) {
+  createHabit(input: $variables) {
+    habit {
+      id
     }
+  }
+}
+    `;
+export type AddHabitMutationFn = Apollo.MutationFunction<AddHabitMutation, AddHabitMutationVariables>;
+
+/**
+ * __useAddHabitMutation__
+ *
+ * To run a mutation, you first call `useAddHabitMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddHabitMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addHabitMutation, { data, loading, error }] = useAddHabitMutation({
+ *   variables: {
+ *      variables: // value for 'variables'
+ *   },
+ * });
+ */
+export function useAddHabitMutation(baseOptions?: Apollo.MutationHookOptions<AddHabitMutation, AddHabitMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddHabitMutation, AddHabitMutationVariables>(AddHabitDocument, options);
+      }
+export type AddHabitMutationHookResult = ReturnType<typeof useAddHabitMutation>;
+export type AddHabitMutationResult = Apollo.MutationResult<AddHabitMutation>;
+export type AddHabitMutationOptions = Apollo.BaseMutationOptions<AddHabitMutation, AddHabitMutationVariables>;
+export const GetHabitDocument = gql`
+    query getHabit($id: ID!) {
+  habit(id: $id) {
+    id
   }
 }
     `;
 
 /**
- * __useGetHabitsQuery__
+ * __useGetHabitQuery__
  *
- * To run a query within a React component, call `useGetHabitsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetHabitsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetHabitQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHabitQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetHabitsQuery({
+ * const { data, loading, error } = useGetHabitQuery({
  *   variables: {
+ *      id: // value for 'id'
  *   },
  * });
  */
-export function useGetHabitsQuery(baseOptions?: Apollo.QueryHookOptions<GetHabitsQuery, GetHabitsQueryVariables>) {
+export function useGetHabitQuery(baseOptions: Apollo.QueryHookOptions<GetHabitQuery, GetHabitQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetHabitsQuery, GetHabitsQueryVariables>(GetHabitsDocument, options);
+        return Apollo.useQuery<GetHabitQuery, GetHabitQueryVariables>(GetHabitDocument, options);
       }
-export function useGetHabitsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHabitsQuery, GetHabitsQueryVariables>) {
+export function useGetHabitLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHabitQuery, GetHabitQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetHabitsQuery, GetHabitsQueryVariables>(GetHabitsDocument, options);
+          return Apollo.useLazyQuery<GetHabitQuery, GetHabitQueryVariables>(GetHabitDocument, options);
         }
-export type GetHabitsQueryHookResult = ReturnType<typeof useGetHabitsQuery>;
-export type GetHabitsLazyQueryHookResult = ReturnType<typeof useGetHabitsLazyQuery>;
-export type GetHabitsQueryResult = Apollo.QueryResult<GetHabitsQuery, GetHabitsQueryVariables>;
+export type GetHabitQueryHookResult = ReturnType<typeof useGetHabitQuery>;
+export type GetHabitLazyQueryHookResult = ReturnType<typeof useGetHabitLazyQuery>;
+export type GetHabitQueryResult = Apollo.QueryResult<GetHabitQuery, GetHabitQueryVariables>;

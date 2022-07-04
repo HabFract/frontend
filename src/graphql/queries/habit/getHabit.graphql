@@ -1,0 +1,5 @@
+query getHabit($id: ID!) {
+  habit(id: $id) {
+    id
+  }
+}

@@ -1,6 +1,6 @@
 type Query {
-  habit: HabitEdge!
-  habits: HabitConnection!
+  habit(id: ID!): Habit!
+  # habits: HabitConnection!
 }
 
 type PageInfo {
@@ -26,10 +26,6 @@ type HabitEdge {
   node: Habit!
 }
 
-type Mutation {
-  apiVersion: String!
-}
-
 scalar DateTime 
 
 interface TimeFrame {
@@ -48,4 +44,18 @@ type HabitMetaData {
   description: String!
   isAtomic: Boolean!
   atomicListEntryHash: String!
+}
+
+"Mutations"
+
+input HabitCreateParams {
+  name: String!
+}
+
+type HabitCreateResponse {
+  habit: Habit!
+}
+
+type Mutation {
+  createHabit(input: HabitCreateParams): HabitCreateResponse!
 }

@@ -1,4 +1,4 @@
-import { Habit, HabitConnection, HabitEdge, HabitMetaData, Mutation, PageInfo, Query, TimeFrame, Todo } from '../generated/index';
+import { Habit, HabitConnection, HabitCreateParams, HabitCreateResponse, HabitEdge, HabitMetaData, Mutation, PageInfo, Query, TimeFrame, Todo } from '../generated/index';
 
 export const aHabit = (overrides?: Partial<Habit>): Habit => {
     return {
@@ -13,6 +13,18 @@ export const aHabitConnection = (overrides?: Partial<HabitConnection>): HabitCon
     return {
         edges: overrides && overrides.hasOwnProperty('edges') ? overrides.edges! : [aHabitEdge()],
         pageInfo: overrides && overrides.hasOwnProperty('pageInfo') ? overrides.pageInfo! : aPageInfo(),
+    };
+};
+
+export const aHabitCreateParams = (overrides?: Partial<HabitCreateParams>): HabitCreateParams => {
+    return {
+        name: overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'velit',
+    };
+};
+
+export const aHabitCreateResponse = (overrides?: Partial<HabitCreateResponse>): HabitCreateResponse => {
+    return {
+        habit: overrides && overrides.hasOwnProperty('habit') ? overrides.habit! : aHabit(),
     };
 };
 
@@ -33,7 +45,7 @@ export const aHabitMetaData = (overrides?: Partial<HabitMetaData>): HabitMetaDat
 
 export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
     return {
-        apiVersion: overrides && overrides.hasOwnProperty('apiVersion') ? overrides.apiVersion! : 'quia',
+        createHabit: overrides && overrides.hasOwnProperty('createHabit') ? overrides.createHabit! : aHabitCreateResponse(),
     };
 };
 
@@ -48,7 +60,7 @@ export const aPageInfo = (overrides?: Partial<PageInfo>): PageInfo => {
 
 export const aQuery = (overrides?: Partial<Query>): Query => {
     return {
-        habits: overrides && overrides.hasOwnProperty('habits') ? overrides.habits! : aHabitConnection(),
+        habit: overrides && overrides.hasOwnProperty('habit') ? overrides.habit! : aHabit(),
     };
 };
 

@@ -1,0 +1,8 @@
+mutation addHabit($variables: HabitCreateParams!) {
+		createHabit(input: $variables) {
+			habit {
+				id
+			}
+		}
+}
+

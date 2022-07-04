@@ -12,7 +12,9 @@ interface AutoConnectionOptions {
 export type ClientOptions = APIOptions & AutoConnectionOptions
 
 export async function initGraphQLClient(options: APIOptions) {
-  const schema = await bindSchema({conductorUri: `ws://localhost:${APP_WS_PORT}`} as APIOptions)
+
+  let { dnaConfig, conductorUri } = await autoConnect()
+  const schema = await bindSchema({dnaConfig, conductorUri})//{conductorUri: `ws://localhost:${APP_WS_PORT}`} as APIOptions)
 
   return new ApolloClient({
     cache: new InMemoryCache(),

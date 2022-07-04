@@ -4,6 +4,7 @@ import { DateTimeResolver as DateTime } from 'graphql-scalars'
 import { openConnection } from '../connection.js'
 
 import Query from '../queries'
+import Mutation from '../mutations'
 // import Mutation from '../mutations'
 
 export default async (options: ResolverOptions) => {
@@ -15,12 +16,12 @@ export default async (options: ResolverOptions) => {
 
   // prefetch connection for this API schema
   await openConnection(conductorUri, traceAppSignals)
-
+console.log('Mutation(dnaConfig, conductorUri) :>> ', Mutation(dnaConfig, conductorUri));
   return {
     // scalars
     DateTime,
     // root schemas
     Query: Query(dnaConfig, conductorUri),
-    Mutation: null//Mutation(dnaConfig, conductorUri),
+    Mutation: Mutation(dnaConfig, conductorUri),
   }
 }
