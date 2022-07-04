@@ -25,14 +25,12 @@
       "@app/*": ["./src/app/*",],
       "@components/*": ["./src/components/*",],
       "@contexts/*": ["./src/app/contexts/*",],
-      "@definitions/*": ["src/app/definitions/*",],
       "@graphql/*": ["./src/graphql/*",],
       "@pages/*": ["./src/components/organisms/pages/*",],
       "@styled/*": ["src/app/styled/*"]
     }
   },
   "types": ["node", "jest", "@testing-library/jest-dom"],
-  "include": [
-    "./src"
-  ]
+    
+  "include": ["src/**/*.tsx"],
 }

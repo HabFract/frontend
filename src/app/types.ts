@@ -5,7 +5,6 @@ import {
 } from "@holochain-open-dev/core-types";
 import { Dictionary } from "@holochain-open-dev/core-types";
 
-export type Dictionary<T> = { [key: string]: T };
 export interface Todo {
   id: string | number;
   description: string;

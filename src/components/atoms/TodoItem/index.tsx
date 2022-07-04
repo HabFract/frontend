@@ -1,14 +1,15 @@
+// #region Global Imports
 import React, { useState, useEffect } from "react";
+// #endregion Global Imports
 
-import { Todo } from "@app/types";
+// #region Local Imports
+// #endregion Local Imports
 
-interface TodoItemProps {
-  todo: Todo;
-  handleDestroy?: (ev: any) => void;
-  handleToggle?: (ev: any) => void;
-}
+// #region Interface Imports
+import { ITodoItem } from './types'
+// #endregion Interface Imports
 
-export const TodoItem: React.FC<TodoItemProps> = ({
+export const TodoItem: React.FC<ITodoItem.IProps> = ({
   todo,
   handleDestroy,
   handleToggle,

@@ -9,7 +9,7 @@ import userEvent from "@testing-library/user-event";
 // } from "features/todo/actions";
 // import { store } from "app/store";
 
-import { TodoItem } from "./index";
+import { TodoItem } from ".";
 type ComponentProps = React.ComponentProps<typeof TodoItem>;
 
 // *** Helpers ***

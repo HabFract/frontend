@@ -20,7 +20,8 @@ export const Footer: React.FC<FooterProps> = ({
       <h1 className="todo-count">
         <strong>{count}</strong> {count == 1 ? "item" : "items"} left
       </h1>
-      <ul className="filters" onClick={handleFilter}>
+      <ul className="filters" onClick={() => {}} // handleFilter}>
+      >
         <li data-testid={"filter-all"}>All</li>
         <li data-testid={"filter-active"}>Active</li>
         <li data-testid={"filter-completed"}>Completed</li>
@@ -29,13 +30,14 @@ export const Footer: React.FC<FooterProps> = ({
       <button
         name="clear"
         className="clear-completed"
-        onClick={handleDestroyAll}
+        onClick={() => {}}// handleDestroyAll}
       >
         Clear
       </button>
 
       {listLength > 0 && (
-        <button name="save" className="save-list" onClick={handleSaveList}>
+        <button name="save" className="save-list" onClick={() => {}}// handleSaveList}
+        >
           Save
         </button>
       )}
