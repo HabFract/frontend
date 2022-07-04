@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import ReactDOM from 'react-dom'
 
-import client from './graphql/holochainClient'
+import connect from './graphql/client'
 import { ApolloProvider } from '@apollo/client'
 import { Theme } from './app/contexts/themeContext'
 
