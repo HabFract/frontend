@@ -31,6 +31,7 @@
       "@styled/*": ["src/app/styled/*"]
     }
   },
+  "types": ["node", "jest", "@testing-library/jest-dom"],
   "include": [
     "./src"
   ]
