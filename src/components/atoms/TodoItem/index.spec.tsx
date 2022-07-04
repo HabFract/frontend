@@ -11,8 +11,7 @@ import userEvent from "@testing-library/user-event";
 
 import { TodoItem } from ".";
 import { aTodo } from "@/graphql/generated/mocks";
-
-type ComponentProps = React.ComponentProps<typeof TodoItem>;
+import { ITodoItem } from "./types";
 
 // *** Helpers ***
 // function getTodoByIds(listId: string, todoId: string) {
@@ -21,7 +20,7 @@ type ComponentProps = React.ComponentProps<typeof TodoItem>;
 //     .todo[listId]?.todos?.filter((td: any) => td.id == todoId)[0];
 // }
 
-function renderUI(props: ComponentProps) {
+function renderUI(props: ITodoItem.IProps) {
   return render(<TodoItem {...props} />);
 }
 
@@ -56,7 +55,7 @@ function renderUI(props: ComponentProps) {
 // });
 
 // test("it updates a todo by toggling status", () => {
-//   const todo = { id: "101", description: "Get milk", status: false };
+//   const todo aTodo();
 //   store.dispatch(createList({ list: { id: "1" } }));
 //   store.dispatch(createTodo({ listId: "1", todo }));
 //   const todoState = getTodoByIds("1", "101");
@@ -84,7 +83,7 @@ describe("it renders <TodoItem>", () => {
   });
 
   test("it renders a checkbox with todo status for todo completion", () => {
-    const todo = { id: "101", description: "Get milk", status: false };
+    const todo = aTodo();
     const { getByRole } = renderUI({ todo });
     const checkBox = getByRole("checkbox") as HTMLInputElement;
 
@@ -93,7 +92,7 @@ describe("it renders <TodoItem>", () => {
   });
 
   test("it renders a button for todo deletion", () => {
-    const todo = { id: "101", description: "Get milk", status: false };
+    const todo = aTodo();
     const { getByRole } = renderUI({ todo });
     const deleteButton = getByRole("button");
 
@@ -102,7 +101,7 @@ describe("it renders <TodoItem>", () => {
 });
 // describe("it handles toggling", () => {
 //   describe("Given a completed todo and a callback fn", () => {
-//     const todo = { id: "101", description: "Get milk", status: false };
+//     const todo = aTodo();
 
 //     const handleToggle = jest.fn(() => {
 //       store.dispatch(
@@ -134,7 +133,7 @@ describe("it renders <TodoItem>", () => {
 // });
 // describe("it handles destroying", () => {
 //   describe("Given a todo and a callback fn", () => {
-//     const todo = { id: "101", description: "Get milk", status: false };
+//     const todo = aTodo();
 //     const handleDestroy = jest.fn(() => {
 //       store.dispatch(deleteTodo({ listId: "1", id: "101" }));
 //     });
