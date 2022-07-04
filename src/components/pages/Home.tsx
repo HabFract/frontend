@@ -8,13 +8,13 @@ interface HomeProps {}
 export const Home: React.FC<HomeProps> = () => {
   const variables = {variables: { name: 'a'}}
 
-  // const [addHabitMutation, { data, loading, error }] = useAddHabitMutation(variables)
-  // useEffect(() => {
-  //   addHabitMutation()
-  // }, [])
-    const {data, loading, error } = useGetHabitQuery({variables: {id: '2'}})
+  const [addHabitMutation, { data, loading, error }] = useAddHabitMutation({variables})
+  useEffect(() => {
+    addHabitMutation()
+  }, [])
+  // const {data, loading, error } = useGetHabitQuery({variables: {id: '2'}})
+  console.log('data :>> ', data, loading, error);
   
-    console.log('data :>> ', data, loading, error);
   return typeof localStorage.getItem('username') !== 'string' ? (
     <LoginForm />
   ) : (
