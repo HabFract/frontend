@@ -1,4 +1,4 @@
-import { Habit, HabitConnection, HabitEdge, HabitMetaData, Mutation, PageInfo, Query, TimeFrame } from '../generated/index';
+import { Habit, HabitConnection, HabitEdge, HabitMetaData, Mutation, PageInfo, Query, TimeFrame, Todo } from '../generated/index';
 
 export const aHabit = (overrides?: Partial<Habit>): Habit => {
     return {
@@ -56,5 +56,13 @@ export const aTimeFrame = (overrides?: Partial<TimeFrame>): TimeFrame => {
     return {
         endTime: overrides && overrides.hasOwnProperty('endTime') ? overrides.endTime! : 'facilis',
         startTime: overrides && overrides.hasOwnProperty('startTime') ? overrides.startTime! : 'quae',
+    };
+};
+
+export const aTodo = (overrides?: Partial<Todo>): Todo => {
+    return {
+        description: overrides && overrides.hasOwnProperty('description') ? overrides.description! : 'assumenda',
+        id: overrides && overrides.hasOwnProperty('id') ? overrides.id! : 'bcbfc1fd-9f84-4ca5-804f-62522ce5ea92',
+        status: overrides && overrides.hasOwnProperty('status') ? overrides.status! : false,
     };
 };

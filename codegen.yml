@@ -1,8 +1,10 @@
 overwrite: true
-schema: 'schema.graphql'
+schema: './schema.graphql'
 documents: 'src/graphql/**/*.graphql'
 generates:
   src/graphql/generated/index.tsx:
+    config:
+      withHooks: true
     plugins:
       - 'typescript'
       - 'typescript-operations'

@@ -5,5 +5,5 @@ import styled from 'styled-components'
 export const ListItem = styled.li.attrs({
   className: "place-items-center grid",
 })`
-    background-color: ${({type, theme }) =>( type ? theme.colors[type] : theme.colors.neutralPrimary)};
+    text-decoration: ${({ complete }) => complete ? "line-through" : "none" }
 `

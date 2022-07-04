@@ -6,7 +6,7 @@ import {
 } from '@apollo/client'
 import { AppWebsocket } from '@holochain/client'
 import { print, stripIgnoredCharacters } from 'graphql'
-import { APP_WS_PORT, HAPP_ID, HAPP_ZOME_NAME } from '@app/constants'
+import { APP_WS_PORT, HAPP_ID, HAPP_ZOME_NAME } from '@/app/constants'
 
 const serializeQuery = (query) => {
   query = print(query)

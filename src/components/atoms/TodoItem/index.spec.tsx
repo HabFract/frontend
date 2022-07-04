@@ -10,6 +10,8 @@ import userEvent from "@testing-library/user-event";
 // import { store } from "app/store";
 
 import { TodoItem } from ".";
+import { aTodo } from "@/graphql/generated/mocks";
+
 type ComponentProps = React.ComponentProps<typeof TodoItem>;
 
 // *** Helpers ***
@@ -73,7 +75,7 @@ function renderUI(props: ComponentProps) {
 
 describe("it renders <TodoItem>", () => {
   test("it renders a todo item description as a label", () => {
-    const todo = { id: "101", description: "Get milk", status: false };
+    const todo = aTodo();
     const { getByText } = renderUI({ todo });
     const textElement = getByText(todo.description);
 

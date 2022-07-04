@@ -1,6 +1,6 @@
 import React from 'react'
-import { Theme } from '@contexts/themeContext'
-import { StorySwitcher } from '@app/theme/switch'
+import { Theme } from '@/contexts/themeContext'
+import { StorySwitcher } from '@/app/theme/switch'
 import '/src/index.scss'
 
 export const parameters = {

@@ -22,15 +22,15 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@app/*": ["./src/app/*",],
-      "@components/*": ["./src/components/*",],
-      "@contexts/*": ["./src/app/contexts/*",],
-      "@graphql/*": ["./src/graphql/*",],
-      "@pages/*": ["./src/components/organisms/pages/*",],
-      "@styled/*": ["src/app/styled/*"]
+      "@/atoms/*": ["./src/components/atoms/*"],
+      "@/app/*": ["./src/app/*",],
+      "@/components/*": ["./src/components/*",],
+      "@/contexts/*": ["./src/app/contexts/*",],
+      "@/graphql/*": ["./src/graphql/*",],
+      "@/pages/*": ["./src/components/organisms/pages/*",]
     }
   },
   "types": ["node", "jest", "@testing-library/jest-dom"],
     
-  "include": ["src/**/*.tsx"],
+  "include": ["src/**/*.tsx", "src/**/*.ts"],
 }

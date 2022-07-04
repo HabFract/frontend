@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // #endregion Global Imports
 
 // #region Local Imports
+import { ListItem } from './styled'
 // #endregion Local Imports
 
 // #region Interface Imports
@@ -20,9 +21,9 @@ export const TodoItem: React.FC<ITodoItem.IProps> = ({
   }, [todo.status]);
 
   return (
-    <li
+    <ListItem
+      complete={isComplete}
       data-todo_id={todo.id}
-      style={{ textDecoration: isComplete ? "line-through" : "none" }}
     >
       <label className={isComplete ? "complete" : "incomplete"}>
         {todo.description}
@@ -39,6 +40,6 @@ export const TodoItem: React.FC<ITodoItem.IProps> = ({
         onClick={handleDestroy}
         className="destroy"
       />
-    </li>
+    </ListItem>
   );
 };

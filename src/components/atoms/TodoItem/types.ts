@@ -1,4 +1,4 @@
-import { Todo } from "@app/types";
+import { Todo } from "@/app/types";
 
 export declare namespace ITodoItem {
   export interface IProps {

@@ -5,11 +5,11 @@ import { Field, Form, Formik } from 'formik'
 // #endregion Global Imports
 
 // #region Interface Imports
-import { ILoginForm } from './LoginForm'
+import { ILoginForm } from './types'
 // #endregion Interface Imports
 
 // #region Local Imports
-import { Switcher } from '@app/theme/switch'
+import { Switcher } from '@/app/theme/switch'
 import { Bottom, Container, MainText, Middle, SubText, Top } from './styled'
 // #endregion Local Imports
 

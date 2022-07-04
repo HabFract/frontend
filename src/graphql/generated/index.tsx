@@ -66,6 +66,13 @@ export type TimeFrame = {
   startTime: Scalars['DateTime'];
 };
 
+export type Todo = {
+  __typename?: 'Todo';
+  description: Scalars['String'];
+  id: Scalars['ID'];
+  status: Scalars['Boolean'];
+};
+
 export type GetHabitsQueryVariables = Exact<{ [key: string]: never; }>;
 
 

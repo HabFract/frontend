@@ -4,8 +4,8 @@ import { Footer } from "./footer";
 
 // import { store } from "app/store";
 // import { useAppDispatch } from "app/hooks";
-import { TodoList, Todo } from "@app/types";
-import { TodoItem } from "../../atoms/TodoItem/index";
+import { TodoList, Todo } from "@/app/types";
+import { TodoItem } from "@/components/atoms/TodoItem";
 // import {
 //   createTodo,
 //   deleteTodo,
@@ -70,18 +70,18 @@ const TodoList: React.FC<TodoListProps> = ({
   //   });
   // };
 
-  // const handleDestroy = (e: any) => {
-  //   const tdId = e.target.parentNode.dataset.todo_id;
-  //   const deleteAction = deleteTodo({
-  //     listId,
-  //     id: tdId,
-  //   });
-  //   dispatch(deleteAction);
-  //   setCurrentList({
-  //     id: listId,
-  //     todos: store.getState().todo[listId].todos,
-  //   });
-  // };
+  const handleDestroy = (e: any) => {
+    const tdId = e.target.parentNode.dataset.todo_id;
+    // const deleteAction = deleteTodo({
+    //   listId,
+    //   id: tdId,
+    // });
+    // dispatch(deleteAction);
+    setCurrentList({
+      id: listId,
+      todos: [] //store.getState().todo[listId].todos,
+    });
+  };
 
   // const handleDestroyAll = (e: any) => {
   //   const list = {
@@ -154,7 +154,7 @@ const TodoList: React.FC<TodoListProps> = ({
               key={listItem.id}
               todo={listItem}
               handleToggle={() => {}}// handleToggle}
-              handleDestroy={() => {}}// handleDestroy}
+              handleDestroy={handleDestroy}
             />
           );
         })}

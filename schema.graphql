@@ -9,6 +9,12 @@ type PageInfo {
   endCursor: String!
 }
 
+type Todo {
+  id: ID!
+  description: String!
+  status: Boolean!
+}
+
 type HabitConnection {
   edges: [HabitEdge!]!
   pageInfo: PageInfo!
