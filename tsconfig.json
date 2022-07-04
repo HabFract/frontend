@@ -30,6 +30,8 @@
       "@/pages/*": ["./src/components/organisms/pages/*",]
     }
   },
+  "allowJs": true,
+  "checkJs": false,
   "types": ["node", "jest", "@testing-library/jest-dom"],
   "typeRoots": ["node_modules/@types", "src/@types"],
   "files": ["src/@types/graphql.d.ts"],

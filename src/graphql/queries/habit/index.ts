@@ -9,12 +9,12 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const readAll = mapZomeFn<null, Habit[]>(dnaConfig, conductorUri, 'habit_tracking', 'atomic_habits', 'get_habits')
   
   return {
-    action: async (root, args): Promise<Habit> => {
+    habit: async (root, args): Promise<Habit> => {
       return read(args)
     },
 
-    Habits: async (root, args): Promise<Habit[]> => {
-      return readAll(null)
-    },
+    // Habits: async (root, args): Promise<Habit[]> => {
+    //   return readAll(null)
+    // },
   }
 }
