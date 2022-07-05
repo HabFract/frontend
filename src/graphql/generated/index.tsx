@@ -95,6 +95,7 @@ export type ResponsePayload = {
 }
 
 export type TimeFrame = {
+  __typename?: 'TimeFrame'
   endTime: Scalars['DateTime']
   startTime: Scalars['DateTime']
 }
@@ -131,7 +132,7 @@ export type GetHabitQuery = {
   habit: {
     __typename?: 'Habit'
     name: string
-    timeframe: never
+    timeframe: { __typename?: 'TimeFrame'; startTime: any; endTime: any }
     metadata?: {
       __typename?: 'HabitMetaData'
       description: string
@@ -148,7 +149,16 @@ export type GetHabitsQuery = {
     __typename?: 'HabitConnection'
     edges: Array<{
       __typename?: 'HabitEdge'
-      node: { __typename?: 'Habit'; id: string }
+      node: {
+        __typename?: 'Habit'
+        name: string
+        timeframe: { __typename?: 'TimeFrame'; startTime: any; endTime: any }
+        metadata?: {
+          __typename?: 'HabitMetaData'
+          description: string
+          isAtomic: string
+        } | null
+      }
     }>
   }
 }
@@ -269,7 +279,15 @@ export const GetHabitsDocument = gql`
     habits {
       edges {
         node {
-          id
+          name
+          timeframe {
+            startTime
+            endTime
+          }
+          metadata {
+            description
+            isAtomic
+          }
         }
       }
     }

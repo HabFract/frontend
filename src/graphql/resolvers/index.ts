@@ -14,6 +14,7 @@ export default async (options: ResolverOptions) => {
   return {
     // scalars
     DateTime,
+
     // root schemas
     Query: Query(dnaConfig, conductorUri),
     Mutation: Mutation(dnaConfig, conductorUri),

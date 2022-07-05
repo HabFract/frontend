@@ -3,6 +3,7 @@ import {
   MutationCreateHabitArgs,
   useAddHabitMutation,
   useGetHabitQuery,
+  useGetHabitsQuery,
 } from '@/graphql/generated'
 import React, { useEffect } from 'react'
 import { LoginForm } from '../organisms/LoginForm'
@@ -25,9 +26,10 @@ export const Home: React.FC<HomeProps> = () => {
   // useEffect(() => {
   //   addHabitMutation()
   // }, [])
-  const { data, loading, error } = useGetHabitQuery({
-    variables: { id: 'uhCEklzNmyxz9TvQKydP3NBmnqyDNo_qRXMrxbVcuBwfUIDx9gNBq' },
-  })
+  const { data, loading, error } = useGetHabitsQuery()
+  // const { data, loading, error } = useGetHabitQuery({
+  //   variables: { id: 'uhCEklzNmyxz9TvQKydP3NBmnqyDNo_qRXMrxbVcuBwfUIDx9gNBq' },
+  // })
   console.log('data :>> ', data, loading, error)
 
   return typeof localStorage.getItem('username') !== 'string' ? (
