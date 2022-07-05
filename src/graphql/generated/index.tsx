@@ -128,7 +128,16 @@ export type GetHabitQueryVariables = Exact<{
 
 export type GetHabitQuery = {
   __typename?: 'Query'
-  habit: { __typename?: 'Habit'; id: string }
+  habit: {
+    __typename?: 'Habit'
+    name: string
+    timeframe: never
+    metadata?: {
+      __typename?: 'HabitMetaData'
+      description: string
+      isAtomic: string
+    } | null
+  }
 }
 
 export type GetHabitsQueryVariables = Exact<{ [key: string]: never }>
@@ -197,7 +206,15 @@ export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
 export const GetHabitDocument = gql`
   query getHabit($id: ID!) {
     habit(id: $id) {
-      id
+      name
+      timeframe {
+        startTime
+        endTime
+      }
+      metadata {
+        description
+        isAtomic
+      }
     }
   }
 `

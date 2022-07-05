@@ -1,11 +1,11 @@
-import { DNAIdMappings, ReadParams } from '../../types'
+import { DNAIdMappings, ById } from '../../types'
 import { Habit } from '@/graphql/generated/index'
 
 import { mapZomeFn } from '../../connection'
 import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
-  const read = mapZomeFn<ReadParams, Habit>(
+  const read = mapZomeFn<ById, Habit>(
     dnaConfig,
     conductorUri,
     HAPP_ID,
@@ -22,7 +22,8 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
 
   return {
     habit: async (_, args): Promise<Habit> => {
-      return read(args)
+      console.log('args :>> ', args)
+      return read(args.id)
     },
 
     habits: async (): Promise<Habit[]> => {

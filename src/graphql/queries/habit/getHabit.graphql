@@ -1,5 +1,13 @@
 query getHabit($id: ID!) {
   habit(id: $id) {
-    id
+    name
+    timeframe {
+      startTime
+      endTime
+    }
+    metadata {
+      description
+      isAtomic
+    }
   }
 }

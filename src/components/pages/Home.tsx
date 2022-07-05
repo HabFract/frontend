@@ -11,21 +11,23 @@ import { LoginForm } from '../organisms/LoginForm'
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
-  const variables: HabitCreateParams = {
-    name: 'a',
-    description: 'A nice habit',
-    isAtomic: 'false',
-    startTime: new Date(),
-    endTime: new Date(Date.now() + 1000 * 60 * 60 * 24),
-  }
+  // const variables: HabitCreateParams = {
+  //   name: 'a',
+  //   description: 'A nice habit',
+  //   isAtomic: 'false',
+  //   startTime: new Date(),
+  //   endTime: new Date(Date.now() + 1000 * 60 * 60 * 24),
+  // }
 
-  const [addHabitMutation, { data, loading, error }] = useAddHabitMutation({
-    variables: { variables },
+  // const [addHabitMutation, { data, loading, error }] = useAddHabitMutation({
+  //   variables: { variables },
+  // })
+  // useEffect(() => {
+  //   addHabitMutation()
+  // }, [])
+  const { data, loading, error } = useGetHabitQuery({
+    variables: { id: 'uhCEklzNmyxz9TvQKydP3NBmnqyDNo_qRXMrxbVcuBwfUIDx9gNBq' },
   })
-  useEffect(() => {
-    addHabitMutation()
-  }, [])
-  // const {data, loading, error } = useGetHabitQuery({variables: {id: '2'}})
   console.log('data :>> ', data, loading, error)
 
   return typeof localStorage.getItem('username') !== 'string' ? (
