@@ -42,22 +42,31 @@ type Habit {
 
 type HabitMetaData {
   description: String!
-  isAtomic: Boolean!
-  atomicListEntryHash: String!
+  isAtomic: String!
+  # atomicListEntryHash: String
 }
 
 "Mutations"
-
-input HabitCreateParams {
-  name: String!
-  # timeframe: TimeFrame!
-  # metadata: HabitMetaData
-}
-
-type HabitCreateResponse {
-  habit: Habit!
-}
-
 type Mutation {
   createHabit(habit: HabitCreateParams): HabitCreateResponse!
 }
+
+type ResponsePayload {
+  header: String!
+  entry: String!
+}
+
+input HabitCreateParams {
+  name: String!
+  startTime: DateTime!
+  endTime: DateTime!
+  description: String!
+  isAtomic: String!
+  # atomicListEntryHash: String
+}
+
+type HabitCreateResponse {
+  payload: ResponsePayload!
+}
+
+

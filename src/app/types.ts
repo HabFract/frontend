@@ -14,15 +14,8 @@ export interface TodoList {
   id?: string;
   todos: Todo[];
 }
-export interface TodoLists extends Dictionary<TodoList> {}
 
-export interface TodoListInfo {
-  list: TodoList;
-  hash: HeaderHashB64;
-  authorPubKey: AgentPubKeyB64;
-}
-export interface TodoListsInfo {
-  lists: Dictionary<TodoList>;
-  hash: HeaderHashB64;
-  authorPubKey: AgentPubKeyB64;
+export interface CreateEntryResponse {
+  header: HeaderHashB64;
+  entry: EntryHashB64;
 }

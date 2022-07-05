@@ -30,14 +30,17 @@ export type HabitConnection = {
   pageInfo: PageInfo;
 };
 
-/** Mutations */
 export type HabitCreateParams = {
+  description: Scalars['String'];
+  endTime: Scalars['DateTime'];
+  isAtomic: Scalars['String'];
   name: Scalars['String'];
+  startTime: Scalars['DateTime'];
 };
 
 export type HabitCreateResponse = {
   __typename?: 'HabitCreateResponse';
-  habit: Habit;
+  payload: ResponsePayload;
 };
 
 export type HabitEdge = {
@@ -48,17 +51,18 @@ export type HabitEdge = {
 
 export type HabitMetaData = {
   __typename?: 'HabitMetaData';
-  atomicListEntryHash: Scalars['String'];
   description: Scalars['String'];
-  isAtomic: Scalars['Boolean'];
+  isAtomic: Scalars['String'];
 };
 
+/** Mutations */
 export type Mutation = {
   __typename?: 'Mutation';
   createHabit: HabitCreateResponse;
 };
 
 
+/** Mutations */
 export type MutationCreateHabitArgs = {
   habit?: InputMaybe<HabitCreateParams>;
 };
@@ -81,6 +85,12 @@ export type QueryHabitArgs = {
   id: Scalars['ID'];
 };
 
+export type ResponsePayload = {
+  __typename?: 'ResponsePayload';
+  entry: Scalars['String'];
+  header: Scalars['String'];
+};
+
 export type TimeFrame = {
   endTime: Scalars['DateTime'];
   startTime: Scalars['DateTime'];
@@ -98,7 +108,7 @@ export type AddHabitMutationVariables = Exact<{
 }>;
 
 
-export type AddHabitMutation = { __typename?: 'Mutation', createHabit: { __typename?: 'HabitCreateResponse', habit: { __typename?: 'Habit', name: string } } };
+export type AddHabitMutation = { __typename?: 'Mutation', createHabit: { __typename?: 'HabitCreateResponse', payload: { __typename?: 'ResponsePayload', header: string, entry: string } } };
 
 export type GetHabitQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -111,8 +121,9 @@ export type GetHabitQuery = { __typename?: 'Query', habit: { __typename?: 'Habit
 export const AddHabitDocument = gql`
     mutation addHabit($variables: HabitCreateParams!) {
   createHabit(habit: $variables) {
-    habit {
-      name
+    payload {
+      header
+      entry
     }
   }
 }

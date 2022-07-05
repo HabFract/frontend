@@ -1,8 +1,5 @@
-import { APP_WS_PORT } from '@/app/constants'
 import { InMemoryCache, ApolloClient } from '@apollo/client'
 import { SchemaLink } from '@apollo/client/link/schema'
-import { AgentPubKey, CellId, HoloHash } from '@holochain/client'
-import { Buffer } from "buffer";
 import bindSchema, { autoConnect, APIOptions, DNAIdMappings } from '.'
 
 // Same as OpenConnectionOptions but for external client where dnaConfig may be autodetected

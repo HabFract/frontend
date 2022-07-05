@@ -28,7 +28,6 @@ type ActualInstalledCell = {  // :TODO: remove this when fixed in tryorama
   role_id: string;
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------
 // Connection persistence and multi-conductor / multi-agent handling
 //----------------------------------------------------------------------------------------------------------------------
@@ -47,8 +46,7 @@ export async function autoConnect(conductorUri?: string, appID?: string, traceAp
 
   const conn = await openConnection(conductorUri, traceAppSignals)
   const dnaConfig = await sniffHolochainAppCells(conn, appID)
-console.log('conn :>> ', conn);
-console.log('dnaConfig :>> ', dnaConfig);
+
   return { conn, dnaConfig, conductorUri }
 }
 

@@ -8,10 +8,10 @@ export type createArgs = { habit: HabitCreateParams }
 export type createHandler = (root: any, args: createArgs) => Promise<Habit>
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
-  const runCreate = mapZomeFn<HabitCreateParams, Habit>(dnaConfig, conductorUri, HAPP_ID, HAPP_ZOME_NAME_ATOMIC, 'create_habit')
+  const runCreate = mapZomeFn<Omit<Habit, 'id'>, Habit>(dnaConfig, conductorUri, HAPP_ID, HAPP_ZOME_NAME_ATOMIC, 'create_habit')
 
-  const createHabit: createHandler = async (root, args) => {
-    return runCreate(args.habit)
+  const createHabit: createHandler = async (root, {habit: {name, startTime, endTime, ...metadata}}) => {
+    return runCreate({ name, timeframe: {startTime, endTime}, metadata})
   }
   
   return {

@@ -1,4 +1,4 @@
-import { Habit, HabitConnection, HabitCreateParams, HabitCreateResponse, HabitEdge, HabitMetaData, Mutation, PageInfo, Query, TimeFrame, Todo } from '../generated/index';
+import { Habit, HabitConnection, HabitCreateParams, HabitCreateResponse, HabitEdge, HabitMetaData, Mutation, PageInfo, Query, ResponsePayload, TimeFrame, Todo } from '../generated/index';
 
 export const aHabit = (overrides?: Partial<Habit>): Habit => {
     return {
@@ -18,13 +18,17 @@ export const aHabitConnection = (overrides?: Partial<HabitConnection>): HabitCon
 
 export const aHabitCreateParams = (overrides?: Partial<HabitCreateParams>): HabitCreateParams => {
     return {
+        description: overrides && overrides.hasOwnProperty('description') ? overrides.description! : 'modi',
+        endTime: overrides && overrides.hasOwnProperty('endTime') ? overrides.endTime! : 'voluptatibus',
+        isAtomic: overrides && overrides.hasOwnProperty('isAtomic') ? overrides.isAtomic! : 'velit',
         name: overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'velit',
+        startTime: overrides && overrides.hasOwnProperty('startTime') ? overrides.startTime! : 'quasi',
     };
 };
 
 export const aHabitCreateResponse = (overrides?: Partial<HabitCreateResponse>): HabitCreateResponse => {
     return {
-        habit: overrides && overrides.hasOwnProperty('habit') ? overrides.habit! : aHabit(),
+        payload: overrides && overrides.hasOwnProperty('payload') ? overrides.payload! : aResponsePayload(),
     };
 };
 
@@ -37,9 +41,8 @@ export const aHabitEdge = (overrides?: Partial<HabitEdge>): HabitEdge => {
 
 export const aHabitMetaData = (overrides?: Partial<HabitMetaData>): HabitMetaData => {
     return {
-        atomicListEntryHash: overrides && overrides.hasOwnProperty('atomicListEntryHash') ? overrides.atomicListEntryHash! : 'eos',
         description: overrides && overrides.hasOwnProperty('description') ? overrides.description! : 'quia',
-        isAtomic: overrides && overrides.hasOwnProperty('isAtomic') ? overrides.isAtomic! : false,
+        isAtomic: overrides && overrides.hasOwnProperty('isAtomic') ? overrides.isAtomic! : 'at',
     };
 };
 
@@ -61,6 +64,13 @@ export const aPageInfo = (overrides?: Partial<PageInfo>): PageInfo => {
 export const aQuery = (overrides?: Partial<Query>): Query => {
     return {
         habit: overrides && overrides.hasOwnProperty('habit') ? overrides.habit! : aHabit(),
+    };
+};
+
+export const aResponsePayload = (overrides?: Partial<ResponsePayload>): ResponsePayload => {
+    return {
+        entry: overrides && overrides.hasOwnProperty('entry') ? overrides.entry! : 'quae',
+        header: overrides && overrides.hasOwnProperty('header') ? overrides.header! : 'et',
     };
 };
 
