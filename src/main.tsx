@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import ReactDOM from 'react-dom'
+
+import { createRoot } from 'react-dom/client';
 
 import { Buffer } from 'buffer'
 globalThis.Buffer = Buffer
@@ -13,8 +14,6 @@ import { Home } from './components/pages/Home'
 // import { Profile } from './components/pages/Profile'
 
 import './index.scss'
-
-const root = document.getElementById('root')
 
 const App: FC = () => {
   return (
@@ -32,11 +31,12 @@ const App: FC = () => {
   )
 }
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container!);
+root.render(
   <Theme>
     <ApolloProvider client={(await connect({} as ClientOptions))}>
       <App />
     </ApolloProvider>
-  </Theme>,
-  root,
+  </Theme>
 )
