@@ -22,7 +22,6 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
 
   return {
     habit: async (_, args): Promise<Habit> => {
-      console.log('args :>> ', args)
       return read(args.id)
     },
 

@@ -145,7 +145,6 @@ export function deserializeHash(hash: string): Uint8Array {
 }
 
 function deserializeId(field: string): RecordId {
-  debugger
   const matches = field.split(':')
   return [
     Buffer.from(deserializeHash(matches[1])),
@@ -302,7 +301,6 @@ const zomeFunction =
   ): BoundZomeFn<InputType, Promise<OutputType>> =>
   async (args): Promise<OutputType> => {
     const { callZome } = await getConnection(socketURI)
-    debugger
     const res = await callZome(
       {
         cap_secret: null, // :TODO:
