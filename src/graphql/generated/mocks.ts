@@ -69,8 +69,8 @@ export const aQuery = (overrides?: Partial<Query>): Query => {
 
 export const aResponsePayload = (overrides?: Partial<ResponsePayload>): ResponsePayload => {
     return {
-        entry: overrides && overrides.hasOwnProperty('entry') ? overrides.entry! : 'quae',
-        header: overrides && overrides.hasOwnProperty('header') ? overrides.header! : 'et',
+        entryHash: overrides && overrides.hasOwnProperty('entryHash') ? overrides.entryHash! : 'similique',
+        headerHash: overrides && overrides.hasOwnProperty('headerHash') ? overrides.headerHash! : 'consequatur',
     };
 };
 

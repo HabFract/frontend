@@ -87,8 +87,8 @@ export type QueryHabitArgs = {
 
 export type ResponsePayload = {
   __typename?: 'ResponsePayload';
-  entry: Scalars['String'];
-  header: Scalars['String'];
+  entryHash: Scalars['String'];
+  headerHash: Scalars['String'];
 };
 
 export type TimeFrame = {
@@ -108,7 +108,7 @@ export type AddHabitMutationVariables = Exact<{
 }>;
 
 
-export type AddHabitMutation = { __typename?: 'Mutation', createHabit: { __typename?: 'HabitCreateResponse', payload: { __typename?: 'ResponsePayload', header: string, entry: string } } };
+export type AddHabitMutation = { __typename?: 'Mutation', createHabit: { __typename?: 'HabitCreateResponse', payload: { __typename?: 'ResponsePayload', headerHash: string, entryHash: string } } };
 
 export type GetHabitQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -122,8 +122,8 @@ export const AddHabitDocument = gql`
     mutation addHabit($variables: HabitCreateParams!) {
   createHabit(habit: $variables) {
     payload {
-      header
-      entry
+      headerHash
+      entryHash
     }
   }
 }

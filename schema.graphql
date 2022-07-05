@@ -52,8 +52,8 @@ type Mutation {
 }
 
 type ResponsePayload {
-  header: String!
-  entry: String!
+  headerHash: String!
+  entryHash: String!
 }
 
 input HabitCreateParams {

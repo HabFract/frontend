@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import ReactDOM from 'react-dom'
 
-// import { Buffer } from 'buffer'
-// globalThis.Buffer = Buffer
+import { Buffer } from 'buffer'
+globalThis.Buffer = Buffer
 
 import connect, { ClientOptions } from './graphql/client'
 import { ApolloProvider } from '@apollo/client'
