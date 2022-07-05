@@ -49,6 +49,7 @@ specifiers:
   babel-plugin-macros: ^3.1.0
   babel-plugin-module-resolver: 4.1.0
   babel-plugin-styled-components: ^2.0.7
+  buffer: ^6.0.3
   concurrently: ^7.2.2
   css-loader: ^5.2.7
   deep-for-each: ^3.0.0
@@ -108,6 +109,7 @@ dependencies:
   '@holochain/client': 0.4.1_eslint@7.32.0+ws@8.8.0
   '@reduxjs/toolkit': 1.8.2_4wic3pw3dccvku2ikwp24gz4m4
   antd: 4.21.0_biqbaboplfbrettd7655fr4n2y
+  buffer: 6.0.3
   deep-for-each: 3.0.0
   fecha: 4.2.3
   formik: 2.2.9_react@18.2.0
@@ -6489,7 +6491,6 @@ packages:
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
-    dev: true
 
   /bcrypt-pbkdf/1.0.2:
     resolution: {integrity: sha512-qeFIXtP4MSoi6NLqO12WfqARWWuCKi2Rn/9hJLEmtB5yTNr9DqFWkJRCf2qShWzPeAMRnOgCrq0sg/KLv5ES9w==}
@@ -6747,6 +6748,13 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
     dev: true
+
+  /buffer/6.0.3:
+    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+    dev: false
 
   /builtin-status-codes/3.0.0:
     resolution: {integrity: sha512-HpGFw18DgFWlncDfjTa2rcQ4W88O1mC8e8yZ2AvQY5KDaktSTwo+KRf6nHK6FRI5FyRyb/5T6+TSxfP7QyGsmQ==}
@@ -10789,7 +10797,6 @@ packages:
 
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
-    dev: true
 
   /iferr/0.1.5:
     resolution: {integrity: sha512-DUNFN5j7Tln0D+TxzloUjKB+CtVu6myn0JEFak6dG18mNt9YkQ6lzGCdafwofISZ1lLF3xRHJ98VKy9ynkcFaA==}

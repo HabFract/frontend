@@ -47,7 +47,8 @@ export async function autoConnect(conductorUri?: string, appID?: string, traceAp
 
   const conn = await openConnection(conductorUri, traceAppSignals)
   const dnaConfig = await sniffHolochainAppCells(conn, appID)
-
+console.log('conn :>> ', conn);
+console.log('dnaConfig :>> ', dnaConfig);
   return { conn, dnaConfig, conductorUri }
 }
 
@@ -91,10 +92,7 @@ export async function sniffHolochainAppCells(conn: AppWebsocket, appID?: string)
   }
 
   let dnaMappings: DNAIdMappings = (appInfo['cell_data'] as unknown[] as ActualInstalledCell[]).reduce((mappings, { cell_id, role_id }) => {
-    // const hrea_cell_match = role_id.match(/hrea_(\w+)_\d+/)
-    // if (!hrea_cell_match) { return mappings }
-
-    // mappings[hrea_cell_match[1] as keyof DNAIdMappings] = cell_id
+    mappings['habit_tracking' as keyof DNAIdMappings] = cell_id
     return mappings
   }, {} as DNAIdMappings)
 
@@ -126,6 +124,7 @@ export function deserializeHash(hash: string): Uint8Array {
 }
 
 function deserializeId(field: string): RecordId {
+  debugger;
   const matches = field.split(':')
   return [
     Buffer.from(deserializeHash(matches[1])),
@@ -269,6 +268,7 @@ export type BoundZomeFn<InputType, OutputType> = (args: InputType) => OutputType
  */
 const zomeFunction = <InputType, OutputType>(socketURI: string, cell_id: CellId, zome_name: string, fn_name: string, skipEncodeDecode?: boolean): BoundZomeFn<InputType, Promise<OutputType>> => async (args): Promise<OutputType> => {
   const { callZome } = await getConnection(socketURI)
+  debugger;
   const res = await callZome({
     cap_secret: null, // :TODO:
     cell_id,

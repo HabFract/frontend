@@ -8,7 +8,7 @@ import { AppSignalCb, CellId } from '@holochain/client'
 // Default is to use a DNA with the same ID as the mapping ID (ie. agent = "agent")
 export interface DNAIdMappings {
   habit_tracking?: CellId,
-  lobby?: CellId
+  // lobby?: CellId
 }
 
 export type {CellId}

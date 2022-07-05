@@ -1,7 +1,8 @@
 import { APP_WS_PORT } from '@/app/constants'
 import { InMemoryCache, ApolloClient } from '@apollo/client'
 import { SchemaLink } from '@apollo/client/link/schema'
-
+import { AgentPubKey, CellId, HoloHash } from '@holochain/client'
+import { Buffer } from "buffer";
 import bindSchema, { autoConnect, APIOptions, DNAIdMappings } from '.'
 
 // Same as OpenConnectionOptions but for external client where dnaConfig may be autodetected
@@ -13,7 +14,10 @@ export type ClientOptions = APIOptions & AutoConnectionOptions
 
 export async function initGraphQLClient(options: APIOptions) {
 
-  let { dnaConfig, conductorUri } = await autoConnect()
+  let { dnaConfig, conductorUri } = await autoConnect();
+  // const dnaConfig = {
+  //   'habit_tracking': [new Uint8Array(Buffer.from('uhC0kokzPqryK7YbLP4V7xwDzvlBIes5HK6B7bOvHZnkdLigQf1PW')) as HoloHash,new Uint8Array(Buffer.from('uhCAkybfzxlEvEIf4WztnwTB5Ce0OeAwbXA0v22qXMnIiVKaPrDhG')) as AgentPubKey] as CellId
+  // }
   const schema = await bindSchema({dnaConfig, conductorUri})//{conductorUri: `ws://localhost:${APP_WS_PORT}`} as APIOptions)
 
   return new ApolloClient({
