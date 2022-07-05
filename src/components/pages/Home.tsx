@@ -6,9 +6,9 @@ import { LoginForm } from '../organisms/LoginForm'
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
-  const variables = {variables: { name: 'a'}}
+  const variables : HabitCreateParams = { name: 'a'}
 
-  const [addHabitMutation, { data, loading, error }] = useAddHabitMutation({variables})
+  const [addHabitMutation, { data, loading, error }] = useAddHabitMutation({variables: {variables}})
   useEffect(() => {
     addHabitMutation()
   }, [])

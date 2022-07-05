@@ -1,21 +1,17 @@
-import { DNAIdMappings, ReadParams } from '../../types'
+import { DNAIdMappings } from '../../types'
 import { Habit, HabitCreateParams } from '@/graphql/generated/index';
 
 import { mapZomeFn } from '../../connection';
-import { HAPP_ID } from '@/app/constants';
+import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants';
 
-export type createHandler = (root: any, args: CreateArgs) => Promise<Habit>
-
-export interface CreateArgs {
-  input: HabitCreateParams,
-}
+export type createArgs = { habit: HabitCreateParams }
+export type createHandler = (root: any, args: createArgs) => Promise<Habit>
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
-console.log('dnaConfig :>> ', dnaConfig);
-  const runCreate = mapZomeFn<CreateArgs, Habit>(dnaConfig, conductorUri, HAPP_ID, 'atomic_habits', 'create_habit')
+  const runCreate = mapZomeFn<HabitCreateParams, Habit>(dnaConfig, conductorUri, HAPP_ID, HAPP_ZOME_NAME_ATOMIC, 'create_habit')
 
   const createHabit: createHandler = async (root, args) => {
-    return runCreate(args)
+    return runCreate(args.habit)
   }
   
   return {

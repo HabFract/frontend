@@ -60,7 +60,7 @@ export type Mutation = {
 
 
 export type MutationCreateHabitArgs = {
-  input?: InputMaybe<HabitCreateParams>;
+  habit?: InputMaybe<HabitCreateParams>;
 };
 
 export type PageInfo = {
@@ -98,7 +98,7 @@ export type AddHabitMutationVariables = Exact<{
 }>;
 
 
-export type AddHabitMutation = { __typename?: 'Mutation', createHabit: { __typename?: 'HabitCreateResponse', habit: { __typename?: 'Habit', id: string } } };
+export type AddHabitMutation = { __typename?: 'Mutation', createHabit: { __typename?: 'HabitCreateResponse', habit: { __typename?: 'Habit', name: string } } };
 
 export type GetHabitQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -110,9 +110,9 @@ export type GetHabitQuery = { __typename?: 'Query', habit: { __typename?: 'Habit
 
 export const AddHabitDocument = gql`
     mutation addHabit($variables: HabitCreateParams!) {
-  createHabit(input: $variables) {
+  createHabit(habit: $variables) {
     habit {
-      id
+      name
     }
   }
 }

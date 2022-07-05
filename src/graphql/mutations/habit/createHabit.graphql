@@ -1,7 +1,7 @@
 mutation addHabit($variables: HabitCreateParams!) {
-		createHabit(input: $variables) {
+		createHabit(habit: $variables) {
 			habit {
-				id
+				name
 			}
 		}
 }
