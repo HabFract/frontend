@@ -1,8 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
-const MockConductor = require("@holo-host/mock-conductor");
 // import { mockCallZomeFn, PORT } from "setupTests";
 // import api from "services/zomeApis";
 
@@ -12,6 +10,8 @@ const MockConductor = require("@holo-host/mock-conductor");
 // import { Provider } from "react-redux";
 
 import TodoList from "./index";
+
+const MockConductor = require("@holo-host/mock-conductor");
 
 type ComponentProps = React.ComponentProps<typeof TodoList>;
 
@@ -230,7 +230,7 @@ describe("it renders <TodoList>", () => {
       todos: [{ id: "101", description: "Get milk", status: false }],
     };
     const { getByText, getByTestId } = renderUI({ list });
-    let saveButton = getByText(/save/i);
+    const saveButton = getByText(/save/i);
     expect(saveButton).toBeInTheDocument();
 
     userEvent.click(getByTestId("delete-101"));

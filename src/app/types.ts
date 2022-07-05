@@ -2,8 +2,7 @@ import {
   AgentPubKeyB64,
   HeaderHashB64,
   EntryHashB64,
-} from "@holochain-open-dev/core-types";
-import { Dictionary } from "@holochain-open-dev/core-types";
+ Dictionary } from "@holochain-open-dev/core-types";
 
 export interface Todo {
   id: string | number;

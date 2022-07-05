@@ -11,7 +11,7 @@ import { APIOptions, ResolverOptions,  DNAIdMappings, CellId } from './types.js'
 import generateResolvers from './resolvers'
 import { mapZomeFn, autoConnect, openConnection, sniffHolochainAppCells } from './connection.js'
 
-import typeDefs from '../../schema.graphql'
+import typeDefs from './schema/schema.graphql'
 
 export {
   // direct access to resolver callbacks generator for apps that need to bind to other GraphQL schemas

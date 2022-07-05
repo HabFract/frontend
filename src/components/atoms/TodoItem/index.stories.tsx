@@ -17,7 +17,7 @@ export default {
   title: 'TodoItem',
 }
 
-//👇 We create a “template” of how args map to rendering
+// 👇 We create a “template” of how args map to rendering
 const Template: Story<ITodoItem.IProps> = (args) => 
   <TodoItem {...args} />
 

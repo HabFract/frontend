@@ -5,5 +5,5 @@ import styled from 'styled-components'
 export const ListItem = styled.li.attrs({
   className: "place-items-center grid",
 })`
-    text-decoration: ${({ complete }) => complete ? "line-through" : "none" }
+    text-decoration: ${({ complete }) => complete ? "line-through" : "none"}
 `

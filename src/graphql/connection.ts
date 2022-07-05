@@ -28,14 +28,14 @@ type ActualInstalledCell = {  // :TODO: remove this when fixed in tryorama
   role_id: string;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
 // Connection persistence and multi-conductor / multi-agent handling
-//----------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
 
 // :NOTE: when calling AppWebsocket.connect for the Launcher Context
 // it just expects an empty string for the socketURI. Other environments require it.
-let DEFAULT_CONNECTION_URI = `ws://localhost:${APP_WS_PORT}` as string || ''
-let HOLOCHAIN_APP_ID =HAPP_ID as string || ''
+const DEFAULT_CONNECTION_URI = `ws://localhost:${APP_WS_PORT}` as string || ''
+const HOLOCHAIN_APP_ID =HAPP_ID as string || ''
 
 const CONNECTION_CACHE: { [i: string]: Promise<AppWebsocket> } = {}
 
@@ -89,7 +89,7 @@ export async function sniffHolochainAppCells(conn: AppWebsocket, appID?: string)
     throw new Error(`appInfo call failed for Holochain app '${appID || HOLOCHAIN_APP_ID}' - ensure the name is correct and that the app installation has succeeded`)
   }
 
-  let dnaMappings: DNAIdMappings = (appInfo['cell_data'] as unknown[] as ActualInstalledCell[]).reduce((mappings, { cell_id, role_id }) => {
+  const dnaMappings: DNAIdMappings = (appInfo['cell_data'] as unknown[] as ActualInstalledCell[]).reduce((mappings, { cell_id, role_id }) => {
     mappings['habit_tracking' as keyof DNAIdMappings] = cell_id
     return mappings
   }, {} as DNAIdMappings)
@@ -100,9 +100,9 @@ export async function sniffHolochainAppCells(conn: AppWebsocket, appID?: string)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
 // Holochain / GraphQL type translation layer
-//----------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
 
 // @see https://crates.io/crates/holo_hash
 const HOLOCHAIN_IDENTIFIER_LEN = 39
@@ -254,9 +254,9 @@ const encodeFields = (args: any): any => {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
 // Holochain cell API method binding API
-//----------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
 
 // explicit type-loss at the boundary
 export type BoundZomeFn<InputType, OutputType> = (args: InputType) => OutputType;

@@ -79,7 +79,7 @@ const TodoList: React.FC<TodoListProps> = ({
     // dispatch(deleteAction);
     setCurrentList({
       id: listId,
-      todos: [] //store.getState().todo[listId].todos,
+      todos: [] // store.getState().todo[listId].todos,
     });
   };
 

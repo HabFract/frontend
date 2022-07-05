@@ -3,7 +3,6 @@ import React, { FC } from 'react'
 import { createRoot } from 'react-dom/client';
 
 import { Buffer } from 'buffer'
-globalThis.Buffer = Buffer
 
 import connect, { ClientOptions } from './graphql/client'
 import { ApolloProvider } from '@apollo/client'
@@ -14,6 +13,7 @@ import { Home } from './components/pages/Home'
 // import { Profile } from './components/pages/Profile'
 
 import './index.scss'
+globalThis.Buffer = Buffer
 
 const App: FC = () => {
   return (
