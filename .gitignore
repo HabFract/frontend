@@ -8,3 +8,4 @@ dist-ssr
 settings.json
 src/assets/styles.css
 .nvmrc
+.huskyrc
