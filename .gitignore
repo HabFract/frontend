@@ -7,3 +7,4 @@ dist-ssr
 .env
 settings.json
 src/assets/styles.css
+.nvmrc
