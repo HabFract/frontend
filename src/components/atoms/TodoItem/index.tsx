@@ -1,5 +1,5 @@
 // #region Global Imports
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -15,17 +15,14 @@ export const TodoItem: React.FC<ITodoItem.IProps> = ({
   handleDestroy,
   handleToggle,
 }) => {
-  const [isComplete, setIsComplete] = useState<boolean>(todo.status);
+  const [isComplete, setIsComplete] = useState<boolean>(todo.status)
   useEffect(() => {
-    setIsComplete(todo.status);
-  }, [todo.status]);
+    setIsComplete(todo.status)
+  }, [todo.status])
 
   return (
-    <ListItem
-      complete={isComplete}
-      data-todo_id={todo.id}
-    >
-      <label className={isComplete ? "complete" : "incomplete"}>
+    <ListItem complete={isComplete} data-todo_id={todo.id}>
+      <label className={isComplete ? 'complete' : 'incomplete'}>
         {todo.description}
         <input
           type="checkbox"
@@ -41,5 +38,5 @@ export const TodoItem: React.FC<ITodoItem.IProps> = ({
         className="destroy"
       />
     </ListItem>
-  );
-};
+  )
+}

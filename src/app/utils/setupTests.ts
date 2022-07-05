@@ -5,11 +5,11 @@
 import '@testing-library/jest-dom/extend-expect'
 // import "@testing-library/jest-dom";
 
-const MockConductor = require("@holo-host/mock-conductor");
-const { ZOME_CALL_TYPE } = MockConductor;
+const MockConductor = require('@holo-host/mock-conductor')
+const { ZOME_CALL_TYPE } = MockConductor
 
 interface ZomeInput {
-  number: number;
+  number: number
 }
 // interface ZomeCallPayload {
 //   cap: Buffer | null;

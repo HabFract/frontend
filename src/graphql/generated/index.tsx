@@ -1,134 +1,163 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions = {} as const;
+import { gql } from '@apollo/client'
+import * as Apollo from '@apollo/client'
+export type Maybe<T> = T | null
+export type InputMaybe<T> = Maybe<T>
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K]
+}
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>
+}
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>
+}
+const defaultOptions = {} as const
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  DateTime: any;
-};
+  ID: string
+  String: string
+  Boolean: boolean
+  Int: number
+  Float: number
+  DateTime: any
+}
 
 export type Habit = {
-  __typename?: 'Habit';
-  id: Scalars['ID'];
-  metadata?: Maybe<HabitMetaData>;
-  name: Scalars['String'];
-  timeframe: TimeFrame;
-};
+  __typename?: 'Habit'
+  id: Scalars['ID']
+  metadata?: Maybe<HabitMetaData>
+  name: Scalars['String']
+  timeframe: TimeFrame
+}
 
 export type HabitConnection = {
-  __typename?: 'HabitConnection';
-  edges: Array<HabitEdge>;
-  pageInfo: PageInfo;
-};
+  __typename?: 'HabitConnection'
+  edges: Array<HabitEdge>
+  pageInfo: PageInfo
+}
 
 export type HabitCreateParams = {
-  description: Scalars['String'];
-  endTime: Scalars['DateTime'];
-  isAtomic: Scalars['String'];
-  name: Scalars['String'];
-  startTime: Scalars['DateTime'];
-};
+  description: Scalars['String']
+  endTime: Scalars['DateTime']
+  isAtomic: Scalars['String']
+  name: Scalars['String']
+  startTime: Scalars['DateTime']
+}
 
 export type HabitCreateResponse = {
-  __typename?: 'HabitCreateResponse';
-  payload: ResponsePayload;
-};
+  __typename?: 'HabitCreateResponse'
+  payload: ResponsePayload
+}
 
 export type HabitEdge = {
-  __typename?: 'HabitEdge';
-  cursor: Scalars['String'];
-  node: Habit;
-};
+  __typename?: 'HabitEdge'
+  cursor: Scalars['String']
+  node: Habit
+}
 
 export type HabitMetaData = {
-  __typename?: 'HabitMetaData';
-  description: Scalars['String'];
-  isAtomic: Scalars['String'];
-};
+  __typename?: 'HabitMetaData'
+  description: Scalars['String']
+  isAtomic: Scalars['String']
+}
 
-/** Mutations */
 export type Mutation = {
-  __typename?: 'Mutation';
-  createHabit: HabitCreateResponse;
-};
+  __typename?: 'Mutation'
+  createHabit: HabitCreateResponse
+}
 
-
-/** Mutations */
 export type MutationCreateHabitArgs = {
-  habit?: InputMaybe<HabitCreateParams>;
-};
+  habit?: InputMaybe<HabitCreateParams>
+}
 
 export type PageInfo = {
-  __typename?: 'PageInfo';
-  endCursor: Scalars['String'];
-  hasNextPage: Scalars['Boolean'];
-  hasPreviousPage: Scalars['Boolean'];
-  startCursor: Scalars['String'];
-};
+  __typename?: 'PageInfo'
+  endCursor: Scalars['String']
+  hasNextPage: Scalars['Boolean']
+  hasPreviousPage: Scalars['Boolean']
+  startCursor: Scalars['String']
+}
 
 export type Query = {
-  __typename?: 'Query';
-  habit: Habit;
-};
-
+  __typename?: 'Query'
+  habit: Habit
+  habits: HabitConnection
+}
 
 export type QueryHabitArgs = {
-  id: Scalars['ID'];
-};
+  id: Scalars['ID']
+}
 
 export type ResponsePayload = {
-  __typename?: 'ResponsePayload';
-  entryHash: Scalars['String'];
-  headerHash: Scalars['String'];
-};
+  __typename?: 'ResponsePayload'
+  entryHash: Scalars['String']
+  headerHash: Scalars['String']
+}
 
 export type TimeFrame = {
-  endTime: Scalars['DateTime'];
-  startTime: Scalars['DateTime'];
-};
+  endTime: Scalars['DateTime']
+  startTime: Scalars['DateTime']
+}
 
 export type Todo = {
-  __typename?: 'Todo';
-  description: Scalars['String'];
-  id: Scalars['ID'];
-  status: Scalars['Boolean'];
-};
+  __typename?: 'Todo'
+  description: Scalars['String']
+  id: Scalars['ID']
+  status: Scalars['Boolean']
+}
 
 export type AddHabitMutationVariables = Exact<{
-  variables: HabitCreateParams;
-}>;
+  variables: HabitCreateParams
+}>
 
-
-export type AddHabitMutation = { __typename?: 'Mutation', createHabit: { __typename?: 'HabitCreateResponse', payload: { __typename?: 'ResponsePayload', headerHash: string, entryHash: string } } };
-
-export type GetHabitQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type GetHabitQuery = { __typename?: 'Query', habit: { __typename?: 'Habit', id: string } };
-
-
-export const AddHabitDocument = gql`
-    mutation addHabit($variables: HabitCreateParams!) {
-  createHabit(habit: $variables) {
-    payload {
-      headerHash
-      entryHash
+export type AddHabitMutation = {
+  __typename?: 'Mutation'
+  createHabit: {
+    __typename?: 'HabitCreateResponse'
+    payload: {
+      __typename?: 'ResponsePayload'
+      headerHash: string
+      entryHash: string
     }
   }
 }
-    `;
-export type AddHabitMutationFn = Apollo.MutationFunction<AddHabitMutation, AddHabitMutationVariables>;
+
+export type GetHabitQueryVariables = Exact<{
+  id: Scalars['ID']
+}>
+
+export type GetHabitQuery = {
+  __typename?: 'Query'
+  habit: { __typename?: 'Habit'; id: string }
+}
+
+export type GetHabitsQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetHabitsQuery = {
+  __typename?: 'Query'
+  habits: {
+    __typename?: 'HabitConnection'
+    edges: Array<{
+      __typename?: 'HabitEdge'
+      node: { __typename?: 'Habit'; id: string }
+    }>
+  }
+}
+
+export const AddHabitDocument = gql`
+  mutation addHabit($variables: HabitCreateParams!) {
+    createHabit(habit: $variables) {
+      payload {
+        headerHash
+        entryHash
+      }
+    }
+  }
+`
+export type AddHabitMutationFn = Apollo.MutationFunction<
+  AddHabitMutation,
+  AddHabitMutationVariables
+>
 
 /**
  * __useAddHabitMutation__
@@ -147,20 +176,31 @@ export type AddHabitMutationFn = Apollo.MutationFunction<AddHabitMutation, AddHa
  *   },
  * });
  */
-export function useAddHabitMutation(baseOptions?: Apollo.MutationHookOptions<AddHabitMutation, AddHabitMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<AddHabitMutation, AddHabitMutationVariables>(AddHabitDocument, options);
-      }
-export type AddHabitMutationHookResult = ReturnType<typeof useAddHabitMutation>;
-export type AddHabitMutationResult = Apollo.MutationResult<AddHabitMutation>;
-export type AddHabitMutationOptions = Apollo.BaseMutationOptions<AddHabitMutation, AddHabitMutationVariables>;
-export const GetHabitDocument = gql`
-    query getHabit($id: ID!) {
-  habit(id: $id) {
-    id
-  }
+export function useAddHabitMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AddHabitMutation,
+    AddHabitMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddHabitMutation, AddHabitMutationVariables>(
+    AddHabitDocument,
+    options,
+  )
 }
-    `;
+export type AddHabitMutationHookResult = ReturnType<typeof useAddHabitMutation>
+export type AddHabitMutationResult = Apollo.MutationResult<AddHabitMutation>
+export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
+  AddHabitMutation,
+  AddHabitMutationVariables
+>
+export const GetHabitDocument = gql`
+  query getHabit($id: ID!) {
+    habit(id: $id) {
+      id
+    }
+  }
+`
 
 /**
  * __useGetHabitQuery__
@@ -178,14 +218,91 @@ export const GetHabitDocument = gql`
  *   },
  * });
  */
-export function useGetHabitQuery(baseOptions: Apollo.QueryHookOptions<GetHabitQuery, GetHabitQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetHabitQuery, GetHabitQueryVariables>(GetHabitDocument, options);
-      }
-export function useGetHabitLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHabitQuery, GetHabitQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetHabitQuery, GetHabitQueryVariables>(GetHabitDocument, options);
+export function useGetHabitQuery(
+  baseOptions: Apollo.QueryHookOptions<GetHabitQuery, GetHabitQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetHabitQuery, GetHabitQueryVariables>(
+    GetHabitDocument,
+    options,
+  )
+}
+export function useGetHabitLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetHabitQuery,
+    GetHabitQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetHabitQuery, GetHabitQueryVariables>(
+    GetHabitDocument,
+    options,
+  )
+}
+export type GetHabitQueryHookResult = ReturnType<typeof useGetHabitQuery>
+export type GetHabitLazyQueryHookResult = ReturnType<
+  typeof useGetHabitLazyQuery
+>
+export type GetHabitQueryResult = Apollo.QueryResult<
+  GetHabitQuery,
+  GetHabitQueryVariables
+>
+export const GetHabitsDocument = gql`
+  query getHabits {
+    habits {
+      edges {
+        node {
+          id
         }
-export type GetHabitQueryHookResult = ReturnType<typeof useGetHabitQuery>;
-export type GetHabitLazyQueryHookResult = ReturnType<typeof useGetHabitLazyQuery>;
-export type GetHabitQueryResult = Apollo.QueryResult<GetHabitQuery, GetHabitQueryVariables>;
+      }
+    }
+  }
+`
+
+/**
+ * __useGetHabitsQuery__
+ *
+ * To run a query within a React component, call `useGetHabitsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHabitsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetHabitsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetHabitsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetHabitsQuery,
+    GetHabitsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetHabitsQuery, GetHabitsQueryVariables>(
+    GetHabitsDocument,
+    options,
+  )
+}
+export function useGetHabitsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetHabitsQuery,
+    GetHabitsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetHabitsQuery, GetHabitsQueryVariables>(
+    GetHabitsDocument,
+    options,
+  )
+}
+export type GetHabitsQueryHookResult = ReturnType<typeof useGetHabitsQuery>
+export type GetHabitsLazyQueryHookResult = ReturnType<
+  typeof useGetHabitsLazyQuery
+>
+export type GetHabitsQueryResult = Apollo.QueryResult<
+  GetHabitsQuery,
+  GetHabitsQueryVariables
+>

@@ -15,17 +15,18 @@
 
 import { AppSignalCb, AppWebsocket, CellId, HoloHash } from '@holochain/client'
 import { APP_WS_PORT, HAPP_ID } from '@/app/constants'
-import { DNAIdMappings } from './types';
-import { Base64 } from "js-base64"
+import { DNAIdMappings } from './types'
+import { Base64 } from 'js-base64'
 import deepForEach from 'deep-for-each'
 import { format, parse } from 'fecha'
 import isObject from 'is-object'
 
 type RecordId = [HoloHash, HoloHash]
 
-type ActualInstalledCell = {  // :TODO: remove this when fixed in tryorama
-  cell_id: CellId;
-  role_id: string;
+type ActualInstalledCell = {
+  // :TODO: remove this when fixed in tryorama
+  cell_id: CellId
+  role_id: string
 }
 
 // ----------------------------------------------------------------------------------------------------------------------
@@ -34,12 +35,16 @@ type ActualInstalledCell = {  // :TODO: remove this when fixed in tryorama
 
 // :NOTE: when calling AppWebsocket.connect for the Launcher Context
 // it just expects an empty string for the socketURI. Other environments require it.
-const DEFAULT_CONNECTION_URI = `ws://localhost:${APP_WS_PORT}` as string || ''
-const HOLOCHAIN_APP_ID =HAPP_ID as string || ''
+const DEFAULT_CONNECTION_URI = (`ws://localhost:${APP_WS_PORT}` as string) || ''
+const HOLOCHAIN_APP_ID = (HAPP_ID as string) || ''
 
 const CONNECTION_CACHE: { [i: string]: Promise<AppWebsocket> } = {}
 
-export async function autoConnect(conductorUri?: string, appID?: string, traceAppSignals?: AppSignalCb) {
+export async function autoConnect(
+  conductorUri?: string,
+  appID?: string,
+  traceAppSignals?: AppSignalCb,
+) {
   if (!conductorUri) {
     conductorUri = DEFAULT_CONNECTION_URI
   }
@@ -59,21 +64,29 @@ export async function autoConnect(conductorUri?: string, appID?: string, traceAp
  * a runtime error will be thrown by `getConnection` if no `openConnection` has
  * been previously performed for the same `socketURI`.
  */
-export const openConnection = (socketURI: string, traceAppSignals?: AppSignalCb) => {
+export const openConnection = (
+  socketURI: string,
+  traceAppSignals?: AppSignalCb,
+) => {
   console.log(`Init Holochain connection: ${socketURI}`)
 
-  CONNECTION_CACHE[socketURI] = AppWebsocket.connect(socketURI, undefined, traceAppSignals)
-    .then((client) => {
-        console.log(`Holochain connection to ${socketURI} OK`)
-        return client
-      })
+  CONNECTION_CACHE[socketURI] = AppWebsocket.connect(
+    socketURI,
+    undefined,
+    traceAppSignals,
+  ).then((client) => {
+    console.log(`Holochain connection to ${socketURI} OK`)
+    return client
+  })
 
   return CONNECTION_CACHE[socketURI]
 }
 
 const getConnection = (socketURI: string) => {
   if (!CONNECTION_CACHE[socketURI]) {
-    throw new Error(`Connection for ${socketURI} not initialised! Please call openConnection() first.`)
+    throw new Error(
+      `Connection for ${socketURI} not initialised! Please call openConnection() first.`,
+    )
   }
 
   return CONNECTION_CACHE[socketURI]
@@ -83,13 +96,24 @@ const getConnection = (socketURI: string) => {
  * Introspect an active Holochain connection's app cells to determine cell IDs
  * for mapping to the schema resolvers.
  */
-export async function sniffHolochainAppCells(conn: AppWebsocket, appID?: string) {
-  const appInfo = await conn.appInfo({ installed_app_id: appID || HOLOCHAIN_APP_ID })
+export async function sniffHolochainAppCells(
+  conn: AppWebsocket,
+  appID?: string,
+) {
+  const appInfo = await conn.appInfo({
+    installed_app_id: appID || HOLOCHAIN_APP_ID,
+  })
   if (!appInfo) {
-    throw new Error(`appInfo call failed for Holochain app '${appID || HOLOCHAIN_APP_ID}' - ensure the name is correct and that the app installation has succeeded`)
+    throw new Error(
+      `appInfo call failed for Holochain app '${
+        appID || HOLOCHAIN_APP_ID
+      }' - ensure the name is correct and that the app installation has succeeded`,
+    )
   }
 
-  const dnaMappings: DNAIdMappings = (appInfo['cell_data'] as unknown[] as ActualInstalledCell[]).reduce((mappings, { cell_id, role_id }) => {
+  const dnaMappings: DNAIdMappings = (
+    appInfo['cell_data'] as unknown[] as ActualInstalledCell[]
+  ).reduce((mappings, { cell_id, role_id }) => {
     mappings['habit_tracking' as keyof DNAIdMappings] = cell_id
     return mappings
   }, {} as DNAIdMappings)
@@ -99,7 +123,6 @@ export async function sniffHolochainAppCells(conn: AppWebsocket, appID?: string)
   return dnaMappings
 }
 
-
 // ----------------------------------------------------------------------------------------------------------------------
 // Holochain / GraphQL type translation layer
 // ----------------------------------------------------------------------------------------------------------------------
@@ -107,10 +130,10 @@ export async function sniffHolochainAppCells(conn: AppWebsocket, appID?: string)
 // @see https://crates.io/crates/holo_hash
 const HOLOCHAIN_IDENTIFIER_LEN = 39
 // @see holo_hash::hash_type::primitive
-const HOLOHASH_PREFIX_DNA = [0x84, 0x2d, 0x24]     // uhC0k
-const HOLOHASH_PREFIX_ENTRY = [0x84, 0x21, 0x24]   // uhCEk
-const HOLOHASH_PREFIX_HEADER = [0x84, 0x29, 0x24]  // uhCkk
-const HOLOHASH_PREFIX_AGENT = [0x84, 0x20, 0x24]   // uhCAk
+const HOLOHASH_PREFIX_DNA = [0x84, 0x2d, 0x24] // uhC0k
+const HOLOHASH_PREFIX_ENTRY = [0x84, 0x21, 0x24] // uhCEk
+const HOLOHASH_PREFIX_HEADER = [0x84, 0x29, 0x24] // uhCkk
+const HOLOHASH_PREFIX_AGENT = [0x84, 0x20, 0x24] // uhCAk
 
 const serializedHashMatchRegex = /^[A-Za-z0-9_+\-/]{53}={0,2}$/
 const idMatchRegex = /^[A-Za-z0-9_+\-/]{53}={0,2}:[A-Za-z0-9_+\-/]{53}={0,2}$/
@@ -122,7 +145,7 @@ export function deserializeHash(hash: string): Uint8Array {
 }
 
 function deserializeId(field: string): RecordId {
-  debugger;
+  debugger
   const matches = field.split(':')
   return [
     Buffer.from(deserializeHash(matches[1])),
@@ -130,12 +153,9 @@ function deserializeId(field: string): RecordId {
   ]
 }
 
-function deserializeStringId(field: string): [Buffer,string] {
+function deserializeStringId(field: string): [Buffer, string] {
   const matches = field.split(':')
-  return [
-    Buffer.from(deserializeHash(matches[1])),
-    matches[0],
-  ]
+  return [Buffer.from(deserializeHash(matches[1])), matches[0]]
 }
 
 // @see https://github.com/holochain-open-dev/core-types/blob/main/src/utils.ts
@@ -147,7 +167,7 @@ function seralizeId(id: RecordId): string {
   return `${serializeHash(id[1])}:${serializeHash(id[0])}`
 }
 
-function seralizeStringId(id: [Buffer,string]): string {
+function seralizeStringId(id: [Buffer, string]): string {
   return `${id[1]}:${serializeHash(id[0])}`
 }
 
@@ -160,7 +180,8 @@ export function remapCellId(originalId, newCellId) {
 
 const LONG_DATETIME_FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
 const SHORT_DATETIME_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ'
-const isoDateRegex = /^\d{4}-\d\d-\d\d(T\d\d:\d\d:\d\d(\.\d\d\d)?)?([+-]\d\d:\d\d)?$/
+const isoDateRegex =
+  /^\d{4}-\d\d-\d\d(T\d\d:\d\d:\d\d(\.\d\d\d)?)?([+-]\d\d:\d\d)?$/
 
 /**
  * Decode raw data input coming from Holochain API websocket.
@@ -169,27 +190,36 @@ const isoDateRegex = /^\d{4}-\d\d-\d\d(T\d\d:\d\d:\d\d(\.\d\d\d)?)?([+-]\d\d:\d\
  */
 const decodeFields = (result: any): void => {
   deepForEach(result, (value, prop, subject) => {
-
     // HeaderHash
-    if ((value instanceof Buffer || value instanceof Uint8Array) && value.length === HOLOCHAIN_IDENTIFIER_LEN && checkLeadingBytes(value, HOLOHASH_PREFIX_HEADER)) {
+    if (
+      (value instanceof Buffer || value instanceof Uint8Array) &&
+      value.length === HOLOCHAIN_IDENTIFIER_LEN &&
+      checkLeadingBytes(value, HOLOHASH_PREFIX_HEADER)
+    ) {
       subject[prop] = serializeHash(value as unknown as Uint8Array)
     }
 
     // RecordId | StringId (Agent, for now)
-    if (Array.isArray(value) && value.length == 2 &&
-    (value[0] instanceof Buffer || value[0] instanceof Uint8Array) &&
-    value[0].length === HOLOCHAIN_IDENTIFIER_LEN &&
-    checkLeadingBytes(value[0], HOLOHASH_PREFIX_DNA))
-    {
+    if (
+      Array.isArray(value) &&
+      value.length == 2 &&
+      (value[0] instanceof Buffer || value[0] instanceof Uint8Array) &&
+      value[0].length === HOLOCHAIN_IDENTIFIER_LEN &&
+      checkLeadingBytes(value[0], HOLOHASH_PREFIX_DNA)
+    ) {
       // Match 2-element arrays of Buffer objects as IDs.
       // Since we check the hash prefixes, this should make it safe to mix with fields which reference arrays of plain EntryHash / HeaderHash data.
-      if ((value[1] instanceof Buffer || value[1] instanceof Uint8Array) && value[1].length === HOLOCHAIN_IDENTIFIER_LEN &&
-        (checkLeadingBytes(value[1], HOLOHASH_PREFIX_ENTRY) || checkLeadingBytes(value[1], HOLOHASH_PREFIX_HEADER) || checkLeadingBytes(value[1], HOLOHASH_PREFIX_AGENT)))
-      {
+      if (
+        (value[1] instanceof Buffer || value[1] instanceof Uint8Array) &&
+        value[1].length === HOLOCHAIN_IDENTIFIER_LEN &&
+        (checkLeadingBytes(value[1], HOLOHASH_PREFIX_ENTRY) ||
+          checkLeadingBytes(value[1], HOLOHASH_PREFIX_HEADER) ||
+          checkLeadingBytes(value[1], HOLOHASH_PREFIX_AGENT))
+      ) {
         subject[prop] = seralizeId(value as RecordId)
-      // Match 2-element pairs of Buffer/String as a "DNA-scoped identifier" (eg. UnitId)
-      // :TODO: This one probably isn't safe for regular ID field mixing.
-      //        Custom serde de/serializer would make bind this handling to the appropriate fields without duck-typing issues.
+        // Match 2-element pairs of Buffer/String as a "DNA-scoped identifier" (eg. UnitId)
+        // :TODO: This one probably isn't safe for regular ID field mixing.
+        //        Custom serde de/serializer would make bind this handling to the appropriate fields without duck-typing issues.
       } else {
         subject[prop] = seralizeStringId(value as [Buffer, string])
       }
@@ -202,14 +232,15 @@ const decodeFields = (result: any): void => {
         subject[prop] = parse(value, SHORT_DATETIME_FORMAT)
       }
     }
-
   })
 }
 
 function checkLeadingBytes(ofVar, against) {
-  return ofVar[0] === against[0] &&
+  return (
+    ofVar[0] === against[0] &&
     ofVar[1] === against[1] &&
     ofVar[2] === against[2]
+  )
 }
 
 /**
@@ -229,11 +260,9 @@ const encodeFields = (args: any): any => {
   // deserialise any identifiers back to their binary format
   else if (args.match && args.match(serializedHashMatchRegex)) {
     return deserializeHash(args)
-  }
-  else if (args.match && args.match(idMatchRegex)) {
+  } else if (args.match && args.match(idMatchRegex)) {
     return deserializeId(args)
-  }
-  else if (args.match && args.match(stringIdRegex)) {
+  } else if (args.match && args.match(stringIdRegex)) {
     return deserializeStringId(args)
   }
 
@@ -253,31 +282,41 @@ const encodeFields = (args: any): any => {
   return res
 }
 
-
 // ----------------------------------------------------------------------------------------------------------------------
 // Holochain cell API method binding API
 // ----------------------------------------------------------------------------------------------------------------------
 
 // explicit type-loss at the boundary
-export type BoundZomeFn<InputType, OutputType> = (args: InputType) => OutputType;
+export type BoundZomeFn<InputType, OutputType> = (args: InputType) => OutputType
 
 /**
  * Higher-order function to generate async functions for calling zome RPC methods
  */
-const zomeFunction = <InputType, OutputType>(socketURI: string, cell_id: CellId, zome_name: string, fn_name: string, skipEncodeDecode?: boolean): BoundZomeFn<InputType, Promise<OutputType>> => async (args): Promise<OutputType> => {
-  const { callZome } = await getConnection(socketURI)
-  debugger;
-  const res = await callZome({
-    cap_secret: null, // :TODO:
-    cell_id,
-    zome_name,
-    fn_name,
-    provenance: cell_id[1],
-    payload: skipEncodeDecode ? args : encodeFields(args),
-  }, 60000)
-  if (!skipEncodeDecode) decodeFields(res)
-  return res
-}
+const zomeFunction =
+  <InputType, OutputType>(
+    socketURI: string,
+    cell_id: CellId,
+    zome_name: string,
+    fn_name: string,
+    skipEncodeDecode?: boolean,
+  ): BoundZomeFn<InputType, Promise<OutputType>> =>
+  async (args): Promise<OutputType> => {
+    const { callZome } = await getConnection(socketURI)
+    debugger
+    const res = await callZome(
+      {
+        cap_secret: null, // :TODO:
+        cell_id,
+        zome_name,
+        fn_name,
+        provenance: cell_id[1],
+        payload: skipEncodeDecode ? args : encodeFields(args),
+      },
+      60000,
+    )
+    if (!skipEncodeDecode) decodeFields(res)
+    return res
+  }
 
 /**
  * External API for accessing zome methods, passing them through an optional intermediary DNA ID mapping
@@ -288,9 +327,21 @@ const zomeFunction = <InputType, OutputType>(socketURI: string, cell_id: CellId,
  *
  * @return bound async zome function which can be called directly
  */
-export const mapZomeFn = <InputType, OutputType>(mappings: DNAIdMappings, socketURI: string, instance: string, zome: string, fn: string, skipEncodeDecode?: boolean) =>
-  zomeFunction<InputType, OutputType>(socketURI, (mappings && mappings[instance]), zome, fn, skipEncodeDecode)
-
+export const mapZomeFn = <InputType, OutputType>(
+  mappings: DNAIdMappings,
+  socketURI: string,
+  instance: string,
+  zome: string,
+  fn: string,
+  skipEncodeDecode?: boolean,
+) =>
+  zomeFunction<InputType, OutputType>(
+    socketURI,
+    mappings && mappings[instance],
+    zome,
+    fn,
+    skipEncodeDecode,
+  )
 
 export const extractEdges = <T>(withEdges: { edges: { node: T }[] }): T[] => {
   if (!withEdges.edges || !withEdges.edges.length) {

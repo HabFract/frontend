@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 interface FooterProps {
-  count: number;
-  listLength: number;
-  handleFilter?: (ev: any, setList: any) => void;
-  handleDestroyAll?: (ev: any) => void;
-  handleSaveList?: (ev: any) => void;
+  count: number
+  listLength: number
+  handleFilter?: (ev: any, setList: any) => void
+  handleDestroyAll?: (ev: any) => void
+  handleSaveList?: (ev: any) => void
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -18,29 +18,34 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer>
       <h1 className="todo-count">
-        <strong>{count}</strong> {count == 1 ? "item" : "items"} left
+        <strong>{count}</strong> {count == 1 ? 'item' : 'items'} left
       </h1>
-      <ul className="filters" onClick={() => {}} // handleFilter}>
+      <ul
+        className="filters"
+        onClick={() => {}} // handleFilter}>
       >
-        <li data-testid={"filter-all"}>All</li>
-        <li data-testid={"filter-active"}>Active</li>
-        <li data-testid={"filter-completed"}>Completed</li>
+        <li data-testid={'filter-all'}>All</li>
+        <li data-testid={'filter-active'}>Active</li>
+        <li data-testid={'filter-completed'}>Completed</li>
       </ul>
 
       <button
         name="clear"
         className="clear-completed"
-        onClick={() => {}}// handleDestroyAll}
+        onClick={() => {}} // handleDestroyAll}
       >
         Clear
       </button>
 
       {listLength > 0 && (
-        <button name="save" className="save-list" onClick={() => {}}// handleSaveList}
+        <button
+          name="save"
+          className="save-list"
+          onClick={() => {}} // handleSaveList}
         >
           Save
         </button>
       )}
     </footer>
-  );
-};
+  )
+}

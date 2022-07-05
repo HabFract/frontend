@@ -1,9 +1,8 @@
 mutation addHabit($variables: HabitCreateParams!) {
-		createHabit(habit: $variables) {
-			payload {
-				headerHash,
-				entryHash
-			}
-		}
+  createHabit(habit: $variables) {
+    payload {
+      headerHash
+      entryHash
+    }
+  }
 }
-

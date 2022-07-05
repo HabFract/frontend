@@ -1,6 +1,6 @@
-import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import React from 'react'
+import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 // import { mockCallZomeFn, PORT } from "setupTests";
 // import api from "services/zomeApis";
 
@@ -9,22 +9,22 @@ import userEvent from "@testing-library/user-event";
 // import { store } from "app/store";
 // import { Provider } from "react-redux";
 
-import TodoList from "./index";
+import TodoList from './index'
 
-const MockConductor = require("@holo-host/mock-conductor");
+const MockConductor = require('@holo-host/mock-conductor')
 
-type ComponentProps = React.ComponentProps<typeof TodoList>;
+type ComponentProps = React.ComponentProps<typeof TodoList>
 
 // *** Helpers ***
 function renderUI(props: ComponentProps) {
   return render(
     // <Provider store={store}>
-      <TodoList {...props} />
+    <TodoList {...props} />,
     // </Provider>
-  );
+  )
 }
 const onlyTodos = (listItems: any) =>
-  listItems.filter((li: HTMLElement) => li.dataset?.todo_id).length;
+  listItems.filter((li: HTMLElement) => li.dataset?.todo_id).length
 
 // // *** Redux/slice local state ***
 
@@ -116,139 +116,139 @@ const onlyTodos = (listItems: any) =>
 
 // *** View ***
 
-describe("it renders <TodoList>", () => {
-  test("it renders a todo list with 3 todo items", () => {
+describe('it renders <TodoList>', () => {
+  test('it renders a todo list with 3 todo items', () => {
     const list = {
-      id: "1",
+      id: '1',
       todos: [
-        { id: "1", description: "Get milk", status: false },
-        { id: "2", description: "Get bread", status: true },
-        { id: "3", description: "Pick up mail", status: true },
+        { id: '1', description: 'Get milk', status: false },
+        { id: '2', description: 'Get bread', status: true },
+        { id: '3', description: 'Pick up mail', status: true },
       ],
-    };
-    const { getByText, getByTestId } = renderUI({ list });
-    const textElement = getByText(list.todos[0].description);
-    const textElement1 = getByText(list.todos[1].description);
-    const textElement2 = getByText(list.todos[2].description);
-    const ul = getByTestId("list");
+    }
+    const { getByText, getByTestId } = renderUI({ list })
+    const textElement = getByText(list.todos[0].description)
+    const textElement1 = getByText(list.todos[1].description)
+    const textElement2 = getByText(list.todos[2].description)
+    const ul = getByTestId('list')
 
-    expect(ul).toBeInTheDocument();
-    expect(textElement).toBeInTheDocument();
-    expect(textElement1).toBeInTheDocument();
-    expect(textElement2).toBeInTheDocument();
-  });
+    expect(ul).toBeInTheDocument()
+    expect(textElement).toBeInTheDocument()
+    expect(textElement1).toBeInTheDocument()
+    expect(textElement2).toBeInTheDocument()
+  })
 
-  test("it renders a todo list with 1 unchecked, 2 checked todos", () => {
+  test('it renders a todo list with 1 unchecked, 2 checked todos', () => {
     const list = {
-      id: "1",
+      id: '1',
       todos: [
-        { id: "1", description: "Get milk", status: false },
-        { id: "2", description: "Get bread", status: true },
-        { id: "3", description: "Pick up mail", status: true },
+        { id: '1', description: 'Get milk', status: false },
+        { id: '2', description: 'Get bread', status: true },
+        { id: '3', description: 'Pick up mail', status: true },
       ],
-    };
-    const { getAllByRole } = renderUI({ list });
-    const unchecked = getAllByRole("checkbox", { checked: false });
-    const checked = getAllByRole("checkbox", { checked: true });
+    }
+    const { getAllByRole } = renderUI({ list })
+    const unchecked = getAllByRole('checkbox', { checked: false })
+    const checked = getAllByRole('checkbox', { checked: true })
 
-    expect(unchecked.length).toBe(1);
-    expect(checked.length).toBe(2);
-  });
+    expect(unchecked.length).toBe(1)
+    expect(checked.length).toBe(2)
+  })
 
-  test("it renders a footer with filters for completed, uncompleted, active", () => {
+  test('it renders a footer with filters for completed, uncompleted, active', () => {
     const list = {
-      id: "1",
+      id: '1',
       todos: [
-        { id: "1", description: "Get milk", status: false },
-        { id: "2", description: "Get bread", status: true },
-        { id: "3", description: "Pick up mail", status: true },
+        { id: '1', description: 'Get milk', status: false },
+        { id: '2', description: 'Get bread', status: true },
+        { id: '3', description: 'Pick up mail', status: true },
       ],
-    };
-    const { getByRole, getByText } = renderUI({ list });
-    const footer = getByRole("contentinfo");
-    const filter = getByText("All");
-    const filter1 = getByText("Active");
-    const filter2 = getByText("Completed");
+    }
+    const { getByRole, getByText } = renderUI({ list })
+    const footer = getByRole('contentinfo')
+    const filter = getByText('All')
+    const filter1 = getByText('Active')
+    const filter2 = getByText('Completed')
 
-    expect(footer).toBeInTheDocument();
-    expect(filter).toBeInTheDocument();
-    expect(filter1).toBeInTheDocument();
-    expect(filter2).toBeInTheDocument();
-  });
+    expect(footer).toBeInTheDocument()
+    expect(filter).toBeInTheDocument()
+    expect(filter1).toBeInTheDocument()
+    expect(filter2).toBeInTheDocument()
+  })
 
-  test("it renders a completed count", () => {
+  test('it renders a completed count', () => {
     const list = {
-      id: "1",
+      id: '1',
       todos: [
-        { id: "1", description: "Get milk", status: false },
-        { id: "2", description: "Get bread", status: true },
-        { id: "3", description: "Pick up mail", status: true },
+        { id: '1', description: 'Get milk', status: false },
+        { id: '2', description: 'Get bread', status: true },
+        { id: '3', description: 'Pick up mail', status: true },
       ],
-    };
-    const { getByRole } = renderUI({ list });
-    const count = getByRole("heading");
+    }
+    const { getByRole } = renderUI({ list })
+    const count = getByRole('heading')
 
-    expect(count).toBeInTheDocument();
-    expect(count.textContent).toMatch(/1/);
-  });
+    expect(count).toBeInTheDocument()
+    expect(count.textContent).toMatch(/1/)
+  })
 
-  test("it renders a clear button", () => {
+  test('it renders a clear button', () => {
     const list = {
-      id: "1",
+      id: '1',
       todos: [
-        { id: "1", description: "Get milk", status: false },
-        { id: "2", description: "Get bread", status: true },
-        { id: "3", description: "Pick up mail", status: true },
+        { id: '1', description: 'Get milk', status: false },
+        { id: '2', description: 'Get bread', status: true },
+        { id: '3', description: 'Pick up mail', status: true },
       ],
-    };
-    const { getByText } = renderUI({ list });
-    const clearButton = getByText("Clear");
+    }
+    const { getByText } = renderUI({ list })
+    const clearButton = getByText('Clear')
 
-    expect(clearButton).toBeInTheDocument();
-    expect(clearButton.nodeName).toBe("BUTTON");
-  });
+    expect(clearButton).toBeInTheDocument()
+    expect(clearButton.nodeName).toBe('BUTTON')
+  })
 
-  test("it renders a save button", () => {
+  test('it renders a save button', () => {
     const list = {
-      id: "1",
+      id: '1',
       todos: [
-        { id: "1", description: "Get milk", status: false },
-        { id: "2", description: "Get bread", status: true },
-        { id: "3", description: "Pick up mail", status: true },
+        { id: '1', description: 'Get milk', status: false },
+        { id: '2', description: 'Get bread', status: true },
+        { id: '3', description: 'Pick up mail', status: true },
       ],
-    };
-    const { getByText } = renderUI({ list });
-    const saveButton = getByText(/save/i);
+    }
+    const { getByText } = renderUI({ list })
+    const saveButton = getByText(/save/i)
 
-    expect(saveButton).toBeInTheDocument();
-    expect(saveButton.nodeName).toBe("BUTTON");
-  });
+    expect(saveButton).toBeInTheDocument()
+    expect(saveButton.nodeName).toBe('BUTTON')
+  })
 
-  test("it renders a save button only when the list has items", async () => {
+  test('it renders a save button only when the list has items', async () => {
     const list = {
-      id: "1",
-      todos: [{ id: "101", description: "Get milk", status: false }],
-    };
-    const { getByText, getByTestId } = renderUI({ list });
-    const saveButton = getByText(/save/i);
-    expect(saveButton).toBeInTheDocument();
+      id: '1',
+      todos: [{ id: '101', description: 'Get milk', status: false }],
+    }
+    const { getByText, getByTestId } = renderUI({ list })
+    const saveButton = getByText(/save/i)
+    expect(saveButton).toBeInTheDocument()
 
-    userEvent.click(getByTestId("delete-101"));
+    userEvent.click(getByTestId('delete-101'))
 
-    await waitFor(() => expect(saveButton).not.toBeInTheDocument());
-  });
+    await waitFor(() => expect(saveButton).not.toBeInTheDocument())
+  })
 
-  test("it renders a text input", () => {
+  test('it renders a text input', () => {
     const list = {
-      id: "1",
-      todos: [{ id: "1", description: "Get milk", status: false }],
-    };
-    const { getByPlaceholderText } = renderUI({ list });
-    const todoInput = getByPlaceholderText("Add a Todo and press enter");
+      id: '1',
+      todos: [{ id: '1', description: 'Get milk', status: false }],
+    }
+    const { getByPlaceholderText } = renderUI({ list })
+    const todoInput = getByPlaceholderText('Add a Todo and press enter')
 
-    expect(todoInput).toBeInTheDocument();
-  });
-});
+    expect(todoInput).toBeInTheDocument()
+  })
+})
 
 // describe("it handles toggling", () => {
 //   describe("Given a list with a completed todo and two uncompleted todos", () => {

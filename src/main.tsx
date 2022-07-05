@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client'
 
 import { Buffer } from 'buffer'
 
@@ -32,11 +32,11 @@ const App: FC = () => {
 }
 
 const container = document.getElementById('root')
-const root = createRoot(container!);
+const root = createRoot(container!)
 root.render(
   <Theme>
-    <ApolloProvider client={(await connect({} as ClientOptions))}>
+    <ApolloProvider client={await connect({} as ClientOptions)}>
       <App />
     </ApolloProvider>
-  </Theme>
+  </Theme>,
 )

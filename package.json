@@ -9,7 +9,7 @@
     "build:css": "postcss src/assets/tailwind.css -o src/assets/styles.css",
     "watch:css": "TAILWIND_MODE=watch npx tailwindcss -c ./tailwind.config.js --postcss -i src/assets/tailwind.css -o src/assets/styles.css --watch",
     "serve": "vite preview",
-    "format": "prettier --write \"src/**/*.ts*\" ",
+    "format": "prettier --write --ignore-path ./.prettierignore \"src/**/*.ts*\" \"src/**/*.tsx*\" \"src/**/*.graphql\" ",
     "lint": "eslint ./src --fix",
     "test": "jest --watch -no-cache --verbose --runInBand --config=./jest.config.ts",
     "gen": "graphql-codegen --config codegen.yml --watch",
@@ -23,7 +23,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,scss,less}": [
-      "prettier --ignore-path ./.prettierignore --write"
+      "npm run format"
     ],
     "*.{js,jsx,ts,tsx}": [
       "eslint"

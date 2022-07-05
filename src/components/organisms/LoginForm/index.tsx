@@ -23,7 +23,9 @@ export const LoginForm: React.FunctionComponent<ILoginForm.IProps> = (
     <Container>
       <Switcher></Switcher>
       <Top>
-        <MainText><h1 className="bg-red-200">Welcome</h1></MainText>
+        <MainText>
+          <h1 className="bg-red-200">Welcome</h1>
+        </MainText>
       </Top>
       <Middle>
         <SubText>Create a username and start managing your habits!</SubText>

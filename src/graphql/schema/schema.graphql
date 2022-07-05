@@ -1,6 +1,11 @@
+# General GQL Types
 type Query {
   habit(id: ID!): Habit!
-  # habits: HabitConnection!
+  habits: HabitConnection!
+}
+
+type Mutation {
+  createHabit(habit: HabitCreateParams): HabitCreateResponse!
 }
 
 type PageInfo {
@@ -10,12 +15,14 @@ type PageInfo {
   endCursor: String!
 }
 
-type Todo {
-  id: ID!
-  description: String!
-  status: Boolean!
+# Holochain Specific Types
+type ResponsePayload {
+  headerHash: String!
+  entryHash: String!
 }
 
+# ---- Habit ----- #
+# Habit GQL Types
 type HabitConnection {
   edges: [HabitEdge!]!
   pageInfo: PageInfo!
@@ -26,18 +33,19 @@ type HabitEdge {
   node: Habit!
 }
 
-scalar DateTime 
-
-interface TimeFrame {
-  startTime: DateTime!
-  endTime: DateTime!
-}
-
+# Habit Types
 type Habit {
   id: ID!
   name: String!
   timeframe: TimeFrame!
   metadata: HabitMetaData
+}
+
+scalar DateTime
+
+interface TimeFrame {
+  startTime: DateTime!
+  endTime: DateTime!
 }
 
 type HabitMetaData {
@@ -46,16 +54,7 @@ type HabitMetaData {
   # atomicListEntryHash: String
 }
 
-"Mutations"
-type Mutation {
-  createHabit(habit: HabitCreateParams): HabitCreateResponse!
-}
-
-type ResponsePayload {
-  headerHash: String!
-  entryHash: String!
-}
-
+# Habit Input/Outputs
 input HabitCreateParams {
   name: String!
   startTime: DateTime!
@@ -69,4 +68,10 @@ type HabitCreateResponse {
   payload: ResponsePayload!
 }
 
+#
 
+type Todo {
+  id: ID!
+  description: String!
+  status: Boolean!
+}

@@ -7,11 +7,7 @@ import Query from '../queries'
 import Mutation from '../mutations'
 
 export default async (options: ResolverOptions) => {
-  const {
-    conductorUri,
-    dnaConfig,
-    traceAppSignals = undefined,
-  } = options
+  const { conductorUri, dnaConfig, traceAppSignals = undefined } = options
 
   // prefetch connection for this API schema
   await openConnection(conductorUri, traceAppSignals)

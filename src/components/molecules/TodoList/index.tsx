@@ -1,11 +1,11 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo } from 'react'
 
-import { Footer } from "./footer";
+import { Footer } from './footer'
 
 // import { store } from "app/store";
 // import { useAppDispatch } from "app/hooks";
-import { TodoList, Todo } from "@/app/types";
-import { TodoItem } from "@/components/atoms/TodoItem";
+import { TodoList, Todo } from '@/app/types'
+import { TodoItem } from '@/components/atoms/TodoItem'
 // import {
 //   createTodo,
 //   deleteTodo,
@@ -18,20 +18,20 @@ import { TodoItem } from "@/components/atoms/TodoItem";
 // } from "../../actions";
 
 interface TodoListProps {
-  list: TodoList;
-  hasBeenPersisted?: boolean;
+  list: TodoList
+  hasBeenPersisted?: boolean
 }
 
 const TodoList: React.FC<TodoListProps> = ({
   list: { todos, id: listId },
   hasBeenPersisted,
 }) => {
-  const [hasBeenSaved, setHasBeenSaved] = useState(hasBeenPersisted || false);
+  const [hasBeenSaved, setHasBeenSaved] = useState(hasBeenPersisted || false)
   const [currentList, setCurrentList] = useState<TodoList>({
     id: listId,
     todos,
-  });
-  const [newTodo, setNewTodo] = useState<string>("");
+  })
+  const [newTodo, setNewTodo] = useState<string>('')
 
   // const dispatch = useAppDispatch();
 
@@ -71,7 +71,7 @@ const TodoList: React.FC<TodoListProps> = ({
   // };
 
   const handleDestroy = (e: any) => {
-    const tdId = e.target.parentNode.dataset.todo_id;
+    const tdId = e.target.parentNode.dataset.todo_id
     // const deleteAction = deleteTodo({
     //   listId,
     //   id: tdId,
@@ -79,9 +79,9 @@ const TodoList: React.FC<TodoListProps> = ({
     // dispatch(deleteAction);
     setCurrentList({
       id: listId,
-      todos: [] // store.getState().todo[listId].todos,
-    });
-  };
+      todos: [], // store.getState().todo[listId].todos,
+    })
+  }
 
   // const handleDestroyAll = (e: any) => {
   //   const list = {
@@ -142,9 +142,9 @@ const TodoList: React.FC<TodoListProps> = ({
         type="text"
         placeholder="Add a Todo and press enter"
         onChange={(e) => {
-          setNewTodo(e.target.value);
+          setNewTodo(e.target.value)
         }}
-        onKeyUp={() => {}}// handleKeyUp}
+        onKeyUp={() => {}} // handleKeyUp}
         value={newTodo}
       />
       <ul className="todo-list" data-testid="list">
@@ -153,10 +153,10 @@ const TodoList: React.FC<TodoListProps> = ({
             <TodoItem
               key={listItem.id}
               todo={listItem}
-              handleToggle={() => {}}// handleToggle}
+              handleToggle={() => {}} // handleToggle}
               handleDestroy={handleDestroy}
             />
-          );
+          )
         })}
       </ul>
       <Footer
@@ -165,12 +165,12 @@ const TodoList: React.FC<TodoListProps> = ({
           currentList.todos.filter((td: Todo) => td.status).length
         }
         listLength={currentList.todos.length}
-        handleFilter={() => {}}// handleFilter}
-        handleDestroyAll={() => {}}// handleDestroyAll}
-        handleSaveList={() => {}}// handleSaveList}
+        handleFilter={() => {}} // handleFilter}
+        handleDestroyAll={() => {}} // handleDestroyAll}
+        handleSaveList={() => {}} // handleSaveList}
       />
     </div>
-  );
-};
+  )
+}
 
-export default memo(TodoList);
+export default memo(TodoList)

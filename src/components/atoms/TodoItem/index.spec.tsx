@@ -1,6 +1,6 @@
-import React from "react";
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import React from 'react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 // import {
 //   createList,
 //   createTodo,
@@ -9,9 +9,9 @@ import userEvent from "@testing-library/user-event";
 // } from "features/todo/actions";
 // import { store } from "app/store";
 
-import { TodoItem } from ".";
-import { aTodo } from "@/graphql/generated/mocks";
-import { ITodoItem } from "./types";
+import { TodoItem } from '.'
+import { aTodo } from '@/graphql/generated/mocks'
+import { ITodoItem } from './types'
 
 // *** Helpers ***
 // function getTodoByIds(listId: string, todoId: string) {
@@ -21,16 +21,16 @@ import { ITodoItem } from "./types";
 // }
 
 function renderUI(props: ITodoItem.IProps) {
-  return render(<TodoItem {...props} />);
+  return render(<TodoItem {...props} />)
 }
 
 // *** Redux/slice state ***
 
 // test("it has the default empty list model state", () => {
-  // store.dispatch(createList({ list: { id: "1" } }));
-  // const listsState = store.getState().todo;
+// store.dispatch(createList({ list: { id: "1" } }));
+// const listsState = store.getState().todo;
 
-  // expect(listsState["1"]?.todos).toEqual([]);
+// expect(listsState["1"]?.todos).toEqual([]);
 // });
 
 // test("it adds a new todo", () => {
@@ -72,33 +72,33 @@ function renderUI(props: ITodoItem.IProps) {
 
 // *** View ***
 
-describe("it renders <TodoItem>", () => {
-  test("it renders a todo item description as a label", () => {
-    const todo = aTodo();
-    const { getByText } = renderUI({ todo });
-    const textElement = getByText(todo.description);
+describe('it renders <TodoItem>', () => {
+  test('it renders a todo item description as a label', () => {
+    const todo = aTodo()
+    const { getByText } = renderUI({ todo })
+    const textElement = getByText(todo.description)
 
-    expect(textElement).toBeInTheDocument();
-    expect(textElement.nodeName).toBe("LABEL");
-  });
+    expect(textElement).toBeInTheDocument()
+    expect(textElement.nodeName).toBe('LABEL')
+  })
 
-  test("it renders a checkbox with todo status for todo completion", () => {
-    const todo = aTodo();
-    const { getByRole } = renderUI({ todo });
-    const checkBox = getByRole("checkbox") as HTMLInputElement;
+  test('it renders a checkbox with todo status for todo completion', () => {
+    const todo = aTodo()
+    const { getByRole } = renderUI({ todo })
+    const checkBox = getByRole('checkbox') as HTMLInputElement
 
-    expect(checkBox).toBeInTheDocument();
-    expect(checkBox.checked).toEqual(todo.status);
-  });
+    expect(checkBox).toBeInTheDocument()
+    expect(checkBox.checked).toEqual(todo.status)
+  })
 
-  test("it renders a button for todo deletion", () => {
-    const todo = aTodo();
-    const { getByRole } = renderUI({ todo });
-    const deleteButton = getByRole("button");
+  test('it renders a button for todo deletion', () => {
+    const todo = aTodo()
+    const { getByRole } = renderUI({ todo })
+    const deleteButton = getByRole('button')
 
-    expect(deleteButton).toBeInTheDocument();
-  });
-});
+    expect(deleteButton).toBeInTheDocument()
+  })
+})
 // describe("it handles toggling", () => {
 //   describe("Given a completed todo and a callback fn", () => {
 //     const todo = aTodo();

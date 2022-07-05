@@ -1,6 +1,6 @@
 // #region Global Imports
 import React from 'react'
-import {Story} from "@storybook/react";
+import { Story } from '@storybook/react'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -18,8 +18,7 @@ export default {
 }
 
 // 👇 We create a “template” of how args map to rendering
-const Template: Story<ITodoItem.IProps> = (args) => 
-  <TodoItem {...args} />
+const Template: Story<ITodoItem.IProps> = (args) => <TodoItem {...args} />
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = { todo: aTodo() }
