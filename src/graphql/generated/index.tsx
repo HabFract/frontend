@@ -22,7 +22,7 @@ export type Scalars = {
   DateTime: any
 }
 
-export type Habit = {
+export type Habit = Node & {
   __typename?: 'Habit'
   id: Scalars['ID']
   metadata?: Maybe<HabitMetaData>
@@ -68,6 +68,10 @@ export type Mutation = {
 
 export type MutationCreateHabitArgs = {
   habit?: InputMaybe<HabitCreateParams>
+}
+
+export type Node = {
+  id: Scalars['ID']
 }
 
 export type PageInfo = {

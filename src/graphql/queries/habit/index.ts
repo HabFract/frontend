@@ -17,7 +17,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     conductorUri,
     HAPP_ID,
     HAPP_ZOME_NAME_ATOMIC,
-    'get_habits',
+    'get_all_habits',
   )
 
   return {

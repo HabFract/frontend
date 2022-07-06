@@ -6,6 +6,7 @@ import {
   HabitEdge,
   HabitMetaData,
   Mutation,
+  Node,
   PageInfo,
   Query,
   ResponsePayload,
@@ -117,6 +118,15 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
       overrides && overrides.hasOwnProperty('createHabit')
         ? overrides.createHabit!
         : aHabitCreateResponse(),
+  }
+}
+
+export const aNode = (overrides?: Partial<Node>): Node => {
+  return {
+    id:
+      overrides && overrides.hasOwnProperty('id')
+        ? overrides.id!
+        : '95bb2f34-6c86-495f-bfdc-f25b025cdba5',
   }
 }
 

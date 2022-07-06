@@ -20,6 +20,9 @@ type ResponsePayload {
   headerHash: String!
   entryHash: String!
 }
+interface Node {
+  id: ID!
+}
 
 # ---- Habit ----- #
 # Habit GQL Types
@@ -34,7 +37,7 @@ type HabitEdge {
 }
 
 # Habit Types
-type Habit {
+type Habit implements Node {
   id: ID!
   name: String!
   timeframe: TimeFrame!
