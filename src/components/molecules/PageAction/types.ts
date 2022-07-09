@@ -1,5 +1,7 @@
 export declare namespace IPageAction {
-  export interface IProps {}
+  export interface IProps {
+    copyText: string
+  }
 
   // export interface IState {}
 

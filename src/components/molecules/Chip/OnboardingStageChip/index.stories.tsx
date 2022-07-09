@@ -13,7 +13,7 @@ import { IOnboardingStageChip } from './types'
 
 export default {
   component: OnboardingStageChip,
-  title: 'Design System/Molecules/Button/OnboardingStageChip',
+  title: 'Design System/Molecules/Chip/OnboardingStageChip',
 }
 
 // 👇 We create a “template” of how args map to rendering

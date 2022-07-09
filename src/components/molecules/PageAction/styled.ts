@@ -3,10 +3,15 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const Container = styled.div.attrs({
-  className: 'flex flex-col items-center text-center p-8',
+  className: 'flex flex-col',
 })`
   background-color: ${({ theme }) => theme.colors.dgray};
-  min-height: 406px;
-  min-width: 347px;
-  font-family: 'Lexend Deca', sans-serif;
 `
+
+export const Body = styled.div.attrs({
+  className: 'flex',
+})``
+
+export const Title = styled.div.attrs({
+  className: 'flex items-center',
+})``

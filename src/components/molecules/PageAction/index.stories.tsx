@@ -10,4 +10,6 @@ export default {
   title: 'Design System/Molecules/PageAction',
 }
 
-export const Default = () => <PageAction />
+export const Default = () => (
+  <PageAction copyText="This is a page action bit of text." />
+)

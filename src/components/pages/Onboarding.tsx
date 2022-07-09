@@ -1,5 +1,5 @@
 // #region Global Imports
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -15,6 +15,11 @@ interface OnboardingProps {
   isDark: boolean
 }
 
+const [onboardingStage, setOnboardingStage] = useState(1)
+const onboardingStageCopy = [
+  'It looks like you’re new here. Fill in some details to join the network',
+]
+
 export const Onboarding: React.FC<OnboardingProps> = ({ isDark }) => {
   useEffect(() => setTheme(isDark ? 'theme-dark' : 'theme-default'), [])
 
@@ -25,7 +30,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ isDark }) => {
   ) : (
     <OnboardingTemplate>
       <TitleBar />
-      <PageAction />
+      <PageAction copyText={onboardingStageCopy[onboardingStage - 1]} />
       <SignUpForm />
     </OnboardingTemplate>
   )
