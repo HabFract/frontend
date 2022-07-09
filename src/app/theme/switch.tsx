@@ -2,7 +2,7 @@ import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-
 import Button from 'antd/lib/button'
 import React from 'react'
 
-const setTheme = (scopeName) => {
+export const setTheme = (scopeName) => {
   toggleTheme({
     scopeName,
   })

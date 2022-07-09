@@ -7,16 +7,24 @@ import { LoginForm } from '../organisms/LoginForm'
 import { SignUpForm } from '../organisms/SignUpForm'
 // import { ListItem } from './styled'
 import { useGetHabitsQuery } from '@/graphql/generated'
+import { FormTemplate } from '../templates/FormTemplate'
+import { setTheme } from '@/app/theme/switch'
 // #endregion Local Imports
 
 interface OnboardingProps {
-  isDark: boolean
+  isDark: boolean //TODO: make this a context
 }
 
 export const Onboarding: React.FC<OnboardingProps> = ({ isDark }) => {
+  useEffect(() => setTheme(isDark ? 'theme-dark' : 'theme-default'), [])
+
   return typeof localStorage.getItem('username') !== 'string' ? ( // Fetch an agent profile for this user (stubbed)
-    <LoginForm />
+    <FormTemplate>
+      <LoginForm />
+    </FormTemplate>
   ) : (
-    <SignUpForm />
+    <FormTemplate>
+      <SignUpForm />
+    </FormTemplate>
   )
 }
