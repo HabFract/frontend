@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 
 // #region Local Imports
 import { setTheme } from '@/app/theme/switch'
-import { FormTemplate } from '../templates/FormTemplate'
+import { OnboardingTemplate } from '../templates/OnboardingStageTemplate'
 import { LoginForm } from '../organisms/LoginForm'
 import { SignUpForm } from '../organisms/SignUpForm'
 // #endregion Local Imports
@@ -17,12 +17,12 @@ export const Onboarding: React.FC<OnboardingProps> = ({ isDark }) => {
   useEffect(() => setTheme(isDark ? 'theme-dark' : 'theme-default'), [])
 
   return typeof localStorage.getItem('username') !== 'string' ? ( // Fetch an agent profile for this user (stubbed)
-    <FormTemplate>
+    <OnboardingTemplate>
       <LoginForm />
-    </FormTemplate>
+    </OnboardingTemplate>
   ) : (
-    <FormTemplate>
+    <OnboardingTemplate>
       <SignUpForm />
-    </FormTemplate>
+    </OnboardingTemplate>
   )
 }
