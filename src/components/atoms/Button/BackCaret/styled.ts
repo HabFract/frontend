@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 // #endregion Global Imports
 
-export const ListItem = styled.li.attrs({
+export const Container = styled.li.attrs({
   className: 'place-items-center grid',
 })`
   text-decoration: ${({ complete }) => (complete ? 'line-through' : 'none')};

@@ -4,21 +4,19 @@ import { Story } from '@storybook/react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { TodoItem } from '.'
-import { aTodo } from '@/graphql/generated/mocks'
-// #endregion Local Imports
+import { BackCaret } from '.' // #endregion Local Imports
 
 // #region Interface Imports
-import { ITodoItem } from './types'
+import { IBackCaret } from './types'
 // #endregion Interface Imports
 
 export default {
-  component: TodoItem,
-  title: 'TodoItem',
+  component: BackCaret,
+  title: 'BackCaret',
 }
 
 // 👇 We create a “template” of how args map to rendering
-const Template: Story<ITodoItem.IProps> = (args) => <TodoItem {...args} />
+const Template: Story<IBackCaret.IProps> = (args) => <BackCaret {...args} />
 
 export const Default = Template.bind({})
-Default.args = { todo: aTodo() }
+// Default.args = { todo: aTodo() }
