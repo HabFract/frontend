@@ -1,12 +1,12 @@
 Template
-  -- titlebar
-    -- backbutton
-    -- title
-  -- pageaction
-    -- pageactionchip
-    -- pageactioncopy
-    -- pageactionicon
-  -- signupform
+  -- titlebar (M)
+    -- backbutton (A)
+    -- title (A)
+  -- pageaction  (M)
+    -- pageactionchip (M)
+    -- pageactioncopy (A)
+    -- pageactionicon (A)
+  -- signupform (O)
     -- inputgroup
       -- textinputgroup/user
         -- textinput
