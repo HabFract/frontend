@@ -1,6 +1,6 @@
 Template
   -- titlebar
-    --backbutton
+    -- backbutton
     -- title
   -- pageaction
     -- pageactionchip
