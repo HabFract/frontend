@@ -3,16 +3,14 @@ import React, { useState, useEffect } from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
+import { setTheme } from '@/app/theme/switch'
+import { FormTemplate } from '../templates/FormTemplate'
 import { LoginForm } from '../organisms/LoginForm'
 import { SignUpForm } from '../organisms/SignUpForm'
-// import { ListItem } from './styled'
-import { useGetHabitsQuery } from '@/graphql/generated'
-import { FormTemplate } from '../templates/FormTemplate'
-import { setTheme } from '@/app/theme/switch'
 // #endregion Local Imports
 
 interface OnboardingProps {
-  isDark: boolean //TODO: make this a context
+  isDark: boolean
 }
 
 export const Onboarding: React.FC<OnboardingProps> = ({ isDark }) => {
