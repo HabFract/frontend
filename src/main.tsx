@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import { Buffer } from 'buffer'
+globalThis.Buffer = Buffer
 
 import connect, { ClientOptions } from './graphql/client'
 import { ApolloProvider } from '@apollo/client'
@@ -13,19 +14,17 @@ import { Home } from './components/pages/Home'
 // import { Profile } from './components/pages/Profile'
 
 import './index.scss'
-globalThis.Buffer = Buffer
+import { Onboarding } from './components/pages/Onboarding'
 
 const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        {/* <Route
-          path="/profile"
-          element={
-            <Profile username={localStorage.getItem('username') || ''} />
-          }
-        ></Route> */}
+        <Route
+          path="/onboarding"
+          element={<Onboarding isDark={true} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   )
@@ -35,8 +34,8 @@ const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
   <Theme>
-    <ApolloProvider client={await connect({} as ClientOptions)}>
-      <App />
-    </ApolloProvider>
+    {/* <ApolloProvider client={await connect({} as ClientOptions)}> */}
+    <App />
+    {/* </ApolloProvider> */}
   </Theme>,
 )
