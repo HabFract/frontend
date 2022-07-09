@@ -22,4 +22,4 @@ const Template: Story<IOnboardingStageChip.IProps> = (args) => (
 )
 
 export const Default = Template.bind({})
-// Default.args = { todo: aTodo() }
+Default.args = { chipText: 'Do an action' }

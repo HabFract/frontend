@@ -10,7 +10,13 @@ import { Container } from './styled'
 import { IOnboardingStageChip } from './types'
 // #endregion Interface Imports
 
-export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> =
-  ({}) => {
-    return <Container />
-  }
+export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({
+  chipText,
+  onBoardingStage,
+}) => {
+  return (
+    <Container>
+      {`${onBoardingStage}`}/5 {chipText}
+    </Container>
+  )
+}

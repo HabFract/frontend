@@ -1,5 +1,8 @@
 export declare namespace IOnboardingStageChip {
-  export interface IProps {}
+  export interface IProps {
+    chipText: string
+    onBoardingStage: number
+  }
 
   // export interface IState {}
 

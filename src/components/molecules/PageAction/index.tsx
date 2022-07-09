@@ -19,7 +19,11 @@ export const PageAction: React.FunctionComponent<IPageAction.IProps> = ({
   return (
     <Container>
       <Title>
-        <OnboardingStageChip />
+        <OnboardingStageChip
+          onBoardingStage={1}
+          chipText={'Create a profile'}
+        />
+        {/* // TODO: generalise */}
       </Title>
       <Body>
         <P>{copyText}</P>
