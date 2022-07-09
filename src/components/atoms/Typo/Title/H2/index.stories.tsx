@@ -5,6 +5,7 @@ import { Story } from '@storybook/react'
 
 // #region Local Imports
 import { H2 } from '.' // #endregion Local Imports
+// #endregion Local Imports
 
 // #region Interface Imports
 import { IH2 } from './types'

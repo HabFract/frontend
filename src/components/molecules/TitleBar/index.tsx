@@ -8,10 +8,18 @@ import { ITitleBar } from './types'
 
 // #region Local Imports
 import { Container } from './styled'
+import { BackCaret } from '@/atoms/Button/BackCaret'
+import { H2 } from '@/atoms/Typo/Title/H2'
 // #endregion Local Imports
 
 export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = (
   _props: ITitleBar.IProps,
 ) => {
-  return <Container></Container>
+  const isDark = true
+  return (
+    <Container>
+      <BackCaret />
+      <H2>{isDark ? 'Break a negative habit' : 'Make a positive habit'}</H2>
+    </Container>
+  )
 }

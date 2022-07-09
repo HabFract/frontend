@@ -5,6 +5,7 @@ import { Story } from '@storybook/react'
 
 // #region Local Imports
 import { BackCaret } from '.' // #endregion Local Imports
+// #endregion Local Imports
 
 // #region Interface Imports
 import { IBackCaret } from './types'
