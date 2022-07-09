@@ -7,7 +7,7 @@ import { PageAction } from '.'
 
 export default {
   component: PageAction,
-  title: 'PageAction',
+  title: 'Design System/Molecules/PageAction',
 }
 
 export const Default = () => <PageAction />

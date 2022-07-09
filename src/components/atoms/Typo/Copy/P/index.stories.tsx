@@ -12,7 +12,7 @@ import { IP } from './types'
 
 export default {
   component: P,
-  title: 'P',
+  title: 'Design System/Atoms/Typo/P',
 }
 
 // 👇 We create a “template” of how args map to rendering

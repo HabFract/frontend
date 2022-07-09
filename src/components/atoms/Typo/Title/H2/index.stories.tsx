@@ -12,7 +12,7 @@ import { IH2 } from './types'
 
 export default {
   component: H2,
-  title: 'H2',
+  title: 'Design System/Atoms/Typo/H2',
 }
 
 // 👇 We create a “template” of how args map to rendering

@@ -12,7 +12,7 @@ import { IAvatar } from './types'
 
 export default {
   component: Avatar,
-  title: 'Avatar',
+  title: 'Design System/Atoms/Icon/Avatar',
 }
 
 // 👇 We create a “template” of how args map to rendering

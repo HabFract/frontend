@@ -12,7 +12,7 @@ import { IBackCaret } from './types'
 
 export default {
   component: BackCaret,
-  title: 'BackCaret',
+  title: 'Design System/Atoms/Button/BackCaret',
 }
 
 // 👇 We create a “template” of how args map to rendering

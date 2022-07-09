@@ -7,6 +7,8 @@ import { setTheme } from '@/app/theme/switch'
 import { OnboardingTemplate } from '../templates/OnboardingStageTemplate'
 import { LoginForm } from '../organisms/LoginForm'
 import { SignUpForm } from '../organisms/SignUpForm'
+import { TitleBar } from '../molecules/TitleBar'
+import { PageAction } from '../molecules/PageAction'
 // #endregion Local Imports
 
 interface OnboardingProps {
@@ -22,6 +24,8 @@ export const Onboarding: React.FC<OnboardingProps> = ({ isDark }) => {
     </OnboardingTemplate>
   ) : (
     <OnboardingTemplate>
+      <TitleBar />
+      <PageAction />
       <SignUpForm />
     </OnboardingTemplate>
   )

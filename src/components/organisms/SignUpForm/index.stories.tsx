@@ -7,7 +7,7 @@ import { SignUpForm } from '.'
 
 export default {
   component: SignUpForm,
-  title: 'SignUpForm',
+  title: 'Design System/Organisms/SignUpForm',
 }
 
 export const Default = () => <div></div>

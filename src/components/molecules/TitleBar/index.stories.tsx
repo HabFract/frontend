@@ -7,7 +7,7 @@ import { TitleBar } from '.'
 
 export default {
   component: TitleBar,
-  title: 'TitleBar',
+  title: 'Design System/Molecules/TitleBar',
 }
 
 export const Default = () => <TitleBar />

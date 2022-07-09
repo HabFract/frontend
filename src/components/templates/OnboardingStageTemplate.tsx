@@ -1,10 +1,9 @@
 // #region Global Imports
-import { Container } from '@/app/styled'
 import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-// import { ListItem } from './styled'
+import { Container } from '@/app/styled/Onboarding'
 // #endregion Local Imports
 
 interface OnboardingTemplateProps {

@@ -9,7 +9,7 @@ import { LoginForm } from '.'
 
 export default {
   component: LoginForm,
-  title: 'LoginForm',
+  title: 'Design System/Organisms/LoginForm',
 }
 
 export const Default = () => (
