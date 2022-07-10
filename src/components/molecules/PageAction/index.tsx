@@ -9,7 +9,7 @@ import { IPageAction } from './types'
 // #region Local Imports
 import { Container, Body, Title } from './styled'
 import { P } from '@/atoms/Typo/Copy/P'
-import { Avatar } from '@/atoms/Icon/Avatar'
+import { UserOutline } from '@/atoms/Icon/UserOutline'
 import { OnboardingStageChip } from '../Chip/OnboardingStageChip'
 // #endregion Local Imports
 
@@ -27,7 +27,7 @@ export const PageAction: React.FunctionComponent<IPageAction.IProps> = ({
       </Title>
       <Body>
         <P>{copyText}</P>
-        <Avatar />
+        <UserOutline rounded={true} />
       </Body>
     </Container>
   )

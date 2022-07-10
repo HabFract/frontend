@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 // #endregion Global Imports
 
-export const Container = styled.li.attrs({
-  className: 'place-items-center grid',
+export const StyledP = styled.p.attrs({
+  className: 'text-sm bold',
 })`
-  text-decoration: ${({ complete }) => (complete ? 'line-through' : 'none')};
+  text-decoration: ${() => 'line-through'};
 `

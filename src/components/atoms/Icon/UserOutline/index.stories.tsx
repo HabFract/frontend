@@ -20,4 +20,4 @@ export default {
 const Template: Story<IUserOutline.IProps> = (args) => <UserOutline {...args} />
 
 export const Default = Template.bind({})
-// Default.args = { todo: aTodo() }
+Default.args = { rounded: true }

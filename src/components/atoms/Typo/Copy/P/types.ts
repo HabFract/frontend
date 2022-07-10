@@ -1,5 +1,7 @@
 export declare namespace IP {
-  export interface IProps {}
+  export interface IProps {
+    copyText: string
+  }
 
   // export interface IState {}
 
