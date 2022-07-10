@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar } from '.'
+import { UserOutline } from '.'
 
 describe('Avatar', () => {
   it('should match snapshot', () => {

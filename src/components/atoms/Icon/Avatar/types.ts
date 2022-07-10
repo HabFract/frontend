@@ -1,5 +1,7 @@
-export declare namespace IAvatar {
-  export interface IProps {}
+export declare namespace IUserOutline {
+  export interface IProps {
+    rounded: boolean
+  }
 
   // export interface IState {}
 
