@@ -1,6 +1,8 @@
+import React from 'react'
+
 export declare namespace IH4Caps {
   export interface IProps {
-    children: string
+    children: React.ReactNode
   }
 
   // export interface IState {}

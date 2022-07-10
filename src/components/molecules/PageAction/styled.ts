@@ -3,13 +3,13 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const Container = styled.div.attrs({
-  className: 'flex flex-col',
+  className: 'flex flex-col p-4 gap-y-4',
 })`
-  background-color: ${({ theme }) => theme.colors.dgray};
+  background-color: ${({ theme }) => theme.colors.tertiaryMain};
 `
 
 export const Body = styled.div.attrs({
-  className: 'flex',
+  className: 'flex justify-between items-center',
 })``
 
 export const Title = styled.div.attrs({

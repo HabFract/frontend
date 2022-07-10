@@ -13,5 +13,6 @@ export const Theme: DefaultTheme = {
     warning: '#fcdcb0',
     destructive: '#ee6950',
     neutralPrimary: 'rgba(0, 0, 0, 0.03)',
+    tertiaryMain: 'rgba(0, 0, 0, 0.03)',
   },
 }

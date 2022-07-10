@@ -3,7 +3,8 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const Container = styled.li.attrs({
-  className: 'flex gap-2 w-full md:justify-center',
+  className:
+    'flex gap-2 w-full md:justify-center items-center px-4 py-1 rounded-2xl border-2 border-dashed',
 })`
-  text-decoration: ${({ complete }) => (complete ? 'line-through' : 'none')};
+  border-color: ${({ isDark }) => (isDark ? 'red' : 'black')};
 `
