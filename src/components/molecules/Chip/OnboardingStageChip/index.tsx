@@ -1,4 +1,5 @@
 // #region Global Imports
+import { H4Caps } from '@/atoms/Typo/Title/H4Caps'
 import React from 'react'
 // #endregion Global Imports
 
@@ -16,7 +17,8 @@ export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({
 }) => {
   return (
     <Container>
-      {`${onBoardingStage}`}/5 {chipText}
+      <H4Caps>{`${onBoardingStage}`}/5</H4Caps>
+      <H4Caps>{chipText}</H4Caps>
     </Container>
   )
 }

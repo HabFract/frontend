@@ -3,7 +3,11 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const StyledP = styled.p.attrs({
-  className: 'text-sm bold',
+  className: 'semi-bold',
 })`
-  text-decoration: ${() => 'line-through'};
+  font-family: "Montserrat, 'Open Sans'";
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1%;
+  text-decoration: ${() => 'none'};
 `
