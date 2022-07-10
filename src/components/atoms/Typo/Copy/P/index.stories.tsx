@@ -20,4 +20,4 @@ export default {
 const Template: Story<IP.IProps> = (args) => <P {...args} />
 
 export const Default = Template.bind({})
-// Default.args = { todo: aTodo() }
+Default.args = { copyText: 'What a lovely paragraph this is.' }

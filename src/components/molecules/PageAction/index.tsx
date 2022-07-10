@@ -14,19 +14,17 @@ import { OnboardingStageChip } from '../Chip/OnboardingStageChip'
 // #endregion Local Imports
 
 export const PageAction: React.FunctionComponent<IPageAction.IProps> = ({
+  title,
   copyText,
 }: IPageAction.IProps) => {
   return (
     <Container>
       <Title>
-        <OnboardingStageChip
-          onBoardingStage={1}
-          chipText={'Create a profile'}
-        />
+        <OnboardingStageChip onBoardingStage={1} chipText={title} />
         {/* // TODO: generalise */}
       </Title>
       <Body>
-        <P>{copyText}</P>
+        <P copyText={copyText} />
         <UserOutline rounded={true} />
       </Body>
     </Container>

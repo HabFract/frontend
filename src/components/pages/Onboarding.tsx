@@ -16,6 +16,7 @@ interface OnboardingProps {
 }
 
 const [onboardingStage, setOnboardingStage] = useState(1)
+const onboardingStageTitles = ['Create a profile']
 const onboardingStageCopy = [
   'It looks like you’re new here. Fill in some details to join the network',
 ]
@@ -30,7 +31,10 @@ export const Onboarding: React.FC<OnboardingProps> = ({ isDark }) => {
   ) : (
     <OnboardingTemplate>
       <TitleBar />
-      <PageAction copyText={onboardingStageCopy[onboardingStage - 1]} />
+      <PageAction
+        title={onboardingStageTitles[onboardingStage - 1]}
+        copyText={onboardingStageCopy[onboardingStage - 1]}
+      />
       <SignUpForm />
     </OnboardingTemplate>
   )

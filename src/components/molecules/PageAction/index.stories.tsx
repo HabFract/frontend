@@ -15,4 +15,7 @@ export default {
 const Template: Story<IPageAction.IProps> = (args) => <PageAction {...args} />
 
 export const Default = Template.bind({})
-Default.args = { copyText: 'This is a page action bit of text.' }
+Default.args = {
+  title: 'Do a thing',
+  copyText: 'This is a page action bit of text.',
+}
