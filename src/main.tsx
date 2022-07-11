@@ -21,10 +21,7 @@ const App: FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route
-          path="/onboarding"
-          element={<Onboarding isDark={true} />}
-        ></Route>
+        <Route path="/:theme/onboarding" element={<Onboarding />}></Route>
       </Routes>
     </BrowserRouter>
   )
