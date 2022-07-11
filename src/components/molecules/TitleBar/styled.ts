@@ -2,8 +2,10 @@
 import styled from 'styled-components'
 // #endregion Global Imports
 
-export const Container = styled.div.attrs({
-  className: 'flex items-center justify-between',
+export const TitleBarContainer = styled.div.attrs({
+  className: 'absolute top-0 inset-x-0 p-4 pb-2',
 })`
-  color: ${({ theme }) => theme.colors.text};
+  background-color: ${({ theme }) => theme.colors.tertiaryMain};
 `
+
+TitleBarContainer.displayName = 'TitleBarContainer'

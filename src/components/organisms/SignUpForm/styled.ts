@@ -23,6 +23,8 @@ MakePublicContainer.displayName = 'MakePublicContainer'
 
 export const OnboardingProgressBarContainer = styled.div.attrs({
   className: 'absolute bottom-0 inset-x-0',
-})``
+})`
+  background-color: ${({ theme }) => theme.colors.tertiaryMain};
+`
 
 OnboardingProgressBarContainer.displayName = 'OnboardingProgressBarContainer'

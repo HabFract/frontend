@@ -1,5 +1,5 @@
 // #region Global Imports
-import { H4Caps } from '@/atoms/Typo/Title/H4Caps'
+import { Heading } from '@/atoms/Typo/Title/Heading'
 import React from 'react'
 // #endregion Global Imports
 
@@ -17,8 +17,12 @@ export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({
 }) => {
   return (
     <Container>
-      <H4Caps>{`${onBoardingStage}`}/5</H4Caps>
-      <H4Caps>{chipText}</H4Caps>
+      <Heading level={4} caps={true}>
+        {`${onBoardingStage}`}/5
+      </Heading>
+      <Heading level={4} caps={true}>
+        {chipText}
+      </Heading>
     </Container>
   )
 }

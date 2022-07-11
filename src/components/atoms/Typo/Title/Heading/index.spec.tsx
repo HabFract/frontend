@@ -1,9 +1,9 @@
 import React from 'react'
-import { H4Caps } from '.'
+import { Heading } from '.'
 
-describe('H4Caps', () => {
+describe('Heading', () => {
   it('should match snapshot', () => {
-    // const wrapper = mount(<H4Caps />)
+    // const wrapper = mount(<Heading />)
     // expect(wrapper).toMatchSnapshot()
   })
 })

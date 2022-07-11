@@ -13,7 +13,13 @@ html.theme-dark {
 html,
 body,
 #root {
+  margin: 0;
   height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  position: relative;
 }
 
 @import './assets/tailwind.css';

@@ -17,3 +17,10 @@ export const CenteringFlexVertical = styled.div`
   align-items: center;
 `
 CenteringFlexVertical.displayName = 'CenteringFlexVertical'
+
+export const SpaceBetweenFlexHorizontal = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+SpaceBetweenFlexHorizontal.displayName = 'SpaceBetweenFlexHorizontal'

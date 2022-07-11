@@ -1,8 +1,10 @@
 import React from 'react'
 
-export declare namespace IH2 {
+export declare namespace IHeading {
   export interface IProps {
     children: React.ReactNode
+    level: number
+    caps?: boolean
   }
 
   // export interface IState {}
