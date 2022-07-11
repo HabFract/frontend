@@ -2,8 +2,6 @@
 import styled from 'styled-components'
 // #endregion Global Imports
 
-export { Container } from '.'
-
 export const Top = styled.div`
   margin: 100px;
 `

@@ -2,12 +2,18 @@
 import styled from 'styled-components'
 // #endregion Global Imports
 
-export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.dgray};
+export const CenteringFlexHorizontal = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+CenteringFlexHorizontal.displayName = 'CenteringFlexHorizontal'
+
+export const CenteringFlexVertical = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1 1 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  min-height: 100vh;
 `
+CenteringFlexVertical.displayName = 'CenteringFlexVertical'

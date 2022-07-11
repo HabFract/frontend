@@ -1,11 +1,9 @@
 // #region Global Imports
 import React from 'react'
-import { Input } from 'antd'
-import { LeftOutlined } from '@ant-design/icons'
+import { Input } from 'antd' //Form as AntForm
 // #endregion Global Imports
 
 // #region Local Imports
-import { Container } from './styled'
 // #endregion Local Imports
 
 // #region Interface Imports

@@ -1,6 +1,6 @@
 // #region Global Imports
 import React from 'react'
-import { Form as AntForm, Input, Switch, Upload } from 'antd'
+import { Switch, Upload } from 'antd'
 import { Field, Form, Formik } from 'formik'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 // import { useNavigate } from 'react-router-dom'
@@ -15,11 +15,12 @@ import {
   OnboardingFormContainer,
   ImageUploadContainer,
   MakePublicContainer,
-  OnboardingProgressBar,
+  OnboardingProgressBarContainer,
 } from './styled'
 import Progress from 'antd/lib/progress/progress'
 import { P } from '@/atoms/Typo/Copy/P'
 import { TextInput } from '@/atoms/Input/Text'
+import { CenteringFlexHorizontal } from '@/app/styled'
 // #endregion Local Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
@@ -91,12 +92,14 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
 of habit structures, but isn’t required to use the app."
                 />
               </MakePublicContainer>
-              <OnboardingProgressBar>
-                <Progress percent={20} type="line" showInfo={false} />
-                <button type="submit" className="w-12 h-12">
-                  <RightCircleOutlined />
-                </button>
-              </OnboardingProgressBar>
+              <OnboardingProgressBarContainer>
+                <CenteringFlexHorizontal>
+                  <Progress percent={20} type="line" showInfo={false} />
+                  <button type="submit" className="w-12 h-12">
+                    <RightCircleOutlined />
+                  </button>
+                </CenteringFlexHorizontal>
+              </OnboardingProgressBarContainer>
             </Form>
           )
         }}

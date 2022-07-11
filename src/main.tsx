@@ -30,9 +30,11 @@ const App: FC = () => {
 const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
-  <Theme>
-    {/* <ApolloProvider client={await connect({} as ClientOptions)}> */}
-    <App />
-    {/* </ApolloProvider> */}
-  </Theme>,
+  <React.StrictMode>
+    <Theme>
+      {/* <ApolloProvider client={await connect({} as ClientOptions)}> */}
+      <App />
+      {/* </ApolloProvider> */}
+    </Theme>
+  </React.StrictMode>,
 )
