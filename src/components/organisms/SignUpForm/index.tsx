@@ -12,13 +12,14 @@ import { ISignUpForm } from './types'
 
 // #region Local Imports
 import {
-  Container,
+  OnboardingFormContainer,
   ImageUploadContainer,
   MakePublicContainer,
   OnboardingProgressBar,
 } from './styled'
 import Progress from 'antd/lib/progress/progress'
 import { P } from '@/atoms/Typo/Copy/P'
+import { TextInput } from '@/atoms/Input/Text'
 // #endregion Local Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
@@ -28,16 +29,8 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
     username: '',
     location: '',
   }
-  const MyInput = ({ field, form, ...props }) => {
-    // console.log('field, form, props :>> ', field, form, props)
-    return (
-      // <AntForm.Input>
-      <Input {...field} {...props} />
-      // </AntForm.Input>
-    )
-  }
   return (
-    <Container>
+    <OnboardingFormContainer>
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
@@ -58,7 +51,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
               <label htmlFor="username">
                 Username:
                 <Field
-                  component={MyInput}
+                  component={TextInput}
                   id="username"
                   name="username"
                   placeholder="Pick a username"
@@ -67,7 +60,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
               <label htmlFor="location">
                 Location:
                 <Field
-                  component={MyInput}
+                  component={TextInput}
                   id="location"
                   name="location"
                   placeholder="Pick a location"
@@ -108,6 +101,6 @@ of habit structures, but isn’t required to use the app."
           )
         }}
       </Formik>
-    </Container>
+    </OnboardingFormContainer>
   )
 }

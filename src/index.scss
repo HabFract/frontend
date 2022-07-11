@@ -1,10 +1,19 @@
 @use 'sass:meta';
 html:not(.theme-dark) {
-@include meta.load-css('node_modules/antd/dist/antd.min.css', $with: null);
+  @include meta.load-css('node_modules/antd/dist/antd.min.css', $with: null);
 }
 
 html.theme-dark {
-  @include meta.load-css('node_modules/antd/dist/antd.dark.min.css', $with: null);
+  @include meta.load-css(
+    'node_modules/antd/dist/antd.dark.min.css',
+    $with: null
+  );
+}
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 @import './assets/tailwind.css';
