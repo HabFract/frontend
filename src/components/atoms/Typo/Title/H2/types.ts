@@ -1,5 +1,9 @@
+import React from 'react'
+
 export declare namespace IH2 {
-  export interface IProps {}
+  export interface IProps {
+    children: React.ReactNode
+  }
 
   // export interface IState {}
 

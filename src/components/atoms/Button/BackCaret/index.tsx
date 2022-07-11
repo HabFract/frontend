@@ -1,4 +1,5 @@
 // #region Global Imports
+import { LeftOutlined } from '@ant-design/icons'
 import React from 'react'
 // #endregion Global Imports
 
@@ -11,5 +12,9 @@ import { IBackCaret } from './types'
 // #endregion Interface Imports
 
 export const BackCaret: React.FC<IBackCaret.IProps> = ({}) => {
-  return <Container>Back</Container>
+  return (
+    <Container>
+      <LeftOutlined />
+    </Container>
+  )
 }

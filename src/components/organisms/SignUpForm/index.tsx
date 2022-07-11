@@ -1,6 +1,8 @@
 // #region Global Imports
 import React from 'react'
+import { Form as AntForm, Input, Switch, Upload } from 'antd'
 import { Field, Form, Formik } from 'formik'
+import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 // import { useNavigate } from 'react-router-dom'
 // #endregion Global Imports
 
@@ -9,17 +11,103 @@ import { ISignUpForm } from './types'
 // #endregion Interface Imports
 
 // #region Local Imports
-import { Bottom, Container, MainText, Middle, SubText, Top } from './styled'
+import {
+  Container,
+  ImageUploadContainer,
+  MakePublicContainer,
+  OnboardingProgressBar,
+} from './styled'
+import Progress from 'antd/lib/progress/progress'
+import { P } from '@/atoms/Typo/Copy/P'
 // #endregion Local Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
   _props: ISignUpForm.IProps,
 ) => {
+  const initialValues: ISignUpForm.SignUpFormValues = {
+    username: '',
+    location: '',
+  }
+  const MyInput = ({ field, form, ...props }) => {
+    // console.log('field, form, props :>> ', field, form, props)
+    return (
+      // <AntForm.Input>
+      <Input {...field} {...props} />
+      // </AntForm.Input>
+    )
+  }
   return (
     <Container>
-      <Top></Top>
-      <Middle></Middle>
-      <Bottom></Bottom>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values, actions) => {
+          console.log({ values, actions })
+          actions.setSubmitting(false)
+        }}
+      >
+        {({ touched, errors, values, handleSubmit }) => {
+          console.log(
+            'touched, errors, values, handleSubmit :>> ',
+            touched,
+            errors,
+            values,
+            handleSubmit,
+          )
+          return (
+            <Form onSubmit={handleSubmit}>
+              <label htmlFor="username">
+                Username:
+                <Field
+                  component={MyInput}
+                  id="username"
+                  name="username"
+                  placeholder="Pick a username"
+                />
+              </label>
+              <label htmlFor="location">
+                Location:
+                <Field
+                  component={MyInput}
+                  id="location"
+                  name="location"
+                  placeholder="Pick a location"
+                />
+              </label>
+              <ImageUploadContainer>
+                <Upload
+                  name="avatar"
+                  listType="picture-card"
+                  className="avatar-uploader"
+                  showUploadList={false}
+                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  // beforeUpload={'beforeUpload'}
+                  onChange={() => {}}
+                >
+                  Test
+                  {/* {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton} */}
+                </Upload>
+                <P copyText="Add a user avatar and people can relate visually *" />
+              </ImageUploadContainer>
+              <MakePublicContainer>
+                <label htmlFor="public">
+                  Make Profile Public
+                  <Switch id="public" onChange={() => {}} />
+                </label>
+                <P
+                  copyText="Going public will enable sharing and trading
+of habit structures, but isn’t required to use the app."
+                />
+              </MakePublicContainer>
+              <OnboardingProgressBar>
+                <Progress percent={20} type="line" showInfo={false} />
+                <button type="submit" className="w-12 h-12">
+                  <RightCircleOutlined />
+                </button>
+              </OnboardingProgressBar>
+            </Form>
+          )
+        }}
+      </Formik>
     </Container>
   )
 }

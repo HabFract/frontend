@@ -2,8 +2,9 @@
 import styled from 'styled-components'
 // #endregion Global Imports
 
-export const Container = styled.li.attrs({
-  className: 'place-items-center grid',
+export const Container = styled.div.attrs({
+  className: 'place-items-center grid w-8 h-8 md:w-12 md:h-12',
 })`
-  text-decoration: ${({ complete }) => (complete ? 'line-through' : 'none')};
+  background: ${({ theme }) => theme.colors.tertiaryMain};
+  color: ${({ theme }) => theme.colors.primary};
 `

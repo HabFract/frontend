@@ -10,12 +10,15 @@ import { ITitleBar } from './types'
 import { Container } from './styled'
 import { BackCaret } from '@/atoms/Button/BackCaret'
 import { H2 } from '@/atoms/Typo/Title/H2'
+import { useThemeName } from '@/app/contexts/themeContext'
 // #endregion Local Imports
 
 export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = (
   _props: ITitleBar.IProps,
 ) => {
-  const isDark = true
+  const [name] = useThemeName()
+  console.log('name :>> ', name)
+  const isDark = name.toString().split('-')[1] == 'dark'
   return (
     <Container>
       <BackCaret />

@@ -1,6 +1,6 @@
 Template
   -- titlebar (M)
-    -- backbutton (A)
+    <!-- -- backbutton (A) (Ant) -->
     -- title (A)
   -- pageaction  (M)
     -- pageactionchip (M)
@@ -8,22 +8,22 @@ Template
     -- pageactionicon (A)
   -- signupform (O)
     -- inputgroup
-      -- textinputgroup/user
+      -- textinputgroup/user (Ant)
         -- textinput
         -- inputicon
-      -- textinputgroup/location
+      -- textinputgroup/location (Ant)
         -- textinput
         -- inputicon
-      -- imageuploadgroup
-        -- imageuploadinputgroup
+      -- imageuploadgroup 
+        -- imageuploadinputgroup (Ant)
           -- imageuploadprompt
           -- imageupload image selector (hidden)
         -- imageuploadcopy
-      -- togglepublicgroup
-        -- togglepublicinput
+      -- togglepublicgroup 
+        -- togglepublicinput (Ant)
           -- togglepubliclabel
-          -- togglepublicswitc
+          -- togglepublicswitch
         -- togglepublicdisclaimer
     -- progressbargroup
-      -- progressbarprogressindicator
+      -- progressbarprogressindicator (Ant)
       -- progressbarnextbutton (submitform)

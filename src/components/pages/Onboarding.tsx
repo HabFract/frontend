@@ -33,7 +33,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     setTheme(themeValue)
   }, [])
 
-  return typeof localStorage.getItem('username') == 'string' ? ( // Fetch an agent profile for this user (stubbed)
+  return typeof localStorage.getItem('username') !== 'string' ? ( // Fetch an agent profile for this user (stubbed)
     <OnboardingTemplate>
       <LoginForm />
     </OnboardingTemplate>

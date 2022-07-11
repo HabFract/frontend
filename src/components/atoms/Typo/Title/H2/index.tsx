@@ -10,6 +10,6 @@ import { Container } from './styled'
 import { IH2 } from './types'
 // #endregion Interface Imports
 
-export const H2: React.FC<IH2.IProps> = ({}) => {
-  return <Container />
+export const H2: React.FC<IH2.IProps> = ({ children }) => {
+  return <Container>{children}</Container>
 }

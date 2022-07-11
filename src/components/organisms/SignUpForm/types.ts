@@ -2,6 +2,7 @@ export declare namespace ISignUpForm {
   export interface IProps {}
   export interface SignUpFormValues {
     username: string
+    location: string
   }
 
   // export interface IState {}
