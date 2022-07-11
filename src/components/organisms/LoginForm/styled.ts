@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const Container = styled.div.attrs({
   className: 'flex flex-col items-center text-center p-8',
 })`
-  background-color: ${({ theme }) => theme.colors.dgray};
+  background-color: ${({ theme }) => theme.colors.tertiaryMain};
   min-height: 406px;
   min-width: 347px;
   font-family: 'Lexend Deca', sans-serif;

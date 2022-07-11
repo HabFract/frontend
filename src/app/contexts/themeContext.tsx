@@ -1,8 +1,8 @@
 import React from 'react'
 import { Theme as ThemeDef } from '../theme/theme'
 import { ThemeProvider } from 'styled-components'
+import { DEFAULT_THEME_VALUE } from '../constants'
 
-const DEFAULT_THEME_VALUE = 'theme-dark'
 const ThemeNameContext = React.createContext([DEFAULT_THEME_VALUE] as
   | React.Dispatch<React.SetStateAction<string>>[]
   | [string])
