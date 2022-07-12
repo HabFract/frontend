@@ -30,35 +30,31 @@ import {
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
   _props: ISignUpForm.IProps,
 ) => {
-  const variables: UserProfileCreateParams = {
-    nickname: 'afdsfdddddf',
-    location: 'abcfsdfdass',
-  }
-  const [addUserMutation, { data, loading, error }] = useAddUserMutation({
-    variables: { variables },
-  })
+  const [addUserMutation, { data, loading, error }] = useAddUserMutation()
 
   const initialValues: ISignUpForm.SignUpFormValues = {
     username: '',
     location: '',
   }
+
   return (
     <OnboardingFormContainer>
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
-          addUserMutation()
+          addUserMutation({
+            variables: {
+              profileFields: {
+                nickname: values.username,
+                location: values.location,
+              },
+            },
+          })
           actions.setSubmitting(false)
         }}
       >
         {({ touched, errors, values, handleSubmit }) => {
-          console.log(
-            'touched, errors, values, handleSubmit :>> ',
-            touched,
-            errors,
-            values,
-            handleSubmit,
-          )
+          console.log('touched, errors ', touched, errors)
           return (
             <Form onSubmit={handleSubmit}>
               <label htmlFor="username">
