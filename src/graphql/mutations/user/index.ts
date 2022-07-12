@@ -26,9 +26,9 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
 
   const createUser: createHandler = async (
     _,
-    { profile: { nickname, location } },
+    { profile: { nickname, location, avatar, isPublic } },
   ) => {
-    return runCreate({ nickname, fields: { location } })
+    return runCreate({ nickname, fields: { location, avatar, isPublic } })
   }
 
   return {

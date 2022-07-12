@@ -1,10 +1,11 @@
 // #region Global Imports
 import React from 'react'
 import { Field, Form, Formik, FormikHelpers, FormikProps } from 'formik'
+import * as Yup from 'yup'
+
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 import { Alert, Spin, Upload } from 'antd'
 import Progress from 'antd/lib/progress/progress'
-// import { useNavigate } from 'react-router-dom'
 // #endregion Global Imports
 
 // #region Interface Imports
@@ -63,10 +64,13 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
       ) : (
         <Formik
           initialValues={initialValues}
-          onSubmit={(
-            values: ISignUpForm.SignUpFormValues,
-            { setSubmitting }: FormikHelpers<ISignUpForm.SignUpFormValues>,
-          ) => {
+          validationSchema={Yup.object({
+            username: Yup.string()
+              .max(15, 'Must be 15 characters or less')
+              .required('Required'),
+            location: Yup.string().max(20, 'Must be 20 characters or less'),
+          })}
+          onSubmit={(values, { setSubmitting }) => {
             console.log('values :>> ', values)
 
             addUserMutation({
@@ -121,7 +125,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
                 <MakePublicContainer>
                   <label htmlFor="public">
                     Make Profile Public
-                    <Field as={SwitchInput} id="public" />
+                    <Field component={SwitchInput} id="public" name="public" />
                   </label>
                   <P copyText="Going public will enable sharing and trading of habit structures, but isn’t required to use the app." />
                 </MakePublicContainer>

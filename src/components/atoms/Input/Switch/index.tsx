@@ -1,6 +1,6 @@
 // #region Global Imports
-import React from 'react'
-import { Switch } from 'antd'
+import React, { useState } from 'react'
+import Switch from 'antd/lib/switch'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -13,7 +13,19 @@ import { ISwitchInput } from './types'
 export const SwitchInput: React.FC<ISwitchInput.IProps> = ({
   field,
   form,
+  defaultChecked,
   ...props
 }) => {
-  return <Switch {...field} {...props} />
+  const [isChecked, setIsChecked] = useState(defaultChecked)
+
+  return (
+    <Switch
+      {...props}
+      onChange={(e) => {
+        setIsChecked(!isChecked)
+        form.setFieldValue(field.name, isChecked)
+        form.setFieldTouched(field.name, true)
+      }}
+    />
+  )
 }

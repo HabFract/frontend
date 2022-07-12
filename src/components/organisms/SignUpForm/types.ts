@@ -1,3 +1,5 @@
+import { FormikHelpers } from 'formik/dist/types'
+
 export declare namespace ISignUpForm {
   export interface IProps {}
   export interface SignUpFormValues {
@@ -5,7 +7,10 @@ export declare namespace ISignUpForm {
     location: string
   }
 
-  // export interface IState {}
+  export interface ISubmitHandlerProps {
+    values: SignUpFormValues
+    setSubmitting: FormikHelpers<SignUpFormValues>
+  }
 
   // export interface IStateProps {}
 
