@@ -156,7 +156,7 @@ export type AddHabitMutation = {
 }
 
 export type AddUserMutationVariables = Exact<{
-  variables: UserProfileCreateParams
+  profileFields: UserProfileCreateParams
 }>
 
 export type AddUserMutation = {
@@ -270,8 +270,8 @@ export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
   AddHabitMutationVariables
 >
 export const AddUserDocument = gql`
-  mutation addUser($variables: UserProfileCreateParams!) {
-    createUser(profile: $variables) {
+  mutation addUser($profileFields: UserProfileCreateParams!) {
+    createUser(profile: $profileFields) {
       agentPubKey
       profile {
         nickname
@@ -297,7 +297,7 @@ export type AddUserMutationFn = Apollo.MutationFunction<
  * @example
  * const [addUserMutation, { data, loading, error }] = useAddUserMutation({
  *   variables: {
- *      variables: // value for 'variables'
+ *      profileFields: // value for 'profileFields'
  *   },
  * });
  */
