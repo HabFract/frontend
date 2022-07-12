@@ -22,10 +22,10 @@ export const anAgentProfile = (
   overrides?: Partial<AgentProfile>,
 ): AgentProfile => {
   return {
-    agent_pub_key:
-      overrides && overrides.hasOwnProperty('agent_pub_key')
-        ? overrides.agent_pub_key!
-        : 'tempore',
+    agentPubKey:
+      overrides && overrides.hasOwnProperty('agentPubKey')
+        ? overrides.agentPubKey!
+        : 'error',
     profile:
       overrides && overrides.hasOwnProperty('profile')
         ? overrides.profile!

@@ -1,6 +1,6 @@
 mutation addUser($variables: UserProfileCreateParams!) {
   createUser(profile: $variables) {
-    agent_pub_key
+    agentPubKey
     profile {
       nickname
     }

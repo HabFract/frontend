@@ -24,7 +24,7 @@ export type Scalars = {
 
 export type AgentProfile = {
   __typename?: 'AgentProfile'
-  agent_pub_key: Scalars['String']
+  agentPubKey: Scalars['String']
   profile: Profile
 }
 
@@ -163,7 +163,7 @@ export type AddUserMutation = {
   __typename?: 'Mutation'
   createUser: {
     __typename?: 'AgentProfile'
-    agent_pub_key: string
+    agentPubKey: string
     profile: { __typename?: 'Profile'; nickname: string }
   }
 }
@@ -214,7 +214,7 @@ export type GetMeQuery = {
   __typename?: 'Query'
   me: {
     __typename?: 'AgentProfile'
-    agent_pub_key: string
+    agentPubKey: string
     profile: { __typename?: 'Profile'; nickname: string }
   }
 }
@@ -272,7 +272,7 @@ export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
 export const AddUserDocument = gql`
   mutation addUser($variables: UserProfileCreateParams!) {
     createUser(profile: $variables) {
-      agent_pub_key
+      agentPubKey
       profile {
         nickname
       }
@@ -450,7 +450,7 @@ export type GetHabitsQueryResult = Apollo.QueryResult<
 export const GetMeDocument = gql`
   query getMe {
     me {
-      agent_pub_key
+      agentPubKey
       profile {
         nickname
       }

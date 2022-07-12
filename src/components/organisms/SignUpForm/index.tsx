@@ -21,11 +21,23 @@ import Progress from 'antd/lib/progress/progress'
 import { P } from '@/atoms/Typo/Copy/P'
 import { TextInput } from '@/atoms/Input/Text'
 import { CenteringFlexHorizontal } from '@/app/styled'
+import {
+  useAddUserMutation,
+  UserProfileCreateParams,
+} from '@/graphql/generated'
 // #endregion Local Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
   _props: ISignUpForm.IProps,
 ) => {
+  const variables: UserProfileCreateParams = {
+    nickname: 'afdsfdddddf',
+    location: 'abcfsdfdass',
+  }
+  const [addUserMutation, { data, loading, error }] = useAddUserMutation({
+    variables: { variables },
+  })
+
   const initialValues: ISignUpForm.SignUpFormValues = {
     username: '',
     location: '',
@@ -35,7 +47,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
-          console.log({ values, actions })
+          addUserMutation()
           actions.setSubmitting(false)
         }}
       >
