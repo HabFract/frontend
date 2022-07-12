@@ -5,6 +5,8 @@ export declare namespace ISignUpForm {
   export interface SignUpFormValues {
     username: string
     location: string
+    avatar: string
+    isPublic: boolean
   }
 
   export interface ISubmitHandlerProps {

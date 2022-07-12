@@ -1,6 +1,6 @@
 // #region Global Imports
 import React from 'react'
-import { Field, Form, Formik, FormikHelpers, FormikProps } from 'formik'
+import { Field, Form, Formik, FormikProps } from 'formik'
 import * as Yup from 'yup'
 
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
@@ -21,10 +21,7 @@ import {
 } from './styled'
 import { CenteringFlexHorizontal } from '@/app/styled'
 
-import {
-  useAddUserMutation,
-  UserProfileCreateParams,
-} from '@/graphql/generated'
+import { useAddUserMutation } from '@/graphql/generated'
 
 import { P } from '@/atoms/Typo/Copy/P'
 import { TextInput } from '@/atoms/Input/Text'
@@ -39,6 +36,8 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
   const initialValues: ISignUpForm.SignUpFormValues = {
     username: '',
     location: '',
+    avatar: '',
+    isPublic: false,
   }
 
   console.log('data, loading, data :>> ', data, loading, data)
@@ -70,6 +69,8 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
               .max(15, 'Must be 15 characters or less')
               .required('Required'),
             location: Yup.string().max(20, 'Must be 20 characters or less'),
+            avatar: Yup.string(),
+            isPublic: Yup.boolean(),
           })}
           onSubmit={(values, { setSubmitting }) => {
             console.log('values :>> ', values)
