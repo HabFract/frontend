@@ -1,8 +1,9 @@
 // #region Global Imports
 import React from 'react'
-import { Alert, Spin, Switch, Upload } from 'antd'
-import { Field, Form, Formik } from 'formik'
+import { Field, Form, Formik, FormikHelpers, FormikProps } from 'formik'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
+import { Alert, Spin, Upload } from 'antd'
+import Progress from 'antd/lib/progress/progress'
 // import { useNavigate } from 'react-router-dom'
 // #endregion Global Imports
 
@@ -17,29 +18,31 @@ import {
   MakePublicContainer,
   OnboardingProgressBarContainer,
 } from './styled'
-import Progress from 'antd/lib/progress/progress'
-import { P } from '@/atoms/Typo/Copy/P'
-import { TextInput } from '@/atoms/Input/Text'
 import { CenteringFlexHorizontal } from '@/app/styled'
+
 import {
   useAddUserMutation,
   UserProfileCreateParams,
 } from '@/graphql/generated'
+
+import { P } from '@/atoms/Typo/Copy/P'
+import { TextInput } from '@/atoms/Input/Text'
+import { SwitchInput } from '@/atoms/Input/Switch'
 // #endregion Local Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
   _props: ISignUpForm.IProps,
 ) => {
   const [addUserMutation, { data, loading, error }] = useAddUserMutation()
-
   const initialValues: ISignUpForm.SignUpFormValues = {
     username: '',
     location: '',
   }
+
   console.log('data, loading, data :>> ', data, loading, data)
   return (
     <OnboardingFormContainer>
-      {error || loading ? (
+      {loading || data || error ? (
         <Spin spinning={loading}>
           {error ? (
             <Alert
@@ -60,7 +63,12 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
       ) : (
         <Formik
           initialValues={initialValues}
-          onSubmit={(values, actions) => {
+          onSubmit={(
+            values: ISignUpForm.SignUpFormValues,
+            { setSubmitting }: FormikHelpers<ISignUpForm.SignUpFormValues>,
+          ) => {
+            console.log('values :>> ', values)
+
             addUserMutation({
               variables: {
                 profileFields: {
@@ -69,11 +77,12 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
                 },
               },
             })
-            actions.setSubmitting(false)
+            setSubmitting(false)
           }}
         >
-          {({ touched, errors, values, handleSubmit }) => {
-            console.log('touched, errors ', touched, errors)
+          {({ touched, errors, values, handleSubmit }: FormikProps<any>) => {
+            console.log('touched,', touched)
+            console.log(', errors,', errors)
             return (
               <Form onSubmit={handleSubmit}>
                 <label htmlFor="username">
@@ -112,12 +121,9 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
                 <MakePublicContainer>
                   <label htmlFor="public">
                     Make Profile Public
-                    <Switch id="public" onChange={() => {}} />
+                    <Field as={SwitchInput} id="public" />
                   </label>
-                  <P
-                    copyText="Going public will enable sharing and trading
-of habit structures, but isn’t required to use the app."
-                  />
+                  <P copyText="Going public will enable sharing and trading of habit structures, but isn’t required to use the app." />
                 </MakePublicContainer>
                 <OnboardingProgressBarContainer>
                   <CenteringFlexHorizontal>
