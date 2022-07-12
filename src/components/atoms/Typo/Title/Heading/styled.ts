@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const H1 = styled.h1.attrs({
-  className: 'mb-0',
+  className: 'mb-0 text-3xl',
 })`
   text-transform: ${({ caps }) => (caps ? 'uppercase' : 'none')};
 `

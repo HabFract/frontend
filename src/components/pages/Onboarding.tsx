@@ -1,6 +1,6 @@
 // #region Global Imports
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -25,6 +25,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   const [onboardingStage, setOnboardingStage] = useState('1')
   const [, setName] = useThemeName()
   const params = useParams()
+  const navigate = useNavigate()
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
 
@@ -32,6 +33,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     setName(themeValue)
     setTheme(themeValue)
   }, [])
+  if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
 
   return typeof localStorage.getItem('username') !== 'string' ? ( // Fetch an agent profile for this user (stubbed)
     <OnboardingTemplate>

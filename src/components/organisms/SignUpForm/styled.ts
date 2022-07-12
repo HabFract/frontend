@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const OnboardingFormContainer = styled.div.attrs({
-  className: 'bg-blue-200 w-full flex flex-col justify-between',
+  className: 'flex flex-col justify-between w-full bg-blue-200',
 })``
 // background-color: ${({ theme }) => theme.colors.tertiaryMain};
 
@@ -22,9 +22,8 @@ export const MakePublicContainer = styled.div.attrs({
 MakePublicContainer.displayName = 'MakePublicContainer'
 
 export const OnboardingProgressBarContainer = styled.div.attrs({
-  className: 'absolute bottom-0 inset-x-0',
+  className: 'absolute inset-x-0 bottom-0',
 })`
   background-color: ${({ theme }) => theme.colors.tertiaryMain};
 `
-
 OnboardingProgressBarContainer.displayName = 'OnboardingProgressBarContainer'
