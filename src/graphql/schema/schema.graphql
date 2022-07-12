@@ -7,6 +7,7 @@ type Query {
 
 type Mutation {
   createHabit(habit: HabitCreateParams): HabitCreateResponse!
+  createUser(profile: UserProfileCreateParams): AgentProfile!
 }
 
 type PageInfo {
@@ -27,6 +28,8 @@ interface Node {
 
 # ---- UserProfile ----- #
 # UserProfile GQL Types
+
+# UserProfile Types
 type AgentProfile {
   agent_pub_key: String!
   profile: Profile!
@@ -38,6 +41,12 @@ type Profile {
 }
 
 type ProfileFields {
+  location: String
+}
+
+# UserProfile Input/Output
+input UserProfileCreateParams {
+  nickname: String!
   location: String
 }
 

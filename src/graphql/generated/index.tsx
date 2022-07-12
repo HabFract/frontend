@@ -70,10 +70,15 @@ export type HabitMetaData = {
 export type Mutation = {
   __typename?: 'Mutation'
   createHabit: HabitCreateResponse
+  createUser: AgentProfile
 }
 
 export type MutationCreateHabitArgs = {
   habit?: InputMaybe<HabitCreateParams>
+}
+
+export type MutationCreateUserArgs = {
+  profile?: InputMaybe<UserProfileCreateParams>
 }
 
 export type Node = {
@@ -129,6 +134,11 @@ export type Todo = {
   status: Scalars['Boolean']
 }
 
+export type UserProfileCreateParams = {
+  location?: InputMaybe<Scalars['String']>
+  nickname: Scalars['String']
+}
+
 export type AddHabitMutationVariables = Exact<{
   variables: HabitCreateParams
 }>
@@ -142,6 +152,19 @@ export type AddHabitMutation = {
       headerHash: string
       entryHash: string
     }
+  }
+}
+
+export type AddUserMutationVariables = Exact<{
+  variables: UserProfileCreateParams
+}>
+
+export type AddUserMutation = {
+  __typename?: 'Mutation'
+  createUser: {
+    __typename?: 'AgentProfile'
+    agent_pub_key: string
+    profile: { __typename?: 'Profile'; nickname: string }
   }
 }
 
@@ -245,6 +268,56 @@ export type AddHabitMutationResult = Apollo.MutationResult<AddHabitMutation>
 export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
   AddHabitMutation,
   AddHabitMutationVariables
+>
+export const AddUserDocument = gql`
+  mutation addUser($variables: UserProfileCreateParams!) {
+    createUser(profile: $variables) {
+      agent_pub_key
+      profile {
+        nickname
+      }
+    }
+  }
+`
+export type AddUserMutationFn = Apollo.MutationFunction<
+  AddUserMutation,
+  AddUserMutationVariables
+>
+
+/**
+ * __useAddUserMutation__
+ *
+ * To run a mutation, you first call `useAddUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addUserMutation, { data, loading, error }] = useAddUserMutation({
+ *   variables: {
+ *      variables: // value for 'variables'
+ *   },
+ * });
+ */
+export function useAddUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AddUserMutation,
+    AddUserMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddUserMutation, AddUserMutationVariables>(
+    AddUserDocument,
+    options,
+  )
+}
+export type AddUserMutationHookResult = ReturnType<typeof useAddUserMutation>
+export type AddUserMutationResult = Apollo.MutationResult<AddUserMutation>
+export type AddUserMutationOptions = Apollo.BaseMutationOptions<
+  AddUserMutation,
+  AddUserMutationVariables
 >
 export const GetHabitDocument = gql`
   query getHabit($id: ID!) {

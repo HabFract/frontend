@@ -15,6 +15,7 @@ import {
   ResponsePayload,
   TimeFrame,
   Todo,
+  UserProfileCreateParams,
 } from '../generated/index'
 
 export const anAgentProfile = (
@@ -136,6 +137,10 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
       overrides && overrides.hasOwnProperty('createHabit')
         ? overrides.createHabit!
         : aHabitCreateResponse(),
+    createUser:
+      overrides && overrides.hasOwnProperty('createUser')
+        ? overrides.createUser!
+        : anAgentProfile(),
   }
 }
 
@@ -252,5 +257,20 @@ export const aTodo = (overrides?: Partial<Todo>): Todo => {
       overrides && overrides.hasOwnProperty('status')
         ? overrides.status!
         : false,
+  }
+}
+
+export const aUserProfileCreateParams = (
+  overrides?: Partial<UserProfileCreateParams>,
+): UserProfileCreateParams => {
+  return {
+    location:
+      overrides && overrides.hasOwnProperty('location')
+        ? overrides.location!
+        : 'nesciunt',
+    nickname:
+      overrides && overrides.hasOwnProperty('nickname')
+        ? overrides.nickname!
+        : 'iure',
   }
 }
