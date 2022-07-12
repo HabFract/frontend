@@ -29,6 +29,7 @@ import {
 import { P } from '@/atoms/Typo/Copy/P'
 import { TextInput } from '@/atoms/Input/Text'
 import { SwitchInput } from '@/atoms/Input/Switch'
+import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
 // #endregion Local Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
@@ -108,18 +109,11 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
                   />
                 </label>
                 <ImageUploadContainer>
-                  <Upload
-                    name="avatar"
-                    listType="picture-card"
-                    className="avatar-uploader"
-                    showUploadList={false}
-                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                    // beforeUpload={'beforeUpload'}
-                    onChange={() => {}}
-                  >
-                    Test
-                    {/* {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton} */}
-                  </Upload>
+                  <Field
+                    component={ImageUploadInput}
+                    id="avatar-upload"
+                    name="avatar-upload"
+                  />
                   <P copyText="Add a user avatar and people can relate visually *" />
                 </ImageUploadContainer>
                 <MakePublicContainer>

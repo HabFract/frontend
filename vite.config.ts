@@ -22,7 +22,19 @@ export default defineConfig({
     },
   },
   plugins: [
-    reactRefresh(),
+    reactRefresh({
+      babel: {
+        plugins: [
+          [
+            'babel-plugin-styled-components',
+            {
+              displayName: true,
+              fileName: false,
+            },
+          ],
+        ],
+      },
+    }),
     tsconfigPaths(),
     Checker({
       typescript: true,
