@@ -22,6 +22,12 @@ export type Scalars = {
   DateTime: any
 }
 
+export type AgentProfile = {
+  __typename?: 'AgentProfile'
+  agent_pub_key: Scalars['String']
+  profile: Profile
+}
+
 export type Habit = Node & {
   __typename?: 'Habit'
   id: Scalars['ID']
@@ -82,10 +88,22 @@ export type PageInfo = {
   startCursor: Scalars['String']
 }
 
+export type Profile = {
+  __typename?: 'Profile'
+  fields?: Maybe<ProfileFields>
+  nickname: Scalars['String']
+}
+
+export type ProfileFields = {
+  __typename?: 'ProfileFields'
+  location?: Maybe<Scalars['String']>
+}
+
 export type Query = {
   __typename?: 'Query'
   habit: Habit
   habits: HabitConnection
+  me: AgentProfile
 }
 
 export type QueryHabitArgs = {
@@ -164,6 +182,17 @@ export type GetHabitsQuery = {
         } | null
       }
     }>
+  }
+}
+
+export type GetMeQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetMeQuery = {
+  __typename?: 'Query'
+  me: {
+    __typename?: 'AgentProfile'
+    agent_pub_key: string
+    profile: { __typename?: 'Profile'; nickname: string }
   }
 }
 
@@ -344,4 +373,54 @@ export type GetHabitsLazyQueryHookResult = ReturnType<
 export type GetHabitsQueryResult = Apollo.QueryResult<
   GetHabitsQuery,
   GetHabitsQueryVariables
+>
+export const GetMeDocument = gql`
+  query getMe {
+    me {
+      agent_pub_key
+      profile {
+        nickname
+      }
+    }
+  }
+`
+
+/**
+ * __useGetMeQuery__
+ *
+ * To run a query within a React component, call `useGetMeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetMeQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetMeQuery, GetMeQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetMeQuery, GetMeQueryVariables>(
+    GetMeDocument,
+    options,
+  )
+}
+export function useGetMeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetMeQuery, GetMeQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetMeQuery, GetMeQueryVariables>(
+    GetMeDocument,
+    options,
+  )
+}
+export type GetMeQueryHookResult = ReturnType<typeof useGetMeQuery>
+export type GetMeLazyQueryHookResult = ReturnType<typeof useGetMeLazyQuery>
+export type GetMeQueryResult = Apollo.QueryResult<
+  GetMeQuery,
+  GetMeQueryVariables
 >

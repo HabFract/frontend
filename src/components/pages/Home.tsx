@@ -4,6 +4,7 @@ import {
   useAddHabitMutation,
   useGetHabitQuery,
   useGetHabitsQuery,
+  useGetMeQuery,
 } from '@/graphql/generated'
 import React, { useEffect } from 'react'
 import { LoginForm } from '../organisms/LoginForm'
@@ -12,6 +13,7 @@ import { LoginForm } from '../organisms/LoginForm'
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
+  const { data, loading, error } = useGetMeQuery()
   // const variables: HabitCreateParams = {
   //   name: 'a',
   //   description: 'A nice habit',
@@ -26,7 +28,7 @@ export const Home: React.FC<HomeProps> = () => {
   // useEffect(() => {
   //   addHabitMutation()
   // }, [])
-  const { data, loading, error } = useGetHabitsQuery()
+  // const { data, loading, error } = useGetHabitsQuery()
   // const { data, loading, error } = useGetHabitQuery({
   //   variables: { id: 'uhCEklzNmyxz9TvQKydP3NBmnqyDNo_qRXMrxbVcuBwfUIDx9gNBq' },
   // })

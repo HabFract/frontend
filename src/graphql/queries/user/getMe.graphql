@@ -1,0 +1,8 @@
+query getMe {
+  me {
+    agent_pub_key
+    profile {
+      nickname
+    }
+  }
+}

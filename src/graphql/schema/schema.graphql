@@ -2,6 +2,7 @@
 type Query {
   habit(id: ID!): Habit!
   habits: HabitConnection!
+  me: AgentProfile!
 }
 
 type Mutation {
@@ -22,6 +23,22 @@ type ResponsePayload {
 }
 interface Node {
   id: ID!
+}
+
+# ---- UserProfile ----- #
+# UserProfile GQL Types
+type AgentProfile {
+  agent_pub_key: String!
+  profile: Profile!
+}
+
+type Profile {
+  nickname: String!
+  fields: ProfileFields
+}
+
+type ProfileFields {
+  location: String
 }
 
 # ---- Habit ----- #

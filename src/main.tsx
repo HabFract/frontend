@@ -32,9 +32,9 @@ const root = createRoot(container!)
 root.render(
   <React.StrictMode>
     <Theme>
-      {/* <ApolloProvider client={await connect({} as ClientOptions)}> */}
-      <App />
-      {/* </ApolloProvider> */}
+      <ApolloProvider client={await connect({} as ClientOptions)}>
+        <App />
+      </ApolloProvider>
     </Theme>
   </React.StrictMode>,
 )

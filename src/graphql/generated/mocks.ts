@@ -1,4 +1,5 @@
 import {
+  AgentProfile,
   Habit,
   HabitConnection,
   HabitCreateParams,
@@ -8,11 +9,28 @@ import {
   Mutation,
   Node,
   PageInfo,
+  Profile,
+  ProfileFields,
   Query,
   ResponsePayload,
   TimeFrame,
   Todo,
 } from '../generated/index'
+
+export const anAgentProfile = (
+  overrides?: Partial<AgentProfile>,
+): AgentProfile => {
+  return {
+    agent_pub_key:
+      overrides && overrides.hasOwnProperty('agent_pub_key')
+        ? overrides.agent_pub_key!
+        : 'tempore',
+    profile:
+      overrides && overrides.hasOwnProperty('profile')
+        ? overrides.profile!
+        : aProfile(),
+  }
+}
 
 export const aHabit = (overrides?: Partial<Habit>): Habit => {
   return {
@@ -151,6 +169,30 @@ export const aPageInfo = (overrides?: Partial<PageInfo>): PageInfo => {
   }
 }
 
+export const aProfile = (overrides?: Partial<Profile>): Profile => {
+  return {
+    fields:
+      overrides && overrides.hasOwnProperty('fields')
+        ? overrides.fields!
+        : aProfileFields(),
+    nickname:
+      overrides && overrides.hasOwnProperty('nickname')
+        ? overrides.nickname!
+        : 'sunt',
+  }
+}
+
+export const aProfileFields = (
+  overrides?: Partial<ProfileFields>,
+): ProfileFields => {
+  return {
+    location:
+      overrides && overrides.hasOwnProperty('location')
+        ? overrides.location!
+        : 'reprehenderit',
+  }
+}
+
 export const aQuery = (overrides?: Partial<Query>): Query => {
   return {
     habit:
@@ -161,6 +203,10 @@ export const aQuery = (overrides?: Partial<Query>): Query => {
       overrides && overrides.hasOwnProperty('habits')
         ? overrides.habits!
         : aHabitConnection(),
+    me:
+      overrides && overrides.hasOwnProperty('me')
+        ? overrides.me!
+        : anAgentProfile(),
   }
 }
 
