@@ -16,14 +16,14 @@ type PageInfo {
   startCursor: String!
   endCursor: String!
 }
+interface Node {
+  id: ID!
+}
 
 # Holochain Specific Types
 type ResponsePayload {
   headerHash: String!
   entryHash: String!
-}
-interface Node {
-  id: ID!
 }
 
 # ---- UserProfile ----- #
@@ -42,12 +42,16 @@ type Profile {
 
 type ProfileFields {
   location: String
+  isPublic: String
+  avatar: String
 }
 
 # UserProfile Input/Output
 input UserProfileCreateParams {
   nickname: String!
   location: String
+  isPublic: String
+  avatar: String
 }
 
 # ---- Habit ----- #

@@ -101,6 +101,8 @@ export type Profile = {
 
 export type ProfileFields = {
   __typename?: 'ProfileFields'
+  avatar?: Maybe<Scalars['String']>
+  isPublic?: Maybe<Scalars['String']>
   location?: Maybe<Scalars['String']>
 }
 
@@ -135,6 +137,8 @@ export type Todo = {
 }
 
 export type UserProfileCreateParams = {
+  avatar?: InputMaybe<Scalars['String']>
+  isPublic?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
   nickname: Scalars['String']
 }
