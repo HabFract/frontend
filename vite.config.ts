@@ -49,22 +49,14 @@ export default defineConfig({
             // 必需
             scopeName: 'theme-default',
             // path 和 varsContent 必选一个
-            path: path.resolve('src/app/theme/theme-vars.scss'),
+            path: path.resolve('src/app/theme/antd-theme-vars.scss'),
             // varsContent参数等效于 path文件的内容
             // varsContent:`@primary-color:${defaultPrimaryColor};`
           },
-          // {
-          //   scopeName: "theme-dark",
-          //   path: path.resolve("src/app/theme/theme-dark.scss"),
-          // },
-          // {
-          //   scopeName: "theme-red",
-          //   path: path.resolve("src/app/theme/theme-red.scss"),
-          // },
-          // {
-          //   scopeName: "theme-red-dark",
-          //   path: path.resolve("src/app/theme/theme-red-dark.scss"),
-          // },
+          {
+            scopeName: 'theme-dark',
+            path: path.resolve('src/app/theme/antd-theme-vars-dark.scss'),
+          },
         ],
       },
       less: {
