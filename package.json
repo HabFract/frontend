@@ -20,7 +20,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm run test"
+      "pre-push": "(git-branch-is main && npm run test) || true"
     }
   },
   "lint-staged": {
