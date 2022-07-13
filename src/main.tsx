@@ -44,7 +44,7 @@ const App: FC = () => {
         <Route path="/" element={<Home />}></Route>
         <Route
           path="/:theme/onboarding"
-          element={activeUser ? <Navigate to="/" replace /> : <Onboarding />}
+          element={false ? <Navigate to="/" replace /> : <Onboarding />}
         ></Route>
       </Routes>
     </BrowserRouter>
