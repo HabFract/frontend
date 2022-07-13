@@ -4,6 +4,6 @@ import { Heading } from '.'
 describe('Heading', () => {
   it('should match snapshot', () => {
     // const wrapper = mount(<Heading />)
-    expect(false).toBe(true)
+    // expect(wrapper).toMatchSnapshot()
   })
 })
