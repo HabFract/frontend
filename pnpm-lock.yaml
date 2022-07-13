@@ -30,6 +30,7 @@ specifiers:
   '@storybook/preset-scss': ^1.0.3
   '@storybook/react': 6.5.9
   '@storybook/testing-library': 0.0.13
+  '@testing-library/dom': ^8.16.0
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^13.3.0
   '@testing-library/user-event': ^14.2.1
@@ -152,9 +153,10 @@ devDependencies:
   '@storybook/preset-scss': 1.0.3_td5uoi65xdfrgipx32wlhputxq
   '@storybook/react': 6.5.9_6sca3o7isddvgby4gnnwijgaei
   '@storybook/testing-library': 0.0.13_biqbaboplfbrettd7655fr4n2y
+  '@testing-library/dom': 8.16.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
-  '@testing-library/user-event': 14.2.1
+  '@testing-library/user-event': 14.2.1_gwcpuyfvwbszhlmedmugzivgzu
   '@types/jest': 28.1.3
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
@@ -4561,8 +4563,8 @@ packages:
     dependencies:
       '@storybook/client-logger': 6.5.9
       '@storybook/instrumenter': 6.5.9_biqbaboplfbrettd7655fr4n2y
-      '@testing-library/dom': 8.13.0
-      '@testing-library/user-event': 13.5.0_tlwynutqiyp5mns3woioasuxnq
+      '@testing-library/dom': 8.16.0
+      '@testing-library/user-event': 13.5.0_gwcpuyfvwbszhlmedmugzivgzu
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - react
@@ -4614,8 +4616,8 @@ packages:
       defer-to-connect: 1.1.3
     dev: true
 
-  /@testing-library/dom/8.13.0:
-    resolution: {integrity: sha512-9VHgfIatKNXQNaZTtLnalIy0jNZzY35a4S3oi08YAt9Hv1VsfZ/DfA45lM8D/UhtHBGJ4/lGwp0PZkVndRkoOQ==}
+  /@testing-library/dom/8.16.0:
+    resolution: {integrity: sha512-uxF4zmnLHHDlmW4l+0WDjcgLVwCvH+OVLpD8Dfp+Bjfz85prwxWGbwXgJdLtkgjD0qfOzkJF9SmA6YZPsMYX4w==}
     engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.16.7
@@ -4651,27 +4653,29 @@ packages:
       react-dom: ^18.0.0
     dependencies:
       '@babel/runtime': 7.18.3
-      '@testing-library/dom': 8.13.0
+      '@testing-library/dom': 8.16.0
       '@types/react-dom': 18.0.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
-  /@testing-library/user-event/13.5.0_tlwynutqiyp5mns3woioasuxnq:
+  /@testing-library/user-event/13.5.0_gwcpuyfvwbszhlmedmugzivgzu:
     resolution: {integrity: sha512-5Kwtbo3Y/NowpkbRuSepbyMFkZmHgD+vPzYB/RJ4oxt5Gj/avFFBYjhw27cqSVPVw/3a67NK1PbiIr9k4Gwmdg==}
     engines: {node: '>=10', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
       '@babel/runtime': 7.18.3
-      '@testing-library/dom': 8.13.0
+      '@testing-library/dom': 8.16.0
     dev: true
 
-  /@testing-library/user-event/14.2.1:
+  /@testing-library/user-event/14.2.1_gwcpuyfvwbszhlmedmugzivgzu:
     resolution: {integrity: sha512-HOr1QiODrq+0j9lKU5i10y9TbhxMBMRMGimNx10asdmau9cb8Xb1Vyg0GvTwyIL2ziQyh2kAloOtAQFBQVuecA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
+    dependencies:
+      '@testing-library/dom': 8.16.0
     dev: true
 
   /@tootallnate/once/1.1.2:

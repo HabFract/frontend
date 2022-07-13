@@ -25,3 +25,27 @@
    -  Reference: https://styled-components.com/docs/basics#styling-any-component
 
 14 - (Smart components) Add passing tests in the `.spec.tsx` file before making a PR to merge into `main`
+
+
+
+## Hook/Holochain payload Reference
+```tsx
+ const variables: HabitCreateParams = {
+    name: 'a',
+    description: 'A nice habit',
+    isAtomic: 'false',
+    startTime: new Date(),
+    endTime: new Date(Date.now() + 1000 * 60 * 60 * 24),
+  }
+
+  const [addHabitMutation, { data, loading, error }] = useAddHabitMutation({
+    variables: { variables },
+  })
+```
+
+```tsx
+  const { data, loading, error } = useGetHabitQuery({
+    variables: { id: 'uhCEklzNmyxz9TvQKydP3NBmnqyDNo_qRXMrxbVcuBwfUIDx9gNBq' },
+  })
+  console.log('data :>> ', data, loading, error)
+  ```
