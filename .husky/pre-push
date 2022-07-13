@@ -1,5 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo $(npx git-branch-is 'test')
-npm run prepush
+npx git-branch-is 'main' && npm run prepush
