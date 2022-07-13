@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-(npx git-branch-is 'main' && npm run prepush) || true
+(npx git-branch-is 'main' && npm run prepush || echo 'No testing needed to push') || true
