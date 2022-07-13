@@ -26,6 +26,11 @@
       "npm run format"
     ]
   },
+  "test-all": {
+    "*": [
+      "jest -no-cache --verbose --runInBand --config=./jest.config.ts"
+    ]
+  },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@apollo/client": "3.6.6",
