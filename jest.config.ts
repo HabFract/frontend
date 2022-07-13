@@ -17,6 +17,7 @@ const config: Config.InitialOptions = {
   setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.ts'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
   moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: pathsToModuleNameMapper({
