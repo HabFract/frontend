@@ -17,6 +17,14 @@ import { IImageUploadInput } from './types'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons/lib/icons'
 // #endregion Interface Imports
 
+const getBase64 = (file: Blob): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => resolve(reader.result as string)
+    reader.onerror = (error) => reject(error)
+  })
+
 export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
   field,
   form,
@@ -37,27 +45,29 @@ export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
     }
     const image = new Image()
     image.src = src
+    debugger
     console.log('image :>> ', image)
   }
 
-  const handleChange: UploadProps['onChange'] = (
+  const handleChange: UploadProps['onChange'] = async (
     info: UploadChangeParam<UploadFile>,
   ) => {
+    let fileString
+    try {
+      fileString = await getBase64(info.file.originFileObj as Blob)
+    } catch (error) {
+      console.error(error)
+    }
+    // TODO handle error better for user
+
+    setChosenFile(fileString)
     // Update Formik context
     form.setFieldValue(field.name, chosenFile)
     form.setFieldTouched(field.name, true)
 
     if (info.file.status === 'uploading') {
-      // setLoading(true);
+      setLoading(true)
       return
-    }
-    console.log('info.file :>> ', info.file)
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      // getBase64(info.file.originFileObj as RcFile, url => {
-      //   setLoading(false);
-      //   setImageUrl(url);
-      // });
     }
     setFileList([...info.fileList])
   }
@@ -71,12 +81,17 @@ export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
 
   return (
     <Upload
+      customRequest={({ file, onSuccess }) =>
+        setTimeout(() => {
+          onSuccess!('ok')
+        }, 0)
+      }
       listType="picture-card"
       accept="image/png, image/jpeg"
       maxCount={1}
       showUploadList={true}
       fileList={fileList}
-      beforeUpload={() => false}
+      // beforeUpload={() => false}
       {...props}
       onChange={handleChange}
       onPreview={handlePreview}
