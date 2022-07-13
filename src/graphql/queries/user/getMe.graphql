@@ -3,6 +3,10 @@ query getMe {
     agentPubKey
     profile {
       nickname
+      fields {
+        avatar
+        location
+      }
     }
   }
 }

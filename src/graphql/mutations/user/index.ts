@@ -28,7 +28,14 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     _,
     { profile: { nickname, location, avatar, isPublic } },
   ) => {
-    return runCreate({ nickname, fields: { location, avatar, isPublic } })
+    console.log(
+      'nickname, loacation, avatar, isPublic :>> ',
+      nickname,
+      location,
+      avatar,
+      isPublic,
+    )
+    return runCreate({ nickname, fields: { location, avatar } })
   }
 
   return {

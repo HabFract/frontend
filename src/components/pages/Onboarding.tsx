@@ -18,14 +18,15 @@ interface OnboardingProps {}
 
 const onboardingStageTitles = ['Create a profile']
 const onboardingStageCopy = [
-  'It looks like you’re new here. Fill in some details to join the network',
+  'It looks like you are new here. Fill in some details to join the network',
 ]
 
 export const Onboarding: React.FC<OnboardingProps> = () => {
-  const [onboardingStage, setOnboardingStage] = useState('1')
-  const [, setName] = useThemeName()
   const params = useParams()
   const navigate = useNavigate()
+  const [onboardingStage, setOnboardingStage] = useState('1')
+
+  const [, setName] = useThemeName()
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
 

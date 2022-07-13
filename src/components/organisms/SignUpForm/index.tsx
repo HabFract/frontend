@@ -82,6 +82,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
                   location: values.location,
                   avatar: values.avatar,
                   // TODO implement isPublic
+                  // isPublic: values.isPublic.toString(),
                 },
               },
             })

@@ -219,7 +219,15 @@ export type GetMeQuery = {
   me: {
     __typename?: 'AgentProfile'
     agentPubKey: string
-    profile: { __typename?: 'Profile'; nickname: string }
+    profile: {
+      __typename?: 'Profile'
+      nickname: string
+      fields?: {
+        __typename?: 'ProfileFields'
+        avatar?: string | null
+        location?: string | null
+      } | null
+    }
   }
 }
 
@@ -457,6 +465,10 @@ export const GetMeDocument = gql`
       agentPubKey
       profile {
         nickname
+        fields {
+          avatar
+          location
+        }
       }
     }
   }

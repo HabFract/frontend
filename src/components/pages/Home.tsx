@@ -8,12 +8,15 @@ import {
 } from '@/graphql/generated'
 import React, { useEffect } from 'react'
 import { LoginForm } from '@/organisms/LoginForm'
+import { useMyProfile } from '@/app/contexts/myProfileContext'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
-  const { data, loading, error } = useGetMeQuery()
+  const [profile, setProfile] = useMyProfile()
+
+  console.log('profile :>> ', profile)
   // const variables: HabitCreateParams = {
   //   name: 'a',
   //   description: 'A nice habit',
@@ -32,7 +35,7 @@ export const Home: React.FC<HomeProps> = () => {
   // const { data, loading, error } = useGetHabitQuery({
   //   variables: { id: 'uhCEklzNmyxz9TvQKydP3NBmnqyDNo_qRXMrxbVcuBwfUIDx9gNBq' },
   // })
-  console.log('data :>> ', data, loading, error)
+  // console.log('data :>> ', data, loading, error)
 
   return typeof localStorage.getItem('username') !== 'string' ? (
     <LoginForm />

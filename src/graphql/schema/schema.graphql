@@ -102,7 +102,6 @@ type HabitCreateResponse {
 }
 
 #
-
 type Todo {
   id: ID!
   description: String!
