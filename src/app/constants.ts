@@ -1,4 +1,4 @@
-import { ThemeValues } from './theme/types'
+import { ThemeValues } from './theme/definitions/types'
 
 export const APP_WS_PORT = '42465'
 export const HAPP_ID = 'habit_tracking'

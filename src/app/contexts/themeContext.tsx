@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider as SCProvider } from 'styled-components'
 import { DEFAULT_THEME_VALUE } from '../constants'
-import { Theme as ThemeDef } from '../theme/theme'
+import { Theme as ThemeDef } from '../theme/definitions/sc-theme-vars'
 
 export const ThemeNameContext = React.createContext([DEFAULT_THEME_VALUE] as
   | React.Dispatch<React.SetStateAction<string>>[]

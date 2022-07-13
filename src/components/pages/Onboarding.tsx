@@ -11,7 +11,7 @@ import { SignUpForm } from '@/organisms/SignUpForm'
 import { TitleBar } from '@/molecules/TitleBar'
 import { PageAction } from '@/molecules/PageAction'
 import { useThemeName } from '@/app/hooks/useTheme'
-import { ThemeValues } from '@/app/theme/types'
+import { ThemeValues } from '@/app/theme/definitions/types'
 // #endregion Local Imports
 
 interface OnboardingProps {}
