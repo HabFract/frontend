@@ -5,5 +5,6 @@ Sync with jest.config.ts and tsconfig.json to avoid module resolution errors.
   "@/organisms": "./src/components/organisms",
   "@/organisms": "./src/components/organisms",
   "@/contexts": "./src/app/contexts",
+  "@/hooks": "./src/app/hooks",
   "@/graphql": "./src/graphql",
   "@/pages": "./src/components/organisms/pages",

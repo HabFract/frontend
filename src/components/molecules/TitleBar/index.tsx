@@ -10,7 +10,7 @@ import { ITitleBar } from './types'
 import { TitleBarContainer } from './styled'
 import { BackCaret } from '@/atoms/Button/BackCaret'
 import { Heading } from '@/atoms/Typo/Title/Heading'
-import { useThemeName } from '@/app/contexts/themeContext'
+import { useThemeName } from '@/app/hooks/useTheme'
 import { SpaceBetweenFlexHorizontal } from '@/app/styled'
 // #endregion Local Imports
 

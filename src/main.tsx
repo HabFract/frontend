@@ -6,9 +6,10 @@ import { Buffer } from 'buffer'
 import './index.scss'
 
 import { ApolloProvider } from '@apollo/client'
-import connect, { ClientOptions } from './graphql/client'
-import { Theme } from '@/contexts/themeContext'
-import { MyProfileProvider, useMyProfile } from '@/contexts/myProfileContext'
+import connect, { ClientOptions } from '@/graphql/client'
+import { ThemeProvider } from '@/contexts/themeContext'
+import { MyProfileProvider } from '@/contexts/myProfileContext'
+import { useMyProfile } from '@/hooks/useMyProfile'
 
 import { useGetMeQuery } from './graphql/generated'
 
@@ -54,12 +55,12 @@ const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
   <React.StrictMode>
-    <Theme>
+    <ThemeProvider>
       <ApolloProvider client={await connect({} as ClientOptions)}>
         <MyProfileProvider>
           <App />
         </MyProfileProvider>
       </ApolloProvider>
-    </Theme>
+    </ThemeProvider>
   </React.StrictMode>,
 )

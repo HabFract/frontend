@@ -8,7 +8,7 @@ import {
 } from '@/graphql/generated'
 import React, { useEffect } from 'react'
 import { LoginForm } from '@/organisms/LoginForm'
-import { useMyProfile } from '@/app/contexts/myProfileContext'
+import { useMyProfile } from '@/hooks/useMyProfile'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}

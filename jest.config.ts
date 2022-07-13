@@ -23,6 +23,7 @@ const config: Config.InitialOptions = {
     '@/app/*': ['<rootDir>/src/app/*'],
     '@/atoms/*': ['<rootDir>/src/components/atoms/*'],
     '@/contexts/*': ['<rootDir>/src/app/contexts/*'],
+    '@/hooks/*': ['<rootDir>/src/app/hooks/*'],
     '@/graphql/*': ['<rootDir>/src/graphql/*'],
     '@/molecules/*': ['<rootDir>/src/components/molecules/*'],
     '@/organisms/*': ['<rootDir>/src/components/organisms/*'],

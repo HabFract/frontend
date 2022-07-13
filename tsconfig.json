@@ -25,6 +25,7 @@
       "@/app/*": ["./src/app/*",],
       "@/atoms/*": ["./src/components/atoms/*"],
       "@/contexts/*": ["./src/app/contexts/*",],
+      "@/hooks/*": ["./src/app/hooks/*",],
       "@/graphql/*": ["./src/graphql/*",],
       "@/molecules/*": ["./src/components/molecules/*",],
       "@/organisms/*": ["./src/components/organisms/*",],

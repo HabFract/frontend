@@ -10,7 +10,7 @@ import { LoginForm } from '@/organisms/LoginForm'
 import { SignUpForm } from '@/organisms/SignUpForm'
 import { TitleBar } from '@/molecules/TitleBar'
 import { PageAction } from '@/molecules/PageAction'
-import { useThemeName } from '@/app/contexts/themeContext'
+import { useThemeName } from '@/app/hooks/useTheme'
 import { ThemeValues } from '@/app/theme/types'
 // #endregion Local Imports
 
