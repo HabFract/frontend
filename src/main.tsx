@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 
 import { Buffer } from 'buffer'
-globalThis.Buffer = Buffer
 import './index.scss'
 
 import { ApolloProvider } from '@apollo/client'
@@ -16,6 +15,7 @@ import { useGetMeQuery } from './graphql/generated'
 import { NotFound } from './components/pages/404'
 import { Home } from './components/pages/Home'
 import { Onboarding } from './components/pages/Onboarding'
+globalThis.Buffer = Buffer
 // import { Profile } from './components/pages/Profile'
 
 const App: FC = () => {
@@ -31,8 +31,7 @@ const App: FC = () => {
 
       setProfile(rawProfile)
       console.log(
-        'Active user profile context has been set for agent with hash ' +
-          agentPubKey,
+        `Active user profile context has been set for agent with hash ${agentPubKey}`,
       )
     }
   }, [activeUser])
