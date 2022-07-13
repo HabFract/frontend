@@ -5,11 +5,11 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 // #region Local Imports
 import { setTheme } from '@/app/theme/switch'
-import { OnboardingTemplate } from '../templates/OnboardingStageTemplate'
-import { LoginForm } from '../organisms/LoginForm'
-import { SignUpForm } from '../organisms/SignUpForm'
-import { TitleBar } from '../molecules/TitleBar'
-import { PageAction } from '../molecules/PageAction'
+import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
+import { LoginForm } from '@/organisms/LoginForm'
+import { SignUpForm } from '@/organisms/SignUpForm'
+import { TitleBar } from '@/molecules/TitleBar'
+import { PageAction } from '@/molecules/PageAction'
 import { useThemeName } from '@/app/contexts/themeContext'
 import { ThemeValues } from '@/app/theme/types'
 // #endregion Local Imports

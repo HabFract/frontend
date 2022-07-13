@@ -7,7 +7,7 @@ import {
   useGetMeQuery,
 } from '@/graphql/generated'
 import React, { useEffect } from 'react'
-import { LoginForm } from '../organisms/LoginForm'
+import { LoginForm } from '@/organisms/LoginForm'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}

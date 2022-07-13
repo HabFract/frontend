@@ -80,13 +80,15 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
                 profileFields: {
                   nickname: values.username,
                   location: values.location,
+                  avatar: values.avatar,
+                  // TODO implement isPublic
                 },
               },
             })
             setSubmitting(false)
           }}
         >
-          {({ touched, errors, values, handleSubmit }: FormikProps<any>) => {
+          {({ touched, errors, handleSubmit }: FormikProps<any>) => {
             console.log('touched,', touched)
             console.log(', errors,', errors)
             return (

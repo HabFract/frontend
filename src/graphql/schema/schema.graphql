@@ -26,10 +26,10 @@ type ResponsePayload {
   entryHash: String!
 }
 
-# ---- UserProfile ----- #
-# UserProfile GQL Types
+# ---- Profiles ----- #
+# Profiles GQL Types
 
-# UserProfile Types
+# Profiles Types
 type AgentProfile {
   agentPubKey: String!
   profile: Profile!
@@ -46,7 +46,7 @@ type ProfileFields {
   avatar: String
 }
 
-# UserProfile Input/Output
+# Profile Input/Output
 input UserProfileCreateParams {
   nickname: String!
   location: String
