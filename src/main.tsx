@@ -17,7 +17,6 @@ import { NotFound } from './components/pages/404'
 import { Home } from './components/pages/Home'
 import { Onboarding } from './components/pages/Onboarding'
 globalThis.Buffer = Buffer
-// import { Profile } from './components/pages/Profile'
 
 const App: FC = () => {
   const { data: activeUser, loading, error } = useGetMeQuery()
