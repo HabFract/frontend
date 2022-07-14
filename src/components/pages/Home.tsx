@@ -1,28 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+
 import { useMyProfile } from '@/hooks/useMyProfile'
-import { Link } from 'react-router-dom'
+
+import { NavList } from '@/molecules/NavList'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
-  const [profile, setProfile] = useMyProfile()
-  console.log('profile :>> ', profile)
-  return typeof profile == 'undefined' ? (
+  const [profile, _] = useMyProfile()
+  return (
     <nav aria-label="Information portal navigation">
-      <ul>
-        <li role="none">
-          <Link to={'/'} role="menu-item"></Link>
-        </li>
-        <li role="none">
-          <Link to={'/'} role="menu-item"></Link>
-        </li>
-        <li role="none">
-          <Link to={'/'} role="menu-item"></Link>
-        </li>
-      </ul>
+      <NavList newUser={!profile}></NavList>
     </nav>
-  ) : (
-    <nav aria-label="Information portal navigation"></nav>
   )
 }
