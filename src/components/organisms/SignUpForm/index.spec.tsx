@@ -1,9 +1,9 @@
 import React from 'react'
 import { SignUpForm } from '.'
 
-describe('LoginForm', () => {
+describe('SignUpForm', () => {
   it('should match snapshot', () => {
-    // const wrapper = mount(<LoginForm />)
+    // const wrapper = mount(<SignUpForm />)
     // expect(wrapper).toMatchSnapshot()
   })
 })

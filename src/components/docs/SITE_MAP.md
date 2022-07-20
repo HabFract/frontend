@@ -1,16 +1,16 @@
 ```
 ├── Home
-│   ── (Get Started/Onboarding)
+│   ── (Get Started/Onboarding) Make a Profile
 │     └── (Onboarding 1/x)
 │        └── (Onboarding 2/x)
 │           └── (Onboarding 3/x) ...
-│   ├── What are Atomic Habits? (The psychology of Habits)
+│   ├── Info Portal (What/Why/How)
 │   ├── Habit Templates (7 habits of.. etc.)
 │   ├── About Us (To let them give us nice jobs haha!)
+│   ├── About Holochain
+│   ├── Feedback form
 │       
 ├── Visualisations
-├── HabitList
-├── LifeDomainList
 ├── HabitDashboard
 ```
 
@@ -18,21 +18,21 @@
 - ## AgentProfile exists
   - `Splash` ("logged in")
   #### Links:
-      -- What are Atomic Habits?
+      -- Info Portal
       -- Habit Templates
       -- About Us
       
       (SideNav)
         -- Visualisations
-        -- HabitList
-        -- LifeDomainList
+        -- User Info
+        -- LifeDomain 1.. (maybe) which goes to the default Vis
         -- HabitDashboard
 - ## No AgentProfile exists
   - `Splash` ("not logged in")
   #### Links:
-      -- Get started  ("not logged in")
+      -- Make/Break/Get started  ("not logged in")
         `Onboarding 1/x`
-      -- What are Atomic Habits?
+      -- Info Portal
       -- Habit Templates
       -- About Us
   
@@ -52,7 +52,7 @@ Currently treat onboarding as one continuous flow. We may later need checks for 
 3. Include streaks widget, calendar widget, graphs. 
 - ## AgentProfile exists
   #### Links:
-      (SideNav)
+      (SideNav Logged In)
         -- UserProfile
         -- LifeDomainList
         -- HabitDashboard

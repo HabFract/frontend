@@ -3,14 +3,15 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect'
+global.NODE_ENV = process.env.NODE_ENV
 // import "@testing-library/jest-dom";
 
-const MockConductor = require('@holo-host/mock-conductor')
-const { ZOME_CALL_TYPE } = MockConductor
+// const MockConductor = require('@holo-host/mock-conductor')
+// const { ZOME_CALL_TYPE } = MockConductor
 
-interface ZomeInput {
-  number: number
-}
+// interface ZomeInput {
+//   number: number
+// }
 // interface ZomeCallPayload {
 //   cap: Buffer | null;
 //   cell_id: CellId;

@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 
 import { Buffer } from 'buffer'
+globalThis.Buffer = Buffer
+
 import './index.scss'
 
 import { ApolloProvider } from '@apollo/client'
@@ -16,7 +18,6 @@ import { useGetMeQuery } from './graphql/generated'
 import { NotFound } from './components/pages/404'
 import { Home } from './components/pages/Home'
 import { Onboarding } from './components/pages/Onboarding'
-globalThis.Buffer = Buffer
 
 const App: FC = () => {
   const { data: activeUser, loading, error } = useGetMeQuery()
