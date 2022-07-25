@@ -1,0 +1,12 @@
+query getBurners {
+  burners {
+    edges {
+      node {
+        name
+        metadata {
+          description
+        }
+      }
+    }
+  }
+}

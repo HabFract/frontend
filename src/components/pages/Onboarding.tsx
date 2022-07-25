@@ -13,6 +13,7 @@ import { setTheme } from '@/app/theme/switch'
 import { ThemeValues } from '@/app/theme/definitions/types'
 import { useThemeName } from '@/app/hooks/useTheme'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
+import { useGetBurnersQuery } from '@/graphql/generated'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -20,7 +21,11 @@ interface OnboardingProps {}
 const onboardingMainTitles = [
   { default: 'Make a positive habit', dark: 'Break a negative habit' },
 ]
-const onboardingStageTitles = ['Create a profile']
+const onboardingStageTitles = [
+  'Create a profile',
+  'Start a Burner',
+  'Create a habit',
+]
 const onboardingStageCopy = [
   'It looks like you are new here. Fill in some details to join the network',
 ]
@@ -35,12 +40,18 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   const navigate = useNavigate()
 
   const [onboardingStage, setOnboardingStage] = useState(!profile ? '1' : '2')
+
+  const { data: burnersPayload, loading, error } = useGetBurnersQuery()
   const [userHasBurner, setUserHasBurner] = useState(false)
 
   useEffect(() => {
-    // setUserHasBurner(true)
-    userHasBurner && setOnboardingStage('3')
+    setUserHasBurner(
+      !!(burnersPayload?.burners && burnersPayload!.burners.edges.length > 0),
+    )
+    setOnboardingStage(burnersPayload && userHasBurner ? '3' : onboardingStage)
+  }, [userHasBurner, burnersPayload])
 
+  useEffect(() => {
     // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
     // setName(themeValue)
     // setTheme(themeValue)
@@ -53,15 +64,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
         title={onboardingStageTitles[+onboardingStage - 1]}
         copyText={onboardingStageCopy[+onboardingStage - 1]}
       />
-      {!!profile ? (
-        !userHasBurner ? (
-          <div>{'Start a Burner'}</div>
-        ) : (
-          <div>{'Create a habit'}</div>
-        )
-      ) : (
-        <SignUpForm />
-      )}
+      {!!profile ? !userHasBurner ? <div></div> : <div></div> : <SignUpForm />}
     </OnboardingTemplate>
   )
 }

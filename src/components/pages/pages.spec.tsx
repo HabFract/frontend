@@ -6,15 +6,24 @@ import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { MyProfileProvider } from '@/contexts/myProfileContext'
 import { ThemeProvider } from '@/contexts/themeContext'
 
-import { aHabitConnection, aProfile } from '@/graphql/generated/mocks'
-import { GetHabitsDocument, Profile } from '@/graphql/generated'
+import {
+  aBurnerEdge,
+  aHabitConnection,
+  aHabitEdge,
+  aProfile,
+} from '@/graphql/generated/mocks'
+import {
+  GetBurnersDocument,
+  GetHabitsDocument,
+  Profile,
+} from '@/graphql/generated'
 
 import { Home } from './Home'
 import { Onboarding } from './Onboarding'
 
 function renderPage(Page: React.FunctionComponent, options: any) {
   const profile: Profile = aProfile()
-  const { withUser } = options
+  const { withUser, withBurner, withHabit } = options
   const mocks: readonly MockedResponse<any>[] = [
     {
       request: {
@@ -22,7 +31,17 @@ function renderPage(Page: React.FunctionComponent, options: any) {
       },
       result: {
         data: {
-          habits: { edges: aHabitConnection() },
+          habits: { edges: withHabit ? [aHabitEdge()] : [] },
+        },
+      },
+    },
+    {
+      request: {
+        query: GetBurnersDocument,
+      },
+      result: {
+        data: {
+          burners: { edges: withBurner ? [aBurnerEdge()] : [] },
         },
       },
     },
@@ -92,7 +111,7 @@ describe('Given a registered user', () => {
     })
     describe('Given the registered user has started a Burner but not a Habit', () => {
       it('Then it  should render Onboarding stage 3', async () => {
-        renderPage(Onboarding, { withUser: true })
+        renderPage(Onboarding, { withUser: true, withBurner: true })
         const { findByText } = screen
         expect(await findByText('Create a habit')).toBeInTheDocument()
       })

@@ -197,6 +197,23 @@ export type AddUserMutation = {
   }
 }
 
+export type GetBurnersQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetBurnersQuery = {
+  __typename?: 'Query'
+  burners: {
+    __typename?: 'BurnerConnection'
+    edges: Array<{
+      __typename?: 'BurnerEdge'
+      node: {
+        __typename?: 'Burner'
+        name: string
+        metadata?: { __typename?: 'BurnerMetaData'; description: string } | null
+      }
+    }>
+  }
+}
+
 export type GetHabitQueryVariables = Exact<{
   id: Scalars['ID']
 }>
@@ -355,6 +372,68 @@ export type AddUserMutationResult = Apollo.MutationResult<AddUserMutation>
 export type AddUserMutationOptions = Apollo.BaseMutationOptions<
   AddUserMutation,
   AddUserMutationVariables
+>
+export const GetBurnersDocument = gql`
+  query getBurners {
+    burners {
+      edges {
+        node {
+          name
+          metadata {
+            description
+          }
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useGetBurnersQuery__
+ *
+ * To run a query within a React component, call `useGetBurnersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBurnersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBurnersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBurnersQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetBurnersQuery,
+    GetBurnersQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetBurnersQuery, GetBurnersQueryVariables>(
+    GetBurnersDocument,
+    options,
+  )
+}
+export function useGetBurnersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetBurnersQuery,
+    GetBurnersQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetBurnersQuery, GetBurnersQueryVariables>(
+    GetBurnersDocument,
+    options,
+  )
+}
+export type GetBurnersQueryHookResult = ReturnType<typeof useGetBurnersQuery>
+export type GetBurnersLazyQueryHookResult = ReturnType<
+  typeof useGetBurnersLazyQuery
+>
+export type GetBurnersQueryResult = Apollo.QueryResult<
+  GetBurnersQuery,
+  GetBurnersQueryVariables
 >
 export const GetHabitDocument = gql`
   query getHabit($id: ID!) {
