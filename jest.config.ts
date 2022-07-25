@@ -9,27 +9,47 @@ const config: Config.InitialOptions = {
   clearMocks: true,
   // coverageProvider: "v8",
   // testEnvironment: "node",
+
   testMatch: [
     '<rootDir>/src/components/**/*.spec.tsx',
     // "**/?(*.)+(spec|test).+(ts|tsx|js)",
   ],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.ts'],
-  transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-    '^.+\\.(js|jsx)$': 'babel-jest',
+  preset: 'ts-jest',
+  globals: {
+    'ts-jest': {
+      tsconfig: {
+        allowJs: true,
+      },
+    },
   },
+
+  transform: {
+    // 'node_modules/(@zougt|uuid)/.+\\.(j|t)s?$': 'ts-jest',
+    '^.+\\.js$': 'babel-jest',
+  },
+
+  transformIgnorePatterns: [
+    `/node_modules/(?!(uuid|@zougt|some-loader-utils))/`,
+  ],
+  testPathIgnorePatterns: ['/node_modules/'],
   moduleDirectories: ['node_modules', 'src'],
-  moduleNameMapper: pathsToModuleNameMapper({
-    '@/app/*': ['<rootDir>/src/app/*'],
-    '@/atoms/*': ['<rootDir>/src/components/atoms/*'],
-    '@/contexts/*': ['<rootDir>/src/app/contexts/*'],
-    '@/hooks/*': ['<rootDir>/src/app/hooks/*'],
-    '@/graphql/*': ['<rootDir>/src/graphql/*'],
-    '@/molecules/*': ['<rootDir>/src/components/molecules/*'],
-    '@/organisms/*': ['<rootDir>/src/components/organisms/*'],
-    '@/pages/*': ['<rootDir>/src/components/organisms/pages/*'],
-    '@/templates/*': ['<rootDir>/src/components/templates/*'],
-  }),
+  moduleNameMapper: {
+    '@zougt/vite-plugin-theme-preprocessor/':
+      '@zougt/vite-plugin-theme-preprocessor/dist/',
+    '@zougt/some-loader-utils/': '@zougt/some-loader-utils/dist/',
+    ...pathsToModuleNameMapper({
+      '@/app/*': ['<rootDir>/src/app/*'],
+      '@/atoms/*': ['<rootDir>/src/components/atoms/*'],
+      '@/contexts/*': ['<rootDir>/src/app/contexts/*'],
+      '@/hooks/*': ['<rootDir>/src/app/hooks/*'],
+      '@/graphql/*': ['<rootDir>/src/graphql/*'],
+      '@/molecules/*': ['<rootDir>/src/components/molecules/*'],
+      '@/organisms/*': ['<rootDir>/src/components/organisms/*'],
+      '@/pages/*': ['<rootDir>/src/components/organisms/pages/*'],
+      '@/templates/*': ['<rootDir>/src/components/templates/*'],
+    }),
+  },
 }
 export default config

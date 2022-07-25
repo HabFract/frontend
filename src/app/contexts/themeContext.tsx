@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { createContext, useState, useMemo } from 'react'
 import { ThemeProvider as SCProvider } from 'styled-components'
 import { DEFAULT_THEME_VALUE } from '../constants'
 import { Theme as ThemeDef } from '../theme/definitions/sc-theme-vars'
 
-export const ThemeNameContext = React.createContext([DEFAULT_THEME_VALUE] as
+export const ThemeNameContext = createContext([DEFAULT_THEME_VALUE] as
   | React.Dispatch<React.SetStateAction<string>>[]
   | [string])
 
 export const ThemeNameProvider = (props) => {
-  const [name, setName] = React.useState(DEFAULT_THEME_VALUE)
+  const [name, setName] = useState(DEFAULT_THEME_VALUE)
 
-  const value = React.useMemo(() => [name, setName], [name])
+  const value = useMemo(() => [name, setName], [name])
   return <ThemeNameContext.Provider value={value} {...props} />
 }
 
@@ -18,7 +18,11 @@ export const ThemeProvider = ({ children }) => (
   <ThemeNameProvider>
     <SCProvider
       theme={
-        ThemeDef[`${(ThemeNameContext as any)!._currentValue[0].split`-`[1]}`] // point to theme 'default' or 'dark'
+        ThemeDef[
+          `${
+            (ThemeNameContext as any)!._currentValue[0].split`-`[1] || 'default'
+          }`
+        ] // point to theme 'default' or 'dark'
       }
     >
       {children}

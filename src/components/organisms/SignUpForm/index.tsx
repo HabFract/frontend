@@ -40,7 +40,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
     isPublic: false,
   }
 
-  console.log('data, loading, data :>> ', data, loading, data)
+  // console.log('data, loading, data :>> ', data, loading, data)
   return (
     <OnboardingFormContainer>
       {loading || data || error ? (
@@ -90,10 +90,10 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
           }}
         >
           {({ touched, errors, handleSubmit }: FormikProps<any>) => {
-            console.log('touched,', touched)
-            console.log(', errors,', errors)
+            // console.log('touched,', touched)
+            // console.log(', errors,', errors)
             return (
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit} aria-label="sign-up-form">
                 <label htmlFor="username">
                   Username:
                   <Field

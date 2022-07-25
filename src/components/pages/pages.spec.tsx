@@ -4,10 +4,11 @@ import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { MyProfileProvider } from '@/contexts/myProfileContext'
+import { ThemeProvider } from '@/contexts/themeContext'
 
 import { aHabitConnection, aProfile } from '@/graphql/generated/mocks'
-
 import { GetHabitsDocument, Profile } from '@/graphql/generated'
+
 import { Home } from './Home'
 import { Onboarding } from './Onboarding'
 
@@ -29,9 +30,11 @@ function renderPage(Page: React.FunctionComponent, options: any) {
 
   return render(
     <MockedProvider mocks={mocks} addTypename={false}>
-      <MyProfileProvider value={withUser ? profile : undefined}>
-        <Page />
-      </MyProfileProvider>
+      <ThemeProvider>
+        <MyProfileProvider value={withUser ? profile : undefined}>
+          <Page />
+        </MyProfileProvider>
+      </ThemeProvider>
     </MockedProvider>,
     { wrapper: BrowserRouter },
   )
@@ -52,8 +55,16 @@ describe('Given a new user', () => {
 
   describe('When an Onboarding page is rendered', () => {
     it('Then it should render a SignUpForm', async () => {
-      renderPage(Onboarding, {})
-      const { findByRole, findAllByRole } = screen
+      renderPage(Onboarding, { withUser: false })
+      const { getByRole } = screen
+      const form = await getByRole('form', { name: 'sign-up-form' })
+      expect(form).toBeInTheDocument()
+    })
+
+    it('Then it  should render Onboarding stage 1', async () => {
+      renderPage(Onboarding, { withUser: false })
+      const { findByText } = screen
+      expect(await findByText('Create a profile')).toBeInTheDocument()
     })
   })
 })
@@ -72,24 +83,22 @@ describe('Given a registered user', () => {
   })
 
   describe('When an Onboarding page is rendered', () => {
-    describe('Given the user has not created a Life Domain', () => {
+    describe('Given the registered user has not started a Burner', () => {
       it('Then it  should render Onboarding stage 2', async () => {
         renderPage(Onboarding, { withUser: true })
-        const { findByRole, findAllByRole } = screen
-        expect(await screen.findByText('Loading...')).toBeInTheDocument()
-        expect(
-          await screen.findByText('Create a Life Domain'),
-        ).toBeInTheDocument()
+        const { findByText } = screen
+        expect(await findByText('Start a Burner')).toBeInTheDocument()
       })
     })
-    describe('Given the user has created a Life Domain but not a Habit', () => {
+    describe('Given the registered user has started a Burner but not a Habit', () => {
       it('Then it  should render Onboarding stage 3', async () => {
         renderPage(Onboarding, { withUser: true })
-        const { findByRole, findAllByRole } = screen
+        const { findByText } = screen
+        expect(await findByText('Create a habit')).toBeInTheDocument()
       })
     })
-    describe('Given the user has created a Life Domain and a Habit', () => {
-      it('Then it  should redirect to the Habit Dashboard', async () => {
+    describe('Given the registered user has started a Burner and a Habit', () => {
+      it('Then it  should redirect to the defaulty Visualisation', async () => {
         renderPage(Onboarding, { withUser: true })
         const { findByRole, findAllByRole } = screen
       })

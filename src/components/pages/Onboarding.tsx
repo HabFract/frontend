@@ -4,13 +4,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 // #endregion Global Imports
 
 // #region Local Imports
-import { setTheme } from '@/app/theme/switch'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { SignUpForm } from '@/organisms/SignUpForm'
 import { TitleBar } from '@/molecules/TitleBar'
 import { PageAction } from '@/molecules/PageAction'
-import { useThemeName } from '@/app/hooks/useTheme'
+
+import { setTheme } from '@/app/theme/switch'
 import { ThemeValues } from '@/app/theme/definitions/types'
+import { useThemeName } from '@/app/hooks/useTheme'
+import { useMyProfile } from '@/app/hooks/useMyProfile'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -22,22 +24,23 @@ const onboardingStageCopy = [
 
 export const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
-  const navigate = useNavigate()
   const [onboardingStage, setOnboardingStage] = useState('1')
 
-  const [, setName] = useThemeName()
+  // const [, setName] = useThemeName()
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
-
+  const [profile, _] = useMyProfile()
+  const navigate = useNavigate()
   useEffect(() => {
-    setName(themeValue)
-    setTheme(themeValue)
+    // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
+    // setName(themeValue)
+    // setTheme(themeValue)
+    if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
   }, [])
-  if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
-
-  return typeof localStorage.getItem('username') !== 'string' ? ( // Fetch an agent profile for this user (stubbed)
+  console.log('profile :>> ', profile)
+  return !!profile ? ( // Fetch an agent profile for this user (stubbed)
     <OnboardingTemplate>
-      <LoginForm />
+      <div>{'Helo'}</div>
     </OnboardingTemplate>
   ) : (
     <OnboardingTemplate>

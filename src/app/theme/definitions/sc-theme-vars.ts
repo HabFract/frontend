@@ -4,6 +4,7 @@ import { DefaultTheme } from 'styled-components'
 
 const common = {
   lgray: '#F9FAFB',
+  dgray: '#9CA3AF',
   warning: '#FACFA8',
   success: '#D1E0BF',
   info: '#C6DCF6',
