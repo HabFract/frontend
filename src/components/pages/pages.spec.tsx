@@ -98,7 +98,7 @@ describe('Given a registered user', () => {
       })
     })
     describe('Given the registered user has started a Burner and a Habit', () => {
-      it('Then it  should redirect to the defaulty Visualisation', async () => {
+      it('Then it  should redirect to the default Visualisation', async () => {
         renderPage(Onboarding, { withUser: true })
         const { findByRole, findAllByRole } = screen
       })

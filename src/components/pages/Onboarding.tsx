@@ -17,6 +17,9 @@ import { useMyProfile } from '@/app/hooks/useMyProfile'
 
 interface OnboardingProps {}
 
+const onboardingMainTitles = [
+  { default: 'Make a positive habit', dark: 'Break a negative habit' },
+]
 const onboardingStageTitles = ['Create a profile']
 const onboardingStageCopy = [
   'It looks like you are new here. Fill in some details to join the network',
@@ -24,32 +27,41 @@ const onboardingStageCopy = [
 
 export const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
-  const [onboardingStage, setOnboardingStage] = useState('1')
 
   // const [, setName] = useThemeName()
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
   const [profile, _] = useMyProfile()
   const navigate = useNavigate()
+
+  const [onboardingStage, setOnboardingStage] = useState(!profile ? '1' : '2')
+  const [userHasBurner, setUserHasBurner] = useState(false)
+
   useEffect(() => {
+    setUserHasBurner(true)
+    userHasBurner && setOnboardingStage('3')
+
     // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
     // setName(themeValue)
     // setTheme(themeValue)
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
   }, [])
-  console.log('profile :>> ', profile)
-  return !!profile ? ( // Fetch an agent profile for this user (stubbed)
+  return (
     <OnboardingTemplate>
-      <div>{'Helo'}</div>
-    </OnboardingTemplate>
-  ) : (
-    <OnboardingTemplate>
-      <TitleBar />
+      <TitleBar titles={onboardingMainTitles[0]} />
       <PageAction
         title={onboardingStageTitles[+onboardingStage - 1]}
         copyText={onboardingStageCopy[+onboardingStage - 1]}
       />
-      <SignUpForm />
+      {!!profile ? (
+        !userHasBurner ? (
+          <div>{'Start a Burner'}</div>
+        ) : (
+          <div>{'Create a habit'}</div>
+        )
+      ) : (
+        <SignUpForm />
+      )}
     </OnboardingTemplate>
   )
 }

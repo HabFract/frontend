@@ -14,18 +14,16 @@ import { useThemeName } from '@/app/hooks/useTheme'
 import { SpaceBetweenFlexHorizontal } from '@/app/styled'
 // #endregion Local Imports
 
-export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = (
-  _props: ITitleBar.IProps,
-) => {
+export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({
+  titles,
+}: ITitleBar.IProps) => {
   const [name] = useThemeName()
-  const isDark = name.toString().split('-')[1] == 'dark'
+  const theme = name.toString().split('-')[1]
   return (
     <TitleBarContainer>
       <SpaceBetweenFlexHorizontal>
         <BackCaret />
-        <Heading level={2}>
-          {isDark ? 'Break a negative habit' : 'Make a positive habit'}
-        </Heading>
+        <Heading level={2}>{titles[theme]}</Heading>
       </SpaceBetweenFlexHorizontal>
     </TitleBarContainer>
   )

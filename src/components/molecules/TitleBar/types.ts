@@ -1,5 +1,8 @@
 export declare namespace ITitleBar {
-  export interface IProps {}
+  type TitleDict = { default: string; dark: string }
+  export interface IProps {
+    titles: TitleDict
+  }
 
   // export interface IState {}
 

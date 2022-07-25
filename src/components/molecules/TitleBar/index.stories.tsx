@@ -10,4 +10,6 @@ export default {
   title: 'Design System/Molecules/TitleBar',
 }
 
-export const Default = () => <TitleBar />
+export const Default = () => (
+  <TitleBar titles={{ default: 'A light title', dark: 'A dark title' }} />
+)
