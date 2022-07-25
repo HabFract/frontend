@@ -28,6 +28,30 @@ export type AgentProfile = {
   profile: Profile
 }
 
+export type Burner = Node & {
+  __typename?: 'Burner'
+  id: Scalars['ID']
+  metadata?: Maybe<BurnerMetaData>
+  name: Scalars['String']
+}
+
+export type BurnerConnection = {
+  __typename?: 'BurnerConnection'
+  edges: Array<BurnerEdge>
+  pageInfo: PageInfo
+}
+
+export type BurnerEdge = {
+  __typename?: 'BurnerEdge'
+  cursor: Scalars['String']
+  node: Burner
+}
+
+export type BurnerMetaData = {
+  __typename?: 'BurnerMetaData'
+  description: Scalars['String']
+}
+
 export type Habit = Node & {
   __typename?: 'Habit'
   id: Scalars['ID']
@@ -108,6 +132,7 @@ export type ProfileFields = {
 
 export type Query = {
   __typename?: 'Query'
+  burners: BurnerConnection
   habit: Habit
   habits: HabitConnection
   me: AgentProfile

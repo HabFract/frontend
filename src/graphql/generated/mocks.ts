@@ -1,5 +1,9 @@
 import {
   AgentProfile,
+  Burner,
+  BurnerConnection,
+  BurnerEdge,
+  BurnerMetaData,
   Habit,
   HabitConnection,
   HabitCreateParams,
@@ -30,6 +34,62 @@ export const anAgentProfile = (
       overrides && overrides.hasOwnProperty('profile')
         ? overrides.profile!
         : aProfile(),
+  }
+}
+
+export const aBurner = (overrides?: Partial<Burner>): Burner => {
+  return {
+    id:
+      overrides && overrides.hasOwnProperty('id')
+        ? overrides.id!
+        : '385647d3-1721-4788-af94-6b7b642d3a88',
+    metadata:
+      overrides && overrides.hasOwnProperty('metadata')
+        ? overrides.metadata!
+        : aBurnerMetaData(),
+    name:
+      overrides && overrides.hasOwnProperty('name')
+        ? overrides.name!
+        : 'officia',
+  }
+}
+
+export const aBurnerConnection = (
+  overrides?: Partial<BurnerConnection>,
+): BurnerConnection => {
+  return {
+    edges:
+      overrides && overrides.hasOwnProperty('edges')
+        ? overrides.edges!
+        : [aBurnerEdge()],
+    pageInfo:
+      overrides && overrides.hasOwnProperty('pageInfo')
+        ? overrides.pageInfo!
+        : aPageInfo(),
+  }
+}
+
+export const aBurnerEdge = (overrides?: Partial<BurnerEdge>): BurnerEdge => {
+  return {
+    cursor:
+      overrides && overrides.hasOwnProperty('cursor')
+        ? overrides.cursor!
+        : 'rem',
+    node:
+      overrides && overrides.hasOwnProperty('node')
+        ? overrides.node!
+        : aBurner(),
+  }
+}
+
+export const aBurnerMetaData = (
+  overrides?: Partial<BurnerMetaData>,
+): BurnerMetaData => {
+  return {
+    description:
+      overrides && overrides.hasOwnProperty('description')
+        ? overrides.description!
+        : 'quam',
   }
 }
 
@@ -208,6 +268,10 @@ export const aProfileFields = (
 
 export const aQuery = (overrides?: Partial<Query>): Query => {
   return {
+    burners:
+      overrides && overrides.hasOwnProperty('burners')
+        ? overrides.burners!
+        : aBurnerConnection(),
     habit:
       overrides && overrides.hasOwnProperty('habit')
         ? overrides.habit!

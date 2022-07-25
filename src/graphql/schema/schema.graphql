@@ -2,6 +2,7 @@
 type Query {
   habit(id: ID!): Habit!
   habits: HabitConnection!
+  burners: BurnerConnection!
   me: AgentProfile!
 }
 
@@ -52,6 +53,29 @@ input UserProfileCreateParams {
   location: String
   isPublic: String
   avatar: String
+}
+
+# ---- Burner ----- #
+# Burner GQL Types
+type BurnerConnection {
+  edges: [BurnerEdge!]!
+  pageInfo: PageInfo!
+}
+
+type BurnerEdge {
+  cursor: String!
+  node: Burner!
+}
+
+# Burner Types
+type Burner implements Node {
+  id: ID!
+  name: String!
+  metadata: BurnerMetaData
+}
+
+type BurnerMetaData {
+  description: String!
 }
 
 # ---- Habit ----- #
