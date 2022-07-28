@@ -78,7 +78,11 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     <OnboardingTemplate>
       <TitleBar
         titles={onboardingMainTitles[0]}
-        backAction={() => setOnboardingStage('1')}
+        backAction={() =>
+          onboardingStage == '1'
+            ? navigate(`/`)
+            : setOnboardingStage(`${+onboardingStage - 1}`)
+        }
       />
       <DescriptionBox
         stage={+onboardingStage}

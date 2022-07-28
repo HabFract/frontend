@@ -44,7 +44,7 @@ const App: FC = () => {
         <Route path="/" element={<Home />}></Route>
         <Route
           path="/:theme/onboarding"
-          element={false ? <Navigate to="/" replace /> : <Onboarding />}
+          element={false ? <Navigate to="/" replace /> : <Onboarding />} // Maybe profile needs a flag that can be fed here to redirect from oboarding
         ></Route>
       </Routes>
     </BrowserRouter>
