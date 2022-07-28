@@ -29,7 +29,12 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
 
   return {
     me: async (_: any): Promise<AgentProfile> => {
-      return readMe(null)
+      const maybeProfile = await readMe(null)
+      const blankAgent: AgentProfile = {
+        agentPubKey: '',
+        profile: { nickname: '', fields: undefined },
+      }
+      return Promise.resolve(maybeProfile || blankAgent)
     },
 
     // user: async (_, args): Promise<Habit> => {

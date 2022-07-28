@@ -1,5 +1,5 @@
 // #region Global Imports
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 // #endregion Global Imports
 
@@ -13,7 +13,10 @@ import { setTheme } from '@/app/theme/switch'
 import { ThemeValues } from '@/app/theme/definitions/types'
 import { useThemeName } from '@/app/hooks/useTheme'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
-import { useGetBurnersQuery } from '@/graphql/generated'
+import {
+  useGetBurnersLazyQuery,
+  useGetHabitsLazyQuery,
+} from '@/graphql/generated'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -33,30 +36,43 @@ const onboardingStageCopy = [
 export const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
 
-  // const [, setName] = useThemeName() // COMMENT OUT DURING TEST
+  const [, setName] = useThemeName() // COMMENT OUT DURING TEST
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
   const [profile, _] = useMyProfile()
   const navigate = useNavigate()
 
-  const [onboardingStage, setOnboardingStage] = useState(!profile ? '1' : '2')
+  const [onboardingStage, setOnboardingStage] = useState('1')
 
-  const { data: burnersPayload, loading, error } = useGetBurnersQuery()
+  const [getBurners, { data: burnersPayload, loading, error }] =
+    useGetBurnersLazyQuery()
   const [userHasBurner, setUserHasBurner] = useState(false)
 
-  useEffect(() => {
-    setUserHasBurner(
-      !!(burnersPayload?.burners && burnersPayload!.burners.edges.length > 0),
-    )
-    setOnboardingStage(burnersPayload && userHasBurner ? '3' : onboardingStage)
-  }, [userHasBurner, burnersPayload])
+  const [getHabits, { data: habitsPayload, loading: loading1, error: error1 }] =
+    useGetHabitsLazyQuery()
+  const [userHasHabit, setUserHasHabit] = useState(false)
+
+  // useEffect(() => {
+  //   setUserHasBurner(
+  //     !!(burnersPayload?.burners && burnersPayload!.burners.edges.length > 0),
+  //   )
+  //   setOnboardingStage(burnersPayload && userHasBurner ? '3' : onboardingStage)
+  // }, [userHasBurner, burnersPayload])
+
+  // useEffect(() => {
+  //   setUserHasHabit(
+  //     !!(habitsPayload?.habits && habitsPayload!.habits.edges.length > 0),
+  //   )
+  // }, [habitsPayload])
 
   useEffect(() => {
     // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
-    // setName(themeValue)
-    // setTheme(themeValue)
+    setName(themeValue)
+    setTheme(themeValue)
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
-  }, [])
+    if (userHasBurner && userHasHabit) navigate(`${params.theme}/vis`)
+  }, [userHasBurner, userHasHabit])
+
   return (
     <OnboardingTemplate>
       <TitleBar titles={onboardingMainTitles[0]} />
@@ -64,7 +80,15 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
         title={onboardingStageTitles[+onboardingStage - 1]}
         copyText={onboardingStageCopy[+onboardingStage - 1]}
       />
-      {!!profile ? !userHasBurner ? <div></div> : <div></div> : <SignUpForm />}
+      {!!profile ? (
+        !userHasBurner ? (
+          <div>creating/explaining burner</div>
+        ) : (
+          <div>creating/explaining habit</div>
+        )
+      ) : (
+        <SignUpForm onSuccess={() => setOnboardingStage('2')} />
+      )}
     </OnboardingTemplate>
   )
 }

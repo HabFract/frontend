@@ -1,7 +1,9 @@
 import { FormikHelpers } from 'formik/dist/types'
 
 export declare namespace ISignUpForm {
-  export interface IProps {}
+  export interface IProps {
+    onSuccess: () => void
+  }
   export interface SignUpFormValues {
     username: string
     location: string

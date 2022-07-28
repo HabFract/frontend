@@ -13,7 +13,7 @@ export type ClientOptions = APIOptions & AutoConnectionOptions
 const errorLink = onError(
   ({ graphQLErrors, networkError, response, operation }) => {
     console.log('error response :>> ', response)
-    console.log('operation :>> ', operation)
+
     if (graphQLErrors)
       graphQLErrors.forEach(({ message, locations, path }) =>
         console.log(

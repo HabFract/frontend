@@ -1,5 +1,5 @@
 // #region Global Imports
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Field, Form, Formik, FormikProps } from 'formik'
 import * as Yup from 'yup'
 
@@ -29,9 +29,9 @@ import { SwitchInput } from '@/atoms/Input/Switch'
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
 // #endregion Local Imports
 
-export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
-  _props: ISignUpForm.IProps,
-) => {
+export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
+  onSuccess,
+}: ISignUpForm.IProps) => {
   const [addUserMutation, { data, loading, error }] = useAddUserMutation()
   const initialValues: ISignUpForm.SignUpFormValues = {
     username: '',
@@ -40,25 +40,21 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = (
     isPublic: false,
   }
 
+  useEffect(() => {
+    if (data) onSuccess.call(null)
+  }, [data])
+
   // console.log('data, loading, data :>> ', data, loading, data)
   return (
     <OnboardingFormContainer>
-      {loading || data || error ? (
+      {loading || error ? (
         <Spin spinning={loading}>
-          {error ? (
+          {error && (
             <Alert
               message="Alert message title"
               description="Further details about the context of this alert."
               type="error"
             />
-          ) : (
-            data && (
-              <Alert
-                message="User Profile Created!"
-                description="A user was created"
-                type="success"
-              />
-            )
           )}
         </Spin>
       ) : (

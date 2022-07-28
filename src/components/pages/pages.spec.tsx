@@ -112,10 +112,16 @@ describe('Given a registered user', () => {
       })
     })
     describe('Given the registered user has started a Burner and a Habit', () => {
-      // it('Then it  should redirect to the default Visualisation', async () => {
-      //   renderPage(Onboarding, { withUser: true })
-      //   const { findByRole, findAllByRole } = screen
-      // })
+      it('Then it  should redirect to the default Visualisation', async () => {
+        renderPage(Onboarding, {
+          withUser: true,
+          withBurner: true,
+          withHabit: true,
+        })
+        const { findByText } = screen
+
+        expect(await findByText('Visualisations')).totoBeInTheDocument()
+      })
     })
   })
 })

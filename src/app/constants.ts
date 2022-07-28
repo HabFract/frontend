@@ -1,6 +1,6 @@
 import { ThemeValues } from './theme/definitions/types'
 
-export const APP_WS_PORT = '45243'
+export const APP_WS_PORT = '37847'
 export const HAPP_ID = 'habit_tracking'
 export const HAPP_ZOME_NAME_ATOMIC = 'atomic_habits'
 export const HAPP_ZOME_NAME_PROFILES = 'profiles'

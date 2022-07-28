@@ -24,7 +24,7 @@ const App: FC = () => {
   const [_, setProfile] = useMyProfile()
 
   useEffect(() => {
-    if (activeUser) {
+    if (activeUser && activeUser.me.agentPubKey !== '') {
       const {
         agentPubKey,
         profile: { __typename: _, ...rawProfile },
