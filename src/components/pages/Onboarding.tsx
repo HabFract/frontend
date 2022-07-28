@@ -42,7 +42,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   const [profile, _] = useMyProfile()
   const navigate = useNavigate()
 
-  const [onboardingStage, setOnboardingStage] = useState('1')
+  const [onboardingStage, setOnboardingStage] = useState(!!profile ? '2' : '1')
 
   const [getBurners, { data: burnersPayload, loading, error }] =
     useGetBurnersLazyQuery()
@@ -77,17 +77,16 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     <OnboardingTemplate>
       <TitleBar titles={onboardingMainTitles[0]} />
       <PageAction
+        stage={+onboardingStage}
         title={onboardingStageTitles[+onboardingStage - 1]}
         copyText={onboardingStageCopy[+onboardingStage - 1]}
       />
-      {!!profile ? (
-        !userHasBurner ? (
-          <div>creating/explaining burner</div>
-        ) : (
-          <div>creating/explaining habit</div>
-        )
-      ) : (
+      {onboardingStage == '1' ? (
         <SignUpForm onSuccess={() => setOnboardingStage('2')} />
+      ) : !userHasBurner ? (
+        <div>creating/explaining burner</div>
+      ) : (
+        <div>creating/explaining habit</div>
       )}
     </OnboardingTemplate>
   )
