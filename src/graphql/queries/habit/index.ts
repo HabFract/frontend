@@ -3,7 +3,6 @@ import { Habit, HabitConnection } from '@/graphql/generated/index'
 
 import { mapZomeFn } from '../../connection'
 import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
-import { aHabitConnection } from '@/graphql/generated/mocks'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const read = mapZomeFn<ById, Habit>(
@@ -13,7 +12,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     HAPP_ZOME_NAME_ATOMIC,
     'get_habit',
   )
-  const readAll = mapZomeFn<null, Habit[]>(
+  const readAll = mapZomeFn<null, HabitConnection>(
     dnaConfig,
     conductorUri,
     HAPP_ID,
@@ -27,10 +26,9 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     },
 
     habits: async (): Promise<HabitConnection> => {
-      let tester = aHabitConnection()
-      console.log('tester :>> ', tester)
-      return Promise.resolve(tester)
-      // return readAll(null)
+      const maybeHabits = await readAll(null)
+
+      return Promise.resolve(maybeHabits || [])
     },
   }
 }

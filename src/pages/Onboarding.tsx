@@ -36,7 +36,7 @@ const onboardingStageCopy = [
 export const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
 
-  const [, setName] = useThemeName() // COMMENT OUT DURING TEST
+  // const [, setName] = useThemeName() // COMMENT OUT DURING TEST
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
   const [profile, _] = useMyProfile()
@@ -70,9 +70,9 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   }, [userHasHabit, habitsPayload])
 
   useEffect(() => {
-    // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
-    setName(themeValue)
-    setTheme(themeValue)
+    // // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
+    // setName(themeValue)
+    // setTheme(themeValue)
 
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
 
@@ -103,14 +103,17 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
           () => onboardingStageTitles[+onboardingStage - 1],
           [onboardingStage],
         )}
-        copyText={onboardingStageCopy[+onboardingStage - 1]}
+        copyText={useMemo(
+          () => onboardingStageCopy[+onboardingStage - 1],
+          [onboardingStage],
+        )}
       />
       {onboardingStage == '1' ? (
         <SignUpForm onSuccess={() => setOnboardingStage('2')} />
       ) : !userHasBurner ? (
-        <div>creating/explaining burner</div>
+        <p></p> //<SignUpForm onSuccess={() => setOnboardingStage('3')} />
       ) : (
-        <div>creating/explaining habit</div>
+        <p></p> //<SignUpForm onSuccess={() => navigate(`../../${params.theme}/vis`)} />
       )}
     </OnboardingTemplate>
   )

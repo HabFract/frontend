@@ -30,7 +30,10 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
       // const maybeBurners = await readAll(null)
 
       // console.log('maybeBurners :>> ', maybeBurners)
-      return Promise.resolve(aBurnerConnection()) // (maybeBurners || [])
+
+      let tester = aBurnerConnection()
+      console.log('tester :>> ', tester)
+      return Promise.resolve(tester) // (maybeBurners || [])
     },
   }
 }

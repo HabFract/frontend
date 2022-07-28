@@ -18,6 +18,7 @@ import { useGetMeQuery } from './graphql/generated'
 import { NotFound } from './pages/404'
 import { Home } from './pages/Home'
 import { Onboarding } from './pages/Onboarding'
+import { Visualisations } from './pages/Visualisations'
 
 const App: FC = () => {
   const { data: activeUser, loading, error } = useGetMeQuery()
@@ -42,6 +43,7 @@ const App: FC = () => {
       <Routes>
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/:theme/vis" element={<Visualisations />}></Route>
         <Route
           path="/:theme/onboarding"
           element={false ? <Navigate to="/" replace /> : <Onboarding />} // Maybe profile needs a flag that can be fed here to redirect from oboarding
