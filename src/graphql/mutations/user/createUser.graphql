@@ -1,5 +1,5 @@
-mutation addUser($profileFields: UserProfileCreateParams!) {
-  createUser(profile: $profileFields) {
+mutation createUser($profileFields: UserProfileCreateUpdateParams!) {
+  createProfile(profile: $profileFields) {
     agentPubKey
     profile {
       nickname

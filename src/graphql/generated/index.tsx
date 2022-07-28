@@ -94,15 +94,20 @@ export type HabitMetaData = {
 export type Mutation = {
   __typename?: 'Mutation'
   createHabit: HabitCreateResponse
-  createUser: AgentProfile
+  createProfile: AgentProfile
+  updateProfile: AgentProfile
 }
 
 export type MutationCreateHabitArgs = {
   habit?: InputMaybe<HabitCreateParams>
 }
 
-export type MutationCreateUserArgs = {
-  profile?: InputMaybe<UserProfileCreateParams>
+export type MutationCreateProfileArgs = {
+  profile?: InputMaybe<UserProfileCreateUpdateParams>
+}
+
+export type MutationUpdateProfileArgs = {
+  profile?: InputMaybe<UserProfileCreateUpdateParams>
 }
 
 export type Node = {
@@ -161,7 +166,7 @@ export type Todo = {
   status: Scalars['Boolean']
 }
 
-export type UserProfileCreateParams = {
+export type UserProfileCreateUpdateParams = {
   avatar?: InputMaybe<Scalars['String']>
   isPublic?: InputMaybe<Scalars['String']>
   location?: InputMaybe<Scalars['String']>
@@ -184,13 +189,26 @@ export type AddHabitMutation = {
   }
 }
 
-export type AddUserMutationVariables = Exact<{
-  profileFields: UserProfileCreateParams
+export type CreateUserMutationVariables = Exact<{
+  profileFields: UserProfileCreateUpdateParams
 }>
 
-export type AddUserMutation = {
+export type CreateUserMutation = {
   __typename?: 'Mutation'
-  createUser: {
+  createProfile: {
+    __typename?: 'AgentProfile'
+    agentPubKey: string
+    profile: { __typename?: 'Profile'; nickname: string }
+  }
+}
+
+export type UpdateUserMutationVariables = Exact<{
+  profileFields: UserProfileCreateUpdateParams
+}>
+
+export type UpdateUserMutation = {
+  __typename?: 'Mutation'
+  updateProfile: {
     __typename?: 'AgentProfile'
     agentPubKey: string
     profile: { __typename?: 'Profile'; nickname: string }
@@ -323,9 +341,9 @@ export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
   AddHabitMutation,
   AddHabitMutationVariables
 >
-export const AddUserDocument = gql`
-  mutation addUser($profileFields: UserProfileCreateParams!) {
-    createUser(profile: $profileFields) {
+export const CreateUserDocument = gql`
+  mutation createUser($profileFields: UserProfileCreateUpdateParams!) {
+    createProfile(profile: $profileFields) {
       agentPubKey
       profile {
         nickname
@@ -333,45 +351,99 @@ export const AddUserDocument = gql`
     }
   }
 `
-export type AddUserMutationFn = Apollo.MutationFunction<
-  AddUserMutation,
-  AddUserMutationVariables
+export type CreateUserMutationFn = Apollo.MutationFunction<
+  CreateUserMutation,
+  CreateUserMutationVariables
 >
 
 /**
- * __useAddUserMutation__
+ * __useCreateUserMutation__
  *
- * To run a mutation, you first call `useAddUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useAddUserMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateUserMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [addUserMutation, { data, loading, error }] = useAddUserMutation({
+ * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
  *   variables: {
  *      profileFields: // value for 'profileFields'
  *   },
  * });
  */
-export function useAddUserMutation(
+export function useCreateUserMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    AddUserMutation,
-    AddUserMutationVariables
+    CreateUserMutation,
+    CreateUserMutationVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<AddUserMutation, AddUserMutationVariables>(
-    AddUserDocument,
+  return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(
+    CreateUserDocument,
     options,
   )
 }
-export type AddUserMutationHookResult = ReturnType<typeof useAddUserMutation>
-export type AddUserMutationResult = Apollo.MutationResult<AddUserMutation>
-export type AddUserMutationOptions = Apollo.BaseMutationOptions<
-  AddUserMutation,
-  AddUserMutationVariables
+export type CreateUserMutationHookResult = ReturnType<
+  typeof useCreateUserMutation
+>
+export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>
+export type CreateUserMutationOptions = Apollo.BaseMutationOptions<
+  CreateUserMutation,
+  CreateUserMutationVariables
+>
+export const UpdateUserDocument = gql`
+  mutation updateUser($profileFields: UserProfileCreateUpdateParams!) {
+    updateProfile(profile: $profileFields) {
+      agentPubKey
+      profile {
+        nickname
+      }
+    }
+  }
+`
+export type UpdateUserMutationFn = Apollo.MutationFunction<
+  UpdateUserMutation,
+  UpdateUserMutationVariables
+>
+
+/**
+ * __useUpdateUserMutation__
+ *
+ * To run a mutation, you first call `useUpdateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
+ *   variables: {
+ *      profileFields: // value for 'profileFields'
+ *   },
+ * });
+ */
+export function useUpdateUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateUserMutation,
+    UpdateUserMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(
+    UpdateUserDocument,
+    options,
+  )
+}
+export type UpdateUserMutationHookResult = ReturnType<
+  typeof useUpdateUserMutation
+>
+export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>
+export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
+  UpdateUserMutation,
+  UpdateUserMutationVariables
 >
 export const GetBurnersDocument = gql`
   query getBurners {

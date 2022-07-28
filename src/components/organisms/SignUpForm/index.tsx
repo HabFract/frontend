@@ -21,7 +21,7 @@ import {
 } from './styled'
 import { CenteringFlexHorizontal } from '@/pages/styled'
 
-import { useAddUserMutation } from '@/graphql/generated'
+import { useCreateUserMutation } from '@/graphql/generated'
 
 import { P } from '@/atoms/Typo/Copy/P'
 import { TextInput } from '@/atoms/Input/Text'
@@ -33,7 +33,7 @@ import { createRoutesFromChildren } from 'react-router-dom'
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
   onSuccess,
 }: ISignUpForm.IProps) => {
-  const [addUserMutation, { data, loading, error }] = useAddUserMutation()
+  const [addUserMutation, { data, loading, error }] = useCreateUserMutation()
   const initialValues: ISignUpForm.SignUpFormValues = {
     username: '',
     location: '',

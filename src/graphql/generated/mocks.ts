@@ -19,7 +19,7 @@ import {
   ResponsePayload,
   TimeFrame,
   Todo,
-  UserProfileCreateParams,
+  UserProfileCreateUpdateParams,
 } from '../generated/index'
 
 export const anAgentProfile = (
@@ -197,9 +197,13 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
       overrides && overrides.hasOwnProperty('createHabit')
         ? overrides.createHabit!
         : aHabitCreateResponse(),
-    createUser:
-      overrides && overrides.hasOwnProperty('createUser')
-        ? overrides.createUser!
+    createProfile:
+      overrides && overrides.hasOwnProperty('createProfile')
+        ? overrides.createProfile!
+        : anAgentProfile(),
+    updateProfile:
+      overrides && overrides.hasOwnProperty('updateProfile')
+        ? overrides.updateProfile!
         : anAgentProfile(),
   }
 }
@@ -332,25 +336,25 @@ export const aTodo = (overrides?: Partial<Todo>): Todo => {
   }
 }
 
-export const aUserProfileCreateParams = (
-  overrides?: Partial<UserProfileCreateParams>,
-): UserProfileCreateParams => {
+export const aUserProfileCreateUpdateParams = (
+  overrides?: Partial<UserProfileCreateUpdateParams>,
+): UserProfileCreateUpdateParams => {
   return {
     avatar:
       overrides && overrides.hasOwnProperty('avatar')
         ? overrides.avatar!
-        : 'sint',
+        : 'molestias',
     isPublic:
       overrides && overrides.hasOwnProperty('isPublic')
         ? overrides.isPublic!
-        : 'dolorem',
+        : 'quae',
     location:
       overrides && overrides.hasOwnProperty('location')
         ? overrides.location!
-        : 'nesciunt',
+        : 'illo',
     nickname:
       overrides && overrides.hasOwnProperty('nickname')
         ? overrides.nickname!
-        : 'iure',
+        : 'quam',
   }
 }
