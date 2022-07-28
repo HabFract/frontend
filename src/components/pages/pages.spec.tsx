@@ -6,12 +6,7 @@ import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { MyProfileProvider } from '@/contexts/myProfileContext'
 import { ThemeProvider } from '@/contexts/themeContext'
 
-import {
-  aBurnerEdge,
-  aHabitConnection,
-  aHabitEdge,
-  aProfile,
-} from '@/graphql/generated/mocks'
+import { aBurnerEdge, aHabitEdge, aProfile } from '@/graphql/generated/mocks'
 import {
   GetBurnersDocument,
   GetHabitsDocument,
@@ -80,7 +75,7 @@ describe('Given a new user', () => {
       expect(form).toBeInTheDocument()
     })
 
-    it('Then it  should render Onboarding stage 1', async () => {
+    it('Then it should render Onboarding stage 1', async () => {
       renderPage(Onboarding, { withUser: false })
       const { findByText } = screen
       expect(await findByText('Create a profile')).toBeInTheDocument()
@@ -117,10 +112,10 @@ describe('Given a registered user', () => {
       })
     })
     describe('Given the registered user has started a Burner and a Habit', () => {
-      it('Then it  should redirect to the default Visualisation', async () => {
-        renderPage(Onboarding, { withUser: true })
-        const { findByRole, findAllByRole } = screen
-      })
+      // it('Then it  should redirect to the default Visualisation', async () => {
+      //   renderPage(Onboarding, { withUser: true })
+      //   const { findByRole, findAllByRole } = screen
+      // })
     })
   })
 })
