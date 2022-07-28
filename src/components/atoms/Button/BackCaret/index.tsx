@@ -11,10 +11,10 @@ import { Container } from './styled'
 import { IBackCaret } from './types'
 // #endregion Interface Imports
 
-export const BackCaret: React.FC<IBackCaret.IProps> = ({}) => {
+export const BackCaret: React.FC<IBackCaret.IProps> = ({ onClick }) => {
   return (
     <Container>
-      <LeftOutlined />
+      <LeftOutlined onClick={onClick} />
     </Container>
   )
 }

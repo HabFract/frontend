@@ -15,6 +15,7 @@ import { SpaceBetweenFlexHorizontal } from '@/app/styled'
 // #endregion Local Imports
 
 export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({
+  backAction,
   titles,
 }: ITitleBar.IProps) => {
   const [name] = useThemeName()
@@ -22,7 +23,7 @@ export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({
   return (
     <TitleBarContainer>
       <SpaceBetweenFlexHorizontal>
-        <BackCaret />
+        <BackCaret onClick={backAction} />
         <Heading level={2}>{titles[theme]}</Heading>
       </SpaceBetweenFlexHorizontal>
     </TitleBarContainer>

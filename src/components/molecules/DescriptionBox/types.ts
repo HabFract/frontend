@@ -1,5 +1,6 @@
-export declare namespace IPageAction {
+export declare namespace IDescriptionBox {
   export interface IProps {
+    stage: number
     title: string
     copyText: string
   }

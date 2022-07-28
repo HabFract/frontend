@@ -3,16 +3,18 @@ import { Story } from '@storybook/react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { PageAction } from '.'
-import { IPageAction } from './types'
+import { DescriptionBox } from '.'
+import { IDescriptionBox } from './types'
 // #endregion Local Imports
 
 export default {
-  component: PageAction,
-  title: 'Design System/Molecules/PageAction',
+  component: DescriptionBox,
+  title: 'Design System/Molecules/DescriptionBox',
 }
 
-const Template: Story<IPageAction.IProps> = (args) => <PageAction {...args} />
+const Template: Story<IDescriptionBox.IProps> = (args) => (
+  <DescriptionBox {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {

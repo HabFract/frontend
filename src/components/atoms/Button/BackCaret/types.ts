@@ -1,5 +1,7 @@
 export declare namespace IBackCaret {
-  export interface IProps {}
+  export interface IProps {
+    onClick: () => void
+  }
 
   // export interface IState {}
 

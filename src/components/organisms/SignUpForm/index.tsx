@@ -27,6 +27,7 @@ import { P } from '@/atoms/Typo/Copy/P'
 import { TextInput } from '@/atoms/Input/Text'
 import { SwitchInput } from '@/atoms/Input/Switch'
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
+import { createRoutesFromChildren } from 'react-router-dom'
 // #endregion Local Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
@@ -42,12 +43,12 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
 
   useEffect(() => {
     if (data) onSuccess.call(null)
+    // This needs to trigger only if backend returned something meaningful
   }, [data])
 
-  // console.log('data, loading, data :>> ', data, loading, data)
   return (
     <OnboardingFormContainer>
-      {loading || error ? (
+      {error ? (
         <Spin spinning={loading}>
           {error && (
             <Alert
@@ -69,8 +70,6 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
             isPublic: Yup.boolean(),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            console.log('values :>> ', values)
-
             addUserMutation({
               variables: {
                 profileFields: {
@@ -86,8 +85,8 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
           }}
         >
           {({ touched, errors, handleSubmit }: FormikProps<any>) => {
-            // console.log('touched,', touched)
-            // console.log(', errors,', errors)
+            console.log('touched,', touched)
+            console.log(', errors,', errors)
             return (
               <Form onSubmit={handleSubmit} aria-label="sign-up-form">
                 <label htmlFor="username">
@@ -99,6 +98,15 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                     placeholder="Pick a username"
                   />
                 </label>
+                <P
+                  copyText={`${
+                    (touched &&
+                      touched.username &&
+                      errors &&
+                      errors.username) ||
+                    ''
+                  }`}
+                ></P>
                 <label htmlFor="location">
                   Location:
                   <Field

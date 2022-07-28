@@ -1,6 +1,7 @@
 export declare namespace ITitleBar {
   type TitleDict = { default: string; dark: string }
   export interface IProps {
+    backAction: () => void
     titles: TitleDict
   }
 

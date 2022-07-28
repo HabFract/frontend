@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { SignUpForm } from '@/organisms/SignUpForm'
 import { TitleBar } from '@/molecules/TitleBar'
-import { PageAction } from '@/molecules/PageAction'
+import { DescriptionBox } from '@/molecules/DescriptionBox'
 
 import { setTheme } from '@/app/theme/switch'
 import { ThemeValues } from '@/app/theme/definitions/types'
@@ -41,8 +41,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
   const [profile, _] = useMyProfile()
   const navigate = useNavigate()
-
-  const [onboardingStage, setOnboardingStage] = useState(!!profile ? '2' : '1')
+  const [onboardingStage, setOnboardingStage] = useState('1')
 
   const [getBurners, { data: burnersPayload, loading, error }] =
     useGetBurnersLazyQuery()
@@ -52,12 +51,11 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     useGetHabitsLazyQuery()
   const [userHasHabit, setUserHasHabit] = useState(false)
 
-  // useEffect(() => {
-  //   setUserHasBurner(
-  //     !!(burnersPayload?.burners && burnersPayload!.burners.edges.length > 0),
-  //   )
-  //   setOnboardingStage(burnersPayload && userHasBurner ? '3' : onboardingStage)
-  // }, [userHasBurner, burnersPayload])
+  useEffect(() => {
+    if (!burnersPayload) return
+    setUserHasBurner(!!(burnersPayload!.burners.edges.length > 0))
+    setOnboardingStage(userHasBurner ? '3' : onboardingStage)
+  }, [userHasBurner, burnersPayload])
 
   // useEffect(() => {
   //   setUserHasHabit(
@@ -69,14 +67,20 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
     setName(themeValue)
     setTheme(themeValue)
+
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
+
+    if (!!profile) setOnboardingStage('2')
     if (userHasBurner && userHasHabit) navigate(`${params.theme}/vis`)
-  }, [userHasBurner, userHasHabit])
+  }, [profile, userHasBurner, userHasHabit])
 
   return (
     <OnboardingTemplate>
-      <TitleBar titles={onboardingMainTitles[0]} />
-      <PageAction
+      <TitleBar
+        titles={onboardingMainTitles[0]}
+        backAction={() => setOnboardingStage('1')}
+      />
+      <DescriptionBox
         stage={+onboardingStage}
         title={onboardingStageTitles[+onboardingStage - 1]}
         copyText={onboardingStageCopy[+onboardingStage - 1]}

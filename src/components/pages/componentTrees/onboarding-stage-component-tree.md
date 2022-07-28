@@ -2,10 +2,10 @@ Template
   -- titlebar (M)
     <!-- -- backbutton (A) (Ant) -->
     -- title (A)
-  -- pageaction  (M)
-    -- pageactionchip (M)
-    -- pageactioncopy (A)
-    -- pageactionicon (A)
+  -- DescriptionBox  (M)
+    -- DescriptionBoxchip (M)
+    -- DescriptionBoxcopy (A)
+    -- DescriptionBoxicon (A)
   -- signupform (O)
     -- inputgroup
       -- textinputgroup/user (Ant)
