@@ -11,8 +11,8 @@ const config: Config.InitialOptions = {
   // testEnvironment: "node",
 
   testMatch: [
-    '<rootDir>/src/components/**/*.spec.tsx',
-    // "**/?(*.)+(spec|test).+(ts|tsx|js)",
+    // '<rootDir>/src/components/**/*.spec.tsx',
+    '<rootDir>/src/pages/**/*.spec.tsx',
   ],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.ts'],
@@ -47,7 +47,7 @@ const config: Config.InitialOptions = {
       '@/graphql/*': ['<rootDir>/src/graphql/*'],
       '@/molecules/*': ['<rootDir>/src/components/molecules/*'],
       '@/organisms/*': ['<rootDir>/src/components/organisms/*'],
-      '@/pages/*': ['<rootDir>/src/components/pages/*'],
+      '@/pages/*': ['<rootDir>/src/pages/*'],
       '@/templates/*': ['<rootDir>/src/components/templates/*'],
     }),
   },

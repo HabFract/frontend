@@ -16,6 +16,6 @@ generates:
           enumValues: upper-case#upperCase
           typenames: keep
           scalars:
-            Date: # gets translated to casual.date('YYYY-MM-DD')
+            DateTime: # gets translated to casual.date('YYYY-MM-DD')
               generator: date
-              arguments: 'YYYY-MM-DD'
+              arguments: 'YYYY-MM-DDThh:mm:ss+00:00'

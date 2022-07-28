@@ -85,8 +85,8 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
           }}
         >
           {({ touched, errors, handleSubmit }: FormikProps<any>) => {
-            console.log('touched,', touched)
-            console.log(', errors,', errors)
+            // console.log('touched,', touched)
+            // console.log(', errors,', errors)
             return (
               <Form onSubmit={handleSubmit} aria-label="sign-up-form">
                 <label htmlFor="username">

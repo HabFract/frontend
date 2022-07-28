@@ -57,11 +57,17 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     setOnboardingStage(userHasBurner ? '3' : onboardingStage)
   }, [userHasBurner, burnersPayload])
 
-  // useEffect(() => {
-  //   setUserHasHabit(
-  //     !!(habitsPayload?.habits && habitsPayload!.habits.edges.length > 0),
-  //   )
-  // }, [habitsPayload])
+  useEffect(() => {
+    if (!habitsPayload) return
+    console.log('habitsPayload :>> ', habitsPayload)
+    console.log(
+      'userHasHabit  onboardingStage :>> ',
+      !!(habitsPayload!.habits.edges.length > 0),
+      habitsPayload!.habits.edges.length,
+    )
+    setUserHasHabit(!!(habitsPayload!.habits.edges.length > 0))
+    setOnboardingStage(userHasHabit ? '4' : onboardingStage)
+  }, [userHasHabit, habitsPayload])
 
   useEffect(() => {
     // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
@@ -72,9 +78,13 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
     if (!!profile) {
       getBurners()
-      setOnboardingStage('2')
+      !(userHasBurner || userHasHabit) && setOnboardingStage('2')
     }
-    if (userHasBurner && userHasHabit) navigate(`${params.theme}/vis`)
+    if (userHasBurner) {
+      getHabits()
+    }
+
+    if (userHasBurner && userHasHabit) navigate(`../../${params.theme}/vis`)
   }, [profile, userHasBurner, userHasHabit])
 
   return (
@@ -89,7 +99,10 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
       />
       <DescriptionBox
         stage={+onboardingStage}
-        title={onboardingStageTitles[+onboardingStage - 1]}
+        title={useMemo(
+          () => onboardingStageTitles[+onboardingStage - 1],
+          [onboardingStage],
+        )}
         copyText={onboardingStageCopy[+onboardingStage - 1]}
       />
       {onboardingStage == '1' ? (
