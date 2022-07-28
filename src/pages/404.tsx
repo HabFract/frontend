@@ -1,4 +1,4 @@
-import { CenteringFlexHorizontal } from '@/app/styled'
+import { CenteringFlexHorizontal } from '@/pages/styled'
 import { Heading } from '@/atoms/Typo/Title/Heading'
 import React from 'react'
 

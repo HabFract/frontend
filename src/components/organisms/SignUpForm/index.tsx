@@ -19,7 +19,7 @@ import {
   MakePublicContainer,
   OnboardingProgressBarContainer,
 } from './styled'
-import { CenteringFlexHorizontal } from '@/app/styled'
+import { CenteringFlexHorizontal } from '@/pages/styled'
 
 import { useAddUserMutation } from '@/graphql/generated'
 

@@ -11,7 +11,7 @@ import { TitleBarContainer } from './styled'
 import { BackCaret } from '@/atoms/Button/BackCaret'
 import { Heading } from '@/atoms/Typo/Title/Heading'
 import { useThemeName } from '@/app/hooks/useTheme'
-import { SpaceBetweenFlexHorizontal } from '@/app/styled'
+import { SpaceBetweenFlexHorizontal } from '@/pages/styled'
 // #endregion Local Imports
 
 export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({

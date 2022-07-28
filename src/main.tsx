@@ -15,9 +15,9 @@ import { useMyProfile } from '@/hooks/useMyProfile'
 
 import { useGetMeQuery } from './graphql/generated'
 
-import { NotFound } from './components/pages/404'
-import { Home } from './components/pages/Home'
-import { Onboarding } from './components/pages/Onboarding'
+import { NotFound } from './pages/404'
+import { Home } from './pages/Home'
+import { Onboarding } from './pages/Onboarding'
 
 const App: FC = () => {
   const { data: activeUser, loading, error } = useGetMeQuery()

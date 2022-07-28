@@ -47,7 +47,7 @@ const config: Config.InitialOptions = {
       '@/graphql/*': ['<rootDir>/src/graphql/*'],
       '@/molecules/*': ['<rootDir>/src/components/molecules/*'],
       '@/organisms/*': ['<rootDir>/src/components/organisms/*'],
-      '@/pages/*': ['<rootDir>/src/components/organisms/pages/*'],
+      '@/pages/*': ['<rootDir>/src/components/pages/*'],
       '@/templates/*': ['<rootDir>/src/components/templates/*'],
     }),
   },

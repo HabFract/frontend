@@ -70,7 +70,10 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
 
-    if (!!profile) setOnboardingStage('2')
+    if (!!profile) {
+      getBurners()
+      setOnboardingStage('2')
+    }
     if (userHasBurner && userHasHabit) navigate(`${params.theme}/vis`)
   }, [profile, userHasBurner, userHasHabit])
 
