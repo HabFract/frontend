@@ -127,7 +127,7 @@ describe('Given a registered user', () => {
         })
         const { findByText } = screen
 
-        expect(await findByText('Visualisations')).totoBeInTheDocument()
+        expect(await findByText('4')).totoBeInTheDocument()
       })
     })
   })
