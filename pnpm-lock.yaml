@@ -58,6 +58,7 @@ specifiers:
   eslint: 7.32.0
   eslint-plugin-storybook: ^0.5.12
   fecha: ^4.2.3
+  flowbite: ^1.5.2
   formik: 2.2.9
   git-branch-is: ^4.0.0
   graphql: 15.8.0
@@ -117,6 +118,7 @@ dependencies:
   buffer: 6.0.3
   deep-for-each: 3.0.0
   fecha: 4.2.3
+  flowbite: 1.5.2
   formik: 2.2.9_react@18.2.0
   graphql: 15.8.0
   graphql-tag: 2.12.6_graphql@15.8.0
@@ -3109,6 +3111,10 @@ packages:
       source-map: 0.7.4
       webpack: 5.73.0_esbuild@0.14.48
     dev: true
+
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
 
   /@redis/bloom/1.0.2_@redis+client@1.1.0:
     resolution: {integrity: sha512-EBw7Ag1hPgFzdznK2PBblc1kdlj5B5Cw3XwI9/oG7tSn85/HKy3X9xHy/8tm/eNXJYHLXHJL/pkwBpFMVVefkw==}
@@ -9730,6 +9736,13 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
+  /flowbite/1.5.2:
+    resolution: {integrity: sha512-oSKhPkg0bYb4dZG4ypSh++dPrFM3IOSER6HOwJHYRFPW5u9PXL4AQFMQh7Kytgws2xrDQyl/zqefZmymeWt2IA==}
+    dependencies:
+      '@popperjs/core': 2.11.6
+      mini-svg-data-uri: 1.4.4
+    dev: false
+
   /flush-write-stream/1.1.1:
     resolution: {integrity: sha512-3Z4XhFZ3992uIq0XOqb9AreonueSYphE6oYbpt5+3u06JWklbsPkNv3ZKkP9Bz/r+1MWCaMoSQ28P85+1Yc77w==}
     dependencies:
@@ -13177,6 +13190,11 @@ packages:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
     dev: true
+
+  /mini-svg-data-uri/1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
+    dev: false
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}

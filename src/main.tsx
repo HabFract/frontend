@@ -6,6 +6,7 @@ import { Buffer } from 'buffer'
 globalThis.Buffer = Buffer
 
 import './index.scss'
+import 'flowbite'
 
 import { ApolloProvider } from '@apollo/client'
 import connect, { ClientOptions } from '@/graphql/client'
@@ -58,11 +59,11 @@ const root = createRoot(container!)
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <ApolloProvider client={await connect({} as ClientOptions)}>
-        <MyProfileProvider>
-          <App />
-        </MyProfileProvider>
-      </ApolloProvider>
+      {/* <ApolloProvider client={await connect({} as ClientOptions)}> */}
+      <MyProfileProvider>
+        <App />
+      </MyProfileProvider>
+      {/* </ApolloProvider> */}
     </ThemeProvider>
   </React.StrictMode>,
 )

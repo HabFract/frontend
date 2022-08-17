@@ -6,6 +6,7 @@ module.exports = {
     './src/**/*.ts',
   ],
   content: [
+    './node_modules/flowbite/**/*.js',
     './src/**/*.css',
     './src/**/styled.ts',
     './src/**/*.tsx',
@@ -29,5 +30,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
 }

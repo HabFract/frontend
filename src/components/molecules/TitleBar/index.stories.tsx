@@ -11,5 +11,8 @@ export default {
 }
 
 export const Default = () => (
-  <TitleBar titles={{ default: 'A light title', dark: 'A dark title' }} />
+  <TitleBar
+    titles={{ default: 'A light title', dark: 'A dark title' }}
+    backAction={() => {}}
+  />
 )
