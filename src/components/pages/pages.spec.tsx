@@ -1,17 +1,25 @@
-import { Home } from './Home'
-import { Onboarding } from './Onboarding'
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+
+import { BrowserRouter } from 'react-router-dom'
+import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { MyProfileProvider } from '@/contexts/myProfileContext'
 import { ThemeProvider } from '@/contexts/themeContext'
+// import { history, CustomRouter } from '@/app/history'
+
+import { aBurnerEdge, aHabitEdge, aProfile } from '@/graphql/generated/mocks'
 import {
   GetBurnersDocument,
   GetHabitsDocument,
   Profile,
 } from '@/graphql/generated'
-import { aBurnerEdge, aHabitEdge, aProfile } from '@/graphql/generated/mocks'
-import { MockedProvider, MockedResponse } from '@apollo/client/testing'
-import { render, screen } from '@testing-library/react'
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+
+import { Home } from './Home'
+import { Onboarding } from './Onboarding'
+
+// export const RouterProvider = (children: any) => (
+//   <CustomRouter history={history}>{children}</CustomRouter>
+// )
 
 function renderPage(Page: React.FunctionComponent, options: any) {
   const profile: Profile = aProfile()
@@ -43,7 +51,9 @@ function renderPage(Page: React.FunctionComponent, options: any) {
     <MockedProvider mocks={mocks} addTypename={false}>
       <ThemeProvider>
         <MyProfileProvider value={withUser ? profile : undefined}>
+          {/* <RouterProvider> */}
           <Page />
+          {/* </RouterProvider> */}
         </MyProfileProvider>
       </ThemeProvider>
     </MockedProvider>,
@@ -117,7 +127,7 @@ describe('Given a registered user', () => {
         })
         const { findByText } = screen
 
-        expect(await findByText('Visualisations')).totoBeInTheDocument()
+        expect(await findByText('4')).totoBeInTheDocument()
       })
     })
   })

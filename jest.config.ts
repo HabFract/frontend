@@ -5,39 +5,41 @@ import { pathsToModuleNameMapper } from 'ts-jest'
 // const { compilerOptions } = require('./tsconfig.json');
 
 const config: Config.InitialOptions = {
-  verbose: true,
   bail: true,
   clearMocks: true,
+  // coverageProvider: "v8",
+  // testEnvironment: "node",
 
   testMatch: [
-    '<rootDir>/src/components/**/*.spec.tsx',
-    // "**/?(*.)+(spec|test).+(ts|tsx|js)",
+    // '<rootDir>/src/components/**/*.spec.tsx',
+    '<rootDir>/src/**/*.spec.tsx',
   ],
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.js'],
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
-      isolatedModules: true,
-      // tsconfig: {
-      //   allowJs: true,
-      // },
+      tsconfig: {
+        allowJs: true,
+      },
     },
   },
 
   transform: {
-    '^.+\\.(ts|tsx)?$': 'ts-jest',
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    // 'node_modules/(@zougt|uuid)/.+\\.(j|t)s?$': 'ts-jest',
+    '^.+\\.js$': 'babel-jest',
   },
 
   transformIgnorePatterns: [
-    `.*\/node_modules\/(?!(uuid|@zougt|some-loader-utils))`,
-    `.*(?!(@zougt))`,
+    `/node_modules/(?!(uuid|@zougt|some-loader-utils))/`,
+    `.*\/node_modules\/uuid.*`,
   ],
   testPathIgnorePatterns: ['/node_modules/'],
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: {
+    '@zougt/vite-plugin-theme-preprocessor/':
+      '@zougt/vite-plugin-theme-preprocessor/dist/',
+    '@zougt/some-loader-utils/': '@zougt/some-loader-utils/dist/',
     ...pathsToModuleNameMapper({
       '@/app/*': ['<rootDir>/src/app/*'],
       '@/atoms/*': ['<rootDir>/src/components/atoms/*'],
@@ -46,7 +48,7 @@ const config: Config.InitialOptions = {
       '@/graphql/*': ['<rootDir>/src/graphql/*'],
       '@/molecules/*': ['<rootDir>/src/components/molecules/*'],
       '@/organisms/*': ['<rootDir>/src/components/organisms/*'],
-      '@/pages/*': ['<rootDir>/src/components/organisms/pages/*'],
+      '@/pages/*': ['<rootDir>/src/pages/*'],
       '@/templates/*': ['<rootDir>/src/components/templates/*'],
     }),
   },

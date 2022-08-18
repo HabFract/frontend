@@ -3,8 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 // import '@testing-library/jest-dom/extend-expect'
-
-// global.NODE_ENV = process.env.NODE_ENV
+global.NODE_ENV = process.env.NODE_ENV
 // import "@testing-library/jest-dom";
 
 Object.defineProperty(window, 'matchMedia', {
@@ -52,7 +51,7 @@ Object.defineProperty(window, 'matchMedia', {
 // };
 
 // // Pass a holochain conductor mock and return a jest fn that makes a zome call
-// const mockCallZomeFn = (mockHolochainConductor: any) =>
+// const  SyntaxError: Cannot use import statement outside a modulemockCallZomeFn = (mockHolochainConductor: any) =>
 //   jest.fn(() =>
 //     (async () => {
 //       mockHolochainConductor.once(ZOME_CALL_TYPE, testZomePayload);
@@ -63,4 +62,4 @@ Object.defineProperty(window, 'matchMedia', {
 //     })()
 //   );
 
-// export { };
+// export { mockCallZomeFn };
