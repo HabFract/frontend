@@ -1,20 +1,17 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
-
-import { BrowserRouter } from 'react-router-dom'
-import { MockedProvider, MockedResponse } from '@apollo/client/testing'
+import { Home } from './Home'
+import { Onboarding } from './Onboarding'
 import { MyProfileProvider } from '@/contexts/myProfileContext'
 import { ThemeProvider } from '@/contexts/themeContext'
-
-import { aBurnerEdge, aHabitEdge, aProfile } from '@/graphql/generated/mocks'
 import {
   GetBurnersDocument,
   GetHabitsDocument,
   Profile,
 } from '@/graphql/generated'
-
-import { Home } from './Home'
-import { Onboarding } from './Onboarding'
+import { aBurnerEdge, aHabitEdge, aProfile } from '@/graphql/generated/mocks'
+import { MockedProvider, MockedResponse } from '@apollo/client/testing'
+import { render, screen } from '@testing-library/react'
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 
 function renderPage(Page: React.FunctionComponent, options: any) {
   const profile: Profile = aProfile()

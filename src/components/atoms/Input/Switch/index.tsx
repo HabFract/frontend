@@ -1,13 +1,12 @@
 // #region Global Imports
-import React, { useState } from 'react'
-import Switch from 'antd/lib/switch'
 // #endregion Global Imports
-
 // #region Local Imports
 // #endregion Local Imports
-
 // #region Interface Imports
 import { ISwitchInput } from './types'
+import Switch from 'antd/lib/switch'
+import React, { useState } from 'react'
+
 // #endregion Interface Imports
 
 export const SwitchInput: React.FC<ISwitchInput.IProps> = ({

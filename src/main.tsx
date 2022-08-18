@@ -1,23 +1,19 @@
-import React, { FC, useEffect } from 'react'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import { createRoot } from 'react-dom/client'
-
 import { Buffer } from 'buffer'
-globalThis.Buffer = Buffer
-
+import React, { FC, useEffect } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './index.scss'
-
-import { ApolloProvider } from '@apollo/client'
-import connect, { ClientOptions } from '@/graphql/client'
-import { ThemeProvider } from '@/contexts/themeContext'
-import { MyProfileProvider } from '@/contexts/myProfileContext'
-import { useMyProfile } from '@/hooks/useMyProfile'
-
-import { useGetMeQuery } from './graphql/generated'
-
 import { NotFound } from './components/pages/404'
 import { Home } from './components/pages/Home'
 import { Onboarding } from './components/pages/Onboarding'
+import { useGetMeQuery } from './graphql/generated'
+import { MyProfileProvider } from '@/contexts/myProfileContext'
+import { ThemeProvider } from '@/contexts/themeContext'
+import connect, { ClientOptions } from '@/graphql/client'
+import { useMyProfile } from '@/hooks/useMyProfile'
+import { ApolloProvider } from '@apollo/client'
+
+globalThis.Buffer = Buffer
 
 const App: FC = () => {
   const { data: activeUser, loading, error } = useGetMeQuery()

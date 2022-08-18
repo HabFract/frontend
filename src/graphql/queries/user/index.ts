@@ -1,8 +1,7 @@
-import { DNAIdMappings, ById } from '../../types'
-import { AgentProfile } from '@/graphql/generated/index'
-
 import { mapZomeFn } from '../../connection'
+import { DNAIdMappings, ById } from '../../types'
 import { HAPP_ID, HAPP_ZOME_NAME_PROFILES } from '@/app/constants'
+import { AgentProfile } from '@/graphql/generated/index'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const readMe = mapZomeFn<null, AgentProfile>(

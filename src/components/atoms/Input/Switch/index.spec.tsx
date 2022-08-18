@@ -1,5 +1,5 @@
-import React from 'react'
 import { SwitchInput } from '.'
+import React from 'react'
 
 describe('SwitchInput', () => {
   it('should match snapshot', () => {

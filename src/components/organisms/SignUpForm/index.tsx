@@ -1,17 +1,5 @@
 // #region Global Imports
-import React, { useEffect } from 'react'
-import { Field, Form, Formik, FormikProps } from 'formik'
-import * as Yup from 'yup'
-
-import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
-import { Alert, Spin, Upload } from 'antd'
-import Progress from 'antd/lib/progress/progress'
-// #endregion Global Imports
-
-// #region Interface Imports
-import { ISignUpForm } from './types'
 // #endregion Interface Imports
-
 // #region Local Imports
 import {
   OnboardingFormContainer,
@@ -19,15 +7,23 @@ import {
   MakePublicContainer,
   OnboardingProgressBarContainer,
 } from './styled'
+// #endregion Global Imports
+// #region Interface Imports
+import { ISignUpForm } from './types'
 import { CenteringFlexHorizontal } from '@/app/styled'
-
-import { useAddUserMutation } from '@/graphql/generated'
-
-import { P } from '@/atoms/Typo/Copy/P'
-import { TextInput } from '@/atoms/Input/Text'
-import { SwitchInput } from '@/atoms/Input/Switch'
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
+import { SwitchInput } from '@/atoms/Input/Switch'
+import { TextInput } from '@/atoms/Input/Text'
+import { P } from '@/atoms/Typo/Copy/P'
+import { useAddUserMutation } from '@/graphql/generated'
+import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
+import { Alert, Spin, Upload } from 'antd'
+import Progress from 'antd/lib/progress/progress'
+import { Field, Form, Formik, FormikProps } from 'formik'
+import React, { useEffect } from 'react'
 import { createRoutesFromChildren } from 'react-router-dom'
+import * as Yup from 'yup'
+
 // #endregion Local Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({

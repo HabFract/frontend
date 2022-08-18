@@ -1,10 +1,10 @@
 // #region Global Imports
-import React from 'react'
-import { Link } from 'react-router-dom'
 // #endregion Global Imports
-
 // #region Interface Imports
 import { INavList } from './types'
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 // #endregion Interface Imports
 
 // #region Local Imports

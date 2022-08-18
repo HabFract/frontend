@@ -1,22 +1,21 @@
 // #region Global Imports
-import React, { useEffect, useMemo, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-// #endregion Global Imports
-
-// #region Local Imports
-import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
-import { SignUpForm } from '@/organisms/SignUpForm'
-import { TitleBar } from '@/molecules/TitleBar'
-import { DescriptionBox } from '@/molecules/DescriptionBox'
-
-import { setTheme } from '@/app/theme/switch'
-import { ThemeValues } from '@/app/theme/definitions/types'
-import { useThemeName } from '@/app/hooks/useTheme'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
+import { useThemeName } from '@/app/hooks/useTheme'
+import { ThemeValues } from '@/app/theme/definitions/types'
+import { setTheme } from '@/app/theme/switch'
 import {
   useGetBurnersLazyQuery,
   useGetHabitsLazyQuery,
 } from '@/graphql/generated'
+import { DescriptionBox } from '@/molecules/DescriptionBox'
+import { TitleBar } from '@/molecules/TitleBar'
+import { SignUpForm } from '@/organisms/SignUpForm'
+// #endregion Global Imports
+// #region Local Imports
+import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+
 // #endregion Local Imports
 
 interface OnboardingProps {}

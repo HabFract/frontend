@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction, useContext } from 'react'
 import { ThemeNameContext } from '@/contexts/themeContext'
+import React, { Dispatch, SetStateAction, useContext } from 'react'
 
 export const useThemeName = () => {
   const context = useContext(ThemeNameContext)

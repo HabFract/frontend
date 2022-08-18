@@ -1,8 +1,7 @@
-import { DNAIdMappings } from '../../types'
-import { Habit, HabitCreateParams } from '@/graphql/generated/index'
-
 import { mapZomeFn } from '../../connection'
+import { DNAIdMappings } from '../../types'
 import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
+import { Habit, HabitCreateParams } from '@/graphql/generated/index'
 
 export type createArgs = { habit: HabitCreateParams }
 export type createHandler = (root: any, args: createArgs) => Promise<Habit>

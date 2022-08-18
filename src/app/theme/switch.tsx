@@ -1,7 +1,7 @@
+import { useThemeName } from '../hooks/useTheme'
 import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils'
 import Button from 'antd/lib/button'
 import React from 'react'
-import { useThemeName } from '../hooks/useTheme'
 
 export const setTheme = (scopeName) => {
   toggleTheme({

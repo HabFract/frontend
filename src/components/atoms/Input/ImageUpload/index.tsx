@@ -1,21 +1,20 @@
 // #region Global Imports
-import React, { useState } from 'react'
-import Upload from 'antd/lib/upload'
+// #endregion Local Imports
+// #region Interface Imports
+import { IImageUploadInput } from './types'
+// #endregion Global Imports
+// #region Local Imports
+import { getBase64 } from '@/app/utils/resizeExportAsPng'
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons/lib/icons'
 import type {
   RcFile,
   UploadChangeParam,
   UploadFile,
   UploadProps,
 } from 'antd/es/upload/interface'
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons/lib/icons'
-// #endregion Global Imports
+import Upload from 'antd/lib/upload'
+import React, { useState } from 'react'
 
-// #region Local Imports
-import { getBase64 } from '@/app/utils/resizeExportAsPng'
-// #endregion Local Imports
-
-// #region Interface Imports
-import { IImageUploadInput } from './types'
 // #endregion Interface Imports
 
 export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({

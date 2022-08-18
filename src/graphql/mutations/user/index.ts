@@ -1,12 +1,11 @@
+import { mapZomeFn } from '../../connection'
 import { DNAIdMappings } from '../../types'
+import { HAPP_ID, HAPP_ZOME_NAME_PROFILES } from '@/app/constants'
 import {
   AgentProfile,
   Profile,
   UserProfileCreateParams,
 } from '@/graphql/generated/index'
-
-import { mapZomeFn } from '../../connection'
-import { HAPP_ID, HAPP_ZOME_NAME_PROFILES } from '@/app/constants'
 
 export type createArgs = { profile: UserProfileCreateParams }
 export type createHandler = (

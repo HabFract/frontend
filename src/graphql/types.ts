@@ -1,7 +1,6 @@
 /**
  * base types for GraphQL query layer
  */
-
 import { AppSignalCb, CellId } from '@holochain/client'
 
 // Configuration object to allow specifying custom conductor DNA IDs to bind to.

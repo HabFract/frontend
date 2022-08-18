@@ -1,5 +1,5 @@
-import React from 'react'
 import { SignUpForm } from '.'
+import React from 'react'
 
 describe('SignUpForm', () => {
   it('should match snapshot', () => {

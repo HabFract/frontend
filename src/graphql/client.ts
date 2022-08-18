@@ -1,7 +1,7 @@
-import { InMemoryCache, ApolloClient, from } from '@apollo/client'
-import { SchemaLink } from '@apollo/client/link/schema'
-import { onError } from '@apollo/client/link/error'
 import bindSchema, { autoConnect, APIOptions, DNAIdMappings } from '.'
+import { InMemoryCache, ApolloClient, from } from '@apollo/client'
+import { onError } from '@apollo/client/link/error'
+import { SchemaLink } from '@apollo/client/link/schema'
 
 // Same as OpenConnectionOptions but for external client where dnaConfig may be autodetected
 interface AutoConnectionOptions {

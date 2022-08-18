@@ -1,8 +1,6 @@
-import React from 'react'
-
 import { useMyProfile } from '@/hooks/useMyProfile'
-
 import { NavList } from '@/molecules/NavList'
+import React from 'react'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}

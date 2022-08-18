@@ -1,14 +1,13 @@
 // #region Global Imports
-import { Heading } from '@/atoms/Typo/Title/Heading'
-import React from 'react'
 // #endregion Global Imports
-
 // #region Local Imports
 import { Container } from './styled'
 // #endregion Local Imports
-
 // #region Interface Imports
 import { IOnboardingStageChip } from './types'
+import { Heading } from '@/atoms/Typo/Title/Heading'
+import React from 'react'
+
 // #endregion Interface Imports
 
 export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({

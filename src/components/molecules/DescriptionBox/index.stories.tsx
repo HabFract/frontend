@@ -1,10 +1,10 @@
 // #region Global Imports
-import { Story } from '@storybook/react'
 // #endregion Global Imports
-
 // #region Local Imports
 import { DescriptionBox } from '.'
 import { IDescriptionBox } from './types'
+import { Story } from '@storybook/react'
+
 // #endregion Local Imports
 
 export default {
