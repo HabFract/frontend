@@ -7,8 +7,8 @@ import React from 'react'
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
-  // const [profile, _] = useMyProfile()
-  const profile = aProfile()
+  const [profile, _] = useMyProfile()
+  // const profile = aProfile()
   return (
     <nav aria-label="Information portal navigation">
       <NavList newUser={!profile}></NavList>

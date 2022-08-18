@@ -56,11 +56,11 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     setOnboardingStage(userHasBurner ? '3' : onboardingStage)
   }, [userHasBurner, burnersPayload])
 
-  // useEffect(() => {
-  //   setUserHasHabit(
-  //     !!(habitsPayload?.habits && habitsPayload!.habits.edges.length > 0),
-  //   )
-  // }, [habitsPayload])
+  useEffect(() => {
+    setUserHasHabit(
+      !!(habitsPayload?.habits && habitsPayload!.habits.edges.length > 0),
+    )
+  }, [habitsPayload])
 
   useEffect(() => {
     // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
@@ -89,7 +89,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
       ) : !userHasBurner ? (
         <div>creating/explaining burner</div>
       ) : (
-        <div>creating/explaining habit</div>
+        <div>Create a habit</div>
       )}
     </OnboardingTemplate>
   )
