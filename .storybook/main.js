@@ -59,7 +59,7 @@ module.exports = {
     '@storybook/addon-interactions',
     'storybook-addon-styled-component-theme/dist/preset',
     '@storybook/addon-postcss',
-    '@storybook/preset-scss',
+    // '@storybook/preset-scss',
   ],
   framework: '@storybook/react',
   // "core": {

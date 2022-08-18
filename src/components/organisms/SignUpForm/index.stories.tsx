@@ -1,8 +1,9 @@
 // #region Global Imports
+import React from 'react'
 // #endregion Global Imports
+
 // #region Local Imports
 import { SignUpForm } from '.'
-
 // #endregion Local Imports
 
 export default {

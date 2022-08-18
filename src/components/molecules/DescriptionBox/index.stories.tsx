@@ -1,5 +1,7 @@
 // #region Global Imports
+import React from 'react'
 // #endregion Global Imports
+
 // #region Local Imports
 import { DescriptionBox } from '.'
 import { IDescriptionBox } from './types'

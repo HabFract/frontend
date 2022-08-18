@@ -5,10 +5,9 @@ import { pathsToModuleNameMapper } from 'ts-jest'
 // const { compilerOptions } = require('./tsconfig.json');
 
 const config: Config.InitialOptions = {
+  verbose: true,
   bail: true,
   clearMocks: true,
-  // coverageProvider: "v8",
-  // testEnvironment: "node",
 
   testMatch: [
     '<rootDir>/src/components/**/*.spec.tsx',
@@ -19,26 +18,26 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
-      tsconfig: {
-        allowJs: true,
-      },
+      isolatedModules: true,
+      // tsconfig: {
+      //   allowJs: true,
+      // },
     },
   },
 
   transform: {
-    // 'node_modules/(@zougt|uuid)/.+\\.(j|t)s?$': 'ts-jest',
-    '^.+\\.js$': 'babel-jest',
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
 
   transformIgnorePatterns: [
-    `/node_modules/(?!(uuid|@zougt|some-loader-utils))/`,
+    `.*\/node_modules\/(?!(uuid|@zougt|some-loader-utils))`,
+    `.*(?!(@zougt))`,
   ],
   testPathIgnorePatterns: ['/node_modules/'],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: {
-    '@zougt/vite-plugin-theme-preprocessor/':
-      '@zougt/vite-plugin-theme-preprocessor/dist/',
-    '@zougt/some-loader-utils/': '@zougt/some-loader-utils/dist/',
     ...pathsToModuleNameMapper({
       '@/app/*': ['<rootDir>/src/app/*'],
       '@/atoms/*': ['<rootDir>/src/components/atoms/*'],

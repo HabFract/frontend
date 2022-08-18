@@ -1,6 +1,6 @@
 import React from 'react'
-// import { ThemeProvider } from '@/contexts/themeContext'
-// import { StorySwitcher } from '@/app/theme/switch'
+import { ThemeProvider } from '@/contexts/themeContext'
+import { StorySwitcher } from '@/app/theme/switch'
 import '/src/index.scss'
 
 export const parameters = {
@@ -13,16 +13,16 @@ export const parameters = {
   },
 }
 
-// const themeDecorator = (storyFn) =>
-//   React.createElement(
-//     ThemeProvider,
-//     null,
-//     React.createElement(
-//       'div',
-//       { className: 'flex flex-col', style: { gap: '2rem' } },
-//       [React.createElement(StorySwitcher), storyFn()],
-//     ),
-//   )
+const themeDecorator = (storyFn) =>
+  React.createElement(
+    ThemeProvider,
+    null,
+    React.createElement(
+      'div',
+      { className: 'flex flex-col', style: { gap: '2rem' } },
+      [React.createElement(StorySwitcher), storyFn()],
+    ),
+  )
 
-// const decorators = [themeDecorator]
-// export { decorators }
+const decorators = [themeDecorator]
+export { decorators }

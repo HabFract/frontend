@@ -2,9 +2,9 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom/extend-expect'
+// import '@testing-library/jest-dom/extend-expect'
 
-global.NODE_ENV = process.env.NODE_ENV
+// global.NODE_ENV = process.env.NODE_ENV
 // import "@testing-library/jest-dom";
 
 Object.defineProperty(window, 'matchMedia', {
@@ -63,4 +63,4 @@ Object.defineProperty(window, 'matchMedia', {
 //     })()
 //   );
 
-// export { mockCallZomeFn };
+// export { };
