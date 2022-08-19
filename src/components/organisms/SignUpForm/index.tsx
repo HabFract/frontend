@@ -84,7 +84,11 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
             // console.log('touched,', touched)
             // console.log(', errors,', errors)
             return (
-              <Form onSubmit={handleSubmit} aria-label="sign-up-form">
+              <Form
+                onSubmit={handleSubmit}
+                aria-label="sign-up-form"
+                className="m-2 sm:m-4"
+              >
                 <label htmlFor="username">
                   Username:
                   <Field

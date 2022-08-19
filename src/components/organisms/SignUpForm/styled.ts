@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const OnboardingFormContainer = styled.div.attrs({
-  className: 'flex flex-col justify-between w-full bg-blue-200',
+  className: 'flex flex-col justify-between w-full',
 })``
 // background-color: ${({ theme }) => theme.colors.tertiaryMain};
 
