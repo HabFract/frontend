@@ -91,7 +91,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
             : setOnboardingStage(`${+onboardingStage - 1}`)
         }
       />
-      <Template illustration={1}>
+      <Template illustration={1} sidebar={false}>
         <OnboardingTemplate>
           <DescriptionBox
             stage={+onboardingStage}

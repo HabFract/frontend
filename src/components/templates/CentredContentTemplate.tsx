@@ -18,6 +18,7 @@ import { useThemeName } from '@/app/hooks/useTheme'
 // #endregion Local Imports
 interface TemplateProps {
   illustration: number
+  sidebar: boolean
   children: React.ReactNode
 }
 
@@ -37,17 +38,27 @@ function getIllustration(num: number, light: boolean) {
 export const Template: React.FC<TemplateProps> = ({
   illustration,
   children,
+  sidebar,
 }) => {
   const [name] = useThemeName()
-  console.log('!!(name:>> ', name)
   const url = getIllustration(
     illustration,
-    !!(name as unknown as string).includes('dark'),
+    !(name as unknown as string).includes('dark'),
   )
 
   return (
-    <Container>
-      <Content>{children}</Content>
+    <Container sidebar={sidebar}>
+      {sidebar && (
+        <nav>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+          </ul>
+        </nav>
+      )}
+      <Content sidebar={sidebar}>{children}</Content>
       <Illustration>
         {!!url && <img src={url} alt="illustration" />}
       </Illustration>

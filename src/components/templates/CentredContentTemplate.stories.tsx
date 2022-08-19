@@ -19,7 +19,9 @@ export default {
 }
 
 export const Default = (args) => (
-  <Template illustration={args.illustration}> </Template>
+  <Template illustration={args.illustration} sidebar={false}>
+    {' '}
+  </Template>
 )
 
 export const Scene1 = {

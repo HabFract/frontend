@@ -3,14 +3,14 @@ import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Container } from '@/app/styled/Onboarding'
+import { Container } from '@/app/styled/InfoPortal'
 // #endregion Local Imports
 
-interface OnboardingTemplateProps {
+interface InfoPortalTemplateProps {
   children: React.ReactNode
 }
 
-export const OnboardingTemplate: React.FC<OnboardingTemplateProps> = ({
+export const InfoPortalTemplate: React.FC<InfoPortalTemplateProps> = ({
   children,
 }) => {
   return <Container>{children}</Container>

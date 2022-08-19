@@ -14,6 +14,7 @@ import connect, { ClientOptions } from '@/graphql/client'
 import { useMyProfile } from '@/hooks/useMyProfile'
 import { ApolloProvider } from '@apollo/client'
 import { Visualisations } from './pages/Visualisations'
+import { InfoPortal } from './pages/InfoPortal'
 
 globalThis.Buffer = Buffer
 
@@ -39,8 +40,11 @@ const App: FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<NotFound />}></Route>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/info/what" element={<InfoPortal />}></Route>
+        <Route path="/info/why" element={<InfoPortal />}></Route>
+        <Route path="/info/how" element={<InfoPortal />}></Route>
         <Route path="/:theme/vis" element={<Visualisations />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route
           path="/:theme/onboarding"
           element={false ? <Navigate to="/" replace /> : <Onboarding />} // Maybe profile needs a flag that can be fed here to redirect from oboarding
