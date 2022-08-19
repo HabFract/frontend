@@ -1,14 +1,14 @@
 @use 'sass:meta';
-html:not(.theme-dark) {
-  @include meta.load-css('node_modules/antd/dist/antd.min.css', $with: null);
-}
+// html:not(.theme-dark) {
+//   @include meta.load-css('node_modules/antd/dist/antd.min.css', $with: null);
+// }
 
-html.dark {
-  @include meta.load-css(
-    'node_modules/antd/dist/antd.dark.min.css',
-    $with: null
-  );
-}
+// html.dark {
+//   @include meta.load-css(
+//     'node_modules/antd/dist/antd.dark.min.css',
+//     $with: null
+//   );
+// }
 
 html,
 body,

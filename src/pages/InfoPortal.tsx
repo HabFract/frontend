@@ -1,29 +1,29 @@
 // #region Global Imports
 import React, { useEffect, useMemo, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 // #endregion Global Imports
 
 // #region Local Imports
 import { Template } from '@/templates/CentredContentTemplate'
 import { InfoPortalTemplate } from '@/templates/InfoPortalTemplate'
+import { TitleBar } from '@/molecules/TitleBar'
 // #endregion Local Imports
 
 interface InfoPortalProps {}
 
-// const InfoPortalMainTitles = [
-//   { default: 'Make a positive habit', dark: 'Break a negative habit' },
-// ]
-// const InfoPortalStageTitles = [
-//   'Create a profile',
-//   'Start a Burner',
-//   'Create a habit',
-// ]
-// const InfoPortalStageCopy = [
-//   'It looks like you are new here. Fill in some details to join the network',
-// ]
+const InfoPortalMainTitles = [
+  { default: 'Make a positive habit', dark: 'Break a negative habit' },
+]
 
 export const InfoPortal: React.FC<InfoPortalProps> = () => {
+  const navigate = useNavigate()
+
   return (
     <>
+      <TitleBar
+        titles={InfoPortalMainTitles[0]}
+        backAction={() => navigate(`/`)}
+      />
       <Template illustration={1} sidebar={true}>
         <InfoPortalTemplate>
           <div className="flex flex-col mt-2">
