@@ -1,22 +1,22 @@
 // #region Global Imports
-import React, { useEffect, useMemo, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-// #endregion Global Imports
-
-// #region Local Imports
-import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
-import { SignUpForm } from '@/organisms/SignUpForm'
-import { TitleBar } from '@/molecules/TitleBar'
-import { DescriptionBox } from '@/molecules/DescriptionBox'
-
-import { setTheme } from '@/app/theme/switch'
-import { ThemeValues } from '@/app/theme/definitions/types'
-import { useThemeName } from '@/app/hooks/useTheme'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
+import { useThemeName } from '@/app/hooks/useTheme'
+import { ThemeValues } from '@/app/theme/definitions/types'
+import { setTheme } from '@/app/theme/switch'
 import {
   useGetBurnersLazyQuery,
   useGetHabitsLazyQuery,
 } from '@/graphql/generated'
+import { DescriptionBox } from '@/molecules/DescriptionBox'
+import { TitleBar } from '@/molecules/TitleBar'
+import { SignUpForm } from '@/organisms/SignUpForm'
+// #endregion Global Imports
+// #region Local Imports
+import { Template } from '@/templates/CentredContentTemplate'
+import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -58,16 +58,10 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   }, [userHasBurner, burnersPayload])
 
   useEffect(() => {
-    if (!habitsPayload) return
-    console.log('habitsPayload :>> ', habitsPayload)
-    console.log(
-      'userHasHabit  onboardingStage :>> ',
-      !!(habitsPayload!.habits.edges.length > 0),
-      habitsPayload!.habits.edges.length,
+    setUserHasHabit(
+      !!(habitsPayload?.habits && habitsPayload!.habits.edges.length > 0),
     )
-    setUserHasHabit(!!(habitsPayload!.habits.edges.length > 0))
-    setOnboardingStage(userHasHabit ? '4' : onboardingStage)
-  }, [userHasHabit, habitsPayload])
+  }, [habitsPayload])
 
   useEffect(() => {
     // // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
@@ -88,7 +82,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   }, [profile, userHasBurner, userHasHabit])
 
   return (
-    <OnboardingTemplate>
+    <>
       <TitleBar
         titles={onboardingMainTitles[0]}
         backAction={() =>
@@ -97,24 +91,22 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
             : setOnboardingStage(`${+onboardingStage - 1}`)
         }
       />
-      <DescriptionBox
-        stage={+onboardingStage}
-        title={useMemo(
-          () => onboardingStageTitles[+onboardingStage - 1],
-          [onboardingStage],
-        )}
-        copyText={useMemo(
-          () => onboardingStageCopy[+onboardingStage - 1],
-          [onboardingStage],
-        )}
-      />
-      {onboardingStage == '1' ? (
-        <SignUpForm onSuccess={() => setOnboardingStage('2')} />
-      ) : !userHasBurner ? (
-        <p></p> //<SignUpForm onSuccess={() => setOnboardingStage('3')} />
-      ) : (
-        <p></p> //<SignUpForm onSuccess={() => navigate(`../../${params.theme}/vis`)} />
-      )}
-    </OnboardingTemplate>
+      <Template illustration={1}>
+        <OnboardingTemplate>
+          <DescriptionBox
+            stage={+onboardingStage}
+            title={onboardingStageTitles[+onboardingStage - 1]}
+            copyText={onboardingStageCopy[+onboardingStage - 1]}
+          />
+          {onboardingStage == '1' ? (
+            <SignUpForm onSuccess={() => setOnboardingStage('2')} />
+          ) : !userHasBurner ? (
+            <div>creating/explaining burner</div>
+          ) : (
+            <div>Create a habit</div>
+          )}
+        </OnboardingTemplate>
+      </Template>
+    </>
   )
 }

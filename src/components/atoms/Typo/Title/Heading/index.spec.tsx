@@ -1,5 +1,5 @@
-import React from 'react'
 import { Heading } from '.'
+import React from 'react'
 
 describe('Heading', () => {
   it('should match snapshot', () => {

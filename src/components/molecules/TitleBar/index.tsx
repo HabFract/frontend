@@ -1,17 +1,16 @@
 // #region Global Imports
-import React from 'react'
-// #endregion Global Imports
-
-// #region Interface Imports
-import { ITitleBar } from './types'
 // #endregion Interface Imports
-
 // #region Local Imports
 import { TitleBarContainer } from './styled'
+// #endregion Global Imports
+// #region Interface Imports
+import { ITitleBar } from './types'
+import { useThemeName } from '@/app/hooks/useTheme'
+import { SpaceBetweenFlexHorizontal } from '@/app/styled'
 import { BackCaret } from '@/atoms/Button/BackCaret'
 import { Heading } from '@/atoms/Typo/Title/Heading'
-import { useThemeName } from '@/app/hooks/useTheme'
-import { SpaceBetweenFlexHorizontal } from '@/pages/styled'
+import React from 'react'
+
 // #endregion Local Imports
 
 export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { MyProfileProvider } from '@/contexts/myProfileContext'
 import { ThemeProvider } from '@/contexts/themeContext'
-import { history, CustomRouter } from '@/app/history'
+// import { history, CustomRouter } from '@/app/history'
 
 import { aBurnerEdge, aHabitEdge, aProfile } from '@/graphql/generated/mocks'
 import {
@@ -17,9 +17,9 @@ import {
 import { Home } from './Home'
 import { Onboarding } from './Onboarding'
 
-export const RouterProvider = (children: any) => (
-  <CustomRouter history={history}>{children}</CustomRouter>
-)
+// export const RouterProvider = (children: any) => (
+//   <CustomRouter history={history}>{children}</CustomRouter>
+// )
 
 function renderPage(Page: React.FunctionComponent, options: any) {
   const profile: Profile = aProfile()

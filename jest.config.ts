@@ -11,11 +11,11 @@ const config: Config.InitialOptions = {
   // testEnvironment: "node",
 
   testMatch: [
-    // '<rootDir>/src/components/**/*.spec.tsx',
-    '<rootDir>/src/pages/**/*.spec.tsx',
+    '<rootDir>/src/components/**/*.spec.tsx',
+    // "**/?(*.)+(spec|test).+(ts|tsx|js)",
   ],
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.js'],
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
@@ -32,6 +32,7 @@ const config: Config.InitialOptions = {
 
   transformIgnorePatterns: [
     `/node_modules/(?!(uuid|@zougt|some-loader-utils))/`,
+    `.*\/node_modules\/uuid.*`,
   ],
   testPathIgnorePatterns: ['/node_modules/'],
   moduleDirectories: ['node_modules', 'src'],
@@ -47,7 +48,7 @@ const config: Config.InitialOptions = {
       '@/graphql/*': ['<rootDir>/src/graphql/*'],
       '@/molecules/*': ['<rootDir>/src/components/molecules/*'],
       '@/organisms/*': ['<rootDir>/src/components/organisms/*'],
-      '@/pages/*': ['<rootDir>/src/pages/*'],
+      '@/pages/*': ['<rootDir>/src/components/organisms/pages/*'],
       '@/templates/*': ['<rootDir>/src/components/templates/*'],
     }),
   },

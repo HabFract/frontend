@@ -1,5 +1,5 @@
-import React from 'react'
 import { TextInput } from '.'
+import React from 'react'
 
 describe('TextInput', () => {
   it('should match snapshot', () => {

@@ -1,9 +1,9 @@
 // #region Global Imports
-import React from 'react'
 // #endregion Global Imports
-
 // #region Local Imports
-import { Container } from '@/pages/styled/Onboarding'
+import { Container } from '@/app/styled/Onboarding'
+import React from 'react'
+
 // #endregion Local Imports
 
 interface OnboardingTemplateProps {

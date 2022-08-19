@@ -1,5 +1,5 @@
-import React from 'react'
 import { ImageUploadInput } from '.'
+import React from 'react'
 
 describe('ImageUploadInput', () => {
   it('should match snapshot', () => {

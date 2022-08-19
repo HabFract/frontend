@@ -1,5 +1,5 @@
-import React from 'react'
 import { OnboardingStageChip } from '.'
+import React from 'react'
 
 describe('OnboardingStageChip', () => {
   it('should match snapshot', () => {

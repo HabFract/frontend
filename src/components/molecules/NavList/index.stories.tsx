@@ -1,10 +1,12 @@
 // #region Global Imports
-import { Story } from '@storybook/react'
+import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
 import { NavList } from '.'
 import { INavList } from './types'
+import { Story } from '@storybook/react'
+
 // #endregion Local Imports
 
 export default {

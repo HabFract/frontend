@@ -10,6 +10,7 @@ module.exports = {
     './src/**/styled.ts',
     './src/**/*.tsx',
     './src/**/*.js',
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
   ],
   darkMode: 'class',
   mode: 'jit',
@@ -29,5 +30,6 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+
+  plugins: [require('flowbite/plugin')],
 }

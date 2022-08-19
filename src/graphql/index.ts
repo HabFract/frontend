@@ -5,18 +5,16 @@
  * bindings between to the Holochain backend.
  *
  */
-import { makeExecutableSchema } from '@graphql-tools/schema'
-
-import { APIOptions, ResolverOptions, DNAIdMappings, CellId } from './types.js'
-import generateResolvers from './resolvers'
 import {
   mapZomeFn,
   autoConnect,
   openConnection,
   sniffHolochainAppCells,
 } from './connection.js'
-
+import generateResolvers from './resolvers'
 import typeDefs from './schema/schema.graphql'
+import { APIOptions, ResolverOptions, DNAIdMappings, CellId } from './types.js'
+import { makeExecutableSchema } from '@graphql-tools/schema'
 
 export {
   // direct access to resolver callbacks generator for apps that need to bind to other GraphQL schemas

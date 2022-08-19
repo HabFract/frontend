@@ -1,15 +1,14 @@
 // #region Global Imports
-import { UserOutlined } from '@ant-design/icons/lib/icons'
-import Avatar from 'antd/lib/avatar'
-import React from 'react'
 // #endregion Global Imports
-
 // #region Local Imports
 import { Container } from './styled'
 // #endregion Local Imports
-
 // #region Interface Imports
 import { IUserOutline } from './types'
+import { UserOutlined } from '@ant-design/icons/lib/icons'
+import Avatar from 'antd/lib/avatar'
+import React from 'react'
+
 // #endregion Interface Imports
 
 export const UserOutline: React.FC<IUserOutline.IProps> = ({ rounded }) => {

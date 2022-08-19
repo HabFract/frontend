@@ -1,10 +1,10 @@
 // #region Global Imports
-import React from 'react'
-import { Link } from 'react-router-dom'
 // #endregion Global Imports
-
 // #region Interface Imports
 import { INavList } from './types'
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 // #endregion Interface Imports
 
 // #region Local Imports
@@ -23,18 +23,18 @@ export const NavList: React.FunctionComponent<INavList.IProps> = ({
         </li>
       )}
       <li role="none">
-        <Link to={'/learn-atomic'} role="menu-item">
-          What are Atomic Habits
+        <Link to={'/info/what'} role="menu-item">
+          What
         </Link>
       </li>
       <li role="none">
-        <Link to={'/habit-templates'} role="menu-item">
-          Habit Templates
+        <Link to={'/info/how'} role="menu-item">
+          Why
         </Link>
       </li>
       <li role="none">
-        <Link to={'/about-us'} role="menu-item">
-          About Us
+        <Link to={'/info/why'} role="menu-item">
+          How
         </Link>
       </li>
     </ul>

@@ -54,7 +54,7 @@ export default defineConfig({
             // varsContent:`@primary-color:${defaultPrimaryColor};`
           },
           {
-            scopeName: 'theme-dark',
+            scopeName: 'dark',
             path: path.resolve('src/app/theme/antd-theme-vars-dark.scss'),
           },
         ],

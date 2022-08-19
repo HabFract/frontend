@@ -1,8 +1,7 @@
-import { DNAIdMappings, ById } from '../../types'
-import { Habit, HabitConnection } from '@/graphql/generated/index'
-
 import { mapZomeFn } from '../../connection'
+import { DNAIdMappings, ById } from '../../types'
 import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
+import { Habit } from '@/graphql/generated/index'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const read = mapZomeFn<ById, Habit>(
