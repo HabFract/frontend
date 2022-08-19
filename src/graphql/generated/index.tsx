@@ -189,11 +189,11 @@ export type AddHabitMutation = {
   }
 }
 
-export type CreateUserMutationVariables = Exact<{
+export type AddUserMutationVariables = Exact<{
   profileFields: UserProfileCreateUpdateParams
 }>
 
-export type CreateUserMutation = {
+export type AddUserMutation = {
   __typename?: 'Mutation'
   createProfile: {
     __typename?: 'AgentProfile'
@@ -341,8 +341,8 @@ export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
   AddHabitMutation,
   AddHabitMutationVariables
 >
-export const CreateUserDocument = gql`
-  mutation createUser($profileFields: UserProfileCreateUpdateParams!) {
+export const AddUserDocument = gql`
+  mutation addUser($profileFields: UserProfileCreateUpdateParams!) {
     createProfile(profile: $profileFields) {
       agentPubKey
       profile {
@@ -351,47 +351,45 @@ export const CreateUserDocument = gql`
     }
   }
 `
-export type CreateUserMutationFn = Apollo.MutationFunction<
-  CreateUserMutation,
-  CreateUserMutationVariables
+export type AddUserMutationFn = Apollo.MutationFunction<
+  AddUserMutation,
+  AddUserMutationVariables
 >
 
 /**
- * __useCreateUserMutation__
+ * __useAddUserMutation__
  *
- * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateUserMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useAddUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddUserMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
+ * const [addUserMutation, { data, loading, error }] = useAddUserMutation({
  *   variables: {
  *      profileFields: // value for 'profileFields'
  *   },
  * });
  */
-export function useCreateUserMutation(
+export function useAddUserMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    CreateUserMutation,
-    CreateUserMutationVariables
+    AddUserMutation,
+    AddUserMutationVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(
-    CreateUserDocument,
+  return Apollo.useMutation<AddUserMutation, AddUserMutationVariables>(
+    AddUserDocument,
     options,
   )
 }
-export type CreateUserMutationHookResult = ReturnType<
-  typeof useCreateUserMutation
->
-export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>
-export type CreateUserMutationOptions = Apollo.BaseMutationOptions<
-  CreateUserMutation,
-  CreateUserMutationVariables
+export type AddUserMutationHookResult = ReturnType<typeof useAddUserMutation>
+export type AddUserMutationResult = Apollo.MutationResult<AddUserMutation>
+export type AddUserMutationOptions = Apollo.BaseMutationOptions<
+  AddUserMutation,
+  AddUserMutationVariables
 >
 export const UpdateUserDocument = gql`
   mutation updateUser($profileFields: UserProfileCreateUpdateParams!) {

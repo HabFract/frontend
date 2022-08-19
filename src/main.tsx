@@ -13,6 +13,7 @@ import { ThemeProvider } from '@/contexts/themeContext'
 import connect, { ClientOptions } from '@/graphql/client'
 import { useMyProfile } from '@/hooks/useMyProfile'
 import { ApolloProvider } from '@apollo/client'
+import { Visualisations } from './pages/Visualisations'
 
 globalThis.Buffer = Buffer
 
