@@ -7,7 +7,8 @@ import {
   UserProfileCreateUpdateParams,
 } from '@/graphql/generated/index'
 
-export type createArgs = { profile: UserProfileCreateParams }
+export type createArgs = { profile: UserProfileCreateUpdateParams }
+export type updateArgs = { profile: UserProfileCreateUpdateParams }
 export type createHandler = (
   root: any,
   args: createArgs,

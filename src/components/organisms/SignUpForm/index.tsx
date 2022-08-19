@@ -29,7 +29,7 @@ import * as Yup from 'yup'
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
   onSuccess,
 }: ISignUpForm.IProps) => {
-  const [addUserMutation, { data, loading, error }] = useCreateUserMutation()
+  const [addUserMutation, { data, loading, error }] = useAddUserMutation()
   const initialValues: ISignUpForm.SignUpFormValues = {
     username: '',
     location: '',
