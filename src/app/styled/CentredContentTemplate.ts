@@ -14,7 +14,7 @@ export const Content = styled.main.attrs({
 `
 
 export const Illustration = styled.div.attrs({
-  className: 'absolute left-0 bg-blue-50 pb-4 pl-32 z-10',
+  className: 'absolute left-0 bg-tranparent pb-4 pl-32 z-10',
 })`
   width: 428px;
   height: auto;

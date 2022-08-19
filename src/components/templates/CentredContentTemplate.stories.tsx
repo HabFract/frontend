@@ -10,25 +10,32 @@ import { Template } from './CentredContentTemplate'
 export default {
   component: Template,
   title: 'Design System/Organisms/CentredContentTemplate',
+  argTypes: {
+    illustration: {
+      options: [1, 2, 3],
+      control: { type: 'radio' },
+    },
+  },
 }
 
 export const Default = (args) => (
   <Template illustration={args.illustration}> </Template>
 )
 
-export const Scene1 = () => Template.bind({})
-Scene1.args = {
-  illustration: 1,
+export const Scene1 = {
+  args: {
+    illustration: 1,
+  },
 }
 
-export const Scene2 = () => Template.bind({})
-
-Scene2.arg = {
-  illustration: 2,
+export const Scene2 = {
+  args: {
+    illustration: 2,
+  },
 }
 
-export const Scene3 = () => Template.bind({})
-
-Scene3.arg = {
-  illustration: 3,
+export const Scene3 = {
+  args: {
+    illustration: 3,
+  },
 }
