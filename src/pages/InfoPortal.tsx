@@ -7,6 +7,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Template } from '@/templates/CentredContentTemplate'
 import { InfoPortalTemplate } from '@/templates/InfoPortalTemplate'
 import { TitleBar } from '@/molecules/TitleBar'
+import { ListGroup } from '@/organisms/ListGroup'
+import { ListGroupItem } from '@/molecules/ListGroupItem'
 // #endregion Local Imports
 
 interface InfoPortalProps {}
@@ -24,7 +26,29 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
         titles={InfoPortalMainTitles[0]}
         backAction={() => navigate(`/`)}
       />
-      <Template illustration={1} sidebar={true}>
+      <Template
+        illustration={1}
+        sidebar={true}
+        sidebarComponent={
+          <ListGroup>
+            <ListGroupItem
+              iconUrl={''}
+              primaryText="What"
+              secondaryText="Learn about the functions of HabitFract"
+            />
+            <ListGroupItem
+              iconUrl={''}
+              primaryText="Why"
+              secondaryText="Learn about our reasoning and motivation"
+            />
+            <ListGroupItem
+              iconUrl={''}
+              primaryText="How"
+              secondaryText="Learn about the technology that powers us"
+            />
+          </ListGroup>
+        }
+      >
         <InfoPortalTemplate>
           <div className="flex flex-col mt-2">
             <div className="overflow-x-auto">
