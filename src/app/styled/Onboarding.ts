@@ -4,9 +4,9 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const Container = styled.div.attrs({
-  className: 'h-full p-4 pb-16 mt-12 overflow-auto',
+  className: 'h-full sm:p-2 md:p-4 pb-16 md:mt-0 overflow-auto',
 })`
-  background-color: ${({ theme }) => theme.colors.tertiary2};
+  // background-color: ${({ theme }) => theme.colors.tertiary2};
 `
 
 Container.displayName = 'OnboardingContainer'

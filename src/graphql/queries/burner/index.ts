@@ -1,7 +1,8 @@
 import { mapZomeFn } from '../../connection'
 import { DNAIdMappings, ById } from '../../types'
 import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
-import { Habit } from '@/graphql/generated/index'
+import { BurnerConnection } from '@/graphql/generated/index'
+import { aBurnerConnection } from '@/graphql/generated/mocks'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   // const read = mapZomeFn<ById, Burner>(
@@ -11,7 +12,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   //   HAPP_ZOME_NAME_ATOMIC,
   //   'get_Burner',
   // )
-  const readAll = mapZomeFn<null, Burner[]>(
+  const readAll = mapZomeFn<null, BurnerConnection>(
     dnaConfig,
     conductorUri,
     HAPP_ID,
