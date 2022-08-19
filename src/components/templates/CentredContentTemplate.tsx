@@ -13,6 +13,7 @@ import {
   Container,
   Content,
   Illustration,
+  Sidebar,
 } from '@/app/styled/CentredContentTemplate'
 import { useThemeName } from '@/app/hooks/useTheme'
 // #endregion Local Imports
@@ -49,14 +50,14 @@ export const Template: React.FC<TemplateProps> = ({
   return (
     <Container sidebar={sidebar}>
       {sidebar && (
-        <nav>
+        <Sidebar>
           <ul>
             <li>1</li>
             <li>2</li>
             <li>3</li>
             <li>4</li>
           </ul>
-        </nav>
+        </Sidebar>
       )}
       <Content sidebar={sidebar}>{children}</Content>
       <Illustration>

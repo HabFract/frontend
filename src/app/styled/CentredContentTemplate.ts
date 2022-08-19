@@ -40,9 +40,25 @@ Content.defaultProps = {
   sidebar: false,
 }
 
+export const Sidebar = styled.section.attrs({})`
+  left: -25vw;
+  position: relative;
+  top: 11rem;
+  max-width: 20vw;
+
+  @media only screen and (max-width: 768px) {
+    max-width: calc(32vw - 4rem);
+    top: 8rem;
+  }
+`
+
 export const Illustration = styled.div.attrs({
   className: 'absolute md:left-4 bg-tranparent pb-12 md:pb-4 md:pl-32 z-10',
 })`
+  width: 428px;
+  height: auto;
+  bottom: 16px;
+
   @media only screen and (max-width: 768px) {
     width: 300px;
     bottom: 8rem;
@@ -51,12 +67,9 @@ export const Illustration = styled.div.attrs({
   @media only screen and (max-height: 960px) {
     opacity: 0.25;
   }
-
-  width: 428px;
-  height: auto;
-  bottom: 16px;
 `
 
 Container.displayName = 'ContentContainer'
+Sidebar.displayName = 'ContentSidebar'
 Content.displayName = 'Main'
 Illustration.displayName = 'Illustration'
