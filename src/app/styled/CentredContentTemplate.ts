@@ -8,7 +8,7 @@ export const Container = styled.section.attrs({
 })``
 
 export const Content = styled.main.attrs({
-  className: 'z-20 p-0 lg:p-12 md:mx-12 lg:mx-auto relative md:top-12',
+  className: 'z-20 p-0 md:mx-12 lg:mx-auto relative md:top-12',
 })`
   height: 100%;
   max-width: 1024px;

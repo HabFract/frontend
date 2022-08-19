@@ -138,7 +138,7 @@ export const aHabitCreateParams = (
     endTime:
       overrides && overrides.hasOwnProperty('endTime')
         ? overrides.endTime!
-        : '2015-07-31T01:12:05+00:00',
+        : 'voluptatibus',
     isAtomic:
       overrides && overrides.hasOwnProperty('isAtomic')
         ? overrides.isAtomic!
@@ -148,7 +148,7 @@ export const aHabitCreateParams = (
     startTime:
       overrides && overrides.hasOwnProperty('startTime')
         ? overrides.startTime!
-        : '1973-03-23T04:31:15+00:00',
+        : 'quasi',
   }
 }
 
@@ -311,11 +311,11 @@ export const aTimeFrame = (overrides?: Partial<TimeFrame>): TimeFrame => {
     endTime:
       overrides && overrides.hasOwnProperty('endTime')
         ? overrides.endTime!
-        : '1999-10-31T01:41:30+00:00',
+        : 'facilis',
     startTime:
       overrides && overrides.hasOwnProperty('startTime')
         ? overrides.startTime!
-        : '1972-01-14T01:05:16+00:00',
+        : 'quae',
   }
 }
 

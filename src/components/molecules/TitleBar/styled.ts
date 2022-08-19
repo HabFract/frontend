@@ -4,7 +4,9 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const TitleBarContainer = styled.div.attrs({
-  className: 'md:hidden relative top-0 inset-x-0 px-2 sm:p-2 md:p-4',
-})``
+  className: 'md:hidden inset-x-0 p-4 pb-2',
+})`
+  background-color: ${({ theme }) => theme.colors.tertiaryMain};
+`
 
 TitleBarContainer.displayName = 'TitleBarContainer'

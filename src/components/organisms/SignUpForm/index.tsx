@@ -16,12 +16,10 @@ import { SwitchInput } from '@/atoms/Input/Switch'
 import { TextInput } from '@/atoms/Input/Text'
 import { P } from '@/atoms/Typo/Copy/P'
 import { useAddUserMutation } from '@/graphql/generated'
-import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 import { Alert, Spin, Upload } from 'antd'
 import Progress from 'antd/lib/progress/progress'
 import { Field, Form, Formik, FormikProps } from 'formik'
 import React, { useEffect } from 'react'
-import { createRoutesFromChildren } from 'react-router-dom'
 import * as Yup from 'yup'
 
 // #endregion Local Imports
@@ -87,7 +85,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
               <Form
                 onSubmit={handleSubmit}
                 aria-label="sign-up-form"
-                className="m-2 sm:m-4"
+                className="flex flex-col p-4 gap-y-4"
               >
                 <label htmlFor="username">
                   Username:
@@ -118,11 +116,14 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                 </label>
                 <ImageUploadContainer>
                   <Field
+                    className="grid mr-2 place-content-end"
                     component={ImageUploadInput}
                     id="avatar-upload"
                     name="avatar-upload"
                   />
-                  <P copyText="Add a user avatar and people can relate visually *" />
+                  <div className="grid w-1/4 mr-2 md:w-1/2">
+                    <P copyText="Add a user avatar and people can relate visually *" />
+                  </div>
                 </ImageUploadContainer>
                 <MakePublicContainer>
                   <label htmlFor="public">
@@ -133,9 +134,28 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                 </MakePublicContainer>
                 <OnboardingProgressBarContainer>
                   <CenteringFlexHorizontal>
-                    <Progress percent={20} type="line" showInfo={false} />
-                    <button type="submit" className="w-12 h-12">
-                      <RightCircleOutlined />
+                    <Progress
+                      percent={20}
+                      type="line"
+                      showInfo={false}
+                      className="mb-2"
+                    />
+                    <button
+                      type="submit"
+                      className="my-2 ml-2 text-primary-500"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-8 h-8"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
                     </button>
                   </CenteringFlexHorizontal>
                 </OnboardingProgressBarContainer>

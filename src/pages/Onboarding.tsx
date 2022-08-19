@@ -36,7 +36,7 @@ const onboardingStageCopy = [
 export const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
 
-  // const [, setName] = useThemeName() // COMMENT OUT DURING TEST
+  const [, setName] = useThemeName() // COMMENT OUT DURING TEST
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
   const [profile, _] = useMyProfile()
@@ -65,8 +65,8 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
   useEffect(() => {
     // // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
-    // setName(themeValue)
-    // setTheme(themeValue)
+    setName(themeValue)
+    setTheme(themeValue)
 
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
 
