@@ -39,7 +39,7 @@ export const Template: React.FC<TemplateProps> = ({
   children,
 }) => {
   const [name] = useThemeName()
-  console.log('!!(name:>> ', !!(name as unknown as string).includes('dark'))
+  console.log('!!(name:>> ', name)
   const url = getIllustration(
     illustration,
     !!(name as unknown as string).includes('dark'),

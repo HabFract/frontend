@@ -20,3 +20,7 @@ export const Illustration = styled.div.attrs({
   height: auto;
   bottom: 96px;
 `
+
+Container.displayName = 'ContentContainer'
+Content.displayName = 'Main'
+Illustration.displayName = 'Illustration'

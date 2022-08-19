@@ -17,22 +17,22 @@ import { ApolloProvider } from '@apollo/client'
 globalThis.Buffer = Buffer
 
 const App: FC = () => {
-  // const { data: activeUser, loading, error } = useGetMeQuery()
+  const { data: activeUser, loading, error } = useGetMeQuery()
   const [_, setProfile] = useMyProfile()
 
-  // useEffect(() => {
-  //   if (activeUser && activeUser.me.agentPubKey !== '') {
-  //     const {
-  //       agentPubKey,
-  //       profile: { __typename: _, ...rawProfile },
-  //     } = activeUser.me
+  useEffect(() => {
+    if (activeUser && activeUser.me.agentPubKey !== '') {
+      const {
+        agentPubKey,
+        profile: { __typename: _, ...rawProfile },
+      } = activeUser.me
 
-  //     setProfile(rawProfile)
-  //     console.log(
-  //       `Active user profile context has been set for agent with hash ${agentPubKey}`,
-  //     )
-  //   }
-  // }, [activeUser])
+      setProfile(rawProfile)
+      console.log(
+        `Active user profile context has been set for agent with hash ${agentPubKey}`,
+      )
+    }
+  }, [activeUser])
 
   return (
     <BrowserRouter>
@@ -53,11 +53,11 @@ const root = createRoot(container!)
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      {/* <ApolloProvider client={await connect({} as ClientOptions)}> */}
-      <MyProfileProvider>
-        <App />
-      </MyProfileProvider>
-      {/* </ApolloProvider> */}
+      <ApolloProvider client={await connect({} as ClientOptions)}>
+        <MyProfileProvider>
+          <App />
+        </MyProfileProvider>
+      </ApolloProvider>
     </ThemeProvider>
   </React.StrictMode>,
 )

@@ -12,6 +12,7 @@ import { TitleBar } from '@/molecules/TitleBar'
 import { SignUpForm } from '@/organisms/SignUpForm'
 // #endregion Global Imports
 // #region Local Imports
+import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -35,7 +36,7 @@ const onboardingStageCopy = [
 export const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
 
-  // const [, setName] = useThemeName() // COMMENT OUT DURING TEST
+  const [, setName] = useThemeName() // COMMENT OUT DURING TEST
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
   const [profile, _] = useMyProfile()
@@ -64,8 +65,8 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
   useEffect(() => {
     // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
-    // setName(themeValue)
-    // setTheme(themeValue)
+    setName(themeValue)
+    setTheme(themeValue)
 
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
 
@@ -74,23 +75,27 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   }, [profile, userHasBurner, userHasHabit])
 
   return (
-    <OnboardingTemplate>
+    <>
       <TitleBar
         titles={onboardingMainTitles[0]}
         backAction={() => setOnboardingStage('1')}
       />
-      <DescriptionBox
-        stage={+onboardingStage}
-        title={onboardingStageTitles[+onboardingStage - 1]}
-        copyText={onboardingStageCopy[+onboardingStage - 1]}
-      />
-      {onboardingStage == '1' ? (
-        <SignUpForm onSuccess={() => setOnboardingStage('2')} />
-      ) : !userHasBurner ? (
-        <div>creating/explaining burner</div>
-      ) : (
-        <div>Create a habit</div>
-      )}
-    </OnboardingTemplate>
+      <Template illustration={1}>
+        <OnboardingTemplate>
+          <DescriptionBox
+            stage={+onboardingStage}
+            title={onboardingStageTitles[+onboardingStage - 1]}
+            copyText={onboardingStageCopy[+onboardingStage - 1]}
+          />
+          {onboardingStage == '1' ? (
+            <SignUpForm onSuccess={() => setOnboardingStage('2')} />
+          ) : !userHasBurner ? (
+            <div>creating/explaining burner</div>
+          ) : (
+            <div>Create a habit</div>
+          )}
+        </OnboardingTemplate>
+      </Template>
+    </>
   )
 }
