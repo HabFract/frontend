@@ -95,6 +95,7 @@ specifiers:
   storybook-addon-styled-component-theme: ^2.0.0
   style-loader: ^2.0.0
   styled-components: 5.3.5
+  svg-url-loader: ^7.1.1
   tailwindcss: 2.2.19
   ts-jest: ^28.0.5
   ts-loader: ^6
@@ -208,6 +209,7 @@ devDependencies:
   storybook-addon-styled-component-theme: 2.0.0_i34tgi6t64lkczvtlhgqtjv37i
   style-loader: 2.0.0
   styled-components: 5.3.5_zqyshjqmmmqwn6ax6dftxsbcrq
+  svg-url-loader: 7.1.1
   tailwindcss: 2.2.19_sz6ortszxymyfyznjdpjf37pz4
   ts-jest: 28.0.5_jxgzp3yedt2ymui5vjh6e3tlku
   ts-loader: 6.2.2_typescript@4.4.3
@@ -9849,6 +9851,16 @@ packages:
     dependencies:
       flat-cache: 3.0.4
 
+  /file-loader/6.2.0:
+    resolution: {integrity: sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    dependencies:
+      loader-utils: 2.0.2
+      schema-utils: 3.1.1
+    dev: true
+
   /file-loader/6.2.0_webpack@4.46.0:
     resolution: {integrity: sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==}
     engines: {node: '>= 10.13.0'}
@@ -17834,6 +17846,16 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  /svg-url-loader/7.1.1:
+    resolution: {integrity: sha512-NlsMCePODm7FQhU9aEZyGLPx5Xe1QRI1cSEUE6vTq5LJc9l9pStagvXoEIyZ9O3r00w6G3+Wbkimb+SC3DI/Aw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    dependencies:
+      file-loader: 6.2.0
+      loader-utils: 2.0.2
+    dev: true
 
   /svgo/2.8.0:
     resolution: {integrity: sha512-+N/Q9kV1+F+UeWYoSiULYo4xYSDQlTgb+ayMobAXPwMnLvop7oxKMo9OzIrX5x3eS4L4f2UHhc9axXwY8DpChg==}

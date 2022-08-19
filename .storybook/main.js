@@ -38,6 +38,17 @@ module.exports = {
             presets: [require.resolve('babel-preset-react-app')],
           },
         },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'svg-url-loader',
+              options: {
+                limit: 10000,
+              },
+            },
+          ],
+        },
       ],
     }
 

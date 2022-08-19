@@ -53,8 +53,7 @@ export const StorySwitcher: React.FunctionComponent<any> = (_props: any) => {
         type="default"
         onClick={(e) => {
           setName('theme-dark')
-          ;(e.target as HTMLButtonElement).closest('html')!.className =
-            'theme-dark'
+          ;(e.target as HTMLButtonElement).closest('html')!.className = 'dark'
         }}
       >
         Dark Mode
