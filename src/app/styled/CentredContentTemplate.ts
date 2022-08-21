@@ -1,32 +1,38 @@
 // #region Global Imports
 import styled from 'styled-components'
-
 // #endregion Global Imports
+
 export const Container = styled.section.attrs({
   className: 'dark:bg-teal-900 bg-green-50 h-screen w-screen relative',
 })`
   padding-left: ${(props) => (props.sidebar ? '30vw' : '0')};
 `
-Container.defaultProps = {
-  sidebar: false,
-}
 
 export const Content = styled.main.attrs({
   className: 'z-20 p-0 relative md:top-12',
 })`
   height: 100%;
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+  border-radius: 32px 32px 0px 0px;
 
   background: radial-gradient(
-    circle closest-side,
-    rgba(255, 255, 255, 0.05),
-    rgba(8, 186, 129, 0.05)
+    632.72% 86.07% at 51.45% 15.94%,
+    ${() =>
+      document.querySelector('html')!.classList.contains('dark')
+        ? 'rgba(8, 186, 129, 0.15) 0%'
+        : 'rgba(255, 255, 255, 0.15) 0%'},
+    ${() =>
+      document.querySelector('html')!.classList.contains('dark')
+        ? 'rgba(255, 255, 255, 0.15) 42.75%'
+        : 'rgba(8, 186, 129, 0.15) 59.9%'},
+    ${() =>
+      document.querySelector('html')!.classList.contains('dark')
+        ? 'rgba(35, 56, 118, 0.15) 100%'
+        : 'rgba(255, 255, 255, 0.15) 100%'}
   );
-  border-radius: 32px 32px 0px 0px;
 
   @media only screen and (min-width: 1024px) {
     margin-left: auto;
@@ -35,10 +41,6 @@ export const Content = styled.main.attrs({
     min-width: calc(768px - 8rem);
   }
 `
-
-Content.defaultProps = {
-  sidebar: false,
-}
 
 export const Sidebar = styled.section.attrs({})`
   left: -25vw;
@@ -65,6 +67,7 @@ export const Sidebar = styled.section.attrs({})`
     left: 8rem;
   }
 `
+
 export const SidebarContent = styled.nav.attrs({})`
   padding-top: 2rem;
   height: 100%;
@@ -86,6 +89,13 @@ export const Illustration = styled.div.attrs({
     opacity: 0.25;
   }
 `
+
+Container.defaultProps = {
+  sidebar: false,
+}
+Content.defaultProps = {
+  sidebar: false,
+}
 
 Container.displayName = 'ContentContainer'
 SidebarContent.displayName = 'SidebarContent'
