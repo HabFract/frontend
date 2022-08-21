@@ -6,9 +6,12 @@ import styled from 'styled-components'
 export const StyledP = styled.p.attrs({
   className: 'semi-bold',
 })`
-  font-family: "Montserrat, 'Open Sans'";
+  font-family: 'Inter', 'Open Sans';
+  font-style: normal;
   font-size: 1rem;
   line-height: 1.5rem;
   letter-spacing: 1%;
-  text-decoration: ${() => 'none'};
+  color: ${(props) => (props.level === 1 ? '#111928' : '#6B7280')};
+  font-size: ${(props) => (props.level === 1 ? '1rem' : '0.875rem')};
+  font-weight: ${(props) => (props.level === 1 ? '600' : '400')};
 `

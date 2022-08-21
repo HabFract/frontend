@@ -9,6 +9,6 @@ import React from 'react'
 
 // #endregion Interface Imports
 
-export const P: React.FC<IP.IProps> = ({ copyText }) => {
-  return <StyledP>{copyText}</StyledP>
+export const P: React.FC<IP.IProps> = ({ copyText, level }) => {
+  return <StyledP level={level}>{copyText}</StyledP>
 }

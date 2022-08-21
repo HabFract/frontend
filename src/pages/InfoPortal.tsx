@@ -1,6 +1,6 @@
 // #region Global Imports
-import React, { useEffect, useMemo, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -9,6 +9,10 @@ import { InfoPortalTemplate } from '@/templates/InfoPortalTemplate'
 import { TitleBar } from '@/molecules/TitleBar'
 import { ListGroup } from '@/organisms/ListGroup'
 import { ListGroupItem } from '@/molecules/ListGroupItem'
+
+import Cog from '../assets/svg/Icons/cog.svg'
+import QuestionMarkCircle from '../assets/svg/Icons/question-mark-circle.svg'
+import Speakerphone from '../assets/svg/Icons/speakerphone.svg'
 // #endregion Local Imports
 
 interface InfoPortalProps {}
@@ -32,17 +36,17 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
         sidebarComponent={
           <ListGroup>
             <ListGroupItem
-              iconUrl={''}
+              iconUrl={Speakerphone}
               primaryText="What"
               secondaryText="Learn about the functions of HabitFract"
             />
             <ListGroupItem
-              iconUrl={''}
+              iconUrl={QuestionMarkCircle}
               primaryText="Why"
               secondaryText="Learn about our reasoning and motivation"
             />
             <ListGroupItem
-              iconUrl={''}
+              iconUrl={Cog}
               primaryText="How"
               secondaryText="Learn about the technology that powers us"
             />

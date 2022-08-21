@@ -1,4 +1,5 @@
 // #region Global Imports
+import { P } from '@/atoms/Typo/Copy/P'
 import React from 'react'
 // #endregion Global Imports
 
@@ -17,21 +18,19 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
 }: IListGroupItem.IProps) => {
   return (
     <ListGroupItemContainer>
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-row flex-wrap items-center pr-4 gap-x-2 sm-ls:flex-col">
         <div className="shrink-0">
           <img
-            className="w-8 h-8 rounded-full"
+            className="w-full h-8 rounded-full"
             src={iconUrl}
             alt={primaryText}
           />
         </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-            {primaryText}
-          </p>
-          <p className="text-sm text-gray-500 truncate sm-ls:hidden dark:text-gray-400">
-            {secondaryText}
-          </p>
+        <div className="flex-1 w-full min-w-0 p-2 text-left sm-ls:text-center">
+          <P copyText={primaryText} level={1} />
+          <div className="h-full sm-ls:hidden">
+            <P copyText={secondaryText} level={2} />
+          </div>
         </div>
       </div>
     </ListGroupItemContainer>

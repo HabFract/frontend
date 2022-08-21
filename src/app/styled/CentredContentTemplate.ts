@@ -43,7 +43,7 @@ Content.defaultProps = {
 export const Sidebar = styled.section.attrs({})`
   left: -25vw;
   position: absolute;
-  top: 11rem;
+  bottom: 0;
   left: 1rem;
   top: -1.5rem;
 
@@ -58,6 +58,7 @@ export const Sidebar = styled.section.attrs({})`
   }
   @media only screen and (min-width: 768px) {
     top: 2.5rem;
+    width: 15rem;
   }
   @media only screen and (min-width: 1024px) {
     width: calc(25vw - 6rem);
@@ -66,7 +67,7 @@ export const Sidebar = styled.section.attrs({})`
 `
 export const SidebarContent = styled.nav.attrs({})`
   padding-top: 2rem;
-  overflow: hidden;
+  height: 100%;
 `
 
 export const Illustration = styled.div.attrs({
