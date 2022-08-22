@@ -1,6 +1,5 @@
 // #region Global Imports
 import styled from 'styled-components'
-
 // #endregion Global Imports
 
 export const H1 = styled.h1.attrs({
@@ -26,3 +25,8 @@ export const H4 = styled.h4.attrs({
 })`
   text-transform: ${({ caps }) => (caps ? 'uppercase' : 'none')};
 `
+
+H1.displayName = 'H1'
+H2.displayName = 'H2'
+H3.displayName = 'H3'
+H4.displayName = 'H4'

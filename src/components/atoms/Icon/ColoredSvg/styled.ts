@@ -8,3 +8,5 @@ export const IconContainer = styled.li.attrs({
   text-decoration: ${({ complete }) => (complete ? 'line-through' : 'none')};
   border-radius: ${({ rounded }) => (rounded ? '3rem' : '0')};
 `
+
+IconContainer.displayName = 'IconContainer'

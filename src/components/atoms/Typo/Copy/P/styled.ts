@@ -15,3 +15,5 @@ export const StyledP = styled.p.attrs({
   font-size: ${(props) => (props.level === 1 ? '1rem' : '0.875rem')};
   font-weight: ${(props) => (props.level === 1 ? '600' : '400')};
 `
+
+StyledP.displayName = 'StyledP'
