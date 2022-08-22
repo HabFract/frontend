@@ -1,5 +1,9 @@
 // #region Global Imports
-// #endregion Interface Imports
+import React, { useEffect } from 'react'
+import { Field, Form, Formik, FormikProps } from 'formik'
+import * as Yup from 'yup'
+// #endregion Global Imports
+
 // #region Local Imports
 import {
   OnboardingFormContainer,
@@ -7,22 +11,20 @@ import {
   MakePublicContainer,
   OnboardingProgressBarContainer,
 } from './styled'
-// #endregion Global Imports
-// #region Interface Imports
-import { ISignUpForm } from './types'
 import { CenteringFlexHorizontal } from '@/app/styled'
+
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
 import { SwitchInput } from '@/atoms/Input/Switch'
 import { TextInput } from '@/atoms/Input/Text'
 import { P } from '@/atoms/Typo/Copy/P'
-import { useAddUserMutation } from '@/graphql/generated'
-import { Alert, Spin, Upload } from 'antd'
-import Progress from 'antd/lib/progress/progress'
-import { Field, Form, Formik, FormikProps } from 'formik'
-import React, { useEffect } from 'react'
-import * as Yup from 'yup'
 
+import { useAddUserMutation } from '@/graphql/generated'
 // #endregion Local Imports
+
+// #region Interface Imports
+import { ISignUpForm } from './types'
+import { Alert, Spin, Upload } from 'antd'
+// #endregion Interface Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
   onSuccess,
@@ -134,12 +136,12 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                 </MakePublicContainer>
                 <OnboardingProgressBarContainer>
                   <CenteringFlexHorizontal>
-                    <Progress
-                      percent={20}
-                      type="line"
-                      showInfo={false}
-                      className="mb-2"
-                    />
+                    <div className="w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700">
+                      <div
+                        className="h-6 bg-blue-600 rounded-full dark:bg-blue-500"
+                        style={{ width: '20%' }}
+                      ></div>
+                    </div>
                     <button
                       type="submit"
                       className="my-2 ml-2 text-primary-500"
