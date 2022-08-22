@@ -12,7 +12,7 @@ export default {
   title: 'Design System/Organisms/CentredContentTemplate',
   argTypes: {
     illustration: {
-      options: [1, 2, 3],
+      options: [1, 2, 3, 4, 5, 6],
       control: { type: 'radio' },
     },
   },
@@ -39,5 +39,23 @@ export const Scene2 = {
 export const Scene3 = {
   args: {
     illustration: 3,
+  },
+}
+
+export const Scene4 = {
+  args: {
+    illustration: 4,
+  },
+}
+
+export const Scene5 = {
+  args: {
+    illustration: 5,
+  },
+}
+
+export const Scene6 = {
+  args: {
+    illustration: 6,
   },
 }
