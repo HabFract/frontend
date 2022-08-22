@@ -1,6 +1,5 @@
 import { useThemeName } from '../hooks/useTheme'
 import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils'
-import Button from 'antd/lib/button'
 import React from 'react'
 
 export const setTheme = (scopeName) => {
@@ -13,24 +12,22 @@ export const Switcher: React.FunctionComponent<any> = (_props: any) => {
   const [, setName] = useThemeName()
   return (
     <div>
-      <Button
-        type="primary"
+      <button
         onClick={() => {
           setName('theme-default')
           setTheme('theme-default')
         }}
       >
         Light Mode
-      </Button>
-      <Button
-        type="default"
+      </button>
+      <button
         onClick={() => {
           setName('theme-dark')
           setTheme('theme-dark')
         }}
       >
         Dark Mode
-      </Button>
+      </button>
     </div>
   )
 }
@@ -39,8 +36,7 @@ export const StorySwitcher: React.FunctionComponent<any> = (_props: any) => {
   const [, setName] = useThemeName()
   return (
     <div>
-      <Button
-        type="primary"
+      <button
         onClick={(e) => {
           setName('theme-default')
           ;(e.target as HTMLButtonElement).closest('html')!.className =
@@ -48,16 +44,15 @@ export const StorySwitcher: React.FunctionComponent<any> = (_props: any) => {
         }}
       >
         Light Mode
-      </Button>
-      <Button
-        type="default"
+      </button>
+      <button
         onClick={(e) => {
           setName('theme-dark')
           ;(e.target as HTMLButtonElement).closest('html')!.className = 'dark'
         }}
       >
         Dark Mode
-      </Button>
+      </button>
     </div>
   )
 }

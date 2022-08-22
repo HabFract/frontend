@@ -4,6 +4,7 @@ import React from 'react'
 
 // #region Local Imports
 import { ListGroupItem } from '.'
+import icon from 'src/assets/svg/Icons/question-mark-circle.svg'
 // #endregion Local Imports
 
 export default {
@@ -13,8 +14,8 @@ export default {
 
 export const Default = () => (
   <ListGroupItem
-    primaryText="Why"
-    secondaryText="Design System/Molecules/ListGroupItem"
-    iconUrl=""
-  />
+    iconUrl={icon}
+    primaryText="Hello, world!"
+    secondaryText="This is a list item"
+  ></ListGroupItem>
 )

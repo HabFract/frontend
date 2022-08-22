@@ -42,23 +42,6 @@ export default defineConfig({
       enableBuild: true,
     }),
     themePreprocessorPlugin({
-      // 同时使用 scss 和 less， 区别写multipleScopeVars，其他属性共用即可
-      scss: {
-        multipleScopeVars: [
-          {
-            // 必需
-            scopeName: 'theme-default',
-            // path 和 varsContent 必选一个
-            path: path.resolve('src/app/theme/antd-theme-vars.scss'),
-            // varsContent参数等效于 path文件的内容
-            // varsContent:`@primary-color:${defaultPrimaryColor};`
-          },
-          {
-            scopeName: 'dark',
-            path: path.resolve('src/app/theme/antd-theme-vars-dark.scss'),
-          },
-        ],
-      },
       less: {
         // 是否启用任意主题色模式，这里不启用
         arbitraryMode: false,

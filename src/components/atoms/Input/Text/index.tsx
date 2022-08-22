@@ -5,7 +5,6 @@
 // #endregion Local Imports
 // #region Interface Imports
 import { ITextInput } from './types'
-import { Input } from 'antd'
 import React from 'react'
 
 // #endregion Interface Imports
@@ -15,5 +14,5 @@ export const TextInput: React.FC<ITextInput.IProps> = ({
   form,
   ...props
 }) => {
-  return <Input {...field} {...props} />
+  return <input type="text" {...field} {...props} />
 }

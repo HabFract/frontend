@@ -69,7 +69,7 @@ export const Sidebar = styled.section.attrs({})`
 `
 
 export const SidebarContent = styled.nav.attrs({})`
-  padding-top: 2rem;
+  padding-top: 1rem;
   height: 100%;
 `
 

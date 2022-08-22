@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const StyledP = styled.p.attrs({
-  className: 'semi-bold',
+  className: 'semi-bold dark:text-white',
 })`
   font-family: 'Inter', 'Open Sans';
   font-style: normal;

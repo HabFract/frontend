@@ -34,7 +34,6 @@
     "@graphql-tools/schema": "^8.3.14",
     "@holochain/client": "0.4.1",
     "@reduxjs/toolkit": "1.8.2",
-    "antd": "4.21.0",
     "buffer": "^6.0.3",
     "deep-for-each": "^3.0.0",
     "fecha": "^4.2.3",

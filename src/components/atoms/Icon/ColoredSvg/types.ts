@@ -1,6 +1,8 @@
-export declare namespace IUserOutline {
+export declare namespace IColoredSvg {
   export interface IProps {
+    iconName: string
     rounded: boolean
+    className: string
   }
 
   // export interface IState {}

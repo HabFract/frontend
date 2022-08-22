@@ -6,7 +6,7 @@ import { Container, Body, Title } from './styled'
 // #endregion Global Imports
 // #region Interface Imports
 import { IDescriptionBox } from './types'
-import { UserOutline } from '@/atoms/Icon/UserOutline'
+import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
 import { P } from '@/atoms/Typo/Copy/P'
 import React from 'react'
 
@@ -21,7 +21,11 @@ export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
         </Title>
         <Body>
           <P copyText={copyText} />
-          <UserOutline rounded={true} />
+          <ColoredSvg
+            className="text-primary-500"
+            iconName="user"
+            rounded={true}
+          />
         </Body>
       </Container>
     )
