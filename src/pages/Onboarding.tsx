@@ -67,6 +67,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     // // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
     setName(themeValue)
     setTheme(themeValue)
+    debugger
 
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
 

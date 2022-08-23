@@ -5,7 +5,6 @@ import React from 'react'
 // #region Local Imports
 import { ListGroup } from '.'
 import { ListGroupItem } from '@/molecules/ListGroupItem'
-import icon from 'src/assets/svg/Icons/question-mark-circle.svg'
 // #endregion Local Imports
 
 export default {
@@ -16,17 +15,17 @@ export default {
 export const Default = () => (
   <ListGroup>
     <ListGroupItem
-      iconUrl={icon}
+      iconName={'cog'}
       primaryText="Hello, world!"
       secondaryText="This is a list item"
     ></ListGroupItem>
     <ListGroupItem
-      iconUrl={icon}
+      iconName={'cog'}
       primaryText="Hello, world!"
       secondaryText="This is a list item"
     ></ListGroupItem>
     <ListGroupItem
-      iconUrl={icon}
+      iconName={'cog'}
       primaryText="Hello, world!"
       secondaryText="This is a list item"
     ></ListGroupItem>

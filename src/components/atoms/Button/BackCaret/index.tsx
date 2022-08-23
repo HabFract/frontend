@@ -20,7 +20,7 @@ export const BackCaret: React.FC<IBackCaret.IProps> = ({ onClick }) => {
         className="grid place-content-center"
       >
         <ColoredSvg
-          className="w-8 h-8 text-gray-600"
+          className="w-8 h-8 text-gray-600 dark:text-primary-100"
           iconName="back"
           rounded={false}
         />

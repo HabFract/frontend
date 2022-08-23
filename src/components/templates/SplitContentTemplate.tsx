@@ -40,10 +40,12 @@ export const Template: React.FC<TemplateProps> = ({
           <SidebarContent>{sidebar && sidebarComponent}</SidebarContent>
         </Sidebar>
       )}
-      <Content sidebar={sidebar}>{children}</Content>
-      <Illustration>
-        {!!url && <img src={url} alt="illustration" />}
-      </Illustration>
+      <Content sidebar={sidebar}>
+        {children}
+        <Illustration>
+          {!!url && <img src={url} alt="illustration" />}
+        </Illustration>
+      </Content>
     </SplitContentContainer>
   )
 }

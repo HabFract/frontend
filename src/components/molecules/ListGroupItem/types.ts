@@ -3,7 +3,7 @@ export declare namespace IListGroupItem {
   export interface IProps {
     primaryText: string
     secondaryText: string
-    iconUrl: string
+    iconName: string
   }
 
   // export interface IState {}
