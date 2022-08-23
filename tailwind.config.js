@@ -21,6 +21,7 @@ module.exports = {
       colors: {
         'gray-700': '#06575A',
         'gray-800': '#014451',
+        'primary-50-transparent': 'rgba(239, 246, 255, 0.25) !important',
         'gray-800-transparent': 'rgba(1,68,81,0.5)',
         'gray-50': '#F3F4F6',
         'gray-100': '#FCFFFC',

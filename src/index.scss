@@ -1,15 +1,3 @@
-@use 'sass:meta';
-// html:not(.theme-dark) {
-//   @include meta.load-css('node_modules/antd/dist/antd.min.css', $with: null);
-// }
-
-// html.dark {
-//   @include meta.load-css(
-//     'node_modules/antd/dist/antd.dark.min.css',
-//     $with: null
-//   );
-// }
-
 html,
 body,
 #root {
@@ -17,8 +5,8 @@ body,
   height: 100%;
 }
 
-#root {
-  position: relative;
+.dark #root {
+  background-color: rgba(1, 68, 81, 1);
 }
 
 @import './assets/tailwind.css';

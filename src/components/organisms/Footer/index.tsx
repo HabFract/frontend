@@ -14,117 +14,119 @@ export const Footer: React.FunctionComponent<IFooter.IProps> =
   ({}: IFooter.IProps) => {
     return (
       <FooterContainer>
-        <div className="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 px-6 py-8 pl-12 sm:pl-20 md:grid-cols-4">
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
+            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-primary-100">
               Company
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400">
+            <ul className="text-gray-500 dark:text-white">
               <li className="mb-4">
-                <a href="#" className=" hover:underline">
+                <a href="#" className=" hover:underline hover:text-primary-700">
                   About
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Careers
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Brand Center
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Blog
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
+            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-primary-100">
               Help center
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400">
+            <ul className="text-gray-500 dark:text-white">
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Discord Server
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Twitter
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Facebook
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Contact Us
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
+            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-primary-100">
               Legal
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400">
+            <ul className="text-gray-500 dark:text-white">
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Privacy Policy
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Licensing
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Terms &amp; Conditions
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
+            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-primary-100">
               Download
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400">
+            <ul className="text-gray-500 dark:text-white">
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   iOS
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Android
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   Windows
                 </a>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
+                <a href="#" className="hover:underline hover:text-primary-700">
                   MacOS
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div className="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-          <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
-            © 2022 <a href="https://flowbite.com/">Flowbite™</a>. All Rights
-            Reserved.
+        <div className="flex flex-col px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
+          <span className="px-4 text-sm text-gray-500 dark:text-gray-300 sm:text-center">
+            © 2022 <a href="https://n-stebb.dev/">Ebb Stings Web Things™</a>.
           </span>
-          <div className="flex mt-4 space-x-6 sm:justify-center md:mt-0">
+          <span className="px-4 text-sm text-gray-500 dark:text-gray-300 sm:text-center">
+            All Rights Reserved.
+          </span>
+          <div className="flex justify-around mt-4 space-x-6 sm:justify-center md:mt-0">
             <a
               href="#"
               className="text-gray-400 hover:text-gray-900 dark:hover:text-white"

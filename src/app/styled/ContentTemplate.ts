@@ -11,7 +11,7 @@ export const Container = styled.div.attrs({
 
 export const SplitContentContainer = styled.div.attrs({
   className:
-    'layout relative lg:grid dark:bg-teal-900 bg-primary-50 p-0 h-screen w-screen items-start lg:justify-end justify-around',
+    'layout relative lg:grid dark:bg-teal-900 bg-primary-50-transparent p-0 max-h-screen w-screen items-start lg:justify-end justify-around',
 })`
   grid-template-columns: 1fr;
   grid-gap: 0rem;
@@ -24,6 +24,7 @@ export const SplitContentContainer = styled.div.attrs({
 
   @media only screen and (min-width: 1024px) {
     grid-template-columns: minmax(0, 3rem) 2fr 0.1rem 8fr minmax(0, 3rem);
+    grid-template-areas: 'ml s g c mr' 'm f f f mr';
   }
 
   @media only screen and (min-width: 1680px) {
@@ -36,6 +37,7 @@ export const Content = styled.main.attrs({
 })`
   width: 100%;
   height: 100%;
+  min-height: 66vh;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -79,6 +81,7 @@ export const Illustration = styled.div.attrs({
   className:
     'absolute bg-tranparent pb-12 md:bottom-0 lg:bottom-12 bottom-16 sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
 })`
+  opacity: 0.5;
   width: 16rem;
   height: auto;
   left: calc(50% - 8rem);
@@ -91,6 +94,11 @@ export const Illustration = styled.div.attrs({
   @media only screen and (min-width: 1024px) {
     width: 428px;
     left: clamp(8vw, 12vw, 5rem);
+  }
+
+  @media only screen and (min-width: 1680px) {
+    width: 428px;
+    left: clamp(15vw, 12vw, 5rem);
   }
 
   @media only screen and (max-height: 960px) {
