@@ -1,8 +1,7 @@
 // #region Global Imports
 import styled from 'styled-components'
+import { isDark } from '../utils/general'
 // #endregion Global Imports
-
-const isDark = () => document.querySelector('html')!.classList.contains('dark')
 
 export const Container = styled.div.attrs({
   className:
@@ -74,7 +73,7 @@ export const Sidebar = styled.section.attrs({})`
 `
 
 export const SidebarContent = styled.nav.attrs({
-  className: 'p-2 md:p-3 md:p-3 md:px-6 flex justify-start',
+  className: 'p-2 md:p-3 md:p-3 flex justify-start',
 })`
   height: 100%;
   width: 100%;

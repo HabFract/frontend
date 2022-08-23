@@ -11,9 +11,9 @@ export const StyledP = styled.p.attrs({
   font-size: 1rem;
   line-height: 1.5rem;
   letter-spacing: 1%;
-  color: ${(props) => (props.level === 1 ? '#111928' : '#6B7280')};
   font-size: ${(props) => (props.level === 1 ? '1rem' : '0.875rem')};
   font-weight: ${(props) => (props.level === 1 ? '600' : '400')};
 `
+// color: ${(props) => (props.level === 1 ? '#111928' : '#6B7280')};
 
 StyledP.displayName = 'StyledP'

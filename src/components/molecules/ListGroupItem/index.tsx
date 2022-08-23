@@ -21,11 +21,11 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
     <ListGroupItemContainer>
       <div className="flex flex-row items-center w-full lg:flex-wrap no-wrap basis-2/6 gap-x-2">
         <ColoredSvg
-          className="w-full h-8 text-gray-900 rounded-full dark:text-primary-200 dark:active:text-primary-600"
+          className="w-full h-8 rounded-full list-item"
           iconName={iconName}
           rounded={true}
         />
-        <div className="flex-1 w-full min-w-0 p-2 text-center sm-ls:text-left">
+        <div className="flex-1 w-full min-w-0 p-2 text-center list-item sm-ls:text-left hover:text-primary-800">
           <P copyText={primaryText} level={1} />
           <div className="hidden h-full sm-ls:flex">
             <P copyText={secondaryText} level={2} />
