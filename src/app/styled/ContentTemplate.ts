@@ -74,7 +74,7 @@ export const Sidebar = styled.section.attrs({})`
 `
 
 export const SidebarContent = styled.nav.attrs({
-  className: 'p-2 md:p-3 flex justify-start',
+  className: 'p-2 md:p-3 md:p-3 md:px-6 flex justify-start',
 })`
   height: 100%;
   width: 100%;
@@ -82,8 +82,9 @@ export const SidebarContent = styled.nav.attrs({
 
 export const Illustration = styled.div.attrs({
   className:
-    'absolute bottom-0 -mb-96 md:-mb-12 lg:bottom-12 sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
+    'absolute bottom-0 md:-mb-12 lg:bottom-12 sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
 })`
+  margin-bottom: calc(-8rem - 20vh);
   opacity: 0.5;
   width: 16rem;
   height: auto;
@@ -102,6 +103,10 @@ export const Illustration = styled.div.attrs({
   @media only screen and (min-width: 1680px) {
     width: 428px;
     left: clamp(15vw, 12vw, 5rem);
+  }
+
+  @media only screen and (max-height: 667px) {
+    margin-bottom: -32rem;
   }
 
   @media only screen and (max-height: 960px) {

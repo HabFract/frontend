@@ -62,7 +62,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                 </p>
               </div>
               <div className="grid gap-2 md:gap-4 lg:grid-cols-2">
-                <article className="p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <article className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                   <div className="flex items-center justify-between mb-5 text-gray-500">
                     <span className="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
                       <svg
@@ -117,7 +117,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                     </a>
                   </div>
                 </article>
-                <article className="p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <article className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                   <div className="flex items-center justify-between mb-5 text-gray-500">
                     <span className="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
                       <svg
