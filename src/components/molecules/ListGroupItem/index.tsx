@@ -19,9 +19,9 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
 }: IListGroupItem.IProps) => {
   return (
     <ListGroupItemContainer>
-      <div className="flex flex-row items-center lg:flex-wrap no-wrap basis-2/6 gap-x-2 dark:text-primary-200 dark:hover:text-primary-100">
+      <div className="flex flex-row items-center lg:flex-wrap no-wrap basis-2/6 gap-x-2">
         <ColoredSvg
-          className="w-full h-8 text-gray-900 rounded-full dark:text-primary-200 dark:hover:text-primary-100"
+          className="w-full h-8 text-gray-900 rounded-full dark:text-primary-200 dark:active:text-primary-100"
           iconName={iconName}
           rounded={true}
         />

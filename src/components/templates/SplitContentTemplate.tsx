@@ -12,6 +12,7 @@ import {
 } from '@/app/styled/ContentTemplate'
 import { useThemeName } from '@/app/hooks/useTheme'
 import { getIllustration } from './templateIllustration'
+import { Footer } from '@/organisms/Footer'
 // #endregion Local Imports
 
 interface TemplateProps {
@@ -46,6 +47,7 @@ export const Template: React.FC<TemplateProps> = ({
           {!!url && <img src={url} alt="illustration" />}
         </Illustration>
       </Content>
+      <Footer />
     </SplitContentContainer>
   )
 }

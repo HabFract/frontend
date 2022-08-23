@@ -11,24 +11,28 @@ export const Container = styled.div.attrs({
 
 export const SplitContentContainer = styled.div.attrs({
   className:
-    'layout relative lg:grid dark:bg-teal-900 bg-transparent p-0 h-screen w-screen items-start lg:justify-end justify-around',
+    'layout relative lg:grid dark:bg-teal-900 bg-primary-50 p-0 h-screen w-screen items-start lg:justify-end justify-around',
 })`
   grid-template-columns: 1fr;
   grid-gap: 0rem;
 
   @media only screen and (min-width: 440px) {
     grid-template-columns: minmax(0, 10vw) 5fr 1rem 6fr minmax(0, 10vw);
-    grid-template-rows: 1fr 3rem;
-    grid-template-areas: 'ml s g c mr' 'f f f c f1';
+    grid-template-rows: 100vh auto;
+    grid-template-areas: 'ml s g c mr' 'f f f f f';
   }
 
   @media only screen and (min-width: 1024px) {
-    grid-template-columns: minmax(0, 1fr) 2fr 1rem 8fr minmax(0, 1fr);
+    grid-template-columns: minmax(0, 3rem) 2fr 0.1rem 8fr minmax(0, 3rem);
+  }
+
+  @media only screen and (min-width: 1680px) {
+    grid-template-columns: minmax(0, 15vw) 2fr 0.1rem 8fr minmax(0, 15vw);
   }
 `
 
 export const Content = styled.main.attrs({
-  className: 'z-20 p-2 sm:p-2 lg:pt-2 dark:lg:my-14 lg:p-12 dark:rounded-xl',
+  className: 'z-20 p-2 sm:p-2 lg:pt-1 dark:lg:my-14 md:p-3 dark:rounded-xl',
 })`
   width: 100%;
   height: 100%;
@@ -65,7 +69,7 @@ export const Sidebar = styled.section.attrs({})`
 `
 
 export const SidebarContent = styled.nav.attrs({
-  className: 'py-2 flex justify-start',
+  className: 'p-2 md:p-3 flex justify-start',
 })`
   height: 100%;
   width: 100%;

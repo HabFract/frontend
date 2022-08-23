@@ -6,6 +6,7 @@ export const setTheme = (scopeName) => {
   toggleTheme({
     scopeName,
   })
+  debugger
 }
 
 export const Switcher: React.FunctionComponent<any> = (_props: any) => {

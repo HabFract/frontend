@@ -51,7 +51,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
       >
         <InfoPortalTemplate>
           <section className="relative z-30 bg-white rounded-2xl dark:bg-gray-900">
-            <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-10 lg:px-6">
+            <div className="max-w-screen-xl px-2 py-2 mx-auto md:p-4 lg:py-10 lg:px-6">
               <div className="max-w-screen-sm mx-auto mb-8 text-center lg:mb-16">
                 <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl dark:text-white">
                   Our Blog
@@ -61,7 +61,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                   the needs of your audience early and often.
                 </p>
               </div>
-              <div className="grid gap-8 lg:grid-cols-2">
+              <div className="grid gap-2 md:gap-4 lg:grid-cols-2">
                 <article className="p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                   <div className="flex items-center justify-between mb-5 text-gray-500">
                     <span className="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
