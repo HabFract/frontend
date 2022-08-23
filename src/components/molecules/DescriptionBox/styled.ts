@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const Container = styled.div.attrs({
-  className: 'flex flex-col p-4 gap-y-4 bg-gray-100 dark:bg-gray-800',
+  className: 'flex flex-col p-2 gap-y-4 bg-gray-100 dark:bg-gray-800',
 })``
 
 export const Body = styled.div.attrs({

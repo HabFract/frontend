@@ -2,32 +2,38 @@
 import styled from 'styled-components'
 // #endregion Global Imports
 
-export const Container = styled.section.attrs({
-  className: 'dark:bg-teal-900 bg-green-50 p-0 h-screen w-screen absolute',
+export const Container = styled.div.attrs({
+  className:
+    'layout dark:bg-teal-900 bg-green-50 p-0 h-screen w-screen absolute',
 })``
 
-export const SplitContentContainer = styled.main.attrs({
+export const SplitContentContainer = styled.div.attrs({
   className:
-    'lg:grid dark:bg-teal-900 bg-transparent p-0 h-screen w-screen items-start lg:justify-end justify-around',
+    'layout lg:grid dark:bg-teal-900 bg-transparent p-0 h-screen w-screen items-start lg:justify-end justify-around',
 })`
   grid-template-columns: 1fr;
 
   @media only screen and (min-width: 440px) {
-    grid-template-rows: 1fr 3rem;
     grid-template-columns: minmax(0, 1fr) 4fr 9fr minmax(0, 1fr);
+    grid-template-rows: 1fr 3rem;
     grid-template-areas: 'ml s c mr';
+  }
+
+  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: minmax(0, 1fr) 2fr 8fr minmax(0, 1fr);
   }
 `
 
 export const Content = styled.main.attrs({
   className: 'z-20 p-2 sm:p-4 lg:p-12 md:top-12',
 })`
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  border-radius: 32px 32px 0px 0px;
 
   background: radial-gradient(
     632.72% 86.07% at 51.45% 15.94%,
@@ -67,11 +73,10 @@ export const SidebarContent = styled.nav.attrs({
 
 export const Illustration = styled.div.attrs({
   className:
-    'absolute bg-tranparent pb-12 bottom-8 sm-ls:pb-0 lg:w-72 lg:pl-0 lg:left-32 z-10',
+    'absolute bg-tranparent pb-12 md:bottom-16 bottom-32 sm-ls:pb-0 lg:w-72 lg:pl-0 lg:left-32 z-10',
 })`
   width: 12rem;
   height: auto;
-  bottom: 16px;
   left: calc(50% - 6rem);
 
   @media only screen and (min-width: 600px) {

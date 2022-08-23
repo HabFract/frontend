@@ -3,7 +3,6 @@ import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Container } from '@/app/styled/CentredContentTemplate'
 import { Template } from './CentredContentTemplate'
 // #endregion Local Imports
 
@@ -12,16 +11,14 @@ export default {
   title: 'Design System/Organisms/CentredContentTemplate',
   argTypes: {
     illustration: {
-      options: [1, 2, 3, 4, 5, 6],
+      options: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       control: { type: 'radio' },
     },
   },
 }
 
 export const Default = (args) => (
-  <Template illustration={args.illustration} sidebar={false}>
-    {' '}
-  </Template>
+  <Template illustration={args.illustration}> </Template>
 )
 
 export const Scene1 = {

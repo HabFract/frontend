@@ -3,18 +3,29 @@ import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Container, Content, Illustration } from '@/app/styled/ContentTemplate'
+import {
+  SplitContentContainer,
+  Content,
+  Illustration,
+  Sidebar,
+  SidebarContent,
+} from '@/app/styled/ContentTemplate'
 import { useThemeName } from '@/app/hooks/useTheme'
 import { getIllustration } from './templateIllustration'
 // #endregion Local Imports
+
 interface TemplateProps {
   illustration: number
+  sidebar: boolean
+  sidebarComponent?: React.ReactNode
   children: React.ReactNode
 }
 
 export const Template: React.FC<TemplateProps> = ({
   illustration,
   children,
+  sidebar,
+  sidebarComponent,
 }) => {
   const [name] = useThemeName()
   const url = getIllustration(
@@ -23,11 +34,16 @@ export const Template: React.FC<TemplateProps> = ({
   )
 
   return (
-    <Container>
-      <Content>{children}</Content>
+    <SplitContentContainer sidebar={sidebar}>
+      {sidebar && (
+        <Sidebar>
+          <SidebarContent>{sidebar && sidebarComponent}</SidebarContent>
+        </Sidebar>
+      )}
+      <Content sidebar={sidebar}>{children}</Content>
       <Illustration>
         {!!url && <img src={url} alt="illustration" />}
       </Illustration>
-    </Container>
+    </SplitContentContainer>
   )
 }

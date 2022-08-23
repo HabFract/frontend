@@ -14,9 +14,13 @@ import { IBackCaret } from './types'
 export const BackCaret: React.FC<IBackCaret.IProps> = ({ onClick }) => {
   return (
     <BackCaretContainer>
-      <button onClick={onClick} className="pb-4">
+      <button
+        type="button"
+        onClick={onClick}
+        className="grid place-content-center"
+      >
         <ColoredSvg
-          className="w-8 h-8 mb-4 text-gray-600"
+          className="w-8 h-8 text-gray-600"
           iconName="back"
           rounded={false}
         />

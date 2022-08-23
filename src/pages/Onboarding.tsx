@@ -14,7 +14,7 @@ import { SignUpForm } from '@/organisms/SignUpForm'
 // #region Local Imports
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 // #endregion Local Imports
@@ -91,7 +91,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
             : setOnboardingStage(`${+onboardingStage - 1}`)
         }
       />
-      <Template illustration={1} sidebar={false}>
+      <Template illustration={1}>
         <OnboardingTemplate>
           <DescriptionBox
             stage={+onboardingStage}

@@ -18,7 +18,7 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
 }: IListGroupItem.IProps) => {
   return (
     <ListGroupItemContainer>
-      <div className="flex flex-row flex-wrap items-center pr-4 gap-x-2 sm-ls:flex-col">
+      <div className="flex flex-row items-center lg:flex-wrap no-wrap basis-2/6 gap-x-2">
         <div className="shrink-0">
           <img
             className="w-full h-8 rounded-full"
@@ -26,9 +26,9 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
             alt={primaryText}
           />
         </div>
-        <div className="flex-1 w-full min-w-0 p-2 text-left sm-ls:text-center">
+        <div className="flex-1 w-full min-w-0 p-2 text-center sm-ls:text-left">
           <P copyText={primaryText} level={1} />
-          <div className="h-full sm-ls:hidden">
+          <div className="hidden h-full sm-ls:flex">
             <P copyText={secondaryText} level={2} />
           </div>
         </div>

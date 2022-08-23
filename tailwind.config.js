@@ -49,11 +49,15 @@ module.exports = {
       },
       screens: {
         sm: '440px',
-        'sm-ls': { raw: '(max-width: 600px)' },
+        'sm-ls': '600px',
         md: '768px',
+        lg: '1024px',
       },
       minHeight: {
         28: '7rem',
+      },
+      maxWidth: {
+        64: '16rem',
       },
     },
   },

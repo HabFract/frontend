@@ -19,7 +19,10 @@ const themeDecorator = (storyFn) =>
     null,
     React.createElement(
       'div',
-      { className: 'flex flex-col', style: { gap: '2rem' } },
+      {
+        className: 'bg-green-50 dark:bg-teal-900 flex flex-col',
+        style: { gap: '2rem' },
+      },
       [React.createElement(StorySwitcher), storyFn()],
     ),
   )
