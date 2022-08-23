@@ -33,10 +33,10 @@ export const SplitContentContainer = styled.div.attrs({
 `
 
 export const Content = styled.main.attrs({
-  className: 'z-20 p-2 sm:p-2 lg:pt-1 dark:lg:my-14 md:p-3 dark:rounded-xl',
+  className: 'z-20 p-2 pb-24 sm:p-2 md:px-6 lg:pt-1 lg:my-14 md:p-3 rounded-xl',
 })`
+  margin-bottom: 24vh;
   width: 100%;
-  height: 100%;
   min-height: 66vh;
   display: flex;
   flex-direction: row;
@@ -79,7 +79,7 @@ export const SidebarContent = styled.nav.attrs({
 
 export const Illustration = styled.div.attrs({
   className:
-    'absolute bg-tranparent pb-12 md:bottom-0 lg:bottom-12 bottom-16 sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
+    'absolute bg-tranparent pb-40 md:bottom-0 lg:bottom-12 -bottom-24 sm:bottom-8 sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
 })`
   opacity: 0.5;
   width: 16rem;
