@@ -10,9 +10,15 @@ export const ListGroupItemContainer = styled.li.attrs({
 })`
   max-width: 33vw;
   cursor: pointer;
+
   &:hover {
     .list-item {
-      color: ${() => (isDark() ? '#f16494' : '#f16494')};
+      color: ${() => (isDark() ? '#f16494' : '#83CFB5')};
+    }
+  }
+  &:active {
+    .list-item {
+      color: ${() => (isDark() ? '#ee427c' : '#83f1c2')};
     }
   }
 `

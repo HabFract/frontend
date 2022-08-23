@@ -126,7 +126,7 @@ export const Footer: React.FunctionComponent<IFooter.IProps> =
           <span className="px-4 text-sm text-gray-500 dark:text-gray-300 sm:text-center">
             All Rights Reserved.
           </span>
-          <div className="flex justify-around mt-4 space-x-6 sm:justify-center md:mt-0">
+          <div className="flex justify-around mt-4 space-x-6 socials sm:justify-center md:mt-0">
             <a
               href="#"
               className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
