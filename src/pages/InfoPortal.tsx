@@ -27,7 +27,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
         backAction={() => navigate(`/`)}
       />
       <Template
-        illustration={1}
+        illustration={7}
         sidebar={true}
         sidebarComponent={
           <ListGroup>

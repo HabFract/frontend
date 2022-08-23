@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const FooterContainer = styled.ul.attrs({
-  className: 'bg-white dark:bg-gray-900',
+  className: 'bg-transparent dark:bg-gray-900 relative z-40',
 })`
   grid-area: f;
 `

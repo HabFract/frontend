@@ -6,8 +6,10 @@ const isDark = () => document.querySelector('html')!.classList.contains('dark')
 
 export const Container = styled.div.attrs({
   className:
-    'layout dark:bg-teal-900 bg-green-50 p-0 h-screen w-screen absolute',
-})``
+    'layout dark:bg-teal-900 bg-green-50 p-0 h-full w-screen absolute overflow-hidden',
+})`
+  max-height: calc(100vh - 3rem);
+`
 
 export const SplitContentContainer = styled.div.attrs({
   className:
@@ -33,10 +35,11 @@ export const SplitContentContainer = styled.div.attrs({
 `
 
 export const Content = styled.main.attrs({
-  className: 'z-20 p-2 pb-24 sm:p-2 md:px-6 lg:pt-1 lg:my-14 md:p-3 rounded-xl',
+  className: 'z-20 p-2 pb-36 sm:p-2 md:px-6 lg:pt-1 lg:my-14 md:p-3 rounded-xl',
 })`
-  margin-bottom: 24vh;
+  margin-bottom: 22vh;
   width: 100%;
+  height: 100%;
   min-height: 66vh;
   display: flex;
   flex-direction: row;
@@ -79,7 +82,7 @@ export const SidebarContent = styled.nav.attrs({
 
 export const Illustration = styled.div.attrs({
   className:
-    'absolute bg-tranparent pb-40 md:bottom-0 lg:bottom-12 -bottom-24 sm:bottom-8 sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
+    'absolute bottom-0 -mb-96 md:-mb-12 lg:bottom-12 sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
 })`
   opacity: 0.5;
   width: 16rem;

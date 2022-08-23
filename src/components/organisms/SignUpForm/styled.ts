@@ -23,9 +23,8 @@ export const MakePublicContainer = styled.div.attrs({
 MakePublicContainer.displayName = 'MakePublicContainer'
 
 export const OnboardingProgressBarContainer = styled.div.attrs({
-  className: 'absolute inset-x-0 px-4 md:hidden dark:bg-primary-800',
+  className: 'absolute inset-x-0 px-4 md:hidden dark:bg-primary-800 bottom-0',
 })`
   background-color: ${({ theme }) => theme.colors.tertiaryMain};
-  bottom: 56px;
 `
 OnboardingProgressBarContainer.displayName = 'OnboardingProgressBarContainer'

@@ -25,7 +25,7 @@ module.exports = {
         'gray-800-transparent': 'rgba(1,68,81,0.5)',
         'gray-50': '#F3F4F6',
         'gray-100': '#FCFFFC',
-        'gray-100': 'rgba(243,250,247,0.5)',
+        'gray-100-transparent': 'rgba(243,250,247,0.5)',
         'red-300': '#ff8869',
         'red-400': '#ff6c49',
         'red-500': '#ff502b',
