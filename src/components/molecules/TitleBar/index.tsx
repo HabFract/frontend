@@ -26,7 +26,9 @@ export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({
     <TitleBarContainer>
       <SpaceBetweenFlexHorizontal>
         <BackCaret onClick={backAction} />
-        <Heading level={2}>{titles[theme]}</Heading>
+        <Heading level={4} caps={true}>
+          {titles[theme]}
+        </Heading>
       </SpaceBetweenFlexHorizontal>
     </TitleBarContainer>
   )

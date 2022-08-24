@@ -99,6 +99,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                   />
                 </label>
                 <P
+                  level={2}
                   copyText={`${
                     (touched &&
                       touched.username &&
@@ -124,7 +125,10 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                     name="avatar-upload"
                   />
                   <div className="grid w-1/4 mr-2 md:w-1/2">
-                    <P copyText="Add a user avatar and people can relate visually *" />
+                    <P
+                      copyText="Add a user avatar and people can relate visually *"
+                      level={2}
+                    />
                   </div>
                 </ImageUploadContainer>
                 <MakePublicContainer>
@@ -132,7 +136,10 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                     Make Profile Public
                     <Field component={SwitchInput} id="public" name="public" />
                   </label>
-                  <P copyText="Going public will enable sharing and trading of habit structures, but isn’t required to use the app." />
+                  <P
+                    copyText="Going public will enable sharing and trading of habit structures, but isn’t required to use the app."
+                    level={2}
+                  />
                 </MakePublicContainer>
                 <OnboardingProgressBarContainer>
                   <CenteringFlexHorizontal>

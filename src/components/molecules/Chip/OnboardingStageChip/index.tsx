@@ -16,12 +16,14 @@ export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({
 }) => {
   return (
     <Container>
-      <Heading level={4} caps={true}>
+      <Heading level={3} caps={true}>
         {`${onBoardingStage}`}/5
       </Heading>
-      <Heading level={4} caps={true}>
-        {chipText}
-      </Heading>
+      <div className="px-4 mb-3">
+        <Heading level={2} caps={false}>
+          {chipText}
+        </Heading>
+      </div>
     </Container>
   )
 }

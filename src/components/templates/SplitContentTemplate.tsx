@@ -41,13 +41,12 @@ export const Template: React.FC<TemplateProps> = ({
           <SidebarContent>{sidebar && sidebarComponent}</SidebarContent>
         </Sidebar>
       )}
-      <Content sidebar={sidebar}>
-        {children}
+      <Content sidebar={sidebar}>{children}</Content>
+      <Footer>
         <Illustration>
           {!!url && <img src={url} alt="illustration" />}
         </Illustration>
-      </Content>
-      <Footer />
+      </Footer>
     </SplitContentContainer>
   )
 }

@@ -10,5 +10,12 @@ html.dark,
   background-color: rgba(1, 68, 81, 1);
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import './assets/tailwind.css';
 @import './assets/styles.css';

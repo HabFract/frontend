@@ -17,7 +17,9 @@ export default {
 }
 
 // 👇 We create a “template” of how args map to rendering
-const Template: Story<IHeading.IProps> = (args) => <Heading {...args} />
+const Template: Story<IHeading.IProps> = (args) => (
+  <Heading {...args}>This is a lovely heading!</Heading>
+)
 
 export const H1 = Template.bind({})
 H1.args = { level: 1, caps: false }

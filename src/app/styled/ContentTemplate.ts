@@ -5,9 +5,12 @@ import { isDark } from '../utils/general'
 
 export const Container = styled.div.attrs({
   className:
-    'layout dark:bg-teal-900 bg-green-50 p-0 h-full w-screen absolute overflow-hidden',
+    'layout grid dark:bg-teal-900 bg-green-50 p-0 h-full w-screen absolute overflow-hidden',
 })`
   max-height: calc(100vh - 3rem);
+  grid-template-columns: minmax(0, 8px) 1fr minmax(0, 8px);
+  grid-template-rows: auto;
+  grid-template-areas: 'ml c mr' 'f f f';
 `
 
 export const SplitContentContainer = styled.div.attrs({
@@ -19,7 +22,7 @@ export const SplitContentContainer = styled.div.attrs({
 
   @media only screen and (min-width: 440px) {
     grid-template-columns: minmax(0, 10vw) 5fr 1rem 6fr minmax(0, 10vw);
-    grid-template-rows: 100vh auto;
+    grid-template-rows: auto;
     grid-template-areas: 'ml s g c mr' 'f f f f f';
   }
 
@@ -34,7 +37,7 @@ export const SplitContentContainer = styled.div.attrs({
 `
 
 export const Content = styled.main.attrs({
-  className: 'z-20 p-2 pb-36 sm:p-2 md:px-6 lg:pt-1 lg:my-14 md:p-3 rounded-xl',
+  className: 'z-20 p-2 pb-36 sm:p-2 md:px-3 lg:pt-1 lg:my-14 md:p-3 rounded-xl',
 })`
   margin-bottom: 22vh;
   width: 100%;
@@ -78,12 +81,10 @@ export const SidebarContent = styled.nav.attrs({
   height: 100%;
   width: 100%;
 `
-
 export const Illustration = styled.div.attrs({
-  className:
-    'absolute bottom-0 md:-mb-12 lg:bottom-12 sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
+  className: 'absolute sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
 })`
-  margin-bottom: calc(-8rem - 20vh);
+  bottom: 42rem;
   opacity: 0.5;
   width: 16rem;
   height: auto;
@@ -92,20 +93,16 @@ export const Illustration = styled.div.attrs({
   @media only screen and (min-width: 600px) {
     width: 428px;
     left: calc(50% - 194px);
+    bottom: 38rem;
+  }
+  @media only screen and (min-width: 768px) {
+    bottom: 24rem;
   }
 
   @media only screen and (min-width: 1024px) {
     width: 428px;
-    left: clamp(8vw, 12vw, 5rem);
-  }
-
-  @media only screen and (min-width: 1680px) {
-    width: 428px;
-    left: clamp(15vw, 12vw, 5rem);
-  }
-
-  @media only screen and (max-height: 667px) {
-    margin-bottom: -32rem;
+    left: clamp(3vw, 12vw, 5rem);
+    bottom: 24rem;
   }
 
   @media only screen and (max-height: 960px) {

@@ -20,7 +20,7 @@ export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
           <OnboardingStageChip onBoardingStage={stage} chipText={title} />
         </Title>
         <Body>
-          <P copyText={copyText} />
+          <P copyText={copyText} level={1} />
           <ColoredSvg
             className="text-primary-500"
             iconName="user"

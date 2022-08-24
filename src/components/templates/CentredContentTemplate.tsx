@@ -25,9 +25,11 @@ export const Template: React.FC<TemplateProps> = ({
   return (
     <Container>
       <Content>{children}</Content>
-      <Illustration>
-        {!!url && <img src={url} alt="illustration" />}
-      </Illustration>
+      <div style={{ display: 'grid', gridArea: 'f' }}>
+        <Illustration>
+          {!!url && <img src={url} alt="illustration" />}
+        </Illustration>
+      </div>
     </Container>
   )
 }

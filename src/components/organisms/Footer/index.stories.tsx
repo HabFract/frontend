@@ -11,4 +11,4 @@ export default {
   title: 'Design System/Organisms/Footer',
 }
 
-export const Default = () => <Footer></Footer>
+export const Default = () => <Footer> </Footer>

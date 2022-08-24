@@ -1,12 +1,13 @@
 // #region Global Imports
+import React from 'react'
 // #endregion Global Imports
+
 // #region Local Imports
 import { H1, H2, H3, H4 } from './styled'
 // #endregion Local Imports
+
 // #region Interface Imports
 import { IHeading } from './types'
-import React from 'react'
-
 // #endregion Interface Imports
 
 export const Heading: React.FC<IHeading.IProps> = ({

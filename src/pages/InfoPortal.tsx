@@ -9,12 +9,14 @@ import { InfoPortalTemplate } from '@/templates/InfoPortalTemplate'
 import { TitleBar } from '@/molecules/TitleBar'
 import { ListGroup } from '@/organisms/ListGroup'
 import { ListGroupItem } from '@/molecules/ListGroupItem'
+import { P } from '@/atoms/Typo/Copy/P'
+import { Heading } from '@/atoms/Typo/Title/Heading'
 // #endregion Local Imports
 
 interface InfoPortalProps {}
 
 const InfoPortalMainTitles = [
-  { default: 'Make a positive habit', dark: 'Break a negative habit' },
+  { default: 'Information Portal', dark: 'Information Portal' },
 ]
 
 export const InfoPortal: React.FC<InfoPortalProps> = () => {
@@ -27,7 +29,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
         backAction={() => navigate(`/`)}
       />
       <Template
-        illustration={7}
+        illustration={2}
         sidebar={true}
         sidebarComponent={
           <ListGroup>
@@ -53,18 +55,20 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
           <section className="relative z-30 bg-white rounded-2xl dark:bg-gray-900">
             <div className="max-w-screen-xl px-2 py-2 mx-auto md:p-4 lg:py-10 lg:px-6">
               <div className="max-w-screen-sm mx-auto mb-8 text-center lg:mb-16">
-                <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl dark:text-white">
+                <Heading caps={false} level={1}>
                   Our Blog
-                </h2>
-                <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                </Heading>
+                {/* <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400"> */}
+                <Heading caps={false} level={2}>
                   We use an agile approach to test assumptions and connect with
                   the needs of your audience early and often.
-                </p>
+                </Heading>
+                {/* </p> */}
               </div>
               <div className="grid gap-2 md:gap-4 lg:grid-cols-2">
                 <article className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                   <div className="flex items-center justify-between mb-5 text-gray-500">
-                    <span className="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                    <span className="bg-primary-100 text-primary-800 text-base font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-50">
                       <svg
                         className="w-3 h-3 mr-1"
                         fill="currentColor"
@@ -77,15 +81,34 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                     </span>
                     <span className="text-sm">14 days ago</span>
                   </div>
-                  <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {/* <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> */}
+                  <Heading caps={false} level={3}>
                     <a href="#">How to quickly deploy a static website</a>
-                  </h2>
-                  <p className="mb-5 font-light text-gray-500 dark:text-gray-400">
-                    Static websites are now used to bootstrap lots of websites
+                  </Heading>
+                  {/* <P level={2} copyText={`How to quickly deploy a static website`} /> */}
+                  <Heading caps={false} level={4}>
+                    How to quickly deploy a static website
+                  </Heading>
+                  {/* </h2> */}
+                  <P
+                    level={3}
+                    copyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat, diam sit amet faucibus scelerisque, diam arcu lacinia felis, eget varius ligula quam ut quam. Nullam suscipit libero libero, non fermentum ipsum consequat sit amet. Nam elementum, nibh ac sollicitudin pretium, diam nisi ornare arcu, sit amet malesuada neque erat at augue. Nam suscipit nulla eu nulla malesuada, at finibus nunc maximus. Suspendisse eu accumsan elit. Donec ante eros, consequat eu consectetur ut, fermentum sed dolor. Aenean iaculis ante nisl, et pellentesque erat vestibulum vel. Vivamus varius eu ex eu sagittis. Nulla et varius diam. Nulla varius finibus risus, vel tempus dui interdum a. Aliquam eget posuere metus. Aliquam in erat id massa finibus euismod.`}
+                  />
+                  <P
+                    level={3}
+                    copyText={`Static websites are now used to bootstrap lots of websites
                     and are becoming the basis for a variety of tools that even
                     influence both web designers and developers influence both
-                    web designers and developers.
-                  </p>
+                    web designers and developers.`}
+                  />
+                  <P
+                    level={3}
+                    copyText={`Static websites are now used to bootstrap lots of websites
+                    and are becoming the basis for a variety of tools that even
+                    influence both web designers and developers influence both
+                    web designers and developers.`}
+                  />
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       <img
@@ -99,7 +122,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                     </div>
                     <a
                       href="#"
-                      className="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                      className="inline-flex items-center font-bold text-primary-500 dark:text-primary-500 hover:underline"
                     >
                       Read more
                       <svg
@@ -119,7 +142,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                 </article>
                 <article className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                   <div className="flex items-center justify-between mb-5 text-gray-500">
-                    <span className="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                    <span className="bg-primary-100 text-primary-800 text-sm font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
                       <svg
                         className="w-3 h-3 mr-1"
                         fill="currentColor"
@@ -159,7 +182,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                     </div>
                     <a
                       href="#"
-                      className="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                      className="inline-flex items-center font-bold text-primary-500 dark:text-primary-500 hover:underline"
                     >
                       Read more
                       <svg
