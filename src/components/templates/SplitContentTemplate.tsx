@@ -43,7 +43,7 @@ export const Template: React.FC<TemplateProps> = ({
       )}
       <Content sidebar={sidebar}>{children}</Content>
       <Footer>
-        <Illustration>
+        <Illustration sidebar>
           {!!url && <img src={url} alt="illustration" />}
         </Illustration>
       </Footer>

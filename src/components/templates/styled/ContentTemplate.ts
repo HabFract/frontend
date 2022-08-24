@@ -84,7 +84,7 @@ export const SidebarContent = styled.nav.attrs({
 export const Illustration = styled.div.attrs({
   className: 'absolute sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
 })`
-  bottom: 42rem;
+  bottom: ${({ sidebar }) => (sidebar ? '42rem' : '4rem')};
   opacity: 0.5;
   width: 16rem;
   height: auto;
@@ -93,16 +93,16 @@ export const Illustration = styled.div.attrs({
   @media only screen and (min-width: 600px) {
     width: 428px;
     left: calc(50% - 194px);
-    bottom: 38rem;
+    bottom: ${({ sidebar }) => (sidebar ? '38rem' : '8rem')};
   }
   @media only screen and (min-width: 768px) {
-    bottom: 24rem;
+    bottom: ${({ sidebar }) => (sidebar ? '24rem' : '0rem')};
   }
 
   @media only screen and (min-width: 1024px) {
     width: 428px;
     left: clamp(3vw, 12vw, 5rem);
-    bottom: 24rem;
+    bottom: ${({ sidebar }) => (sidebar ? '24rem' : '0rem')};
   }
 
   @media only screen and (max-height: 960px) {
