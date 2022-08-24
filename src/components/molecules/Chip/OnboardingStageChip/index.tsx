@@ -1,13 +1,14 @@
 // #region Global Imports
+import React from 'react'
 // #endregion Global Imports
+
 // #region Local Imports
-import { Container } from './styled'
+import { ChipContainer } from './styled'
+import { Heading } from '@/atoms/Typo/Title/Heading'
 // #endregion Local Imports
+
 // #region Interface Imports
 import { IOnboardingStageChip } from './types'
-import { Heading } from '@/atoms/Typo/Title/Heading'
-import React from 'react'
-
 // #endregion Interface Imports
 
 export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({
@@ -15,7 +16,7 @@ export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({
   onBoardingStage,
 }) => {
   return (
-    <Container>
+    <ChipContainer>
       <Heading level={3} caps={true}>
         {`${onBoardingStage}`}/5
       </Heading>
@@ -24,6 +25,6 @@ export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({
           {chipText}
         </Heading>
       </div>
-    </Container>
+    </ChipContainer>
   )
 }

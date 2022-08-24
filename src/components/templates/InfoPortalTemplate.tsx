@@ -3,7 +3,7 @@ import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Container } from '@/app/styled/InfoPortal'
+import { Container } from '@/templates/styled/InfoPortal'
 // #endregion Local Imports
 
 interface InfoPortalTemplateProps {

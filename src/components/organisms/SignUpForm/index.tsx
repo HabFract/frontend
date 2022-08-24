@@ -10,8 +10,9 @@ import {
   ImageUploadContainer,
   MakePublicContainer,
   OnboardingProgressBarContainer,
+  Label,
 } from './styled'
-import { CenteringFlexHorizontal } from '@/app/styled'
+import { CenteringFlexHorizontal } from '@/templates/styled'
 
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
 import { SwitchInput } from '@/atoms/Input/Switch'
@@ -23,7 +24,7 @@ import { useAddUserMutation } from '@/graphql/generated'
 
 // #region Interface Imports
 import { ISignUpForm } from './types'
-import { Alert, Spin, Upload } from 'antd'
+import { Alert, Spin } from 'antd'
 // #endregion Interface Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
@@ -81,65 +82,62 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
           }}
         >
           {({ touched, errors, handleSubmit }: FormikProps<any>) => {
-            // console.log('touched,', touched)
-            // console.log(', errors,', errors)
             return (
               <Form
                 onSubmit={handleSubmit}
                 aria-label="sign-up-form"
-                className="flex flex-col p-2 gap-y-4"
+                className="flex flex-col pt-3 gap-y-6"
               >
-                <label htmlFor="username">
-                  Username:
+                <div className="w-full">
+                  <Label htmlFor="username">Username:</Label>
                   <Field
                     component={TextInput}
                     id="username"
                     name="username"
                     placeholder="Pick a username"
                   />
-                </label>
-                <P
-                  level={2}
-                  copyText={`${
-                    (touched &&
-                      touched.username &&
-                      errors &&
-                      errors.username) ||
-                    ''
-                  }`}
-                ></P>
-                <label htmlFor="location">
-                  Location:
+                  {errors &&
+                    errors.username &&
+                    touched &&
+                    touched.username &&
+                    errors && <Label warning>{errors.username}</Label>}
+                </div>
+                <div className="w-full">
+                  <Label htmlFor="location">Location:</Label>
                   <Field
                     component={TextInput}
                     id="location"
                     name="location"
                     placeholder="Pick a location"
                   />
-                </label>
+                </div>
                 <ImageUploadContainer>
-                  <Field
-                    className="grid mr-2 place-content-end"
-                    component={ImageUploadInput}
-                    id="avatar-upload"
-                    name="avatar-upload"
-                  />
-                  <div className="grid w-1/4 mr-2 md:w-1/2">
-                    <P
-                      copyText="Add a user avatar and people can relate visually *"
-                      level={2}
+                  <CenteringFlexHorizontal>
+                    <Field
+                      className="grid mr-2 place-content-end"
+                      component={ImageUploadInput}
+                      id="avatar-upload"
+                      name="avatar-upload"
                     />
-                  </div>
+                    <div style={{ flexBasis: '33%', margin: '0 0 0 2rem' }}>
+                      <P
+                        copyText="Add a user avatar and people can relate visually *"
+                        level={2}
+                      />
+                    </div>
+                  </CenteringFlexHorizontal>
                 </ImageUploadContainer>
                 <MakePublicContainer>
-                  <label htmlFor="public">
-                    Make Profile Public
+                  <div className="flex justify-around w-1/2">
+                    <Label htmlFor="public">Make Profile Public</Label>
                     <Field component={SwitchInput} id="public" name="public" />
-                  </label>
-                  <P
-                    copyText="Going public will enable sharing and trading of habit structures, but isn’t required to use the app."
-                    level={2}
-                  />
+                  </div>
+                  <div className="px-4">
+                    <P
+                      copyText="Going public will enable sharing and trading of habit structures, but isn’t required to use the app."
+                      level={4}
+                    />
+                  </div>
                 </MakePublicContainer>
                 <OnboardingProgressBarContainer>
                   <CenteringFlexHorizontal>

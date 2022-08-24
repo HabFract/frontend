@@ -1,6 +1,6 @@
 // #region Global Imports
 import styled from 'styled-components'
-import { isDark } from '../utils/general'
+import { isDark } from '@/app/utils/general'
 // #endregion Global Imports
 
 export const Container = styled.div.attrs({

@@ -4,7 +4,7 @@ import React from 'react'
 
 // #region Local Imports
 import { TitleBarContainer } from './styled'
-import { SpaceBetweenFlexHorizontal } from '@/app/styled'
+import { SpaceBetweenFlexHorizontal } from '@/templates/styled'
 
 import { Heading } from '@/atoms/Typo/Title/Heading'
 import { BackCaret } from '@/atoms/Button/BackCaret'

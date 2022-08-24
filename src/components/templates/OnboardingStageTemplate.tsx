@@ -3,7 +3,7 @@ import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Container } from '@/app/styled/Onboarding'
+import { Container } from '@/templates/styled/Onboarding'
 // #endregion Local Imports
 
 interface OnboardingTemplateProps {

@@ -9,7 +9,7 @@ import {
   Illustration,
   Sidebar,
   SidebarContent,
-} from '@/app/styled/ContentTemplate'
+} from '@/templates/styled/ContentTemplate'
 import { useThemeName } from '@/app/hooks/useTheme'
 import { getIllustration } from './templateIllustration'
 import { Footer } from '@/organisms/Footer'

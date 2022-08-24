@@ -3,7 +3,11 @@ import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Container, Content, Illustration } from '@/app/styled/ContentTemplate'
+import {
+  Container,
+  Content,
+  Illustration,
+} from '@/templates/styled/ContentTemplate'
 import { useThemeName } from '@/app/hooks/useTheme'
 import { getIllustration } from './templateIllustration'
 // #endregion Local Imports
