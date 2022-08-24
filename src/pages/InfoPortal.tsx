@@ -11,6 +11,9 @@ import { ListGroup } from '@/organisms/ListGroup'
 import { ListGroupItem } from '@/molecules/ListGroupItem'
 import { P } from '@/atoms/Typo/Copy/P'
 import { Heading } from '@/atoms/Typo/Title/Heading'
+import { CenteringFlexHorizontal, SpaceBetweenFlex } from './styled'
+import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
+import { ButtonContainer, ButtonContainerOutlined } from '@/atoms/Button/styled'
 // #endregion Local Imports
 
 interface InfoPortalProps {}
@@ -32,23 +35,49 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
         illustration={2}
         sidebar={true}
         sidebarComponent={
-          <ListGroup>
-            <ListGroupItem
-              iconName={'speakerphone'}
-              primaryText="What"
-              secondaryText="Learn about the functions of HabitFract"
-            />
-            <ListGroupItem
-              iconName={'question-mark'}
-              primaryText="Why"
-              secondaryText="Learn about our reasoning and motivation"
-            />
-            <ListGroupItem
-              iconName={'cog'}
-              primaryText="How"
-              secondaryText="Learn about the technology that powers us"
-            />
-          </ListGroup>
+          <CenteringFlexHorizontal>
+            <ListGroup>
+              <ListGroupItem
+                iconName={'speakerphone'}
+                primaryText="What"
+                secondaryText="Learn about the functions of HabitFract"
+              />
+              <ListGroupItem
+                iconName={'question-mark'}
+                primaryText="Why"
+                secondaryText="Learn about our reasoning and motivation"
+              />
+              <ListGroupItem
+                iconName={'cog'}
+                primaryText="How"
+                secondaryText="Learn about the technology that powers us"
+              />
+              <SpaceBetweenFlex vertical gap={0.1}>
+                <ButtonContainerOutlined hoverColor="white">
+                  <CenteringFlexHorizontal gap={0.5}>
+                    <ColoredSvg
+                      button
+                      iconName="home"
+                      className="w-6 h-6 mr-4 text-primary-500"
+                      rounded={false}
+                    ></ColoredSvg>
+                    Home
+                  </CenteringFlexHorizontal>
+                </ButtonContainerOutlined>
+                <ButtonContainer hoverColor="white">
+                  <CenteringFlexHorizontal gap={0.5}>
+                    <ColoredSvg
+                      button
+                      iconName="forward"
+                      className="w-6 h-6 text-gray-100"
+                      rounded={false}
+                    ></ColoredSvg>
+                    Get Started
+                  </CenteringFlexHorizontal>
+                </ButtonContainer>
+              </SpaceBetweenFlex>
+            </ListGroup>
+          </CenteringFlexHorizontal>
         }
       >
         <InfoPortalTemplate>

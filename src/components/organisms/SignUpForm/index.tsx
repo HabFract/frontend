@@ -12,7 +12,6 @@ import {
   OnboardingProgressBarContainer,
   Label,
 } from './styled'
-import { CenteringFlexHorizontal } from '@/templates/styled'
 
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
 import { SwitchInput } from '@/atoms/Input/Switch'
@@ -25,6 +24,7 @@ import { useAddUserMutation } from '@/graphql/generated'
 // #region Interface Imports
 import { ISignUpForm } from './types'
 import { Alert, Spin } from 'antd'
+import { CenteringFlexHorizontal } from '@/pages/styled'
 // #endregion Interface Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({

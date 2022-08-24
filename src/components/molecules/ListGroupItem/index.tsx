@@ -1,6 +1,7 @@
 // #region Global Imports
 import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
 import { P } from '@/atoms/Typo/Copy/P'
+import { SpaceBetweenFlex } from '@/pages/styled'
 import React from 'react'
 // #endregion Global Imports
 
@@ -19,7 +20,8 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
 }: IListGroupItem.IProps) => {
   return (
     <ListGroupItemContainer>
-      <div className="flex flex-row items-center w-full lg:flex-wrap no-wrap basis-2/6 gap-x-2">
+      <SpaceBetweenFlex vertical unstack440>
+        {/* <div className="flex flex-row items-center w-auto lg:flex-wrap no-wrap"> */}
         <ColoredSvg
           className="w-full h-8 rounded-full list-item"
           iconName={iconName}
@@ -31,7 +33,8 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
             <P copyText={secondaryText} level={2} />
           </div>
         </div>
-      </div>
+      </SpaceBetweenFlex>
+      {/* </div> */}
     </ListGroupItemContainer>
   )
 }

@@ -4,8 +4,10 @@ import styled from 'styled-components'
 
 export const IconContainer = styled.div.attrs({
   className:
-    'place-items-center grid h-auto w-16 m:w-12 text-primary-900 dark:text-primary-200',
+    'place-items-center grid h-auto text-primary-900 dark:text-primary-200',
 })`
+  width: ${({ button }) => (button ? 'auto' : '4rem')};
+  max-width: ${({ button }) => (button ? '2rem' : '4rem')};
   text-decoration: ${({ complete }) => (complete ? 'line-through' : 'none')};
   border-radius: ${({ rounded }) => (rounded ? '3rem' : '0')};
 `

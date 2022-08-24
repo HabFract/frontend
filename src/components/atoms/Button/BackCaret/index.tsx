@@ -21,7 +21,7 @@ export const BackCaret: React.FC<IBackCaret.IProps> = ({ onClick }) => {
       >
         <ColoredSvg
           className="w-8 h-8 text-gray-600 dark:text-primary-100"
-          iconName="back"
+          iconName="return"
           rounded={false}
         />
       </button>

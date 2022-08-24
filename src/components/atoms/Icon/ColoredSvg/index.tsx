@@ -53,11 +53,44 @@ const getPath = (iconName) => {
     case 'back':
       return (
         <path
+          strokeWidth={1.5}
+          stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-          fill="currentColor"
+          d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z"
+        />
+      )
+    case 'forward':
+      return (
+        <path
+          fill="transparent"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z"
+        />
+      )
+    case 'return':
+      return (
+        <path
+          fill="transparent"
           strokeWidth={2}
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+        />
+      )
+    case 'home':
+      return (
+        <path
+          fill="none"
+          strokeWidth={2}
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
         />
       )
   }
@@ -65,7 +98,7 @@ const getPath = (iconName) => {
 
 const getViewBox = (iconName) => {
   switch (true) {
-    case ['user', 'back'].includes(iconName):
+    case ['user', 'back', 'forward', 'return', 'home'].includes(iconName):
       return '0 0 24 24'
     default:
       return '0 0 33 32'
@@ -75,9 +108,10 @@ const getViewBox = (iconName) => {
 export const ColoredSvg: React.FC<IColoredSvg.IProps> = ({
   iconName,
   className,
+  button,
 }) => {
   return (
-    <IconContainer>
+    <IconContainer button>
       <svg
         viewBox={getViewBox(iconName)}
         className={className}
