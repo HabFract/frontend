@@ -20,7 +20,7 @@ export const H2 = styled.h2.attrs({
 
 export const H3 = styled.h3.attrs({
   className:
-    'mb-4 text-xl font-head dark:shadow-head-dark shadow-head uppercase gray-800-transparent dark:text-primary-50',
+    'my-4 text-xl font-head dark:shadow-head-dark shadow-head uppercase gray-800-transparent dark:text-primary-50',
 })`
   font-style: normal;
   letter-spacing: 0.05em;

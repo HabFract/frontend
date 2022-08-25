@@ -20,7 +20,7 @@ export const OnboardingStageChip: React.FC<IOnboardingStageChip.IProps> = ({
       <Heading level={3} caps={true}>
         {`${onBoardingStage}`}/5
       </Heading>
-      <div className="px-4 mb-3">
+      <div className="px-4">
         <Heading level={2} caps={false}>
           {chipText}
         </Heading>
