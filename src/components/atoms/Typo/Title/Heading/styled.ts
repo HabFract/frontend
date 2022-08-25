@@ -13,6 +13,7 @@ export const H2 = styled.h2.attrs({
   className:
     'mb-0 text-xl lg:text-2xl font-display text-gray-500 sm:text-xl dark:text-primary-50',
 })`
+  line-height: 2.5rem;
   font-weight: 400 !important;
   text-transform: ${({ caps }) => (caps ? 'uppercase' : 'none')};
 `

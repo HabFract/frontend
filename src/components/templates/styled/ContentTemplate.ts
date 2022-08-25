@@ -37,7 +37,7 @@ export const SplitContentContainer = styled.div.attrs({
 `
 
 export const Content = styled.main.attrs({
-  className: 'z-20 p-2 pb-36 sm:p-2 md:px-3 lg:pt-1 lg:my-14 md:p-3 rounded-xl',
+  className: 'z-20 p-2 pb-36 sm:p-2 md:px-3 lg:pt-1 lg:my-8 md:p-3 rounded-xl',
 })`
   margin-bottom: 22vh;
   width: 100%;
