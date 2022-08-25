@@ -1,12 +1,18 @@
 // #region Global Imports
 import styled from 'styled-components'
-
 // #endregion Global Imports
 
-export const Container = styled.div.attrs({
-  className: 'h-full p-2 pb-16 mt-12',
+export const OnboardingContent = styled.div.attrs({
+  className: '',
+})``
+
+OnboardingContent.displayName = 'OnboardingOnboardingContent'
+
+export const OnboardingContextBar = styled.div.attrs({
+  className:
+    'hidden max-w-md p-12 lg:h-screen lg:block bg-primary-900 rounded-2xl rounded-l-none',
 })`
-  // background-color: ${({ theme }) => theme.colors.tertiary2};
+  width: 50vw;
 `
 
-Container.displayName = 'OnboardingContainer'
+OnboardingContextBar.displayName = 'OnboardingContextBar'

@@ -37,7 +37,8 @@ export const SplitContentContainer = styled.div.attrs({
 `
 
 export const Content = styled.main.attrs({
-  className: 'z-20 p-2 pb-36 sm:p-2 md:px-3 lg:pt-1 lg:my-8 md:p-3 rounded-xl',
+  className:
+    'relative z-20 p-2 pb-36 sm:p-2 md:px-3 lg:pt-1 lg:pr-0 lg:my-8 md:p-3 lg:pt-0 rounded-xl',
 })`
   margin-bottom: 22vh;
   width: 100%;
@@ -66,6 +67,8 @@ export const Content = styled.main.attrs({
     margin: 0 auto;
     max-width: calc(100vw - 24rem);
     min-width: calc(768px - 8rem);
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   grid-area: c;
@@ -82,7 +85,7 @@ export const SidebarContent = styled.nav.attrs({
   width: 100%;
 `
 export const Illustration = styled.div.attrs({
-  className: 'absolute sm-ls:pb-0 lg:w-72 lg:pl-0 z-10',
+  className: 'absolute sm-ls:pb-0 lg:w-72 lg:pl-0 z-10 lg:z-30',
 })`
   bottom: ${({ sidebar }) => (sidebar ? '42rem' : '4rem')};
   opacity: 0.5;

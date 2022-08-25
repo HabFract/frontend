@@ -40,11 +40,11 @@ module.exports = {
         'head-dark': '0 0.15rem  rgba(241, 100, 148, 1)',
       },
       colors: {
-        'gray-700': '#06575A',
+        'gray-700': '#',
         'gray-800': '#014451',
         'primary-50-transparent': 'rgba(239, 246, 255, 0.25) !important',
         'gray-800-transparent': 'rgba(1,68,81,0.5)',
-        'gray-50': '#F3F4F6',
+        'gray-50': '#',
         'gray-100': '#FCFFFC',
         'gray-100-transparent': 'rgba(243,250,247,0.5)',
         'red-300': '#ff8869',

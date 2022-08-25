@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const Container = styled.div.attrs({
-  className: 'h-full md:p-4 pb-16 md:mt-0 dark:bg-teal-900',
+  className: 'h-full md:p-4 lg:pr-0 lg:pt-0 pb-16 dark:bg-teal-900',
 })``
 
 Container.displayName = 'OnboardingContainer'

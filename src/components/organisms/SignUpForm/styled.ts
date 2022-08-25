@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 export const OnboardingFormContainer = styled.div.attrs({
   className:
-    'flex flex-col justify-between w-full bg-gray-100 dark:bg-gray-800-transparent',
+    'flex flex-col justify-between w-full lg:h-full bg-gray-100 dark:bg-gray-800-transparent',
 })``
 
 OnboardingFormContainer.displayName = 'OnboardingFormContainer'

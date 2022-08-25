@@ -18,6 +18,7 @@ import { Footer } from '@/organisms/Footer'
 import { SignUpForm } from '@/organisms/SignUpForm'
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
+import { OnboardingContextBar } from './styled/Onboarding'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -108,10 +109,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
           )}
         </OnboardingTemplate>
 
-        <div
-          style={{ flexBasis: '30%' }}
-          className="hidden w-full max-w-md p-12 lg:h-screen lg:block bg-primary-900"
-        >
+        <OnboardingContextBar>
           <div className="flex items-center mb-8 space-x-4">
             <a
               href="#"
@@ -143,7 +141,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
             <p className="mb-4 font-light text-primary-100 sm:text-lg">
               30-day free trial
             </p>
-            <ul role="list" className="space-y-4 text-left">
+            <ul role="list" className="text-left space-OnboardingContenty-4">
               <li className="flex items-center space-x-3">
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-green-300"
@@ -228,7 +226,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </OnboardingContextBar>
       </Template>
     </>
   )
