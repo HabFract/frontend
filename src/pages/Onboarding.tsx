@@ -110,30 +110,15 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
         </OnboardingTemplate>
 
         <OnboardingContextBar>
-          <div className="flex items-center mb-8 space-x-4">
+          <div className="flex items-center justify-around mb-8 space-x-4">
             <a
               href="#"
               className="flex items-center text-2xl font-semibold text-white"
             >
               HabitFract
             </a>
-            <a
-              href="#"
-              className="inline-flex items-center text-sm font-medium text-primary-100 hover:text-white"
-            >
-              <svg
-                className="w-6 h-6 mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              Go back
+            <a href="#">
+              <button></button>
             </a>
           </div>
           <div className="block p-8 text-white bg-gray-400 rounded-lg">
@@ -141,7 +126,10 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
             <p className="mb-4 font-light text-primary-100 sm:text-lg">
               30-day free trial
             </p>
-            <ul role="list" className="text-left space-OnboardingContenty-4">
+            <ul
+              role="list"
+              className="flex flex-col items-end space-y-4 text-left xl:items-start"
+            >
               <li className="flex items-center space-x-3">
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-green-300"

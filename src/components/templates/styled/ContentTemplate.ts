@@ -5,7 +5,7 @@ import { isDark } from '@/app/utils/general'
 
 export const Container = styled.div.attrs({
   className:
-    'layout grid dark:bg-teal-900 bg-green-50 p-0 h-full w-screen absolute overflow-hidden',
+    'layout grid md:max-h-full dark:bg-teal-900 bg-green-50 p-0 h-full w-screen absolute overflow-hidden',
 })`
   max-height: calc(100vh - 3rem);
   grid-template-columns: minmax(0, 8px) 1fr minmax(0, 8px);
@@ -38,11 +38,10 @@ export const SplitContentContainer = styled.div.attrs({
 
 export const Content = styled.main.attrs({
   className:
-    'relative z-20 p-2 pb-36 sm:p-2 md:px-3 lg:pt-1 lg:pr-0 lg:my-8 md:p-3 lg:pt-0 rounded-xl',
+    'relative md:h-full z-20 xl:flex-row p-2 pb-36 lg:p-0 sm:p-2 md:px-3 lg:my-8 md:p-3 lg:pt-8 xl:pt-0 lg:rounded-2xl',
 })`
-  margin-bottom: 22vh;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 3rem);
   min-height: 66vh;
   display: flex;
   flex-direction: row;
@@ -68,7 +67,7 @@ export const Content = styled.main.attrs({
     max-width: calc(100vw - 24rem);
     min-width: calc(768px - 8rem);
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
   }
 
   grid-area: c;

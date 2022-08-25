@@ -58,7 +58,7 @@ export const Card: React.FunctionComponent<ICard.IProps> = ({
         />
 
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center justify-between space-x-4">
             <img
               className="rounded-full w-7 h-7"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"

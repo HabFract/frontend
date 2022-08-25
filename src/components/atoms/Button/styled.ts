@@ -43,7 +43,7 @@ const colorStyles = (type) => {
         text: '#FCFFFC',
         'hover-bg': '#83CFB5',
         'hover-border': '#83CFB5',
-        'hover-text': '#FCFFFC',
+        'hover-text': '#000',
       }
     case 'secondary':
       return {

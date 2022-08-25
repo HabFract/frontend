@@ -99,7 +99,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                 </Heading>
                 {/* </p> */}
               </div>
-              <div className="flex flex-wrap">
+              <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4 xl:grid-cols-3">
                 {/* //grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4 xl:grid-cols-3 */}
                 <Card> </Card>
                 <Card> </Card>
