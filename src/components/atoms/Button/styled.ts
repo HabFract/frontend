@@ -6,10 +6,10 @@ const sizeStyles = (size) => {
   switch (size) {
     case 'sm':
       return {
-        width: '6rem',
-        'width-md': '8rem',
-        max: '6rem',
-        'max-md': '12rem',
+        width: '4rem',
+        'width-md': '6rem',
+        max: '4rem',
+        'max-md': '6rem',
       }
     case 'md':
       return {
@@ -47,7 +47,7 @@ const colorStyles = (type) => {
       }
     case 'secondary':
       return {
-        bg: 'transparent',
+        bg: '#FCFFFC',
         border: '#f16494',
         text: '#f16494',
         'hover-bg': '#FCFFFC',

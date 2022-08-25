@@ -19,6 +19,9 @@ import { SignUpForm } from '@/organisms/SignUpForm'
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { OnboardingContextBar } from './styled/Onboarding'
+import { CenteringFlexHorizontal } from './styled'
+import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
+import { ButtonContainer } from '@/atoms/Button/styled'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -118,7 +121,17 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
               HabitFract
             </a>
             <a href="#">
-              <button></button>
+              <ButtonContainer typeOfButton="secondary" size="sm">
+                <CenteringFlexHorizontal gap={0.5}>
+                  <ColoredSvg
+                    button
+                    iconName="forward"
+                    className="w-6 h-6 text-primary-500"
+                    rounded={false}
+                  ></ColoredSvg>
+                  Get Started
+                </CenteringFlexHorizontal>
+              </ButtonContainer>
             </a>
           </div>
           <div className="block p-8 text-white bg-gray-400 rounded-lg">

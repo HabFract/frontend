@@ -38,7 +38,7 @@ export const SplitContentContainer = styled.div.attrs({
 
 export const Content = styled.main.attrs({
   className:
-    'relative md:h-full z-20 xl:flex-row p-2 pb-36 lg:p-0 sm:p-2 md:px-3 lg:my-8 md:p-3 lg:pt-8 xl:pt-0 lg:rounded-2xl',
+    'relative md:h-full z-20 xl:flex-row pb-36 lg:p-0 sm:p-2 md:px-3 md:p-3 lg:pt-0 xl:pt-0 xl:rounded-2xl overflow-auto',
 })`
   width: 100%;
   height: calc(100vh - 3rem);
@@ -61,6 +61,10 @@ export const Content = styled.main.attrs({
         ? 'rgba(35, 56, 118, 0.15) 100%'
         : 'rgba(255, 255, 255, 0.15) 100%'}
   );
+
+  @media only screen and (min-height: 600px) {
+    overflow: hidden;
+  }
 
   @media only screen and (min-width: 1024px) {
     margin: 0 auto;

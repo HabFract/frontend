@@ -86,7 +86,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
               <Form
                 onSubmit={handleSubmit}
                 aria-label="sign-up-form"
-                className="flex flex-col pt-3 gap-y-6"
+                className="flex flex-col py-2 md:relative gap-y-6"
               >
                 <div className="w-full">
                   <Label htmlFor="username">Username:</Label>
