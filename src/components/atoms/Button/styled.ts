@@ -7,8 +7,8 @@ const sizeStyles = (size) => {
     case 'sm':
       return {
         width: '4rem',
-        'width-md': '6rem',
-        max: '4rem',
+        max: '6rem',
+        'width-md': '100%',
         'max-md': '6rem',
       }
     case 'md':
@@ -108,6 +108,7 @@ export const ButtonContainer = styled.button.attrs({
     focus:ring-4
     focus:outline-none
     
+    h-12
     ml-4
     sm:ml-0
     md:mb-1

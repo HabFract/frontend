@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 export const OnboardingFormContainer = styled.div.attrs({
   className:
-    'flex flex-col justify-between w-full lg:h-3/4 xl:h-full bg-gray-100 dark:bg-gray-800-transparent md:px-12 md:py-0',
+    'flex flex-col justify-between w-full lg:h-3/4 xl:h-full bg-gray-100/80 dark:bg-gray-800-transparent md:px-8 md:py-0',
 })``
 
 OnboardingFormContainer.displayName = 'OnboardingFormContainer'
@@ -23,7 +23,8 @@ export const MakePublicContainer = styled.div.attrs({
 MakePublicContainer.displayName = 'MakePublicContainer'
 
 export const OnboardingProgressBarContainer = styled.div.attrs({
-  className: 'absolute inset-x-0 lg:hidden dark:bg-primary-800 bottom-0',
+  className:
+    'absolute inset-x-0 dark:bg-primary-800 bottom-0 px-2 md:px-4 lg:background-transparent',
 })`
   background-color: ${({ theme }) => theme.colors.tertiaryMain};
 `

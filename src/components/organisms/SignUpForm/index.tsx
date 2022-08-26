@@ -24,7 +24,9 @@ import { useAddUserMutation } from '@/graphql/generated'
 // #region Interface Imports
 import { ISignUpForm } from './types'
 import { Alert, Spin } from 'antd'
-import { CenteringFlexHorizontal } from '@/pages/styled'
+import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
+import { ButtonContainer } from '@/atoms/Button/styled'
+import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
 // #endregion Interface Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
@@ -86,6 +88,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
               <Form
                 onSubmit={handleSubmit}
                 aria-label="sign-up-form"
+                id="sign-up-form"
                 className="flex flex-col py-2 md:relative gap-y-6"
               >
                 <div className="w-full">
@@ -132,7 +135,7 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                     <Label htmlFor="public">Make Profile Public</Label>
                     <Field component={SwitchInput} id="public" name="public" />
                   </div>
-                  <div className="px-4">
+                  <div className="px-4 mb-6">
                     <P
                       copyText="Going public will enable sharing and trading of habit structures, but isn’t required to use the app."
                       level={4}
@@ -140,8 +143,8 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                   </div>
                 </MakePublicContainer>
                 <OnboardingProgressBarContainer>
-                  <CenteringFlexHorizontal>
-                    <div className="w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700">
+                  <EndFlexHorizontal>
+                    <div className="w-full h-6 bg-gray-200 rounded-full lg:hidden dark:bg-gray-700">
                       <div
                         className="h-6 bg-blue-600 rounded-full dark:bg-blue-500"
                         style={{ width: '20%' }}
@@ -151,20 +154,35 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                       type="submit"
                       className="my-2 ml-2 text-primary-500"
                     >
+                      {/* 1024px+ button: */}
+                      <div className="hidden h-full lg:block">
+                        <ButtonContainer typeOfButton="primary" size="lg">
+                          <CenteringFlexHorizontal gap={0.5}>
+                            <ColoredSvg
+                              button
+                              iconName="forward"
+                              className="w-6 h-6 text-gray-100"
+                              rounded={false}
+                            ></ColoredSvg>
+                            Next
+                          </CenteringFlexHorizontal>
+                        </ButtonContainer>
+                      </div>
+                      {/* 1024px- button: */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-8 h-8"
+                        className="w-8 h-8 lg:hidden"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
-                  </CenteringFlexHorizontal>
+                  </EndFlexHorizontal>
                 </OnboardingProgressBarContainer>
               </Form>
             )

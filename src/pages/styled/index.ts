@@ -13,6 +13,16 @@ export const CenteringFlexHorizontal = styled.div`
 `
 CenteringFlexHorizontal.displayName = 'CenteringFlexHorizontal'
 
+export const EndFlexHorizontal = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  grid-gap: ${({ gap }) => `${+gap}rem`};
+`
+EndFlexHorizontal.displayName = 'EndFlexHorizontal'
+
 export const CenteringFlexVertical = styled.div`
   display: flex;
   flex-direction: column;

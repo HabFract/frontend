@@ -102,6 +102,11 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
             stage={+onboardingStage}
             title={onboardingStageTitles[+onboardingStage - 1]}
             copyText={onboardingStageCopy[+onboardingStage - 1]}
+            backAction={() =>
+              onboardingStage == '1'
+                ? navigate(`/`)
+                : setOnboardingStage(`${+onboardingStage - 1}`)
+            }
           />
           {onboardingStage == '1' ? (
             <SignUpForm onSuccess={() => setOnboardingStage('2')} />
@@ -113,20 +118,32 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
         </OnboardingTemplate>
 
         <OnboardingContextBar>
-          <div className="flex items-center justify-around mb-8 space-x-4">
+          <div className="flex items-center justify-between mb-8 space-x-4">
             <a
               href="#"
               className="flex items-center text-2xl font-semibold text-white"
             >
               HabitFract
             </a>
-            <a href="#">
-              <ButtonContainer typeOfButton="secondary" size="sm">
+            <a
+              href="#"
+              className="mb-1"
+              onClick={() => {
+                ;(document.getElementById(
+                  'sign-up-form',
+                ) as HTMLFormElement)!.submit()
+              }}
+            >
+              <ButtonContainer
+                typeOfButton="default"
+                size="sm"
+                hoverColor="white"
+              >
                 <CenteringFlexHorizontal gap={0.5}>
                   <ColoredSvg
                     button
                     iconName="forward"
-                    className="w-6 h-6 text-primary-500"
+                    className="w-6 h-6 text-white"
                     rounded={false}
                   ></ColoredSvg>
                   Get Started
@@ -151,9 +168,9 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 <span>Individual configuration</span>
@@ -166,9 +183,9 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 <span>No setup, or hidden fees</span>
@@ -181,9 +198,9 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 <span>
@@ -198,9 +215,9 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 <span>
@@ -216,9 +233,9 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 <span>

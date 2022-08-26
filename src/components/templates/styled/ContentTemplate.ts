@@ -16,7 +16,7 @@ export const Container = styled.div.attrs({
 
 export const SplitContentContainer = styled.div.attrs({
   className:
-    'layout relative lg:grid dark:bg-teal-900 bg-primary-50-transparent p-0 max-h-screen w-screen items-start lg:justify-end justify-around',
+    'layout relative overflow-auto lg:grid dark:bg-teal-900 bg-primary-50-transparent p-0 max-h-screen w-screen items-start lg:justify-end justify-around',
 })`
   grid-template-columns: 1fr;
   grid-gap: 0rem;
@@ -39,7 +39,7 @@ export const SplitContentContainer = styled.div.attrs({
 
 export const Content = styled.main.attrs({
   className:
-    'relative md:h-full z-20 xl:flex-row pb-36 lg:p-0 sm:p-2 md:px-3 md:p-3 lg:pt-0 xl:pt-0 xl:rounded-2xl overflow-auto md:overflow-hidden',
+    'md:h-full z-20 xl:flex-row pb-36 lg:p-0 sm:p-0 md:px-0 md:p-3 lg:pt-0 xl:pt-0 xl:rounded-2xl overflow-auto md:overflow-hidden',
 })`
   width: 100%;
   height: calc(100vh - 3rem);
