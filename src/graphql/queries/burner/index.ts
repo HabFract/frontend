@@ -26,13 +26,9 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     // },
 
     burners: async (): Promise<BurnerConnection> => {
-      // const maybeBurners = await readAll(null)
+      const maybeBurners = await readAll(null)
 
-      // console.log('maybeBurners :>> ', maybeBurners)
-
-      let tester = aBurnerConnection()
-      console.log('tester :>> ', tester)
-      return Promise.resolve(tester) // (maybeBurners || [])
+      return Promise.resolve(maybeBurners || [])
     },
   }
 }

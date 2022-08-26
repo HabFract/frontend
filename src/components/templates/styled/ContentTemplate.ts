@@ -39,7 +39,7 @@ export const SplitContentContainer = styled.div.attrs({
 
 export const Content = styled.main.attrs({
   className:
-    'md:h-full z-20 xl:flex-row pb-36 lg:p-0 sm:p-0 md:px-0 md:p-3 lg:pt-0 xl:pt-0 xl:rounded-2xl overflow-auto md:overflow-hidden',
+    'md:h-full z-20 xl:flex-row pb-36 lg:p-0 sm:p-0 md:px-0 lg:px-8 md:p-3 lg:pt-0 xl:pt-0 xl:rounded-2xl overflow-auto md:overflow-hidden',
 })`
   width: 100%;
   height: calc(100vh - 3rem);

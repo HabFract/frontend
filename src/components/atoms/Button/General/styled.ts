@@ -1,4 +1,5 @@
 // #region Global Imports
+import { isDark } from '@/app/utils/general'
 import styled from 'styled-components'
 // #endregion Global Imports
 
@@ -38,8 +39,13 @@ const colorStyles = (type) => {
   switch (type) {
     case 'primary':
       return {
-        bg: '#f16494',
-        border: '#f16494',
+        bg: '#eb2265',
+        'dark:bg': '#014451',
+        'dark:hover-bg': '#83f1c2',
+        'dark:hover-border': '#83CFB5',
+        'dark:text': '#FCFFFC',
+        iconText: '#FCFFFC',
+        border: '#eb2265',
         text: '#FCFFFC',
         'hover-bg': '#83CFB5',
         'hover-border': '#83CFB5',
@@ -48,8 +54,13 @@ const colorStyles = (type) => {
     case 'secondary':
       return {
         bg: '#FCFFFC',
-        border: '#f16494',
-        text: '#f16494',
+        border: '#eb2265',
+        text: '#eb2265',
+        'dark:bg': '#014451',
+        'dark:hover-bg': '#83f1c2',
+        'dark:hover-border': '#83CFB5',
+        'dark:text': '#FCFFFC',
+        iconText: '#eb2265',
         'hover-bg': '#FCFFFC',
         'hover-border': '#83CFB5',
         'hover-text': '#06575A',
@@ -59,6 +70,11 @@ const colorStyles = (type) => {
         bg: '#FAAD14',
         border: '#FAAD14',
         text: '#F3F4F6',
+        'dark:bg': '#014451',
+        'dark:hover-bg': '#83f1c2',
+        'dark:hover-border': '#83CFB5',
+        'dark:text': '#FCFFFC',
+        iconText: '#FCFFFC',
         'hover-bg': '#FFB522',
         'hover-border': '#FFB522',
         'hover-text': '#014451',
@@ -68,6 +84,11 @@ const colorStyles = (type) => {
         bg: '#52d918',
         border: '#52d918',
         text: '#FCFFFC',
+        'dark:bg': '#014451',
+        'dark:hover-bg': '#83f1c2',
+        'dark:hover-border': '#83CFB5',
+        'dark:text': '#FCFFFC',
+        iconText: '#FCFFFC',
         'hover-bg': '#82ef51',
         'hover-border': '#82ef51',
         'hover-text': '#014451',
@@ -77,6 +98,11 @@ const colorStyles = (type) => {
         bg: '#f94a27',
         border: '#f94a27',
         text: '#F3F4F6',
+        'dark:bg': '#014451',
+        'dark:hover-bg': '#83f1c2',
+        'dark:hover-border': '#83CFB5',
+        'dark:text': '#FCFFFC',
+        iconText: '#FCFFFC',
         'hover-bg': '#ff8869',
         'hover-border': '#ff8869',
         'hover-text': '#000',
@@ -86,6 +112,7 @@ const colorStyles = (type) => {
         bg: '#0694A2',
         border: '#0694A2',
         text: '#F3F4F6',
+        iconText: '#FCFFFC',
         'hover-bg': '#16BDCA',
         'hover-border': '#16BDCA',
         'hover-text': '#000',
@@ -119,13 +146,21 @@ export const ButtonContainer = styled.button.attrs({
   width: ${({ size }) => sizeStyles(size)['width']};
   max-width: ${({ size }) => sizeStyles(size)['max']};
 
-  background-color: ${({ typeOfButton }) => colorStyles(typeOfButton)['bg']};
-  border-color: ${({ typeOfButton }) => colorStyles(typeOfButton)['border']};
-  color: ${({ typeOfButton }) => colorStyles(typeOfButton)['text']};
+  background-color: ${({ typeOfButton }) =>
+    colorStyles(typeOfButton)[isDark() ? 'dark:bg' : 'bg']};
+  border-color: ${({ typeOfButton }) =>
+    colorStyles(typeOfButton)[isDark() ? 'dark:border' : 'border']};
+  color: ${({ typeOfButton }) =>
+    colorStyles(typeOfButton)[isDark() ? 'dark:text' : 'text']};
 
   @media only screen and (min-width: 600px) {
     width: ${({ size }) => sizeStyles(size)['width-md']};
     max-width: ${({ size }) => sizeStyles(size)['max-md']};
+  }
+
+  svg {
+    color: ${({ typeOfButton }) =>
+      colorStyles(typeOfButton)['iconText']} !important;
   }
 
   &:hover {
@@ -137,9 +172,11 @@ export const ButtonContainer = styled.button.attrs({
     }
 
     background-color: ${({ typeOfButton }) =>
-      colorStyles(typeOfButton)['hover-bg']};
+      colorStyles(typeOfButton)[isDark() ? 'dark:hover-bg' : 'hover-bg']};
     border-color: ${({ typeOfButton }) =>
-      colorStyles(typeOfButton)['hover-border']};
+      colorStyles(typeOfButton)[
+        isDark() ? 'dark:hover-border' : 'hover-border'
+      ]};
     color: ${({ typeOfButton }) => colorStyles(typeOfButton)['hover-text']};
 
     svg {

@@ -21,7 +21,8 @@ import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { OnboardingContextBar } from './styled/Onboarding'
 import { CenteringFlexHorizontal } from './styled'
 import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
-import { ButtonContainer } from '@/atoms/Button/styled'
+import { ButtonContainer } from '@/atoms/Button/General/styled'
+import { Button } from '@/atoms/Button/General'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -41,7 +42,7 @@ const onboardingStageCopy = [
 export const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
 
-  const [, setName] = useThemeName() // COMMENT OUT DURING TEST
+  // const [, setName] = useThemeName() // COMMENT OUT DURING TEST
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
   const [profile, _] = useMyProfile()
@@ -58,6 +59,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
   useEffect(() => {
     if (!burnersPayload) return
+    console.log('burnersPayload!.burners :>> ', burnersPayload!.burners)
     setUserHasBurner(!!(burnersPayload!.burners.edges.length > 0))
     setOnboardingStage(userHasBurner ? '3' : onboardingStage)
   }, [userHasBurner, burnersPayload])
@@ -70,13 +72,15 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
   useEffect(() => {
     // // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
-    setName(themeValue)
+    // setName(themeValue)
     setTheme(themeValue)
 
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
 
     if (!!profile) {
       getBurners()
+      console.log('userHasBurner :>> ', userHasBurner)
+      console.log('userHasHabit :>> ', userHasHabit)
       !(userHasBurner || userHasHabit) && setOnboardingStage('2')
     }
     if (userHasBurner) {
@@ -119,37 +123,15 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
         <OnboardingContextBar>
           <div className="flex items-center justify-between mb-8 space-x-4">
-            <a
-              href="#"
-              className="flex items-center text-2xl font-semibold text-white"
-            >
-              HabitFract
-            </a>
-            <a
-              href="#"
-              className="mb-1"
-              onClick={() => {
-                ;(document.getElementById(
-                  'sign-up-form',
-                ) as HTMLFormElement)!.submit()
-              }}
-            >
-              <ButtonContainer
-                typeOfButton="default"
-                size="sm"
-                hoverColor="white"
-              >
-                <CenteringFlexHorizontal gap={0.5}>
-                  <ColoredSvg
-                    button
-                    iconName="forward"
-                    className="w-6 h-6 text-white"
-                    rounded={false}
-                  ></ColoredSvg>
-                  Get Started
-                </CenteringFlexHorizontal>
-              </ButtonContainer>
-            </a>
+            <span className="flex items-center text-2xl font-semibold text-white">
+              Information
+            </span>
+            <Button
+              iconName="question-mark"
+              size="sm"
+              typeOfButton="default"
+              text="Info"
+            />
           </div>
           <div className="block p-8 text-white bg-gray-400 rounded-lg">
             <h3 className="mb-1 text-2xl font-semibold">Your selected plan</h3>

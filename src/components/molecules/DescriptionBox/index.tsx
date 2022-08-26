@@ -7,12 +7,13 @@ import { DescriptionBoxContainer } from './styled'
 import { OnboardingStageChip } from '../Chip/OnboardingStageChip'
 import { P } from '@/atoms/Typo/Copy/P'
 import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
+import { CenteringFlexHorizontal } from '@/pages/styled'
+import { ButtonContainer } from '@/atoms/Button/General/styled'
+import { Button } from '@/atoms/Button/General'
 // #endregion Local Imports
 
 // #region Interface Imports
 import { IDescriptionBox } from './types'
-import { CenteringFlexHorizontal } from '@/pages/styled'
-import { ButtonContainer } from '@/atoms/Button/styled'
 // #endregion Interface Imports
 
 export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
@@ -22,10 +23,16 @@ export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
         <CenteringFlexHorizontal gap={0.5}>
           {backAction && (
             <div className="hidden h-full lg:block">
+              <Button
+                iconName="return"
+                onClick={backAction}
+                typeOfButton="secondary"
+                size="sm"
+                text="Home"
+              />
               <ButtonContainer
                 typeOfButton="secondary"
                 size="sm"
-                hoverColor="white"
                 onClick={backAction}
               >
                 <CenteringFlexHorizontal gap={0.5}>

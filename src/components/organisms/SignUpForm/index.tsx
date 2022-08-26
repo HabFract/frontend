@@ -25,8 +25,9 @@ import { useAddUserMutation } from '@/graphql/generated'
 import { ISignUpForm } from './types'
 import { Alert, Spin } from 'antd'
 import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
-import { ButtonContainer } from '@/atoms/Button/styled'
+import { ButtonContainer } from '@/atoms/Button/General/styled'
 import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
+import { Button } from '@/atoms/Button/General'
 // #endregion Interface Imports
 
 export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
@@ -156,17 +157,13 @@ export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
                     >
                       {/* 1024px+ button: */}
                       <div className="hidden h-full lg:block">
-                        <ButtonContainer typeOfButton="primary" size="lg">
-                          <CenteringFlexHorizontal gap={0.5}>
-                            <ColoredSvg
-                              button
-                              iconName="forward"
-                              className="w-6 h-6 text-gray-100"
-                              rounded={false}
-                            ></ColoredSvg>
-                            Next
-                          </CenteringFlexHorizontal>
-                        </ButtonContainer>
+                        <Button
+                          typeOfButton="primary"
+                          size="lg"
+                          text="Next"
+                          onClick={() => {}}
+                          iconName="forward"
+                        />
                       </div>
                       {/* 1024px- button: */}
                       <svg

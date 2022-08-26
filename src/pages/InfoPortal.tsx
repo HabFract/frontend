@@ -13,8 +13,9 @@ import { P } from '@/atoms/Typo/Copy/P'
 import { Heading } from '@/atoms/Typo/Title/Heading'
 import { CenteringFlexHorizontal, SpaceBetweenFlex } from './styled'
 import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
-import { ButtonContainer } from '@/atoms/Button/styled'
+import { ButtonContainer } from '@/atoms/Button/General/styled'
 import { Card } from '@/organisms/Card'
+import { Button } from '@/atoms/Button/General'
 // #endregion Local Imports
 
 interface InfoPortalProps {}
@@ -54,11 +55,7 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                 secondaryText="Learn about the technology that powers us"
               />
               <SpaceBetweenFlex vertical gap={0.1}>
-                <ButtonContainer
-                  typeOfButton="secondary"
-                  size="lg"
-                  hoverColor="white"
-                >
+                <ButtonContainer typeOfButton="secondary" size="lg">
                   <CenteringFlexHorizontal gap={0.5}>
                     <ColoredSvg
                       button
@@ -69,17 +66,13 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
                     Home
                   </CenteringFlexHorizontal>
                 </ButtonContainer>
-                <ButtonContainer typeOfButton="primary" size="lg">
-                  <CenteringFlexHorizontal gap={0.5}>
-                    <ColoredSvg
-                      button
-                      iconName="forward"
-                      className="w-6 h-6 text-gray-100"
-                      rounded={false}
-                    ></ColoredSvg>
-                    Get Started
-                  </CenteringFlexHorizontal>
-                </ButtonContainer>
+                <Button
+                  onClick={() => {}}
+                  iconName="forward"
+                  typeOfButton="primary"
+                  text="Get Started"
+                  size="lg"
+                />
               </SpaceBetweenFlex>
             </ListGroup>
           </CenteringFlexHorizontal>
