@@ -9,8 +9,9 @@ const sizeStyles = (size) => {
       return {
         width: '4rem',
         max: '6rem',
-        'width-md': '6rem%',
-        'max-md': '6rem',
+        'width-md': '100%',
+        'max-md': '3rem',
+        'max-lg': '5rem',
       }
     case 'md':
       return {
@@ -155,6 +156,10 @@ export const ButtonContainer = styled.button.attrs({
   @media only screen and (min-width: 600px) {
     width: ${({ size }) => sizeStyles(size)['width-md']};
     max-width: ${({ size }) => sizeStyles(size)['max-md']};
+  }
+  @media only screen and (min-width: 1024px) {
+    max-width: ${({ size }) =>
+      sizeStyles(size)['max-lg'] || sizeStyles(size)['max-md']};
   }
 
   svg {

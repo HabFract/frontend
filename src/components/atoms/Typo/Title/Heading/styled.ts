@@ -24,6 +24,7 @@ export const H3 = styled.h3.attrs({
 })`
   font-style: normal;
   letter-spacing: 0.05em;
+  line-height: 1.3em;
 `
 
 export const H4 = styled.h4.attrs({

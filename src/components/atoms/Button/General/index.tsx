@@ -10,6 +10,7 @@ import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
 // #region Interface Imports
 import { IButton } from './types'
 import { CenteringFlexHorizontal } from '@/pages/styled'
+import { Heading } from '../..'
 // #endregion Interface Imports
 
 export const Button: React.FC<IButton.IProps> = ({
@@ -30,7 +31,9 @@ export const Button: React.FC<IButton.IProps> = ({
             rounded={false}
           />
           <span className={size !== 'sm' ? 'block' : 'hidden xl:block'}>
-            {text}
+            <Heading caps={true} level={3}>
+              {text}
+            </Heading>
           </span>
         </span>
       </CenteringFlexHorizontal>

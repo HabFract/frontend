@@ -19,7 +19,7 @@ export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
       <DescriptionBoxContainer>
         <CenteringFlexHorizontal gap={0.5}>
           {backAction && (
-            <div className="hidden h-full lg:block">
+            <div className="hidden h-full mt-3 lg:block">
               <Button
                 iconName="return"
                 onClick={backAction}

@@ -126,20 +126,25 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
         </OnboardingTemplate>
 
         <OnboardingContextBar>
-          <div className="flex items-center justify-end mb-8 space-x-4">
-            <span className="hidden xl:block">
-              <Heading caps={false} level={2}>
-                <span className="text-gray-50">Confused?</span>
+          <div className="flex items-center justify-end mb-8 xl:space-x-4">
+            <span className="hidden xl:block info-bar-label">
+              <Heading caps={false} level={3}>
+                <span className="text-white">Confused?</span>
               </Heading>
             </span>
             <Button
+              onClick={(e) =>
+                e.target.closest('.info-bar').classList.contains('open')
+                  ? e.target.closest('.info-bar').classList.remove('open')
+                  : e.target.closest('.info-bar').classList.add('open')
+              }
               iconName="question-mark"
               size="sm"
               typeOfButton="default"
               text="Info"
             />
           </div>
-          <div className="block p-4 text-white bg-gray-400 rounded-lg xl:p-8">
+          <div className="hidden p-4 text-white bg-gray-400 rounded-lg info-list xl:p-8">
             <h3 className="mb-1 text-2xl font-semibold">Your selected plan</h3>
             <p className="mb-4 font-light text-primary-100 sm:text-lg">
               30-day free trial
