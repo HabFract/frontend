@@ -1,0 +1,5 @@
+export { NotFound } from './404'
+export { Home } from './Home'
+export { InfoPortal } from './InfoPortal'
+export { Onboarding } from './Onboarding'
+export { Visualisations } from './Visualisations'

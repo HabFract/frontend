@@ -7,10 +7,8 @@ import * as Yup from 'yup'
 // #region Local Imports
 import { Label } from '../styled'
 
-import { TextInput } from '@/atoms/Input/Text'
-import { P } from '@/atoms/Typo/Copy/P'
-import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
-import { Button } from '@/atoms/Button/General'
+import { TextInput, Button } from '@/atoms/.'
+import { EndFlexHorizontal } from '@/pages/styled'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
 
 import { useAddBurnerMutation } from '@/graphql/generated'

@@ -6,16 +6,14 @@ import { useNavigate } from 'react-router-dom'
 // #region Local Imports
 import { Template } from '@/templates/SplitContentTemplate'
 import { InfoPortalTemplate } from '@/templates/InfoPortalTemplate'
-import { TitleBar } from '@/molecules/TitleBar'
+
+import { Button, Heading, ColoredSvg } from '@/atoms/.'
+import { TitleBar, ListGroupItem } from '@/molecules/.'
 import { ListGroup } from '@/organisms/ListGroup'
-import { ListGroupItem } from '@/molecules/ListGroupItem'
-import { P } from '@/atoms/Typo/Copy/P'
-import { Heading } from '@/atoms/Typo/Title/Heading'
-import { CenteringFlexHorizontal, SpaceBetweenFlex } from './styled'
-import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
-import { ButtonContainer } from '@/atoms/Button/General/styled'
 import { Card } from '@/organisms/Card'
-import { Button } from '@/atoms/Button/General'
+
+import { ButtonContainer } from '@/atoms/Button/General/styled'
+import { CenteringFlexHorizontal, SpaceBetweenFlex } from './styled'
 // #endregion Local Imports
 
 interface InfoPortalProps {}

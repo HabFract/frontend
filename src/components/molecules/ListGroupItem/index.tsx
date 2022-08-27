@@ -1,11 +1,10 @@
 // #region Global Imports
-import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
-import { P } from '@/atoms/Typo/Copy/P'
-import { SpaceBetweenFlex } from '@/pages/styled'
 import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
+import { P, ColoredSvg } from '@/atoms/.'
+import { SpaceBetweenFlex } from '@/pages/styled'
 import { ListGroupItemContainer } from './styled'
 // #endregion Local Imports
 

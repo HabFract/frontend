@@ -2,19 +2,23 @@ import { Buffer } from 'buffer'
 import React, { FC, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+
 import './index.scss'
 import 'flowbite'
-import { NotFound } from './pages/404'
-import { Home } from './pages/Home'
-import { Onboarding } from './pages/Onboarding'
-import { useGetMeQuery } from './graphql/generated'
-import { MyProfileProvider } from '@/contexts/myProfileContext'
-import { ThemeProvider } from '@/contexts/themeContext'
-import connect, { ClientOptions } from '@/graphql/client'
-import { useMyProfile } from '@/hooks/useMyProfile'
+
 import { ApolloProvider } from '@apollo/client'
-import { Visualisations } from './pages/Visualisations'
-import { InfoPortal } from './pages/InfoPortal'
+import connect, { ClientOptions } from '@/graphql/client'
+import { useGetMeQuery } from './graphql/generated'
+
+import { MyProfileProvider, ThemeProvider } from '@/contexts/.'
+import { useMyProfile } from '@/hooks/useMyProfile'
+import {
+  Home,
+  Onboarding,
+  InfoPortal,
+  Visualisations,
+  NotFound,
+} from './pages/.'
 
 globalThis.Buffer = Buffer
 

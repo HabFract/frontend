@@ -4,12 +4,9 @@ import React from 'react'
 
 // #region Local Imports
 import { DescriptionBoxContainer } from './styled'
-import { OnboardingStageChip } from '../Chip/OnboardingStageChip'
-import { P } from '@/atoms/Typo/Copy/P'
-import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
 import { CenteringFlexHorizontal } from '@/pages/styled'
-import { ButtonContainer } from '@/atoms/Button/General/styled'
-import { Button } from '@/atoms/Button/General'
+import { P, ColoredSvg, Button } from '@/atoms/.'
+import { OnboardingStageChip } from '@/molecules/.'
 // #endregion Local Imports
 
 // #region Interface Imports
@@ -30,21 +27,6 @@ export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
                 size="sm"
                 text="Home"
               />
-              <ButtonContainer
-                typeOfButton="secondary"
-                size="sm"
-                onClick={backAction}
-              >
-                <CenteringFlexHorizontal gap={0.5}>
-                  <ColoredSvg
-                    button
-                    iconName="return"
-                    className="w-6 h-6 xl:mr-2 text-primary-500"
-                    rounded={false}
-                  ></ColoredSvg>
-                  <span className="hidden xl:block">Home</span>
-                </CenteringFlexHorizontal>
-              </ButtonContainer>
             </div>
           )}
           <OnboardingStageChip onBoardingStage={stage} chipText={title} />

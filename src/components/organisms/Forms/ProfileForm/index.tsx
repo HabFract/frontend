@@ -9,12 +9,9 @@ import { Alert, Spin } from 'antd'
 import { Label } from './styled'
 import { ImageUploadContainer, MakePublicContainer } from '../styled'
 
+import { P, TextInput, Button, SwitchInput } from '@/atoms/.'
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
-import { SwitchInput } from '@/atoms/Input/Switch'
-import { TextInput } from '@/atoms/Input/Text'
-import { P } from '@/atoms/Typo/Copy/P'
 import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
-import { Button } from '@/atoms/Button/General'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
 
 import {

@@ -4,8 +4,7 @@ import React from 'react'
 
 // #region Local Imports
 import { CardContainer } from './styled'
-import { P } from '@/atoms/Typo/Copy/P'
-import { Heading } from '@/atoms/Typo/Title/Heading'
+import { P, Heading } from '@/atoms/.'
 // #endregion Local Imports
 
 // #region Interface Imports

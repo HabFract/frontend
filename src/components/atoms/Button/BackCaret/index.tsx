@@ -4,7 +4,7 @@ import React from 'react'
 
 // #region Local Imports
 import { BackCaretContainer } from './styled'
-import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
+import { ColoredSvg } from '@/atoms/.'
 // #endregion Local Imports
 
 // #region Interface Imports
