@@ -32,7 +32,7 @@ export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
           <OnboardingStageChip onBoardingStage={stage} chipText={title} />
         </CenteringFlexHorizontal>
         <CenteringFlexHorizontal gap={2}>
-          <div className="px-2">
+          <div className="px-2 md:w-1/2">
             <P copyText={copyText} level={1} />
           </div>
           <ColoredSvg

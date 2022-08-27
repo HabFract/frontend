@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export const OnboardingContextBar = styled.div.attrs({
   className:
-    'info-bar hidden lg:static lg:mx-0 lg:-ml-1 px-4 g:px-8 pt-6 lg:h-screen bottom-0 lg:block bg-primary-900/30 rounded-2xl rounded-l-none',
+    'info-bar hidden lg:static lg:mx-0 px-4 g:px-8 pt-6 lg:h-screen bottom-0 lg:block bg-gray-800/10 rounded-2xl rounded-l-none',
 })`
   &.open {
     padding: 1.5rem 1rem !important;
@@ -16,13 +16,14 @@ export const OnboardingContextBar = styled.div.attrs({
       justify-content: space-between !important;
     }
     button {
-      max-width: 3rem !important;
+      max-width: 4rem !important;
     }
 
     width: 20% !important;
 
     @media only screen and (min-width: 1024px) {
-      width: 35% !important;
+      margin-left: -1rem;
+      width: 30% !important;
       -webkit-transition: width 1s ease-in-out;
       -moz-transition: width 1s ease-in-out;
       -o-transition: width 1s ease-in-out;
@@ -36,7 +37,11 @@ export const OnboardingContextBar = styled.div.attrs({
   }
 
   @media only screen and (min-width: 1024px) {
-    margin-top: 8.5rem !important;
+    margin-top: 9.5rem !important;
+  }
+
+  @media only screen and (min-width: 1680px) {
+    margin-top: 9.5rem !important;
   }
 `
 OnboardingContextBar.displayName = 'OnboardingContextBar'

@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 // #region Local Imports
 import { useMyProfile } from '@/app/hooks/useMyProfile'
-import { useThemeName } from '@/app/hooks/useTheme'
+// import { useThemeName } from '@/app/hooks/useTheme'
 import { ThemeValues } from '@/app/theme/definitions/types'
 import { setTheme } from '@/app/theme/switch'
 import {
@@ -20,6 +20,7 @@ import { BurnerForm, ProfileForm } from '@/organisms/.'
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { OnboardingContextBar } from './styled/Onboarding'
+import { Visualisations } from './Visualisations'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -31,6 +32,7 @@ const onboardingStageTitles = [
   'Create a profile',
   'Start a Burner',
   'Create a habit',
+  'Summary',
 ]
 const onboardingStageCopy = [
   'It looks like you are new here. Fill in some details to join the network',
@@ -71,7 +73,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   useEffect(() => {
     // // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
     // setName(themeValue)
-    setTheme(themeValue)
+    // setTheme(themeValue)
 
     if (!['make', 'break'].includes(params.theme as string)) navigate('/404')
 
@@ -85,7 +87,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
       getHabits()
     }
 
-    if (userHasBurner && userHasHabit) navigate(`../../${params.theme}/vis`)
+    if (userHasBurner && userHasHabit) setOnboardingStage('4') //TODO unhardcode
   }, [profile, userHasBurner, userHasHabit])
 
   return (
@@ -129,7 +131,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
           <div className="flex items-center justify-end mb-8 xl:space-x-4">
             <span className="hidden xl:block info-bar-label">
               <Heading caps={false} level={3}>
-                <span className="text-white">Confused?</span>
+                <span className="text-lg text-gray-600">Confused?</span>
               </Heading>
             </span>
             <Button

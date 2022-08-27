@@ -78,7 +78,7 @@ describe('Given a new user', () => {
     it('Then it should render a ProfileForm', async () => {
       renderPage(Onboarding, { withUser: false })
       const { getByRole } = screen
-      const form = await getByRole('form', { name: 'sign-up-form' })
+      const form = await getByRole('form', { name: 'profile-form' })
       expect(form).toBeInTheDocument()
     })
 
@@ -119,15 +119,14 @@ describe('Given a registered user', () => {
       })
     })
     describe('Given the registered user has started a Burner and a Habit', () => {
-      it('Then it  should redirect to the default Visualisation', async () => {
+      it('Then it  should take you to a summary page (stage 4)', async () => {
         renderPage(Onboarding, {
           withUser: true,
           withBurner: true,
           withHabit: true,
         })
         const { findByText } = screen
-
-        expect(await findByText('4')).totoBeInTheDocument()
+        expect(await findByText(/Summary/)).toBeInTheDocument()
       })
     })
   })
