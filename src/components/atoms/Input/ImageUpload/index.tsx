@@ -5,15 +5,11 @@ import React, { useState } from 'react'
 // #region Local Imports
 import { getBase64 } from '@/app/utils/resizeExportAsPng'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons/lib/icons'
-import type {
-  UploadChangeParam,
-  UploadFile,
-  UploadProps,
-} from 'antd/es/upload/interface'
-import Upload from 'antd/lib/upload'
+import { Upload } from 'antd'
 // #endregion Local Imports
 
 // #region Interface Imports
+import type { UploadProps } from 'antd'
 import { IImageUploadInput } from './types'
 // #endregion Interface Imports
 
@@ -26,9 +22,7 @@ export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
   const [chosenFile, setChosenFile] = useState(null)
   const [fileList, setFileList] = useState<any>([])
 
-  const handleChange: UploadProps['onChange'] = async (
-    info: UploadChangeParam<UploadFile>,
-  ) => {
+  const handleChange: UploadProps['onChange'] = async (info: any) => {
     let fileString
     try {
       fileString = await getBase64(info.file.originFileObj as Blob)
