@@ -1,7 +1,7 @@
-import React, { createContext, useState, useMemo } from 'react'
-import { ThemeProvider as SCProvider } from 'styled-components'
 import { DEFAULT_THEME_VALUE } from '../constants'
 import { Theme as ThemeDef } from '../theme/definitions/sc-theme-vars'
+import React, { createContext, useState, useMemo } from 'react'
+import { ThemeProvider as SCProvider } from 'styled-components'
 
 export const ThemeNameContext = createContext([DEFAULT_THEME_VALUE] as
   | React.Dispatch<React.SetStateAction<string>>[]

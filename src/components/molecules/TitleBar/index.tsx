@@ -2,17 +2,19 @@
 import React from 'react'
 // #endregion Global Imports
 
-// #region Interface Imports
-import { ITitleBar } from './types'
-// #endregion Interface Imports
-
 // #region Local Imports
 import { TitleBarContainer } from './styled'
-import { BackCaret } from '@/atoms/Button/BackCaret'
+
 import { Heading } from '@/atoms/Typo/Title/Heading'
+import { BackCaret } from '@/atoms/Button/BackCaret'
+
 import { useThemeName } from '@/app/hooks/useTheme'
-import { SpaceBetweenFlexHorizontal } from '@/pages/styled'
 // #endregion Local Imports
+
+// #endregion Interface Imports
+import { ITitleBar } from './types'
+import { SpaceBetweenFlex } from '@/pages/styled'
+// #region Interface Imports
 
 export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({
   backAction,
@@ -22,10 +24,12 @@ export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({
   const theme = name.toString().split('-')[1]
   return (
     <TitleBarContainer>
-      <SpaceBetweenFlexHorizontal>
+      <SpaceBetweenFlex>
         <BackCaret onClick={backAction} />
-        <Heading level={2}>{titles[theme]}</Heading>
-      </SpaceBetweenFlexHorizontal>
+        <Heading level={4} caps={true}>
+          {titles[theme]}
+        </Heading>
+      </SpaceBetweenFlex>
     </TitleBarContainer>
   )
 }

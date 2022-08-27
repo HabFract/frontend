@@ -1,5 +1,5 @@
-import React from 'react'
 import { DescriptionBox } from '.'
+import React from 'react'
 
 describe('DescriptionBox', () => {
   it('should match snapshot', () => {

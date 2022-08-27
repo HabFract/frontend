@@ -1,10 +1,10 @@
 // #region Global Imports
-import { LeftOutlined } from '@ant-design/icons'
 import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Container } from './styled'
+import { BackCaretContainer } from './styled'
+import { ColoredSvg } from '@/atoms/.'
 // #endregion Local Imports
 
 // #region Interface Imports
@@ -13,8 +13,14 @@ import { IBackCaret } from './types'
 
 export const BackCaret: React.FC<IBackCaret.IProps> = ({ onClick }) => {
   return (
-    <Container>
-      <LeftOutlined onClick={onClick} />
-    </Container>
+    <BackCaretContainer>
+      <a href="" onClick={onClick} className="grid place-content-center">
+        <ColoredSvg
+          className="w-8 h-8 text-gray-600 dark:text-primary-100"
+          iconName="return"
+          rounded={false}
+        />
+      </a>
+    </BackCaretContainer>
   )
 }

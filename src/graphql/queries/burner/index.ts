@@ -1,8 +1,7 @@
-import { DNAIdMappings, ById } from '../../types'
-import { Burner, BurnerConnection, BurnerEdge } from '@/graphql/generated/index'
-
 import { mapZomeFn } from '../../connection'
+import { DNAIdMappings, ById } from '../../types'
 import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
+import { BurnerConnection } from '@/graphql/generated/index'
 import { aBurnerConnection } from '@/graphql/generated/mocks'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
@@ -13,7 +12,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   //   HAPP_ZOME_NAME_ATOMIC,
   //   'get_Burner',
   // )
-  const readAll = mapZomeFn<null, Burner[]>(
+  const readAll = mapZomeFn<null, BurnerConnection>(
     dnaConfig,
     conductorUri,
     HAPP_ID,
@@ -27,13 +26,9 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     // },
 
     burners: async (): Promise<BurnerConnection> => {
-      // const maybeBurners = await readAll(null)
+      const maybeBurners = await readAll(null)
 
-      // console.log('maybeBurners :>> ', maybeBurners)
-
-      let tester = aBurnerConnection()
-      console.log('tester :>> ', tester)
-      return Promise.resolve(tester) // (maybeBurners || [])
+      return Promise.resolve(maybeBurners || [])
     },
   }
 }

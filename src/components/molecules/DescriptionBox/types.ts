@@ -3,6 +3,7 @@ export declare namespace IDescriptionBox {
     stage: number
     title: string
     copyText: string
+    backAction?: () => void
   }
 
   // export interface IState {}

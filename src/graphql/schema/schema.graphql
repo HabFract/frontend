@@ -1,16 +1,22 @@
 # General GQL Types
 type Query {
+  burner(id: ID!): Burner!
+  burners: BurnerConnection!
   habit(id: ID!): Habit!
   habits: HabitConnection!
-  burners: BurnerConnection!
   me: AgentProfile!
 }
 
 type Mutation {
-  createHabit(habit: HabitCreateParams): HabitCreateResponse!
+  createBurner(burner: BurnerCreateUpdateParams): BurnerCreateResponse!
+  updateBurner(burner: BurnerCreateUpdateParams): Burner!
+  createHabit(habit: HabitCreateUpdateParams): HabitCreateResponse!
+  updateHabit(habit: HabitCreateUpdateParams): Habit!
   createProfile(profile: UserProfileCreateUpdateParams): AgentProfile!
   updateProfile(profile: UserProfileCreateUpdateParams): AgentProfile!
 }
+
+scalar DateTime
 
 type PageInfo {
   hasNextPage: Boolean!
@@ -79,6 +85,41 @@ type BurnerMetaData {
   description: String!
 }
 
+# ---- Burner ----- #
+# Burner GQL Types
+type BurnerConnection {
+  edges: [BurnerEdge!]!
+  pageInfo: PageInfo!
+}
+
+type BurnerEdge {
+  cursor: String!
+  node: Burner!
+}
+
+# Burner Types
+type Burner implements Node {
+  id: ID!
+  name: String!
+  metadata: BurnerMetaData
+}
+
+type BurnerMetaData {
+  description: String!
+  hashtag: String
+}
+
+# Burner Input/Outputs
+input BurnerCreateUpdateParams {
+  name: String!
+  description: String!
+  hashtag: String
+}
+
+type BurnerCreateResponse {
+  payload: ResponsePayload!
+}
+
 # ---- Habit ----- #
 # Habit GQL Types
 type HabitConnection {
@@ -98,9 +139,6 @@ type Habit implements Node {
   timeframe: TimeFrame!
   metadata: HabitMetaData
 }
-
-scalar DateTime
-
 type TimeFrame {
   startTime: DateTime!
   endTime: DateTime!
@@ -113,7 +151,7 @@ type HabitMetaData {
 }
 
 # Habit Input/Outputs
-input HabitCreateParams {
+input HabitCreateUpdateParams {
   name: String!
   startTime: DateTime!
   endTime: DateTime!

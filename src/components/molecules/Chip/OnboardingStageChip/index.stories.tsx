@@ -1,14 +1,14 @@
 // #region Global Imports
 import React from 'react'
-import { Story } from '@storybook/react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { OnboardingStageChip } from '.' // #endregion Local Imports
+import { OnboardingStageChip } from '.'
 // #endregion Local Imports
 
 // #region Interface Imports
 import { IOnboardingStageChip } from './types'
+import { Story } from '@storybook/react'
 // #endregion Interface Imports
 
 export default {

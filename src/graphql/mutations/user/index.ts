@@ -1,16 +1,14 @@
+import { mapZomeFn } from '../../connection'
 import { DNAIdMappings } from '../../types'
+import { HAPP_ID, HAPP_ZOME_NAME_PROFILES } from '@/app/constants'
 import {
   AgentProfile,
   Profile,
   UserProfileCreateUpdateParams,
 } from '@/graphql/generated/index'
 
-import { mapZomeFn } from '../../connection'
-import { HAPP_ID, HAPP_ZOME_NAME_PROFILES } from '@/app/constants'
-
 export type createArgs = { profile: UserProfileCreateUpdateParams }
-export type updateArgs = createArgs
-
+export type updateArgs = { profile: UserProfileCreateUpdateParams }
 export type createHandler = (
   root: any,
   args: createArgs,
@@ -42,6 +40,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     _,
     { profile: { nickname, location, avatar, isPublic } },
   ) => {
+    console.log('nickname, location, avatar :>> ', nickname, location, avatar)
     return runCreate({ nickname, fields: { location, avatar } })
   }
   const updateProfile: updateHandler = async (

@@ -1,5 +1,5 @@
-import { useState, useMemo, createContext } from 'react'
 import { Profile } from '@/graphql/generated'
+import { useState, useMemo, createContext } from 'react'
 
 export const MyProfileContext = createContext(null)
 

@@ -1,5 +1,5 @@
-import React from 'react'
 import { TitleBar } from '.'
+import React from 'react'
 
 describe('TitleBar', () => {
   it('should match snapshot', () => {

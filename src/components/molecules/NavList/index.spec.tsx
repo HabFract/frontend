@@ -1,5 +1,5 @@
-import React from 'react'
 import { NavList } from '.'
+import React from 'react'
 
 describe('NavList', () => {
   it('should match snapshot', () => {

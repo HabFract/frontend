@@ -1,17 +1,16 @@
 // #region Global Imports
 import React, { useState } from 'react'
-import Upload from 'antd/lib/upload'
-import type {
-  RcFile,
-  UploadChangeParam,
-  UploadFile,
-  UploadProps,
-} from 'antd/es/upload/interface'
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons/lib/icons'
 // #endregion Global Imports
 
 // #region Local Imports
 import { getBase64 } from '@/app/utils/resizeExportAsPng'
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons/lib/icons'
+import type {
+  UploadChangeParam,
+  UploadFile,
+  UploadProps,
+} from 'antd/es/upload/interface'
+import Upload from 'antd/lib/upload'
 // #endregion Local Imports
 
 // #region Interface Imports

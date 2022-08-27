@@ -1,14 +1,14 @@
 // #region Global Imports
 import React from 'react'
-import { Story } from '@storybook/react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Heading } from '.' // #endregion Local Imports
+import { Heading } from '.'
 // #endregion Local Imports
 
 // #region Interface Imports
 import { IHeading } from './types'
+import { Story } from '@storybook/react'
 // #endregion Interface Imports
 
 export default {
@@ -17,7 +17,9 @@ export default {
 }
 
 // 👇 We create a “template” of how args map to rendering
-const Template: Story<IHeading.IProps> = (args) => <Heading {...args} />
+const Template: Story<IHeading.IProps> = (args) => (
+  <Heading {...args}>This is a lovely heading!</Heading>
+)
 
 export const H1 = Template.bind({})
 H1.args = { level: 1, caps: false }

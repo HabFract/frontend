@@ -7,15 +7,10 @@ import { pathsToModuleNameMapper } from 'ts-jest'
 const config: Config.InitialOptions = {
   bail: true,
   clearMocks: true,
-  // coverageProvider: "v8",
-  // testEnvironment: "node",
 
-  testMatch: [
-    // '<rootDir>/src/components/**/*.spec.tsx',
-    '<rootDir>/src/pages/**/*.spec.tsx',
-  ],
+  testMatch: ['<rootDir>/**/pages.spec.tsx'],
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/app/utils/setupTests.js'],
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
@@ -26,12 +21,13 @@ const config: Config.InitialOptions = {
   },
 
   transform: {
-    // 'node_modules/(@zougt|uuid)/.+\\.(j|t)s?$': 'ts-jest',
     '^.+\\.js$': 'babel-jest',
+    '^.+\\.svg$': '<rootDir>/src/app/utils/svgTransformer.js',
   },
 
   transformIgnorePatterns: [
     `/node_modules/(?!(uuid|@zougt|some-loader-utils))/`,
+    `.*\/node_modules\/uuid.*`,
   ],
   testPathIgnorePatterns: ['/node_modules/'],
   moduleDirectories: ['node_modules', 'src'],

@@ -1,25 +1,26 @@
-import React, { FC, useEffect } from 'react'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import { createRoot } from 'react-dom/client'
-
 import { Buffer } from 'buffer'
-globalThis.Buffer = Buffer
+import React, { FC, useEffect } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 
 import './index.scss'
 import 'flowbite'
 
 import { ApolloProvider } from '@apollo/client'
 import connect, { ClientOptions } from '@/graphql/client'
-import { ThemeProvider } from '@/contexts/themeContext'
-import { MyProfileProvider } from '@/contexts/myProfileContext'
-import { useMyProfile } from '@/hooks/useMyProfile'
-
 import { useGetMeQuery } from './graphql/generated'
 
-import { NotFound } from './pages/404'
-import { Home } from './pages/Home'
-import { Onboarding } from './pages/Onboarding'
-import { Visualisations } from './pages/Visualisations'
+import { MyProfileProvider, ThemeProvider } from '@/contexts/.'
+import { useMyProfile } from '@/hooks/useMyProfile'
+import {
+  Home,
+  Onboarding,
+  InfoPortal,
+  Visualisations,
+  NotFound,
+} from './pages/.'
+
+globalThis.Buffer = Buffer
 
 const App: FC = () => {
   const { data: activeUser, loading, error } = useGetMeQuery()
@@ -43,8 +44,11 @@ const App: FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<NotFound />}></Route>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/info/what" element={<InfoPortal />}></Route>
+        <Route path="/info/why" element={<InfoPortal />}></Route>
+        <Route path="/info/how" element={<InfoPortal />}></Route>
         <Route path="/:theme/vis" element={<Visualisations />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route
           path="/:theme/onboarding"
           element={false ? <Navigate to="/" replace /> : <Onboarding />} // Maybe profile needs a flag that can be fed here to redirect from oboarding

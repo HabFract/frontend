@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { MyProfileProvider } from '@/contexts/myProfileContext'
 import { ThemeProvider } from '@/contexts/themeContext'
-import { history, CustomRouter } from '@/app/history'
+// import { history, CustomRouter } from '@/app/history'
 
 import { aBurnerEdge, aHabitEdge, aProfile } from '@/graphql/generated/mocks'
 import {
@@ -17,9 +17,9 @@ import {
 import { Home } from './Home'
 import { Onboarding } from './Onboarding'
 
-export const RouterProvider = (children: any) => (
-  <CustomRouter history={history}>{children}</CustomRouter>
-)
+// export const RouterProvider = (children: any) => (
+//   <CustomRouter history={history}>{children}</CustomRouter>
+// )
 
 function renderPage(Page: React.FunctionComponent, options: any) {
   const profile: Profile = aProfile()
@@ -75,10 +75,10 @@ describe('Given a new user', () => {
   })
 
   describe('When an Onboarding page is rendered', () => {
-    it('Then it should render a SignUpForm', async () => {
+    it('Then it should render a ProfileForm', async () => {
       renderPage(Onboarding, { withUser: false })
       const { getByRole } = screen
-      const form = await getByRole('form', { name: 'sign-up-form' })
+      const form = await getByRole('form', { name: 'profile-form' })
       expect(form).toBeInTheDocument()
     })
 
@@ -119,15 +119,14 @@ describe('Given a registered user', () => {
       })
     })
     describe('Given the registered user has started a Burner and a Habit', () => {
-      it('Then it  should redirect to the default Visualisation', async () => {
+      it('Then it  should take you to a summary page (stage 4)', async () => {
         renderPage(Onboarding, {
           withUser: true,
           withBurner: true,
           withHabit: true,
         })
         const { findByText } = screen
-
-        expect(await findByText('4')).totoBeInTheDocument()
+        expect(await findByText(/Summary/)).toBeInTheDocument()
       })
     })
   })

@@ -1,13 +1,5 @@
-@use 'sass:meta';
-html:not(.theme-dark) {
-  @include meta.load-css('node_modules/antd/dist/antd.min.css', $with: null);
-}
-
-html.theme-dark {
-  @include meta.load-css(
-    'node_modules/antd/dist/antd.dark.min.css',
-    $with: null
-  );
+html {
+  overflow: hidden;
 }
 
 html,
@@ -15,12 +7,20 @@ body,
 #root {
   margin: 0;
   height: 100%;
-  overflow: hidden;
+  background-color: #f3faf7;
 }
 
-#root {
-  position: relative;
+html.dark,
+.dark body {
+  background-color: rgba(1, 68, 81, 1);
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import './assets/tailwind.css';
 @import './assets/styles.css';

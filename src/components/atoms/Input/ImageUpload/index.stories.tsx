@@ -4,7 +4,7 @@ import { Story } from '@storybook/react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { ImageUploadInput } from '.' // #endregion Local Imports
+import { ImageUploadInput } from '.'
 // #endregion Local Imports
 
 // #region Interface Imports

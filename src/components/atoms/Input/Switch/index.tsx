@@ -1,6 +1,5 @@
 // #region Global Imports
 import React, { useState } from 'react'
-import Switch from 'antd/lib/switch'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -19,7 +18,8 @@ export const SwitchInput: React.FC<ISwitchInput.IProps> = ({
   const [isChecked, setIsChecked] = useState(defaultChecked)
 
   return (
-    <Switch
+    <input
+      type="checkbox"
       {...props}
       onChange={(e) => {
         setIsChecked(!isChecked)

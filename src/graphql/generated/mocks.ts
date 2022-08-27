@@ -2,12 +2,14 @@ import {
   AgentProfile,
   Burner,
   BurnerConnection,
+  BurnerCreateResponse,
+  BurnerCreateUpdateParams,
   BurnerEdge,
   BurnerMetaData,
   Habit,
   HabitConnection,
-  HabitCreateParams,
   HabitCreateResponse,
+  HabitCreateUpdateParams,
   HabitEdge,
   HabitMetaData,
   Mutation,
@@ -69,6 +71,34 @@ export const aBurnerConnection = (
   }
 }
 
+export const aBurnerCreateResponse = (
+  overrides?: Partial<BurnerCreateResponse>,
+): BurnerCreateResponse => {
+  return {
+    payload:
+      overrides && overrides.hasOwnProperty('payload')
+        ? overrides.payload!
+        : aResponsePayload(),
+  }
+}
+
+export const aBurnerCreateUpdateParams = (
+  overrides?: Partial<BurnerCreateUpdateParams>,
+): BurnerCreateUpdateParams => {
+  return {
+    description:
+      overrides && overrides.hasOwnProperty('description')
+        ? overrides.description!
+        : 'rerum',
+    hashtag:
+      overrides && overrides.hasOwnProperty('hashtag')
+        ? overrides.hashtag!
+        : 'odit',
+    name:
+      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'sequi',
+  }
+}
+
 export const aBurnerEdge = (overrides?: Partial<BurnerEdge>): BurnerEdge => {
   return {
     cursor:
@@ -90,6 +120,10 @@ export const aBurnerMetaData = (
       overrides && overrides.hasOwnProperty('description')
         ? overrides.description!
         : 'quam',
+    hashtag:
+      overrides && overrides.hasOwnProperty('hashtag')
+        ? overrides.hashtag!
+        : 'ex',
   }
 }
 
@@ -127,31 +161,6 @@ export const aHabitConnection = (
   }
 }
 
-export const aHabitCreateParams = (
-  overrides?: Partial<HabitCreateParams>,
-): HabitCreateParams => {
-  return {
-    description:
-      overrides && overrides.hasOwnProperty('description')
-        ? overrides.description!
-        : 'modi',
-    endTime:
-      overrides && overrides.hasOwnProperty('endTime')
-        ? overrides.endTime!
-        : '2015-07-31T01:12:05+00:00',
-    isAtomic:
-      overrides && overrides.hasOwnProperty('isAtomic')
-        ? overrides.isAtomic!
-        : 'velit',
-    name:
-      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'velit',
-    startTime:
-      overrides && overrides.hasOwnProperty('startTime')
-        ? overrides.startTime!
-        : '1973-03-23T04:31:15+00:00',
-  }
-}
-
 export const aHabitCreateResponse = (
   overrides?: Partial<HabitCreateResponse>,
 ): HabitCreateResponse => {
@@ -160,6 +169,31 @@ export const aHabitCreateResponse = (
       overrides && overrides.hasOwnProperty('payload')
         ? overrides.payload!
         : aResponsePayload(),
+  }
+}
+
+export const aHabitCreateUpdateParams = (
+  overrides?: Partial<HabitCreateUpdateParams>,
+): HabitCreateUpdateParams => {
+  return {
+    description:
+      overrides && overrides.hasOwnProperty('description')
+        ? overrides.description!
+        : 'modi',
+    endTime:
+      overrides && overrides.hasOwnProperty('endTime')
+        ? overrides.endTime!
+        : '2004-09-29T01:44:53+00:00',
+    isAtomic:
+      overrides && overrides.hasOwnProperty('isAtomic')
+        ? overrides.isAtomic!
+        : 'maiores',
+    name:
+      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'cum',
+    startTime:
+      overrides && overrides.hasOwnProperty('startTime')
+        ? overrides.startTime!
+        : '2006-09-17T12:25:13+00:00',
   }
 }
 
@@ -193,6 +227,10 @@ export const aHabitMetaData = (
 
 export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
   return {
+    createBurner:
+      overrides && overrides.hasOwnProperty('createBurner')
+        ? overrides.createBurner!
+        : aBurnerCreateResponse(),
     createHabit:
       overrides && overrides.hasOwnProperty('createHabit')
         ? overrides.createHabit!
@@ -201,6 +239,14 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
       overrides && overrides.hasOwnProperty('createProfile')
         ? overrides.createProfile!
         : anAgentProfile(),
+    updateBurner:
+      overrides && overrides.hasOwnProperty('updateBurner')
+        ? overrides.updateBurner!
+        : aBurner(),
+    updateHabit:
+      overrides && overrides.hasOwnProperty('updateHabit')
+        ? overrides.updateHabit!
+        : aHabit(),
     updateProfile:
       overrides && overrides.hasOwnProperty('updateProfile')
         ? overrides.updateProfile!
@@ -272,6 +318,10 @@ export const aProfileFields = (
 
 export const aQuery = (overrides?: Partial<Query>): Query => {
   return {
+    burner:
+      overrides && overrides.hasOwnProperty('burner')
+        ? overrides.burner!
+        : aBurner(),
     burners:
       overrides && overrides.hasOwnProperty('burners')
         ? overrides.burners!
