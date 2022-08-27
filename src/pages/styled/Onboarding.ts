@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export const OnboardingContextBar = styled.div.attrs({
   className:
-    'info-bar hidden lg:static lg:mx-0 px-4 g:px-8 pt-6 lg:h-screen bottom-0 lg:block bg-primary-900/30 rounded-2xl rounded-l-none',
+    'info-bar hidden lg:static lg:mx-0 lg:-ml-1 px-4 g:px-8 pt-6 lg:h-screen bottom-0 lg:block bg-primary-900/30 rounded-2xl rounded-l-none',
 })`
   &.open {
     padding: 1.5rem 1rem !important;
@@ -49,8 +49,7 @@ export const OnboardingFormContainer = styled.div.attrs({
 OnboardingFormContainer.displayName = 'OnboardingFormContainer'
 
 export const OnboardingProgressBarContainer = styled.div.attrs({
-  className:
-    'absolute inset-x-0 dark:bg-primary-800 bottom-0 px-2 md:px-4 lg:bg-transparent',
+  className: 'absolute inset-x-0 dark:bg-primary-800 bottom-0 px-2 md:px-4',
 })`
   background-color: ${({ theme }) => theme.colors.tertiaryMain};
 `

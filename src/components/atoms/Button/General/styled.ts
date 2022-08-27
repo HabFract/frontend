@@ -135,10 +135,10 @@ export const ButtonContainer = styled.button.attrs({
     focus:ring-4
     focus:outline-none
     
+    md:mb-1
     h-12
     ml-4
     sm:ml-0
-    md:mb-1
 
     dark:hover:bg-primary-500
     dark:focus:ring-primary-100`,

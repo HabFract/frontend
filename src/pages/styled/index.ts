@@ -7,7 +7,7 @@ export const CenteringFlexHorizontal = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   width: 100%;
   grid-gap: ${({ gap }) => `${+gap}rem`};
 `
