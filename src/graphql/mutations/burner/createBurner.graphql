@@ -1,0 +1,8 @@
+mutation addBurner($variables: BurnerCreateUpdateParams!) {
+  createBurner(burner: $variables) {
+    payload {
+      headerHash
+      entryHash
+    }
+  }
+}

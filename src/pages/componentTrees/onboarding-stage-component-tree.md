@@ -6,7 +6,7 @@ Template
     -- DescriptionBoxchip (M)
     -- DescriptionBoxcopy (A)
     -- DescriptionBoxicon (A)
-  -- signupform (O)
+  -- ProfileForm (O)
     -- inputgroup
       -- textinputgroup/user (Ant)
         -- textinput

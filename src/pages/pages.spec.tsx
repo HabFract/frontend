@@ -75,7 +75,7 @@ describe('Given a new user', () => {
   })
 
   describe('When an Onboarding page is rendered', () => {
-    it('Then it should render a SignUpForm', async () => {
+    it('Then it should render a ProfileForm', async () => {
       renderPage(Onboarding, { withUser: false })
       const { getByRole } = screen
       const form = await getByRole('form', { name: 'sign-up-form' })

@@ -15,7 +15,7 @@ import {
 import { DescriptionBox } from '@/molecules/DescriptionBox'
 import { TitleBar } from '@/molecules/TitleBar'
 import { Footer } from '@/organisms/Footer'
-import { SignUpForm } from '@/organisms/SignUpForm'
+import { ProfileForm } from '@/organisms/ProfileForm'
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { OnboardingContextBar } from './styled/Onboarding'
@@ -113,9 +113,15 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
             }
           />
           {onboardingStage == '1' ? (
-            <SignUpForm onSuccess={() => setOnboardingStage('2')} />
+            <ProfileForm
+              editMode={false}
+              onSuccess={() => setOnboardingStage('2')}
+            />
           ) : !userHasBurner ? (
-            <div>creating/explaining burner</div>
+            <CreateBurnerForm
+              editMode={false}
+              onSuccess={() => setOnboardingStage('3')}
+            />
           ) : (
             <div>Create a habit</div>
           )}

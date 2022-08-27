@@ -11,7 +11,7 @@ const config: Config.InitialOptions = {
   // testEnvironment: "node",
 
   testMatch: [
-    '<rootDir>/src/components/**/*.spec.tsx',
+    '<rootDir>/**/pages.spec.tsx',
     // "**/?(*.)+(spec|test).+(ts|tsx|js)",
   ],
   testEnvironment: 'jsdom',
@@ -28,6 +28,7 @@ const config: Config.InitialOptions = {
   transform: {
     // 'node_modules/(@zougt|uuid)/.+\\.(j|t)s?$': 'ts-jest',
     '^.+\\.js$': 'babel-jest',
+    '^.+\\.svg$': '<rootDir>/src/app/utils/svgTransformer.js',
   },
 
   transformIgnorePatterns: [
@@ -48,7 +49,7 @@ const config: Config.InitialOptions = {
       '@/graphql/*': ['<rootDir>/src/graphql/*'],
       '@/molecules/*': ['<rootDir>/src/components/molecules/*'],
       '@/organisms/*': ['<rootDir>/src/components/organisms/*'],
-      '@/pages/*': ['<rootDir>/src/components/organisms/pages/*'],
+      '@/pages/*': ['<rootDir>/src/pages/*'],
       '@/templates/*': ['<rootDir>/src/components/templates/*'],
     }),
   },

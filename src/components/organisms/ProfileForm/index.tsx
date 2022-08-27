@@ -17,29 +17,39 @@ import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
 import { SwitchInput } from '@/atoms/Input/Switch'
 import { TextInput } from '@/atoms/Input/Text'
 import { P } from '@/atoms/Typo/Copy/P'
+import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
+import { Button } from '@/atoms/Button/General'
+import { useMyProfile } from '@/app/hooks/useMyProfile'
 
-import { useAddUserMutation } from '@/graphql/generated'
+import { Profile, useAddUserMutation } from '@/graphql/generated'
 // #endregion Local Imports
 
 // #region Interface Imports
-import { ISignUpForm } from './types'
+import { IProfileForm } from './types'
 import { Alert, Spin } from 'antd'
-import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
-import { ButtonContainer } from '@/atoms/Button/General/styled'
-import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
-import { Button } from '@/atoms/Button/General'
 // #endregion Interface Imports
 
-export const SignUpForm: React.FunctionComponent<ISignUpForm.IProps> = ({
+export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
   onSuccess,
-}: ISignUpForm.IProps) => {
+  editMode,
+}: IProfileForm.IProps) => {
+  const [profile, _] = useMyProfile()
   const [addUserMutation, { data, loading, error }] = useAddUserMutation()
-  const initialValues: ISignUpForm.SignUpFormValues = {
-    username: '',
-    location: '',
-    avatar: '',
-    isPublic: false,
-  }
+
+  const initialValues: IProfileForm.ProfileFormValues =
+    editMode && !!profile
+      ? {
+          username: profile.nickname,
+          location: profile.fields.location,
+          avatar: profile.fields.avatar,
+          isPublic: profile.fields.isPublic,
+        }
+      : {
+          username: '',
+          location: '',
+          avatar: '',
+          isPublic: false,
+        }
 
   useEffect(() => {
     if (data) onSuccess.call(null)

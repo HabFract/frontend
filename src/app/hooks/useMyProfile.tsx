@@ -7,5 +7,5 @@ export const useMyProfile = () => {
   if (!context) {
     throw new Error(`useMyProfile must be used within a MyProfileProvider`)
   }
-  return context as Dispatch<SetStateAction<Profile>>[]
+  return context as any
 }

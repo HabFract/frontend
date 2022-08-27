@@ -1,9 +1,9 @@
-import { SignUpForm } from '.'
+import { BurnerForm } from '.'
 import React from 'react'
 
-describe('SignUpForm', () => {
+describe('BurnerForm', () => {
   it('should match snapshot', () => {
-    // const wrapper = mount(<SignUpForm />)
+    // const wrapper = mount(<BurnerForm />)
     // expect(wrapper).toMatchSnapshot()
   })
 })

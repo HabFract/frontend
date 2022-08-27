@@ -41,6 +41,17 @@ export type BurnerConnection = {
   pageInfo: PageInfo
 }
 
+export type BurnerCreateResponse = {
+  __typename?: 'BurnerCreateResponse'
+  payload: ResponsePayload
+}
+
+export type BurnerCreateUpdateParams = {
+  description: Scalars['String']
+  hashtag?: InputMaybe<Scalars['String']>
+  name: Scalars['String']
+}
+
 export type BurnerEdge = {
   __typename?: 'BurnerEdge'
   cursor: Scalars['String']
@@ -50,6 +61,7 @@ export type BurnerEdge = {
 export type BurnerMetaData = {
   __typename?: 'BurnerMetaData'
   description: Scalars['String']
+  hashtag?: Maybe<Scalars['String']>
 }
 
 export type Habit = Node & {
@@ -66,17 +78,17 @@ export type HabitConnection = {
   pageInfo: PageInfo
 }
 
-export type HabitCreateParams = {
+export type HabitCreateResponse = {
+  __typename?: 'HabitCreateResponse'
+  payload: ResponsePayload
+}
+
+export type HabitCreateUpdateParams = {
   description: Scalars['String']
   endTime: Scalars['DateTime']
   isAtomic: Scalars['String']
   name: Scalars['String']
   startTime: Scalars['DateTime']
-}
-
-export type HabitCreateResponse = {
-  __typename?: 'HabitCreateResponse'
-  payload: ResponsePayload
 }
 
 export type HabitEdge = {
@@ -93,13 +105,18 @@ export type HabitMetaData = {
 
 export type Mutation = {
   __typename?: 'Mutation'
+  createBurner: BurnerCreateResponse
   createHabit: HabitCreateResponse
   createProfile: AgentProfile
   updateProfile: AgentProfile
 }
 
+export type MutationCreateBurnerArgs = {
+  burner?: InputMaybe<BurnerCreateUpdateParams>
+}
+
 export type MutationCreateHabitArgs = {
-  habit?: InputMaybe<HabitCreateParams>
+  habit?: InputMaybe<HabitCreateUpdateParams>
 }
 
 export type MutationCreateProfileArgs = {
@@ -137,10 +154,15 @@ export type ProfileFields = {
 
 export type Query = {
   __typename?: 'Query'
+  burner: Burner
   burners: BurnerConnection
   habit: Habit
   habits: HabitConnection
   me: AgentProfile
+}
+
+export type QueryBurnerArgs = {
+  id: Scalars['ID']
 }
 
 export type QueryHabitArgs = {
@@ -173,8 +195,24 @@ export type UserProfileCreateUpdateParams = {
   nickname: Scalars['String']
 }
 
+export type AddBurnerMutationVariables = Exact<{
+  variables: BurnerCreateUpdateParams
+}>
+
+export type AddBurnerMutation = {
+  __typename?: 'Mutation'
+  createBurner: {
+    __typename?: 'BurnerCreateResponse'
+    payload: {
+      __typename?: 'ResponsePayload'
+      headerHash: string
+      entryHash: string
+    }
+  }
+}
+
 export type AddHabitMutationVariables = Exact<{
-  variables: HabitCreateParams
+  variables: HabitCreateUpdateParams
 }>
 
 export type AddHabitMutation = {
@@ -291,8 +329,60 @@ export type GetMeQuery = {
   }
 }
 
+export const AddBurnerDocument = gql`
+  mutation addBurner($variables: BurnerCreateUpdateParams!) {
+    createBurner(burner: $variables) {
+      payload {
+        headerHash
+        entryHash
+      }
+    }
+  }
+`
+export type AddBurnerMutationFn = Apollo.MutationFunction<
+  AddBurnerMutation,
+  AddBurnerMutationVariables
+>
+
+/**
+ * __useAddBurnerMutation__
+ *
+ * To run a mutation, you first call `useAddBurnerMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddBurnerMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addBurnerMutation, { data, loading, error }] = useAddBurnerMutation({
+ *   variables: {
+ *      variables: // value for 'variables'
+ *   },
+ * });
+ */
+export function useAddBurnerMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AddBurnerMutation,
+    AddBurnerMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddBurnerMutation, AddBurnerMutationVariables>(
+    AddBurnerDocument,
+    options,
+  )
+}
+export type AddBurnerMutationHookResult = ReturnType<
+  typeof useAddBurnerMutation
+>
+export type AddBurnerMutationResult = Apollo.MutationResult<AddBurnerMutation>
+export type AddBurnerMutationOptions = Apollo.BaseMutationOptions<
+  AddBurnerMutation,
+  AddBurnerMutationVariables
+>
 export const AddHabitDocument = gql`
-  mutation addHabit($variables: HabitCreateParams!) {
+  mutation addHabit($variables: HabitCreateUpdateParams!) {
     createHabit(habit: $variables) {
       payload {
         headerHash

@@ -3,12 +3,12 @@ import React from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
-import { SignUpForm } from '.'
+import { ProfileForm } from '.'
 // #endregion Local Imports
 
 export default {
-  component: SignUpForm,
-  title: 'Design System/Organisms/SignUpForm',
+  component: ProfileForm,
+  title: 'Design System/Organisms/ProfileForm',
 }
 
 export const Default = () => <div></div>
