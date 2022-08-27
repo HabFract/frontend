@@ -11,6 +11,7 @@ import { ImageUploadContainer, MakePublicContainer } from '../styled'
 
 import { P, TextInput, Button, SwitchInput } from '@/atoms/.'
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
+
 import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
 
@@ -68,7 +69,7 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object({
-            username: Yup.string()
+            nickname: Yup.string()
               .max(15, 'Must be 15 characters or less')
               .required('Required'),
             location: Yup.string().max(20, 'Must be 20 characters or less'),
@@ -76,6 +77,7 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
             isPublic: Yup.boolean(),
           })}
           onSubmit={(values, { setSubmitting }) => {
+            console.log('values :>> ', values)
             addUserMutation({
               variables: {
                 profileFields: {
@@ -94,23 +96,23 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
             return (
               <Form
                 onSubmit={handleSubmit}
-                aria-label="sign-up-form"
-                id="sign-up-form"
-                className="flex flex-col py-2 md:relative gap-y-6"
+                aria-label="profile-form"
+                id="profile-form"
+                className="flex flex-col py-2 pb-12 md:relative gap-y-6"
               >
                 <div className="w-full">
-                  <Label htmlFor="username">Username:</Label>
+                  <Label htmlFor="nickname">Nickname:</Label>
                   <Field
                     component={TextInput}
-                    id="username"
-                    name="username"
-                    placeholder="Pick a username"
+                    id="nickname"
+                    name="nickname"
+                    placeholder="Pick a nickname"
                   />
                   {errors &&
-                    errors.username &&
+                    errors.nickname &&
                     touched &&
-                    touched.username &&
-                    errors && <Label warning>{errors.username}</Label>}
+                    touched.nickname &&
+                    errors && <Label warning>{errors.nickname}</Label>}
                 </div>
                 <div className="w-full">
                   <Label htmlFor="location">Location:</Label>
@@ -157,21 +159,21 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
                         style={{ width: '20%' }}
                       ></div>
                     </div>
+                    {/* 1024px+ button: */}
+                    <div className="hidden h-full lg:block">
+                      <Button
+                        typeOfButton="submit"
+                        size="lg"
+                        text="Next"
+                        onClick={() => {}}
+                        iconName="forward"
+                      />
+                    </div>
+                    {/* 1024px- button: */}
                     <button
                       type="submit"
                       className="my-2 ml-2 text-primary-500"
                     >
-                      {/* 1024px+ button: */}
-                      <div className="hidden h-full lg:block">
-                        <Button
-                          typeOfButton="primary"
-                          size="lg"
-                          text="Next"
-                          onClick={() => {}}
-                          iconName="forward"
-                        />
-                      </div>
-                      {/* 1024px- button: */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-8 h-8 lg:hidden"

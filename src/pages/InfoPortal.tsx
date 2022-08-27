@@ -9,8 +9,7 @@ import { InfoPortalTemplate } from '@/templates/InfoPortalTemplate'
 
 import { Button, Heading, ColoredSvg } from '@/atoms/.'
 import { TitleBar, ListGroupItem } from '@/molecules/.'
-import { ListGroup } from '@/organisms/ListGroup'
-import { Card } from '@/organisms/Card'
+import { ListGroup, Card } from '@/organisms/.'
 
 import { ButtonContainer } from '@/atoms/Button/General/styled'
 import { CenteringFlexHorizontal, SpaceBetweenFlex } from './styled'

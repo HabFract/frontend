@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 // #region Local Imports
 import { Label } from '../styled'
 
-import { TextInput, Button } from '@/atoms/.'
+import { TextInput, Button, TextAreaInput } from '@/atoms/.'
 import { EndFlexHorizontal } from '@/pages/styled'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
 
@@ -60,7 +60,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
             name: Yup.string()
               .max(15, 'Must be 15 characters or less')
               .required('Required'),
-            desription: Yup.string()
+            description: Yup.string()
               .max(50, 'Must be 50 characters or less')
               .required('Required'),
             hashtag: Yup.string(),
@@ -81,9 +81,9 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
             return (
               <Form
                 onSubmit={handleSubmit}
-                aria-label="new-burner-form"
-                id="new-burner-form"
-                className="flex flex-col py-2 md:relative gap-y-6"
+                aria-label="burner-form"
+                id="burner-form"
+                className="flex flex-col pt-2 pb-12 md:pb-24 md:relative gap-y-6"
               >
                 <div className="w-full">
                   <Label htmlFor="name">Name:</Label>
@@ -91,7 +91,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
                     component={TextInput}
                     id="name"
                     name="name"
-                    placeholder="Pick a descriptive name"
+                    placeholder="Pick a name to label your burner"
                   />
                   {errors &&
                     errors.name &&
@@ -100,12 +100,26 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
                     errors && <Label warning>{errors.name}</Label>}
                 </div>
                 <div className="w-full">
-                  <Label htmlFor="location">Location:</Label>
+                  <Label htmlFor="description">Description:</Label>
+                  <Field
+                    component={TextAreaInput}
+                    id="description"
+                    name="description"
+                    placeholder="Write a longer description"
+                  />
+                  {errors &&
+                    errors.description &&
+                    touched &&
+                    touched.description &&
+                    errors && <Label warning>{errors.description}</Label>}
+                </div>
+                <div className="w-full">
+                  <Label htmlFor="hashtag">Hashtag:</Label>
                   <Field
                     component={TextInput}
-                    id="location"
-                    name="location"
-                    placeholder="Pick a location"
+                    id="hashtag"
+                    name="hashtag"
+                    placeholder="Pick a hashtag for social discovery"
                   />
                 </div>
 
@@ -117,21 +131,22 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
                         style={{ width: '40%' }}
                       ></div>
                     </div>
+
+                    {/* 1024px+ button: */}
+                    <div className="hidden h-full lg:block">
+                      <Button
+                        typeOfButton="submit"
+                        size="lg"
+                        text="Next"
+                        iconName="forward"
+                      />
+                    </div>
+
+                    {/* 1024px- button: */}
                     <button
                       type="submit"
                       className="my-2 ml-2 text-primary-500"
                     >
-                      {/* 1024px+ button: */}
-                      <div className="hidden h-full lg:block">
-                        <Button
-                          typeOfButton="primary"
-                          size="lg"
-                          text="Next"
-                          onClick={() => {}}
-                          iconName="forward"
-                        />
-                      </div>
-                      {/* 1024px- button: */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-8 h-8 lg:hidden"

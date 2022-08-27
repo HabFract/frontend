@@ -1,5 +1,5 @@
 export { Card } from './Card'
 export { Footer } from './Footer'
-export { BurnerForm } from './Forms/BurnerForm'
-export { ProfileForm } from './Forms/ProfileForm'
+export { BurnerForm } from './Form/BurnerForm'
+export { ProfileForm } from './Form/ProfileForm'
 export { ListGroup } from './ListGroup'

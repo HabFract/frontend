@@ -40,6 +40,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     _,
     { profile: { nickname, location, avatar, isPublic } },
   ) => {
+    console.log('nickname, location, avatar :>> ', nickname, location, avatar)
     return runCreate({ nickname, fields: { location, avatar } })
   }
   const updateProfile: updateHandler = async (

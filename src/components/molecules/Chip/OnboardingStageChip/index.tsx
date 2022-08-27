@@ -4,7 +4,7 @@ import React from 'react'
 
 // #region Local Imports
 import { ChipContainer } from './styled'
-import { Heading } from '@/atoms/Typo/Title/Heading'
+import { Heading } from '@/atoms/.'
 // #endregion Local Imports
 
 // #region Interface Imports

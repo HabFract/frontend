@@ -9,7 +9,7 @@ const sizeStyles = (size) => {
       return {
         width: '4rem',
         max: '6rem',
-        'width-md': '100%',
+        'width-md': '6rem%',
         'max-md': '6rem',
       }
     case 'md':
@@ -121,7 +121,6 @@ const colorStyles = (type) => {
 }
 
 export const ButtonContainer = styled.button.attrs({
-  type: 'button',
   className: `flex
     items-center
     justify-center
@@ -186,3 +185,11 @@ export const ButtonContainer = styled.button.attrs({
   }
 `
 ButtonContainer.displayName = 'ButtonContainer'
+
+export const GeneralButton = styled(ButtonContainer).attrs({
+  type: 'button',
+})``
+
+export const SubmitButton = styled(ButtonContainer).attrs({
+  type: 'submit',
+})``

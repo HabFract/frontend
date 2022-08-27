@@ -12,15 +12,14 @@ import {
   useGetBurnersLazyQuery,
   useGetHabitsLazyQuery,
 } from '@/graphql/generated'
-import { DescriptionBox } from '@/molecules/DescriptionBox'
-import { TitleBar } from '@/molecules/TitleBar'
-import { Footer } from '@/organisms/Footer'
-import { ProfileForm } from '@/organisms/Forms/ProfileForm'
+
+import { Heading, Button } from '@/atoms/.'
+import { DescriptionBox, TitleBar } from '@/molecules/.'
+import { BurnerForm, ProfileForm } from '@/organisms/.'
+
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { OnboardingContextBar } from './styled/Onboarding'
-import { Button } from '@/atoms/Button/General'
-import { BurnerForm } from '@/organisms/Forms/BurnerForm'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -35,6 +34,7 @@ const onboardingStageTitles = [
 ]
 const onboardingStageCopy = [
   'It looks like you are new here. Fill in some details to join the network',
+  "It's time to choose an area of your life to give some attention. We call this a burner. Use the info bar on the right to discover why!",
 ]
 
 export const Onboarding: React.FC<OnboardingProps> = () => {
@@ -126,9 +126,11 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
         </OnboardingTemplate>
 
         <OnboardingContextBar>
-          <div className="flex items-center justify-between mb-8 space-x-4">
-            <span className="flex items-center text-2xl font-semibold text-white">
-              Information
+          <div className="flex items-center justify-end mb-8 space-x-4">
+            <span className="hidden xl:block">
+              <Heading caps={false} level={2}>
+                <span className="text-gray-50">Confused?</span>
+              </Heading>
             </span>
             <Button
               iconName="question-mark"
@@ -137,7 +139,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
               text="Info"
             />
           </div>
-          <div className="block p-8 text-white bg-gray-400 rounded-lg">
+          <div className="block p-4 text-white bg-gray-400 rounded-lg xl:p-8">
             <h3 className="mb-1 text-2xl font-semibold">Your selected plan</h3>
             <p className="mb-4 font-light text-primary-100 sm:text-lg">
               30-day free trial
