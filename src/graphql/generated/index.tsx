@@ -108,6 +108,8 @@ export type Mutation = {
   createBurner: BurnerCreateResponse
   createHabit: HabitCreateResponse
   createProfile: AgentProfile
+  updateBurner: Burner
+  updateHabit: Habit
   updateProfile: AgentProfile
 }
 
@@ -121,6 +123,14 @@ export type MutationCreateHabitArgs = {
 
 export type MutationCreateProfileArgs = {
   profile?: InputMaybe<UserProfileCreateUpdateParams>
+}
+
+export type MutationUpdateBurnerArgs = {
+  burner?: InputMaybe<BurnerCreateUpdateParams>
+}
+
+export type MutationUpdateHabitArgs = {
+  habit?: InputMaybe<HabitCreateUpdateParams>
 }
 
 export type MutationUpdateProfileArgs = {
@@ -225,6 +235,15 @@ export type AddHabitMutation = {
       entryHash: string
     }
   }
+}
+
+export type UpdateHabitMutationVariables = Exact<{
+  habitFields: HabitCreateUpdateParams
+}>
+
+export type UpdateHabitMutation = {
+  __typename?: 'Mutation'
+  updateHabit: { __typename?: 'Habit'; id: string }
 }
 
 export type AddUserMutationVariables = Exact<{
@@ -430,6 +449,56 @@ export type AddHabitMutationResult = Apollo.MutationResult<AddHabitMutation>
 export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
   AddHabitMutation,
   AddHabitMutationVariables
+>
+export const UpdateHabitDocument = gql`
+  mutation updateHabit($habitFields: HabitCreateUpdateParams!) {
+    updateHabit(habit: $habitFields) {
+      id
+    }
+  }
+`
+export type UpdateHabitMutationFn = Apollo.MutationFunction<
+  UpdateHabitMutation,
+  UpdateHabitMutationVariables
+>
+
+/**
+ * __useUpdateHabitMutation__
+ *
+ * To run a mutation, you first call `useUpdateHabitMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateHabitMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateHabitMutation, { data, loading, error }] = useUpdateHabitMutation({
+ *   variables: {
+ *      habitFields: // value for 'habitFields'
+ *   },
+ * });
+ */
+export function useUpdateHabitMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateHabitMutation,
+    UpdateHabitMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<UpdateHabitMutation, UpdateHabitMutationVariables>(
+    UpdateHabitDocument,
+    options,
+  )
+}
+export type UpdateHabitMutationHookResult = ReturnType<
+  typeof useUpdateHabitMutation
+>
+export type UpdateHabitMutationResult =
+  Apollo.MutationResult<UpdateHabitMutation>
+export type UpdateHabitMutationOptions = Apollo.BaseMutationOptions<
+  UpdateHabitMutation,
+  UpdateHabitMutationVariables
 >
 export const AddUserDocument = gql`
   mutation addUser($profileFields: UserProfileCreateUpdateParams!) {

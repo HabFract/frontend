@@ -2,16 +2,12 @@
 import React, { useEffect } from 'react'
 import { Field, Form, Formik, FormikProps } from 'formik'
 import * as Yup from 'yup'
+import { Alert, Spin } from 'antd'
 // #endregion Global Imports
 
 // #region Local Imports
-import {
-  OnboardingFormContainer,
-  ImageUploadContainer,
-  MakePublicContainer,
-  OnboardingProgressBarContainer,
-  Label,
-} from './styled'
+import { Label } from './styled'
+import { ImageUploadContainer, MakePublicContainer } from '../styled'
 
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
 import { SwitchInput } from '@/atoms/Input/Switch'
@@ -21,12 +17,15 @@ import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
 import { Button } from '@/atoms/Button/General'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
 
-import { Profile, useAddUserMutation } from '@/graphql/generated'
+import {
+  OnboardingFormContainer,
+  OnboardingProgressBarContainer,
+} from '@/pages/styled/Onboarding'
+import { useAddUserMutation } from '@/graphql/generated'
 // #endregion Local Imports
 
 // #region Interface Imports
 import { IProfileForm } from './types'
-import { Alert, Spin } from 'antd'
 // #endregion Interface Imports
 
 export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
@@ -39,13 +38,13 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
   const initialValues: IProfileForm.ProfileFormValues =
     editMode && !!profile
       ? {
-          username: profile.nickname,
+          nickname: profile.nickname,
           location: profile.fields.location,
           avatar: profile.fields.avatar,
           isPublic: profile.fields.isPublic,
         }
       : {
-          username: '',
+          nickname: '',
           location: '',
           avatar: '',
           isPublic: false,
@@ -83,7 +82,7 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
             addUserMutation({
               variables: {
                 profileFields: {
-                  nickname: values.username,
+                  nickname: values.nickname,
                   location: values.location,
                   avatar: values.avatar,
                   // TODO implement isPublic

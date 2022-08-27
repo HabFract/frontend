@@ -15,7 +15,7 @@ import {
 import { DescriptionBox } from '@/molecules/DescriptionBox'
 import { TitleBar } from '@/molecules/TitleBar'
 import { Footer } from '@/organisms/Footer'
-import { ProfileForm } from '@/organisms/ProfileForm'
+import { ProfileForm } from '@/organisms/Forms/ProfileForm'
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { OnboardingContextBar } from './styled/Onboarding'
@@ -23,6 +23,7 @@ import { CenteringFlexHorizontal } from './styled'
 import { ColoredSvg } from '@/atoms/Icon/ColoredSvg'
 import { ButtonContainer } from '@/atoms/Button/General/styled'
 import { Button } from '@/atoms/Button/General'
+import { BurnerForm } from '@/organisms/Forms/BurnerForm'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -118,7 +119,7 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
               onSuccess={() => setOnboardingStage('2')}
             />
           ) : !userHasBurner ? (
-            <CreateBurnerForm
+            <BurnerForm
               editMode={false}
               onSuccess={() => setOnboardingStage('3')}
             />

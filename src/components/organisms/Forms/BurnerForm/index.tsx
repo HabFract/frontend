@@ -5,28 +5,24 @@ import * as Yup from 'yup'
 // #endregion Global Imports
 
 // #region Local Imports
-import {
-  OnboardingFormContainer,
-  ImageUploadContainer,
-  MakePublicContainer,
-  OnboardingProgressBarContainer,
-  Label,
-} from './styled'
+import { Label } from '../styled'
 
-import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
-import { SwitchInput } from '@/atoms/Input/Switch'
 import { TextInput } from '@/atoms/Input/Text'
 import { P } from '@/atoms/Typo/Copy/P'
 import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
 import { Button } from '@/atoms/Button/General'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
 
-import { Profile, useAddUserMutation } from '@/graphql/generated'
+import { useAddBurnerMutation } from '@/graphql/generated'
 // #endregion Local Imports
 
 // #region Interface Imports
 import { IBurnerForm } from './types'
 import { Alert, Spin } from 'antd'
+import {
+  OnboardingFormContainer,
+  OnboardingProgressBarContainer,
+} from '@/pages/styled/Onboarding'
 // #endregion Interface Imports
 
 export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
@@ -34,7 +30,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
   editMode,
 }: IBurnerForm.IProps) => {
   const [profile, _] = useMyProfile()
-  const [addUserMutation, { data, loading, error }] = useAddUserMutation()
+  const [addBurnerMutation, { data, loading, error }] = useAddBurnerMutation()
 
   const initialValues: IBurnerForm.BurnerFormValues = {
     name: '',
@@ -63,25 +59,23 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object({
-            username: Yup.string()
+            name: Yup.string()
               .max(15, 'Must be 15 characters or less')
               .required('Required'),
-            location: Yup.string().max(20, 'Must be 20 characters or less'),
-            avatar: Yup.string(),
-            isPublic: Yup.boolean(),
+            desription: Yup.string()
+              .max(50, 'Must be 50 characters or less')
+              .required('Required'),
+            hashtag: Yup.string(),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            addUserMutation({
-              variables: {
-                profileFields: {
-                  nickname: values.username,
-                  location: values.location,
-                  avatar: values.avatar,
-                  // TODO implement isPublic
-                  // isPublic: values.isPublic.toString(),
-                },
-              },
-            })
+            // useAddBurnerMutation({
+            //   variables: {
+
+            //     name: values.name,
+            //     description: values.description,
+            //     hashtag: values.hashtag,
+            //   },
+            // })
             setSubmitting(false)
           }}
         >
@@ -89,23 +83,23 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
             return (
               <Form
                 onSubmit={handleSubmit}
-                aria-label="sign-up-form"
-                id="sign-up-form"
+                aria-label="new-burner-form"
+                id="new-burner-form"
                 className="flex flex-col py-2 md:relative gap-y-6"
               >
                 <div className="w-full">
-                  <Label htmlFor="username">Username:</Label>
+                  <Label htmlFor="name">Name:</Label>
                   <Field
                     component={TextInput}
-                    id="username"
-                    name="username"
-                    placeholder="Pick a username"
+                    id="name"
+                    name="name"
+                    placeholder="Pick a descriptive name"
                   />
                   {errors &&
-                    errors.username &&
+                    errors.name &&
                     touched &&
-                    touched.username &&
-                    errors && <Label warning>{errors.username}</Label>}
+                    touched.name &&
+                    errors && <Label warning>{errors.name}</Label>}
                 </div>
                 <div className="w-full">
                   <Label htmlFor="location">Location:</Label>
@@ -116,40 +110,13 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
                     placeholder="Pick a location"
                   />
                 </div>
-                <ImageUploadContainer>
-                  <CenteringFlexHorizontal>
-                    <Field
-                      className="grid mr-2 place-content-end"
-                      component={ImageUploadInput}
-                      id="avatar-upload"
-                      name="avatar-upload"
-                    />
-                    <div style={{ flexBasis: '33%', margin: '0 0 0 2rem' }}>
-                      <P
-                        copyText="Add a user avatar and people can relate visually *"
-                        level={2}
-                      />
-                    </div>
-                  </CenteringFlexHorizontal>
-                </ImageUploadContainer>
-                <MakePublicContainer>
-                  <div className="flex justify-around w-1/2">
-                    <Label htmlFor="public">Make Profile Public</Label>
-                    <Field component={SwitchInput} id="public" name="public" />
-                  </div>
-                  <div className="px-4 mb-6">
-                    <P
-                      copyText="Going public will enable sharing and trading of habit structures, but isn’t required to use the app."
-                      level={4}
-                    />
-                  </div>
-                </MakePublicContainer>
+
                 <OnboardingProgressBarContainer>
                   <EndFlexHorizontal>
                     <div className="w-full h-6 bg-gray-200 rounded-full lg:hidden dark:bg-gray-700">
                       <div
                         className="h-6 bg-blue-600 rounded-full dark:bg-blue-500"
-                        style={{ width: '20%' }}
+                        style={{ width: '40%' }}
                       ></div>
                     </div>
                     <button

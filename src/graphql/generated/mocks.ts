@@ -239,6 +239,14 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
       overrides && overrides.hasOwnProperty('createProfile')
         ? overrides.createProfile!
         : anAgentProfile(),
+    updateBurner:
+      overrides && overrides.hasOwnProperty('updateBurner')
+        ? overrides.updateBurner!
+        : aBurner(),
+    updateHabit:
+      overrides && overrides.hasOwnProperty('updateHabit')
+        ? overrides.updateHabit!
+        : aHabit(),
     updateProfile:
       overrides && overrides.hasOwnProperty('updateProfile')
         ? overrides.updateProfile!
