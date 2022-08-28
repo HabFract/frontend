@@ -16,7 +16,6 @@ import { useAddBurnerMutation } from '@/graphql/generated'
 
 // #region Interface Imports
 import { IBurnerForm } from './types'
-import { Alert, Spin } from 'antd'
 import {
   OnboardingFormContainer,
   OnboardingProgressBarContainer,
@@ -44,16 +43,17 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
   return (
     <OnboardingFormContainer>
       {error ? (
-        <Spin spinning={loading}>
-          {error && (
-            <Alert
-              message="Alert message title"
-              description="Further details about the context of this alert."
-              type="error"
-            />
-          )}
-        </Spin>
+        <div></div>
       ) : (
+        // <Spin spinning={loading}>
+        //   {error && (
+        //     <Alert
+        //       message="Alert message title"
+        //       description="Further details about the context of this alert."
+        //       type="error"
+        //     />
+        //   )}
+        // </Spin>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object({
@@ -66,14 +66,15 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
             hashtag: Yup.string(),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            // useAddBurnerMutation({
-            //   variables: {
-
-            //     name: values.name,
-            //     description: values.description,
-            //     hashtag: values.hashtag,
-            //   },
-            // })
+            addBurnerMutation({
+              variables: {
+                burnerFields: {
+                  name: values.name,
+                  description: values.description,
+                  hashtag: values.hashtag,
+                },
+              },
+            })
             setSubmitting(false)
           }}
         >

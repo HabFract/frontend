@@ -26,6 +26,7 @@ export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
                 typeOfButton="secondary"
                 size="sm"
                 text="Home"
+                buttonName="back"
               />
             </div>
           )}

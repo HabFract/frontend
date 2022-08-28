@@ -1,5 +1,5 @@
-mutation addBurner($variables: BurnerCreateUpdateParams!) {
-  createBurner(burner: $variables) {
+mutation addBurner($burnerFields: BurnerCreateUpdateParams!) {
+  createBurner(burner: $burnerFields) {
     payload {
       headerHash
       entryHash

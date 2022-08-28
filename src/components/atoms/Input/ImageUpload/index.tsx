@@ -4,13 +4,13 @@ import React, { useState } from 'react'
 
 // #region Local Imports
 import { getBase64 } from '@/app/utils/resizeExportAsPng'
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons/lib/icons'
 import { Upload } from 'antd'
 // #endregion Local Imports
 
 // #region Interface Imports
 import type { UploadProps } from 'antd'
 import { IImageUploadInput } from './types'
+import { ColoredSvg } from '../..'
 // #endregion Interface Imports
 
 export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
@@ -45,7 +45,15 @@ export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
 
   const uploadButton = (
     <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
+      {loading ? (
+        <ColoredSvg
+          iconName="loading-outline"
+          rounded={false}
+          className={'h-6 w-6'}
+        />
+      ) : (
+        <ColoredSvg iconName="add-file" rounded={false} className={'h-6 w-6'} />
+      )}
       <div style={{ marginTop: 8 }}>Upload</div>
     </div>
   )

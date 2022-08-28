@@ -1,5 +1,12 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {
+  act,
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { BrowserRouter } from 'react-router-dom'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
@@ -86,6 +93,22 @@ describe('Given a new user', () => {
       renderPage(Onboarding, { withUser: false })
       const { findByText } = screen
       expect(await findByText('Create a profile')).toBeInTheDocument()
+    })
+
+    it('And When the back button is clicked Then it should render the Home page', async () => {
+      const user = userEvent.setup()
+      renderPage(Onboarding, { withUser: false })
+
+      const { getByRole, findByRole, getByText, findByText } = screen
+      const button = await getByRole('button', { name: /Home/i })
+      const profileHeader = await getByText('Create a profile')
+      userEvent.click(button)
+
+      await waitForElementToBeRemoved(await findByText('Create a profile'))
+      // await waitFor(() => getByRole('navigation'))
+      // await act(() => {
+      //   screen.logTestingPlaygroundURL()
+      // })
     })
   })
 })

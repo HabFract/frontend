@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import { Field, Form, Formik, FormikProps } from 'formik'
 import * as Yup from 'yup'
-import { Alert, Spin } from 'antd'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -56,16 +55,17 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
   return (
     <OnboardingFormContainer>
       {error ? (
-        <Spin spinning={loading}>
-          {error && (
-            <Alert
-              message="Alert message title"
-              description="Further details about the context of this alert."
-              type="error"
-            />
-          )}
-        </Spin>
+        <div></div>
       ) : (
+        // <Spin spinning={loading}>
+        //   {error && (
+        //     <Alert
+        //       message="Alert message title"
+        //       description="Further details about the context of this alert."
+        //       type="error"
+        //     />
+        //   )}
+        // </Spin>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object({

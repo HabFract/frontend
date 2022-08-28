@@ -1,4 +1,6 @@
 import { defineConfig } from 'vite'
+import { visualizer } from 'rollup-plugin-visualizer'
+
 import gql from 'vite-plugin-simple-gql'
 import {
   themePreprocessorPlugin,
@@ -88,6 +90,7 @@ export default defineConfig({
     // development need theme HMR
     themePreprocessorHmrPlugin(),
     gql(),
+    [visualizer()],
   ],
   optimizeDeps: {
     esbuildOptions: {

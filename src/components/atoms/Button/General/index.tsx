@@ -14,6 +14,7 @@ import { Heading } from '../..'
 // #endregion Interface Imports
 
 export const Button: React.FC<IButton.IProps> = ({
+  buttonName,
   text,
   iconName,
   size,
@@ -21,7 +22,7 @@ export const Button: React.FC<IButton.IProps> = ({
   onClick,
 }) => {
   return typeOfButton == 'submit' ? (
-    <SubmitButton typeOfButton={'primary'} size={size}>
+    <SubmitButton name={buttonName} typeOfButton={'primary'} size={size}>
       <CenteringFlexHorizontal gap={0.5}>
         <span className="flex items-center justify-center">
           <ColoredSvg
@@ -39,7 +40,12 @@ export const Button: React.FC<IButton.IProps> = ({
       </CenteringFlexHorizontal>
     </SubmitButton>
   ) : (
-    <GeneralButton typeOfButton={typeOfButton} size={size} onClick={onClick}>
+    <GeneralButton
+      name={buttonName}
+      typeOfButton={typeOfButton}
+      size={size}
+      onClick={onClick}
+    >
       <CenteringFlexHorizontal gap={0.5}>
         <span className="flex items-center justify-center">
           <ColoredSvg

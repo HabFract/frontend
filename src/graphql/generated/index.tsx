@@ -206,7 +206,7 @@ export type UserProfileCreateUpdateParams = {
 }
 
 export type AddBurnerMutationVariables = Exact<{
-  variables: BurnerCreateUpdateParams
+  burnerFields: BurnerCreateUpdateParams
 }>
 
 export type AddBurnerMutation = {
@@ -349,8 +349,8 @@ export type GetMeQuery = {
 }
 
 export const AddBurnerDocument = gql`
-  mutation addBurner($variables: BurnerCreateUpdateParams!) {
-    createBurner(burner: $variables) {
+  mutation addBurner($burnerFields: BurnerCreateUpdateParams!) {
+    createBurner(burner: $burnerFields) {
       payload {
         headerHash
         entryHash
@@ -376,7 +376,7 @@ export type AddBurnerMutationFn = Apollo.MutationFunction<
  * @example
  * const [addBurnerMutation, { data, loading, error }] = useAddBurnerMutation({
  *   variables: {
- *      variables: // value for 'variables'
+ *      burnerFields: // value for 'burnerFields'
  *   },
  * });
  */

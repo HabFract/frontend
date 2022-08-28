@@ -17,9 +17,10 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
 
   const createBurner: createHandler = async (
     _,
-    { burner: { name, ...metadata } },
+    { burner: { name, description, hashtag } },
   ) => {
-    return runCreate({ name, metadata })
+    console.log('name, metadata :>> ', name)
+    return runCreate({ name, metadata: { description, hashtag } })
   }
 
   return {
