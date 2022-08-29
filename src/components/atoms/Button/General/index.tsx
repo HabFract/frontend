@@ -23,21 +23,19 @@ export const Button: React.FC<IButton.IProps> = ({
 }) => {
   return typeOfButton == 'submit' ? (
     <SubmitButton name={buttonName} typeOfButton={'primary'} size={size}>
-      <CenteringFlexHorizontal gap={0.5}>
-        <span className="flex items-center justify-center">
-          <ColoredSvg
-            button
-            className={size !== 'sm' ? 'w-6 h-6 mr-4' : 'w-4 h-4 mr-0 xl:mr-2'}
-            iconName={iconName}
-            rounded={false}
-          />
-          <span className={size !== 'sm' ? 'block' : 'hidden xl:block'}>
-            <Heading caps={true} level={3}>
-              {text}
-            </Heading>
-          </span>
+      <span className="flex items-center justify-center">
+        <ColoredSvg
+          button
+          className={size !== 'sm' ? 'w-6 h-6 mr-4' : 'w-4 h-4 mr-0 xl:mr-2'}
+          iconName={iconName}
+          rounded={false}
+        />
+        <span className={size !== 'sm' ? 'block' : 'hidden xl:block'}>
+          <Heading caps={true} level={3}>
+            {text}
+          </Heading>
         </span>
-      </CenteringFlexHorizontal>
+      </span>
     </SubmitButton>
   ) : (
     <GeneralButton
@@ -46,19 +44,17 @@ export const Button: React.FC<IButton.IProps> = ({
       size={size}
       onClick={onClick}
     >
-      <CenteringFlexHorizontal gap={0.5}>
-        <span className="flex items-center justify-center">
-          <ColoredSvg
-            button
-            className={size !== 'sm' ? 'w-6 h-6 mr-4' : 'w-4 h-4 mr-0 xl:mr-2'}
-            iconName={iconName}
-            rounded={false}
-          />
-          <span className={size !== 'sm' ? 'block' : 'hidden xl:block'}>
-            {text}
-          </span>
+      <span className="flex items-center justify-center">
+        <ColoredSvg
+          button
+          className={size !== 'sm' ? 'w-6 h-6 mr-4' : 'w-4 h-4 mr-0 xl:mr-2'}
+          iconName={iconName}
+          rounded={false}
+        />
+        <span className={size !== 'sm' ? 'block' : 'hidden xl:block'}>
+          {text}
         </span>
-      </CenteringFlexHorizontal>
+      </span>
     </GeneralButton>
   )
 }

@@ -28,7 +28,7 @@ interface OnboardingProps {}
 const onboardingMainTitles = [
   { default: 'Make a positive habit', dark: 'Break a negative habit' },
 ]
-const onboardingStageTitles = [
+export const onboardingStageTitles = [
   'Create a profile',
   'Start a Burner',
   'Create a habit',
@@ -122,8 +122,13 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
               editMode={false}
               onSuccess={() => setOnboardingStage('3')}
             />
+          ) : !userHasBurner ? (
+            <BurnerForm
+              editMode={false}
+              onSuccess={() => setOnboardingStage('4')}
+            />
           ) : (
-            <div>Create a habit</div>
+            <span>Summary</span>
           )}
         </OnboardingTemplate>
 

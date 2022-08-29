@@ -44,7 +44,7 @@ export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
   }
 
   const uploadButton = (
-    <div>
+    <div data-testid="image-upload">
       {loading ? (
         <ColoredSvg
           iconName="loading-outline"

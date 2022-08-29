@@ -25,7 +25,7 @@ export const DescriptionBox: React.FunctionComponent<IDescriptionBox.IProps> =
                 onClick={backAction}
                 typeOfButton="secondary"
                 size="sm"
-                text="Home"
+                text="Go Back"
                 buttonName="back"
               />
             </div>
