@@ -59,7 +59,6 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
   useEffect(() => {
     if (!burnersPayload) return
-    console.log('burnersPayload!.burners :>> ', burnersPayload!.burners)
     setUserHasBurner(!!(burnersPayload!.burners.edges.length > 0))
     setOnboardingStage(userHasBurner ? '3' : onboardingStage)
   }, [userHasBurner, burnersPayload])
@@ -79,8 +78,6 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
 
     if (!!profile) {
       getBurners()
-      console.log('userHasBurner :>> ', userHasBurner)
-      console.log('userHasHabit :>> ', userHasHabit)
       !(userHasBurner || userHasHabit) && setOnboardingStage('2')
     }
     if (userHasBurner) {
