@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import { Field, Form, Formik, FormikProps } from 'formik'
 import * as Yup from 'yup'
+import { useSearchParams } from 'react-router-dom'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -18,11 +19,13 @@ import {
   OnboardingFormContainer,
   OnboardingProgressBarContainer,
 } from '@/pages/styled/Onboarding'
-import { useAddUserMutation } from '@/graphql/generated'
+import { useAddUserMutation, useUpdateUserMutation } from '@/graphql/generated'
 // #endregion Local Imports
 
 // #region Interface Imports
 import { IProfileForm } from './types'
+import Spin from 'antd/lib/spin'
+import Alert from 'antd/lib/alert'
 // #endregion Interface Imports
 
 export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
@@ -31,7 +34,13 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
   editMode,
 }: IProfileForm.IProps) => {
   const [profile, _] = useMyProfile()
+  const [searchParams, setSearchParams] = useSearchParams()
+
   const [addUserMutation, { data, loading, error }] = useAddUserMutation()
+  const [
+    updateUserMutation,
+    { data: updateData, loading: updateLoading, error: updateError },
+  ] = useUpdateUserMutation()
 
   const initialValues: IProfileForm.ProfileFormValues =
     editMode && !!profile
@@ -52,21 +61,24 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
     if (data) onSuccess.call(null)
     // This needs to trigger only if backend returned something meaningful
   }, [data])
+  useEffect(() => {
+    if (updateData) onUpdateSuccess.call(null)
+    // This needs to trigger only if backend returned something meaningful
+  }, [updateData])
 
   return (
     <OnboardingFormContainer>
       {error ? (
-        <div></div>
+        <Spin spinning={loading}>
+          {error && (
+            <Alert
+              message="Alert message title"
+              description="Further details about the context of this alert."
+              type="error"
+            />
+          )}
+        </Spin>
       ) : (
-        // <Spin spinning={loading}>
-        //   {error && (
-        //     <Alert
-        //       message="Alert message title"
-        //       description="Further details about the context of this alert."
-        //       type="error"
-        //     />
-        //   )}
-        // </Spin>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object({
@@ -84,10 +96,11 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
                 location: values.location,
                 avatar: values.avatar,
                 // TODO implement isPublic
-                // isPublic: values.isPublic.toString(),
               },
             }
-            editMode ? onUpdateSuccess() : addUserMutation({ variables })
+            editMode && !!profile
+              ? updateUserMutation({ variables })
+              : addUserMutation({ variables })
 
             setSubmitting(false)
           }}
@@ -114,6 +127,7 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
                     touched.nickname &&
                     errors && <Label warning>{errors.nickname}</Label>}
                 </div>
+
                 <div className="w-full">
                   <Label htmlFor="location">Location:</Label>
                   <Field
@@ -151,6 +165,7 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
                     />
                   </div>
                 </MakePublicContainer>
+
                 <OnboardingProgressBarContainer>
                   <EndFlexHorizontal>
                     <div className="w-full h-6 bg-gray-200 rounded-full lg:hidden dark:bg-gray-700">
