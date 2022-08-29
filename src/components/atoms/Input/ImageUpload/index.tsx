@@ -19,9 +19,9 @@ export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
   ...props
 }) => {
   const [loading, setLoading] = useState(false)
-  const [chosenFile, setChosenFile] = useState(null)
+  const [chosenFile, setChosenFile] = useState(form.values.avatar || null)
   const [fileList, setFileList] = useState<any>([])
-
+  // console.log('field :>> ', [form.values.avatar])
   const handleChange: UploadProps['onChange'] = async (info: any) => {
     let fileString
     try {
@@ -31,6 +31,7 @@ export const ImageUploadInput: React.FC<IImageUploadInput.IProps> = ({
     }
     // TODO handle error better for user
 
+    console.log('field :>> ', fileString)
     setChosenFile(fileString)
     // Update Formik context
     form.setFieldValue('avatar', fileString)

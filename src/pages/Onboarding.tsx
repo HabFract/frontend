@@ -1,6 +1,6 @@
 // #region Global Imports
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -43,11 +43,14 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
 
   // const [, setName] = useThemeName() // COMMENT OUT DURING TEST
+  const [searchParams, setSearchParams] = useSearchParams()
   const themeValue =
     params.theme === 'make' ? ThemeValues.Light : ThemeValues.Dark
   const [profile, _] = useMyProfile()
   const navigate = useNavigate()
-  const [onboardingStage, setOnboardingStage] = useState('1')
+  const [onboardingStage, setOnboardingStage] = useState(
+    searchParams.get('stage') || '1',
+  )
 
   const [getBurners, { data: burnersPayload, loading, error }] =
     useGetBurnersLazyQuery()
@@ -87,15 +90,20 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     if (userHasBurner && userHasHabit) setOnboardingStage('4') //TODO unhardcode
   }, [profile, userHasBurner, userHasHabit])
 
+  const handleBackAction = () => {
+    if (onboardingStage == '1') {
+      navigate(`/`)
+    } else {
+      setSearchParams({ edit: 'true' })
+      setOnboardingStage(`${+onboardingStage - 1}`)
+    }
+  }
+
   return (
     <>
       <TitleBar
         titles={onboardingMainTitles[0]}
-        backAction={() =>
-          onboardingStage == '1'
-            ? navigate(`/`)
-            : setOnboardingStage(`${+onboardingStage - 1}`)
-        }
+        backAction={handleBackAction}
       />
       <Template illustration={1}>
         <OnboardingTemplate>
@@ -103,25 +111,22 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
             stage={+onboardingStage}
             title={onboardingStageTitles[+onboardingStage - 1]}
             copyText={onboardingStageCopy[+onboardingStage - 1]}
-            backAction={() =>
-              onboardingStage == '1'
-                ? navigate(`/`)
-                : setOnboardingStage(`${+onboardingStage - 1}`)
-            }
+            backAction={handleBackAction}
           />
           {onboardingStage == '1' ? (
             <ProfileForm
-              editMode={false}
+              editMode={!!searchParams.get('edit')}
               onSuccess={() => setOnboardingStage('2')}
+              onUpdateSuccess={() => setOnboardingStage('2')}
             />
           ) : !userHasBurner ? (
             <BurnerForm
-              editMode={false}
+              editMode={!!searchParams.get('edit')}
               onSuccess={() => setOnboardingStage('3')}
             />
-          ) : !userHasBurner ? (
+          ) : !userHasHabit ? (
             <BurnerForm
-              editMode={false}
+              editMode={!!searchParams.get('edit')}
               onSuccess={() => setOnboardingStage('4')}
             />
           ) : (

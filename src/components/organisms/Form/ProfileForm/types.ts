@@ -6,6 +6,7 @@ type InputValues = UserProfileCreateUpdateParams
 export declare namespace IProfileForm {
   export interface IProps {
     onSuccess: () => void
+    onUpdateSuccess: () => void
     editMode: boolean
   }
   export interface ProfileFormValues extends InputValues {}

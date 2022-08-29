@@ -19,6 +19,7 @@ export const SwitchInput: React.FC<ISwitchInput.IProps> = ({
 
   return (
     <input
+      name={field.name}
       type="checkbox"
       {...props}
       onChange={(e) => {

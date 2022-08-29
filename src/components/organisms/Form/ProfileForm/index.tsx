@@ -27,6 +27,7 @@ import { IProfileForm } from './types'
 
 export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
   onSuccess,
+  onUpdateSuccess,
   editMode,
 }: IProfileForm.IProps) => {
   const [profile, _] = useMyProfile()
@@ -77,18 +78,17 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
             isPublic: Yup.boolean(),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            console.log('values :>> ', values)
-            addUserMutation({
-              variables: {
-                profileFields: {
-                  nickname: values.nickname,
-                  location: values.location,
-                  avatar: values.avatar,
-                  // TODO implement isPublic
-                  // isPublic: values.isPublic.toString(),
-                },
+            const variables = {
+              profileFields: {
+                nickname: values.nickname,
+                location: values.location,
+                avatar: values.avatar,
+                // TODO implement isPublic
+                // isPublic: values.isPublic.toString(),
               },
-            })
+            }
+            editMode ? onUpdateSuccess() : addUserMutation({ variables })
+
             setSubmitting(false)
           }}
         >
