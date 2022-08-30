@@ -5,7 +5,7 @@ import React from 'react'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}
 
-export const NotFound: React.FC<HomeProps> = () => {
+const NotFound: React.FC<HomeProps> = () => {
   return (
     <CenteringFlexHorizontal>
       <Heading level={1} caps={true}>
@@ -15,3 +15,5 @@ export const NotFound: React.FC<HomeProps> = () => {
     </CenteringFlexHorizontal>
   )
 }
+
+export default NotFound

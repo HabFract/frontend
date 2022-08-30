@@ -6,7 +6,7 @@ import React from 'react'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}
 
-export const Home: React.FC<HomeProps> = () => {
+const Home: React.FC<HomeProps> = () => {
   const [profile, _] = useMyProfile()
   return (
     <nav aria-label="Information portal navigation">
@@ -14,3 +14,5 @@ export const Home: React.FC<HomeProps> = () => {
     </nav>
   )
 }
+
+export default Home

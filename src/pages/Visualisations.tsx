@@ -9,7 +9,7 @@ import { OnboardingTemplate as VisTemplate } from '@/templates/OnboardingStageTe
 
 interface VisualisationsProps {}
 
-export const Visualisations: React.FC<VisualisationsProps> = () => {
+const Visualisations: React.FC<VisualisationsProps> = () => {
   const params = useParams()
 
   return (
@@ -18,3 +18,5 @@ export const Visualisations: React.FC<VisualisationsProps> = () => {
     </VisTemplate>
   )
 }
+
+export default Visualisations

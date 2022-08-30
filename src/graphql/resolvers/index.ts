@@ -2,7 +2,7 @@ import { openConnection } from '../connection.js'
 import Mutation from '../mutations'
 import Query from '../queries'
 import { ResolverOptions } from '../types.js'
-import { DateTimeResolver as DateTime } from 'graphql-scalars'
+// import { DateTimeResolver as DateTime } from 'graphql-scalars'
 
 export default async (options: ResolverOptions) => {
   const { conductorUri, dnaConfig, traceAppSignals = undefined } = options
@@ -11,7 +11,7 @@ export default async (options: ResolverOptions) => {
   await openConnection(conductorUri, traceAppSignals)
   return {
     // scalars
-    DateTime,
+    // DateTime,
 
     // root schemas
     Query: Query(dnaConfig, conductorUri),

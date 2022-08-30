@@ -20,7 +20,6 @@ import { BurnerForm, ProfileForm } from '@/organisms/.'
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { OnboardingContextBar } from './styled/Onboarding'
-import { Visualisations } from './Visualisations'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -39,7 +38,7 @@ const onboardingStageCopy = [
   "It's time to choose an area of your life to give some attention. We call this a burner. Use the info bar on the right to discover why!",
 ]
 
-export const Onboarding: React.FC<OnboardingProps> = () => {
+const Onboarding: React.FC<OnboardingProps> = () => {
   const params = useParams()
 
   // const [, setName] = useThemeName() // COMMENT OUT DURING TEST
@@ -251,3 +250,5 @@ export const Onboarding: React.FC<OnboardingProps> = () => {
     </>
   )
 }
+
+export default Onboarding

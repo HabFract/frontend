@@ -28,8 +28,8 @@ import {
   Profile,
 } from '@/graphql/generated'
 
-import { Home } from './Home'
-import { Onboarding, onboardingStageTitles } from './Onboarding'
+import Home from './Home'
+import Onboarding, { onboardingStageTitles } from './Onboarding'
 const [onboardingTitle1, onboardingTitle2, onboardingTitle3] =
   onboardingStageTitles
 

@@ -10,6 +10,7 @@ import path from 'path'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import Checker from 'vite-plugin-checker'
 import reactRefresh from '@vitejs/plugin-react'
+import vitePluginImport from 'vite-plugin-babel-import'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,6 +25,18 @@ export default defineConfig({
     },
   },
   plugins: [
+    [
+      vitePluginImport([
+        {
+          ignoreStyles: [],
+          libraryName: 'antd',
+          libraryDirectory: 'es',
+          style(name) {
+            return `antd/lib/${name}/style/index.css`
+          },
+        },
+      ]),
+    ],
     reactRefresh({
       babel: {
         plugins: [

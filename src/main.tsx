@@ -1,7 +1,9 @@
 import { Buffer } from 'buffer'
-import React, { FC, useEffect } from 'react'
-import { createRoot } from 'react-dom/client'
+import React, { lazy, Suspense, FC, useEffect } from 'react'
+import { Spin } from 'antd'
+
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { createRoot } from 'react-dom/client'
 
 import './index.scss'
 import 'flowbite'
@@ -43,12 +45,59 @@ const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<NotFound />}></Route>
-        <Route path="/info/what" element={<InfoPortal />}></Route>
-        <Route path="/info/why" element={<InfoPortal />}></Route>
-        <Route path="/info/how" element={<InfoPortal />}></Route>
-        <Route path="/:theme/vis" element={<Visualisations />}></Route>
-        <Route path="/" element={<Home />}></Route>
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<Spin spinning={true} />}>
+              <NotFound />
+            </Suspense>
+          }
+        ></Route>
+
+        <Route
+          path="/info/what"
+          element={
+            <Suspense fallback={<Spin spinning={true} />}>
+              <InfoPortal />
+            </Suspense>
+          }
+        ></Route>
+
+        <Route
+          path="/info/why"
+          element={
+            <Suspense fallback={<Spin spinning={true} />}>
+              <InfoPortal />
+            </Suspense>
+          }
+        ></Route>
+
+        <Route
+          path="/info/how"
+          element={
+            <Suspense fallback={<Spin spinning={true} />}>
+              <InfoPortal />
+            </Suspense>
+          }
+        ></Route>
+
+        <Route
+          path="/:theme/vis"
+          element={
+            <Suspense fallback={<Spin spinning={true} />}>
+              <Visualisations />
+            </Suspense>
+          }
+        ></Route>
+
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<Spin spinning={true} />}>
+              <Home />
+            </Suspense>
+          }
+        ></Route>
         <Route
           path="/:theme/onboarding"
           element={false ? <Navigate to="/" replace /> : <Onboarding />} // Maybe profile needs a flag that can be fed here to redirect from oboarding

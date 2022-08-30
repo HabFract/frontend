@@ -21,7 +21,7 @@ const InfoPortalMainTitles = [
   { default: 'Information Portal', dark: 'Information Portal' },
 ]
 
-export const InfoPortal: React.FC<InfoPortalProps> = () => {
+const InfoPortal: React.FC<InfoPortalProps> = () => {
   const navigate = useNavigate()
 
   return (
@@ -103,3 +103,5 @@ export const InfoPortal: React.FC<InfoPortalProps> = () => {
     </>
   )
 }
+
+export default InfoPortal

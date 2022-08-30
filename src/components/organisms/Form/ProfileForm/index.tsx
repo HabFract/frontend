@@ -24,8 +24,7 @@ import { useAddUserMutation, useUpdateUserMutation } from '@/graphql/generated'
 
 // #region Interface Imports
 import { IProfileForm } from './types'
-import Spin from 'antd/lib/spin'
-import Alert from 'antd/lib/alert'
+import { Spin, Alert } from 'antd'
 // #endregion Interface Imports
 
 export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
