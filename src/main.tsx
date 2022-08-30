@@ -12,7 +12,11 @@ import { ApolloProvider } from '@apollo/client'
 import connect, { ClientOptions } from '@/graphql/client'
 import { useGetMeQuery } from './graphql/generated'
 
-import { MyProfileProvider, ThemeProvider } from '@/contexts/.'
+import {
+  MyProfileProvider,
+  ThemeProvider,
+  CurrentBurnerProvider,
+} from '@/contexts/.'
 import { useMyProfile } from '@/hooks/useMyProfile'
 import {
   Home,
@@ -114,7 +118,9 @@ root.render(
     <ThemeProvider>
       <ApolloProvider client={await connect({} as ClientOptions)}>
         <MyProfileProvider>
-          <App />
+          <CurrentBurnerProvider>
+            <App />
+          </CurrentBurnerProvider>
         </MyProfileProvider>
       </ApolloProvider>
     </ThemeProvider>

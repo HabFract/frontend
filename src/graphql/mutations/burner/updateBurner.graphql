@@ -1,0 +1,8 @@
+mutation updateBurner($burnerFields: BurnerUpdateParams!) {
+  updateBurner(burner: $burnerFields) {
+    payload {
+      headerHash
+      entryHash
+    }
+  }
+}

@@ -8,8 +8,8 @@ type Query {
 }
 
 type Mutation {
-  createBurner(burner: BurnerCreateUpdateParams): BurnerCreateResponse!
-  updateBurner(burner: BurnerCreateUpdateParams): Burner!
+  createBurner(burner: BurnerCreateParams): BurnerCreateResponse!
+  updateBurner(burner: BurnerUpdateParams): BurnerCreateResponse!
   createHabit(habit: HabitCreateUpdateParams): HabitCreateResponse!
   updateHabit(habit: HabitCreateUpdateParams): Habit!
   createProfile(profile: UserProfileCreateUpdateParams): AgentProfile!
@@ -110,7 +110,13 @@ type BurnerMetaData {
 }
 
 # Burner Input/Outputs
-input BurnerCreateUpdateParams {
+input BurnerCreateParams {
+  name: String!
+  description: String!
+  hashtag: String
+}
+input BurnerUpdateParams {
+  id: String!
   name: String!
   description: String!
   hashtag: String

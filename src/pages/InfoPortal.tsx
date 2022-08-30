@@ -12,7 +12,7 @@ import { TitleBar, ListGroupItem } from '@/molecules/.'
 import { ListGroup, Card } from '@/organisms/.'
 
 import { ButtonContainer } from '@/atoms/Button/General/styled'
-import { CenteringFlexHorizontal, SpaceBetweenFlex } from './styled'
+import { CenteringFlexHorizontal, SpaceFlex } from './styled'
 // #endregion Local Imports
 
 interface InfoPortalProps {}
@@ -51,7 +51,7 @@ const InfoPortal: React.FC<InfoPortalProps> = () => {
                 primaryText="How"
                 secondaryText="Learn about the technology that powers us"
               />
-              <SpaceBetweenFlex vertical gap={0.1}>
+              <SpaceFlex space="between" vertical gap={0.1}>
                 <ButtonContainer typeOfButton="secondary" size="lg">
                   <CenteringFlexHorizontal gap={0.5}>
                     <ColoredSvg
@@ -70,7 +70,7 @@ const InfoPortal: React.FC<InfoPortalProps> = () => {
                   text="Get Started"
                   size="lg"
                 />
-              </SpaceBetweenFlex>
+              </SpaceFlex>
             </ListGroup>
           </CenteringFlexHorizontal>
         }

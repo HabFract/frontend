@@ -1,6 +1,5 @@
 import { MyProfileContext } from '@/contexts/myProfileContext'
-import { Profile } from '@/graphql/generated'
-import { Dispatch, SetStateAction, useContext } from 'react'
+import { useContext } from 'react'
 
 export const useMyProfile = () => {
   const context = useContext(MyProfileContext)

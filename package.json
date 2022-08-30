@@ -11,7 +11,7 @@
     "serve": "vite preview",
     "format": "prettier --write --ignore-path ./.prettierignore \"src/**/*.ts*\" \"src/**/*.tsx*\" \"src/**/*.graphql\" ",
     "lint": "eslint ./src --fix",
-    "test": "DEBUG_PRINT_LIMIT=100 node --experimental-vm-modules node_modules/jest/bin/jest.js --watch -no-cache --verbose --runInBand --config=./jest.config.ts",
+    "test": "DEBUG_PRINT_LIMIT=10000 node --experimental-vm-modules node_modules/jest/bin/jest.js --watch -no-cache --verbose --runInBand --config=./jest.config.ts",
     "prepush": "jest -no-cache --verbose --runInBand --config=./jest.config.ts",
     "gen": "graphql-codegen --config codegen.yml --watch",
     "storybook": "start-storybook -p 6006",

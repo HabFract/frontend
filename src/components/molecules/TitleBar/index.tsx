@@ -13,7 +13,7 @@ import { useThemeName } from '@/app/hooks/useTheme'
 
 // #endregion Interface Imports
 import { ITitleBar } from './types'
-import { SpaceBetweenFlex } from '@/pages/styled'
+import { SpaceFlex } from '@/pages/styled'
 // #region Interface Imports
 
 export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({
@@ -24,12 +24,12 @@ export const TitleBar: React.FunctionComponent<ITitleBar.IProps> = ({
   const theme = name.toString().split('-')[1]
   return (
     <TitleBarContainer>
-      <SpaceBetweenFlex>
+      <SpaceFlex space="between">
         <BackCaret onClick={backAction} />
         <Heading level={4} caps={true}>
           {titles[theme]}
         </Heading>
-      </SpaceBetweenFlex>
+      </SpaceFlex>
     </TitleBarContainer>
   )
 }

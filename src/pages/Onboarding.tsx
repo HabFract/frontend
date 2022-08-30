@@ -15,7 +15,7 @@ import {
 
 import { Heading, Button } from '@/atoms/.'
 import { DescriptionBox, TitleBar } from '@/molecules/.'
-import { BurnerForm, ProfileForm } from '@/organisms/.'
+import { BurnerForm, HabitForm, ProfileForm } from '@/organisms/.'
 
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
@@ -50,7 +50,6 @@ const Onboarding: React.FC<OnboardingProps> = () => {
   const [onboardingStage, setOnboardingStage] = useState(
     searchParams.get('stage') || '1',
   )
-
   const [getBurners, { data: burnersPayload, loading, error }] =
     useGetBurnersLazyQuery()
   const [userHasBurner, setUserHasBurner] = useState(false)
@@ -62,7 +61,8 @@ const Onboarding: React.FC<OnboardingProps> = () => {
   useEffect(() => {
     if (!burnersPayload) return
     setUserHasBurner(!!(burnersPayload!.burners.edges.length > 0))
-    setOnboardingStage(userHasBurner ? '3' : onboardingStage)
+    !searchParams.get('edit') &&
+      setOnboardingStage(userHasBurner ? '3' : onboardingStage)
   }, [userHasBurner, burnersPayload])
 
   useEffect(() => {
@@ -80,14 +80,17 @@ const Onboarding: React.FC<OnboardingProps> = () => {
 
     if (!!profile) {
       getBurners()
-      !(userHasBurner || userHasHabit) && setOnboardingStage('2')
+      !(userHasBurner || userHasHabit) &&
+        !searchParams.get('edit') &&
+        setOnboardingStage('2')
     }
     if (userHasBurner) {
       getHabits()
     }
 
-    if (userHasBurner && userHasHabit) setOnboardingStage('4') //TODO unhardcode
-  }, [profile, userHasBurner, userHasHabit])
+    if (userHasBurner && userHasHabit)
+      !searchParams.get('edit') && setOnboardingStage('4') //TODO unhardcode
+  }, [profile, userHasBurner, userHasHabit, searchParams])
 
   const handleBackAction = () => {
     if (onboardingStage == '1') {
@@ -104,7 +107,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
         titles={onboardingMainTitles[0]}
         backAction={handleBackAction}
       />
-      <Template illustration={1}>
+      <Template illustration={+onboardingStage}>
         <OnboardingTemplate>
           <DescriptionBox
             stage={+onboardingStage}
@@ -116,7 +119,6 @@ const Onboarding: React.FC<OnboardingProps> = () => {
             <ProfileForm
               editMode={!!searchParams.get('edit')}
               onSuccess={() => setOnboardingStage('2')}
-              onUpdateSuccess={() => setOnboardingStage('2')}
             />
           ) : !userHasBurner ? (
             <BurnerForm
@@ -124,7 +126,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
               onSuccess={() => setOnboardingStage('3')}
             />
           ) : !userHasHabit ? (
-            <BurnerForm
+            <HabitForm
               editMode={!!searchParams.get('edit')}
               onSuccess={() => setOnboardingStage('4')}
             />

@@ -4,7 +4,7 @@ import React from 'react'
 
 // #region Local Imports
 import { P, ColoredSvg } from '@/atoms/.'
-import { SpaceBetweenFlex } from '@/pages/styled'
+import { SpaceFlex } from '@/pages/styled'
 import { ListGroupItemContainer } from './styled'
 // #endregion Local Imports
 
@@ -19,7 +19,7 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
 }: IListGroupItem.IProps) => {
   return (
     <ListGroupItemContainer>
-      <SpaceBetweenFlex vertical unstack440>
+      <SpaceFlex space="between" vertical unstack440>
         <ColoredSvg
           className="w-full h-8 rounded-full list-item"
           iconName={iconName}
@@ -31,7 +31,7 @@ export const ListGroupItem: React.FunctionComponent<IListGroupItem.IProps> = ({
             <P copyText={secondaryText} level={2} />
           </div>
         </div>
-      </SpaceBetweenFlex>
+      </SpaceFlex>
     </ListGroupItemContainer>
   )
 }

@@ -2,10 +2,11 @@ import {
   AgentProfile,
   Burner,
   BurnerConnection,
+  BurnerCreateParams,
   BurnerCreateResponse,
-  BurnerCreateUpdateParams,
   BurnerEdge,
   BurnerMetaData,
+  BurnerUpdateParams,
   Habit,
   HabitConnection,
   HabitCreateResponse,
@@ -71,6 +72,23 @@ export const aBurnerConnection = (
   }
 }
 
+export const aBurnerCreateParams = (
+  overrides?: Partial<BurnerCreateParams>,
+): BurnerCreateParams => {
+  return {
+    description:
+      overrides && overrides.hasOwnProperty('description')
+        ? overrides.description!
+        : 'natus',
+    hashtag:
+      overrides && overrides.hasOwnProperty('hashtag')
+        ? overrides.hashtag!
+        : 'aut',
+    name:
+      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'omnis',
+  }
+}
+
 export const aBurnerCreateResponse = (
   overrides?: Partial<BurnerCreateResponse>,
 ): BurnerCreateResponse => {
@@ -79,23 +97,6 @@ export const aBurnerCreateResponse = (
       overrides && overrides.hasOwnProperty('payload')
         ? overrides.payload!
         : aResponsePayload(),
-  }
-}
-
-export const aBurnerCreateUpdateParams = (
-  overrides?: Partial<BurnerCreateUpdateParams>,
-): BurnerCreateUpdateParams => {
-  return {
-    description:
-      overrides && overrides.hasOwnProperty('description')
-        ? overrides.description!
-        : 'rerum',
-    hashtag:
-      overrides && overrides.hasOwnProperty('hashtag')
-        ? overrides.hashtag!
-        : 'odit',
-    name:
-      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'sequi',
   }
 }
 
@@ -124,6 +125,27 @@ export const aBurnerMetaData = (
       overrides && overrides.hasOwnProperty('hashtag')
         ? overrides.hashtag!
         : 'ex',
+  }
+}
+
+export const aBurnerUpdateParams = (
+  overrides?: Partial<BurnerUpdateParams>,
+): BurnerUpdateParams => {
+  return {
+    description:
+      overrides && overrides.hasOwnProperty('description')
+        ? overrides.description!
+        : 'rem',
+    hashtag:
+      overrides && overrides.hasOwnProperty('hashtag')
+        ? overrides.hashtag!
+        : 'et',
+    id:
+      overrides && overrides.hasOwnProperty('id')
+        ? overrides.id!
+        : 'consequatur',
+    name:
+      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'nobis',
   }
 }
 
@@ -242,7 +264,7 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
     updateBurner:
       overrides && overrides.hasOwnProperty('updateBurner')
         ? overrides.updateBurner!
-        : aBurner(),
+        : aBurnerCreateResponse(),
     updateHabit:
       overrides && overrides.hasOwnProperty('updateHabit')
         ? overrides.updateHabit!

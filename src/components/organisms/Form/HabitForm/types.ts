@@ -3,17 +3,15 @@ import { FormikHelpers } from 'formik/dist/types'
 
 type InputValues = BurnerCreateParams
 
-export declare namespace IBurnerForm {
+export declare namespace IHabitForm {
   export interface IProps {
     onSuccess: () => void
     editMode: boolean
   }
-  export interface BurnerFormValues extends InputValues {
-    id?: string
-  }
+  export interface HabitFormValues extends InputValues {}
 
   export interface ISubmitHandlerProps {
-    values: BurnerFormValues
-    setSubmitting: FormikHelpers<BurnerFormValues>
+    values: HabitFormValues
+    setSubmitting: FormikHelpers<HabitFormValues>
   }
 }

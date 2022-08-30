@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import { Field, Form, Formik, FormikProps } from 'formik'
 import * as Yup from 'yup'
-import { useSearchParams } from 'react-router-dom'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -12,7 +11,7 @@ import { ImageUploadContainer, MakePublicContainer } from '../styled'
 import { P, TextInput, Button, SwitchInput } from '@/atoms/.'
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
 
-import { CenteringFlexHorizontal, EndFlexHorizontal } from '@/pages/styled'
+import { EndFlexHorizontal, SpaceFlex } from '@/pages/styled'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
 
 import {
@@ -29,16 +28,13 @@ import { Spin, Alert } from 'antd'
 
 export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
   onSuccess,
-  onUpdateSuccess,
   editMode,
 }: IProfileForm.IProps) => {
-  const [profile, _] = useMyProfile()
-  const [searchParams, setSearchParams] = useSearchParams()
-
+  const [profile, setProfile] = useMyProfile()
   const [addUserMutation, { data, loading, error }] = useAddUserMutation()
   const [
     updateUserMutation,
-    { data: updateData, loading: updateLoading, error: updateError },
+    { data: dataUpdate, loading: loadingUpdate, error: errorUpdate },
   ] = useUpdateUserMutation()
 
   const initialValues: IProfileForm.ProfileFormValues =
@@ -60,16 +56,12 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
     if (data) onSuccess.call(null)
     // This needs to trigger only if backend returned something meaningful
   }, [data])
-  useEffect(() => {
-    if (updateData) onUpdateSuccess.call(null)
-    // This needs to trigger only if backend returned something meaningful
-  }, [updateData])
 
   return (
     <OnboardingFormContainer>
-      {error ? (
-        <Spin spinning={loading}>
-          {error && (
+      {error || errorUpdate ? (
+        <Spin spinning={loading || loadingUpdate}>
+          {(error || errorUpdate) && (
             <Alert
               message="Alert message title"
               description="Further details about the context of this alert."
@@ -97,10 +89,29 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
                 // TODO implement isPublic
               },
             }
-            editMode && !!profile
-              ? updateUserMutation({ variables })
-              : addUserMutation({ variables })
-
+            if (profile) {
+              if (
+                editMode &&
+                Object.values(values).some(
+                  (v, i) =>
+                    v !==
+                    [
+                      profile.nickname,
+                      profile.fields.location,
+                      profile.fields.avatar,
+                      profile.fields.isPublic,
+                    ][i],
+                )
+              ) {
+                updateUserMutation({ variables })
+                setProfile({
+                  nickname: values.nickname,
+                  fields: { location: values.location, avatar: values.avatar },
+                })
+              } else onSuccess.call(null)
+            } else {
+              addUserMutation({ variables })
+            }
             setSubmitting(false)
           }}
         >
@@ -137,20 +148,25 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
                   />
                 </div>
                 <ImageUploadContainer>
-                  <CenteringFlexHorizontal>
+                  <SpaceFlex space="around">
                     <Field
-                      className="grid mr-2 place-content-end"
+                      className="max-w-full mr-2"
                       component={ImageUploadInput}
                       id="avatar-upload"
                       name="avatar-upload"
                     />
-                    <div style={{ flexBasis: '33%', margin: '0 0 0 2rem' }}>
+                    <div
+                      style={{
+                        flexBasis: '33%',
+                        margin: '0 0 0 2rem',
+                      }}
+                    >
                       <P
                         copyText="Add a user avatar and people can relate visually *"
                         level={2}
                       />
                     </div>
-                  </CenteringFlexHorizontal>
+                  </SpaceFlex>
                 </ImageUploadContainer>
                 <MakePublicContainer>
                   <div className="flex justify-around w-1/2">
@@ -179,7 +195,6 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
                         typeOfButton="submit"
                         size="lg"
                         text="Next"
-                        onClick={() => {}}
                         iconName="forward"
                       />
                     </div>

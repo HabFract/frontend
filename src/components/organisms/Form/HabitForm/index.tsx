@@ -19,7 +19,7 @@ import {
 // #endregion Local Imports
 
 // #region Interface Imports
-import { IBurnerForm } from './types'
+import { IHabitForm } from './types'
 import {
   OnboardingFormContainer,
   OnboardingProgressBarContainer,
@@ -27,19 +27,19 @@ import {
 import { Alert, Spin } from 'antd'
 // #endregion Interface Imports
 
-export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
+export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
   onSuccess,
   editMode,
-}: IBurnerForm.IProps) => {
+}: IHabitForm.IProps) => {
+  const [profile, _] = useMyProfile()
   const [currentBurner, setCurrentBurner] = useCurrentBurner()
-  const [addBurnerMutation, { data, loading, error }] = useAddBurnerMutation()
-  const [
-    updateBurnerMutation,
-    { data: dataUpdate, loading: loadingUpdate, error: errorUpdate },
-  ] = useUpdateBurnerMutation()
+  // const [addBurnerMutation, { data, loading, error }] = useAddBurnerMutation()
+  // const [
+  //   updateBurnerMutation,
+  //   { data: dataUpdate, loading: loadingUpdate, error: errorUpdate },
+  // ] = useUpdateBurnerMutation()
 
-  console.log('currentBurnerurrentBurner :>> ', currentBurner)
-  const initialValues: IBurnerForm.BurnerFormValues = !!currentBurner
+  const initialValues: IHabitForm.HabitFormValues = !!currentBurner
     ? {
         name: currentBurner.name,
         description: currentBurner.metadata.description,
@@ -51,30 +51,25 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
         hashtag: '',
       }
 
-  useEffect(() => {
-    if (data) {
-      setCurrentBurner({
-        ...currentBurner,
-        id: data.createBurner.payload.entryHash,
-      })
-      onSuccess.call(null)
-    }
-    // This needs to trigger only if backend returned something meaningful
-  }, [data])
+  // useEffect(() => {
+  //   if (data) onSuccess.call(null)
+  //   // This needs to trigger only if backend returned something meaningful
+  // }, [data])
 
   return (
     <OnboardingFormContainer>
-      {error || errorUpdate ? (
-        <Spin spinning={loading || loadingUpdate}>
-          {(error || errorUpdate) && (
-            <Alert
-              message="Alert message title"
-              description="Further details about the context of this alert."
-              type="error"
-            />
-          )}
-        </Spin>
+      {true ? (
+        <div></div>
       ) : (
+        // <Spin spinning={loading || loadingUpdate}>
+        //   {(error || errorUpdate) && (
+        //     <Alert
+        //       message="Alert message title"
+        //       description="Further details about the context of this alert."
+        //       type="error"
+        //     />
+        //   )}
+        // </Spin>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object({
@@ -87,7 +82,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
             hashtag: Yup.string(),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            let variables = {
+            const variables = {
               burnerFields: {
                 name: values.name,
                 description: values.description,
@@ -95,41 +90,33 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
               },
             }
 
-            if (currentBurner?.id) {
-              if (
-                editMode &&
-                Object.values(values).some(
-                  (v, i) =>
-                    v !==
-                    [
-                      currentBurner.name,
-                      currentBurner.metadata.description,
-                      currentBurner.metadata.hashtag,
-                    ][i],
-                )
-              ) {
-                updateBurnerMutation({
-                  variables: {
-                    burnerFields: {
-                      id: currentBurner?.id,
-                      ...variables.burnerFields,
-                    },
-                  },
-                })
-              } else onSuccess.call(null)
-            } else {
-              addBurnerMutation({
-                variables,
-              })
-            }
-            setCurrentBurner({
-              ...currentBurner,
-              name: values.name,
-              metadata: {
-                description: values.description,
-                hashtag: values.hashtag,
-              },
-            })
+            // if (currentBurner) {
+            //   if (
+            //     editMode &&
+            //     Object.values(values).some(
+            //       (v, i) =>
+            //         v !==
+            //         [
+            //           currentBurner.name,
+            //           currentBurner.metadata.description,
+            //           currentBurner.metadata.hashtag,
+            //         ][i],
+            //     )
+            //   ) {
+            //     updateBurnerMutation({ variables })
+            //     setCurrentBurner({
+            //       name: values.name,
+            //       metadata: {
+            //         description: values.description,
+            //         hashtag: values.hashtag,
+            //       },
+            //     })
+            //   } else onSuccess.call(null)
+            // } else {
+            //   addBurnerMutation({
+            //     variables,
+            //   })
+            // }
             setSubmitting(false)
           }}
         >

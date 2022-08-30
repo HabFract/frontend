@@ -6,6 +6,7 @@ import {
   queryByRole,
   render,
   screen,
+  waitForElementToBeRemoved,
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -112,10 +113,14 @@ describe('Given a new user', () => {
       const { getByRole, findByRole, getByText, queryByText } = screen
       const button = await getByRole('button', { name: /Go Back/i })
 
-      await fireEvent.click(button)
-
-      const profileHeader = await queryByText(onboardingTitle1)
-      expect(profileHeader).not.toBeInTheDocument()
+      await act(async () => user.click(button))
+      screen.debug()
+      await waitForElementToBeRemoved(() => {
+        // const profileHeader =
+        return queryByText(onboardingTitle1)
+        // expect(profileHeader).not.toBeInTheDocument()
+      })
+      screen.logTestingPlaygroundURL()
     })
   })
 })

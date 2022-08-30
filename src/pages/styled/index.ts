@@ -33,9 +33,9 @@ export const CenteringFlexVertical = styled.div`
 `
 CenteringFlexVertical.displayName = 'CenteringFlexVertical'
 
-export const SpaceBetweenFlex = styled.div`
+export const SpaceFlex = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-${({ space }) => space};
   align-items: center;
   flex-direction: ${({ vertical }) => (vertical ? 'column' : 'false')};
   grid-gap: ${({ gap }) => `${+gap}rem`};
@@ -48,4 +48,4 @@ export const SpaceBetweenFlex = styled.div`
     flex-direction: ${({ vertical }) => (vertical ? 'row' : 'row')};
   }
 `
-SpaceBetweenFlex.displayName = 'SpaceBetweenFlex'
+SpaceFlex.displayName = 'SpaceFlex'
