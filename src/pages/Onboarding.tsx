@@ -20,6 +20,7 @@ import { BurnerForm, HabitForm, ProfileForm } from '@/organisms/.'
 import { Template } from '@/templates/CentredContentTemplate'
 import { OnboardingTemplate } from '@/templates/OnboardingStageTemplate'
 import { OnboardingContextBar } from './styled/Onboarding'
+import { useCurrentBurner } from '@/app/hooks/useCurrentBurner'
 // #endregion Local Imports
 
 interface OnboardingProps {}
@@ -35,6 +36,7 @@ export const onboardingStageTitles = [
 ]
 const onboardingStageCopy = [
   'It looks like you are new here. Fill in some details to join the network',
+  "It's time to choose an area of your life to give some attention. We call this a burner. Use the info bar on the right to discover why!",
   "It's time to choose an area of your life to give some attention. We call this a burner. Use the info bar on the right to discover why!",
 ]
 
@@ -61,6 +63,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
   useEffect(() => {
     if (!burnersPayload) return
     setUserHasBurner(!!(burnersPayload!.burners.edges.length > 0))
+    setCurrentBurner(burnersPayload!.burners.edges[0])
     !searchParams.get('edit') &&
       setOnboardingStage(userHasBurner ? '3' : onboardingStage)
   }, [userHasBurner, burnersPayload])
@@ -71,6 +74,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
     )
   }, [habitsPayload])
 
+  const [currentBurner, setCurrentBurner] = useCurrentBurner()
   useEffect(() => {
     // // Sets the theme context and loads the theme variables COMMENT OUT DURING TEST
     // setName(themeValue)
@@ -80,6 +84,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
 
     if (!!profile) {
       getBurners()
+
       !(userHasBurner || userHasHabit) &&
         !searchParams.get('edit') &&
         setOnboardingStage('2')

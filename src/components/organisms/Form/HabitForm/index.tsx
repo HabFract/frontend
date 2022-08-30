@@ -41,9 +41,9 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
 
   const initialValues: IHabitForm.HabitFormValues = !!currentBurner
     ? {
-        name: currentBurner.name,
-        description: currentBurner.metadata.description,
-        hashtag: currentBurner.metadata.hashtag,
+        name: '',
+        description: 'currentBurner.metadata.description',
+        hashtag: 'currentBurner.metadata.hashtag',
       }
     : {
         name: '',
@@ -58,7 +58,7 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
 
   return (
     <OnboardingFormContainer>
-      {true ? (
+      {false ? (
         <div></div>
       ) : (
         // <Spin spinning={loading || loadingUpdate}>

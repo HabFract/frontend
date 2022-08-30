@@ -38,7 +38,6 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
     { data: dataUpdate, loading: loadingUpdate, error: errorUpdate },
   ] = useUpdateBurnerMutation()
 
-  console.log('currentBurnerurrentBurner :>> ', currentBurner)
   const initialValues: IBurnerForm.BurnerFormValues = !!currentBurner
     ? {
         name: currentBurner.name,

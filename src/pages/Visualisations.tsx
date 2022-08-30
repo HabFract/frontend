@@ -11,7 +11,6 @@ interface VisualisationsProps {}
 
 const Visualisations: React.FC<VisualisationsProps> = () => {
   const params = useParams()
-
   return (
     <VisTemplate>
       <p>Visualisations</p>
