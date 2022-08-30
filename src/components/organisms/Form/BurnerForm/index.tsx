@@ -20,6 +20,7 @@ import {
   OnboardingFormContainer,
   OnboardingProgressBarContainer,
 } from '@/pages/styled/Onboarding'
+import { Alert, Spin } from 'antd'
 // #endregion Interface Imports
 
 export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
@@ -27,6 +28,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
   editMode,
 }: IBurnerForm.IProps) => {
   const [profile, _] = useMyProfile()
+  const [currentBurner, setCurrentBurner_] = useCurrentBurner()
   const [addBurnerMutation, { data, loading, error }] = useAddBurnerMutation()
 
   const initialValues: IBurnerForm.BurnerFormValues = {
@@ -43,17 +45,16 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
   return (
     <OnboardingFormContainer>
       {error ? (
-        <div></div>
+        <Spin spinning={loading}>
+          {error && (
+            <Alert
+              message="Alert message title"
+              description="Further details about the context of this alert."
+              type="error"
+            />
+          )}
+        </Spin>
       ) : (
-        // <Spin spinning={loading}>
-        //   {error && (
-        //     <Alert
-        //       message="Alert message title"
-        //       description="Further details about the context of this alert."
-        //       type="error"
-        //     />
-        //   )}
-        // </Spin>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object({
