@@ -3,7 +3,8 @@ import styled from 'styled-components'
 // #endregion Global Imports
 
 export const Label = styled.span.attrs({
-  className: 'block font-display font-medium dark:text-gray-300 text-center',
+  className:
+    'block font-display font-medium dark:text-gray-300 relative z-30 text-center',
 })`
   line-height: 1rem;
   font-weight: 300;

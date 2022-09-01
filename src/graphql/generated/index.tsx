@@ -85,17 +85,17 @@ export type HabitConnection = {
   pageInfo: PageInfo
 }
 
-export type HabitCreateResponse = {
-  __typename?: 'HabitCreateResponse'
-  payload: ResponsePayload
-}
-
-export type HabitCreateUpdateParams = {
+export type HabitCreateParams = {
   description: Scalars['String']
   endTime: Scalars['DateTime']
   isAtomic: Scalars['String']
   name: Scalars['String']
   startTime: Scalars['DateTime']
+}
+
+export type HabitCreateResponse = {
+  __typename?: 'HabitCreateResponse'
+  payload: ResponsePayload
 }
 
 export type HabitEdge = {
@@ -110,13 +110,22 @@ export type HabitMetaData = {
   isAtomic: Scalars['String']
 }
 
+export type HabitUpdateParams = {
+  description: Scalars['String']
+  endTime: Scalars['DateTime']
+  id: Scalars['String']
+  isAtomic: Scalars['String']
+  name: Scalars['String']
+  startTime: Scalars['DateTime']
+}
+
 export type Mutation = {
   __typename?: 'Mutation'
   createBurner: BurnerCreateResponse
   createHabit: HabitCreateResponse
   createProfile: AgentProfile
   updateBurner: BurnerCreateResponse
-  updateHabit: Habit
+  updateHabit: HabitCreateResponse
   updateProfile: AgentProfile
 }
 
@@ -125,7 +134,7 @@ export type MutationCreateBurnerArgs = {
 }
 
 export type MutationCreateHabitArgs = {
-  habit?: InputMaybe<HabitCreateUpdateParams>
+  habit?: InputMaybe<HabitCreateParams>
 }
 
 export type MutationCreateProfileArgs = {
@@ -137,7 +146,7 @@ export type MutationUpdateBurnerArgs = {
 }
 
 export type MutationUpdateHabitArgs = {
-  habit?: InputMaybe<HabitCreateUpdateParams>
+  habit?: InputMaybe<HabitUpdateParams>
 }
 
 export type MutationUpdateProfileArgs = {
@@ -245,7 +254,7 @@ export type UpdateBurnerMutation = {
 }
 
 export type AddHabitMutationVariables = Exact<{
-  variables: HabitCreateUpdateParams
+  variables: HabitCreateParams
 }>
 
 export type AddHabitMutation = {
@@ -261,12 +270,19 @@ export type AddHabitMutation = {
 }
 
 export type UpdateHabitMutationVariables = Exact<{
-  habitFields: HabitCreateUpdateParams
+  habitFields: HabitUpdateParams
 }>
 
 export type UpdateHabitMutation = {
   __typename?: 'Mutation'
-  updateHabit: { __typename?: 'Habit'; id: string }
+  updateHabit: {
+    __typename?: 'HabitCreateResponse'
+    payload: {
+      __typename?: 'ResponsePayload'
+      entryHash: string
+      headerHash: string
+    }
+  }
 }
 
 export type AddUserMutationVariables = Exact<{
@@ -477,7 +493,7 @@ export type UpdateBurnerMutationOptions = Apollo.BaseMutationOptions<
   UpdateBurnerMutationVariables
 >
 export const AddHabitDocument = gql`
-  mutation addHabit($variables: HabitCreateUpdateParams!) {
+  mutation addHabit($variables: HabitCreateParams!) {
     createHabit(habit: $variables) {
       payload {
         headerHash
@@ -527,9 +543,12 @@ export type AddHabitMutationOptions = Apollo.BaseMutationOptions<
   AddHabitMutationVariables
 >
 export const UpdateHabitDocument = gql`
-  mutation updateHabit($habitFields: HabitCreateUpdateParams!) {
+  mutation updateHabit($habitFields: HabitUpdateParams!) {
     updateHabit(habit: $habitFields) {
-      id
+      payload {
+        entryHash
+        headerHash
+      }
     }
   }
 `

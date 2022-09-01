@@ -60,6 +60,39 @@ const getPath = (iconName) => {
           strokeWidth={2}
         />
       )
+    case 'add-burner':
+      return (
+        <>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"
+          />
+        </>
+      )
+
+    case 'add-habit':
+      return (
+        <path
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          stroke="currentColor"
+          d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"
+        />
+      )
     case 'back':
       return (
         <path
@@ -67,7 +100,18 @@ const getPath = (iconName) => {
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z"
+          d="M2dis1 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z"
+        />
+      )
+    case 'success':
+      return (
+        <path
+          fill="none"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
         />
       )
     case 'forward':
@@ -122,7 +166,6 @@ const getViewBox = (iconName) => {
     case [
       'loading-outline',
       'add-file',
-      'user',
       'back',
       'forward',
       'return',

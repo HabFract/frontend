@@ -9,7 +9,6 @@ import { Label } from '../styled'
 
 import { TextInput, Button, TextAreaInput } from '@/atoms/.'
 import { EndFlexHorizontal } from '@/pages/styled'
-import { useMyProfile } from '@/app/hooks/useMyProfile'
 import { useCurrentBurner } from '@/app/hooks/useCurrentBurner'
 
 import {
@@ -41,8 +40,8 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
   const initialValues: IBurnerForm.BurnerFormValues = !!currentBurner
     ? {
         name: currentBurner.name,
-        description: currentBurner.metadata.description,
-        hashtag: currentBurner.metadata.hashtag,
+        description: currentBurner.metadata?.description,
+        hashtag: currentBurner.metadata?.hashtag,
       }
     : {
         name: '',
@@ -52,9 +51,10 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
 
   useEffect(() => {
     if (data) {
+      debugger
       setCurrentBurner({
         ...currentBurner,
-        id: data.createBurner.payload.entryHash,
+        id: data.createBurner.payload.headerHash,
       })
       onSuccess.call(null)
     }
@@ -68,13 +68,14 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
           {(error || errorUpdate) && (
             <Alert
               message="Alert message title"
-              description="Further details about the context of this alert."
+              description={`${error}`}
               type="error"
             />
           )}
         </Spin>
       ) : (
         <Formik
+          enableReinitialize
           initialValues={initialValues}
           validationSchema={Yup.object({
             name: Yup.string()
@@ -94,7 +95,9 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
               },
             }
 
+            debugger
             if (currentBurner?.id) {
+              debugger
               if (
                 editMode &&
                 Object.values(values).some(

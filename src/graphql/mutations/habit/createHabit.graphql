@@ -1,4 +1,4 @@
-mutation addHabit($variables: HabitCreateUpdateParams!) {
+mutation addHabit($variables: HabitCreateParams!) {
   createHabit(habit: $variables) {
     payload {
       headerHash

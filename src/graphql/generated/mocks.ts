@@ -9,10 +9,11 @@ import {
   BurnerUpdateParams,
   Habit,
   HabitConnection,
+  HabitCreateParams,
   HabitCreateResponse,
-  HabitCreateUpdateParams,
   HabitEdge,
   HabitMetaData,
+  HabitUpdateParams,
   Mutation,
   Node,
   PageInfo,
@@ -183,20 +184,9 @@ export const aHabitConnection = (
   }
 }
 
-export const aHabitCreateResponse = (
-  overrides?: Partial<HabitCreateResponse>,
-): HabitCreateResponse => {
-  return {
-    payload:
-      overrides && overrides.hasOwnProperty('payload')
-        ? overrides.payload!
-        : aResponsePayload(),
-  }
-}
-
-export const aHabitCreateUpdateParams = (
-  overrides?: Partial<HabitCreateUpdateParams>,
-): HabitCreateUpdateParams => {
+export const aHabitCreateParams = (
+  overrides?: Partial<HabitCreateParams>,
+): HabitCreateParams => {
   return {
     description:
       overrides && overrides.hasOwnProperty('description')
@@ -205,17 +195,28 @@ export const aHabitCreateUpdateParams = (
     endTime:
       overrides && overrides.hasOwnProperty('endTime')
         ? overrides.endTime!
-        : '2004-09-29T01:44:53+00:00',
+        : '2015-07-31T01:12:05+00:00',
     isAtomic:
       overrides && overrides.hasOwnProperty('isAtomic')
         ? overrides.isAtomic!
-        : 'maiores',
+        : 'velit',
     name:
-      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'cum',
+      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'velit',
     startTime:
       overrides && overrides.hasOwnProperty('startTime')
         ? overrides.startTime!
-        : '2006-09-17T12:25:13+00:00',
+        : '1973-03-23T04:31:15+00:00',
+  }
+}
+
+export const aHabitCreateResponse = (
+  overrides?: Partial<HabitCreateResponse>,
+): HabitCreateResponse => {
+  return {
+    payload:
+      overrides && overrides.hasOwnProperty('payload')
+        ? overrides.payload!
+        : aResponsePayload(),
   }
 }
 
@@ -247,6 +248,32 @@ export const aHabitMetaData = (
   }
 }
 
+export const aHabitUpdateParams = (
+  overrides?: Partial<HabitUpdateParams>,
+): HabitUpdateParams => {
+  return {
+    description:
+      overrides && overrides.hasOwnProperty('description')
+        ? overrides.description!
+        : 'voluptatem',
+    endTime:
+      overrides && overrides.hasOwnProperty('endTime')
+        ? overrides.endTime!
+        : '1979-10-29T08:42:02+00:00',
+    id: overrides && overrides.hasOwnProperty('id') ? overrides.id! : 'quia',
+    isAtomic:
+      overrides && overrides.hasOwnProperty('isAtomic')
+        ? overrides.isAtomic!
+        : 'a',
+    name:
+      overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'minus',
+    startTime:
+      overrides && overrides.hasOwnProperty('startTime')
+        ? overrides.startTime!
+        : '2013-05-04T02:08:00+00:00',
+  }
+}
+
 export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
   return {
     createBurner:
@@ -268,7 +295,7 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
     updateHabit:
       overrides && overrides.hasOwnProperty('updateHabit')
         ? overrides.updateHabit!
-        : aHabit(),
+        : aHabitCreateResponse(),
     updateProfile:
       overrides && overrides.hasOwnProperty('updateProfile')
         ? overrides.updateProfile!

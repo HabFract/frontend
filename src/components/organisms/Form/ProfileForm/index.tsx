@@ -5,8 +5,7 @@ import * as Yup from 'yup'
 // #endregion Global Imports
 
 // #region Local Imports
-import { Label } from './styled'
-import { ImageUploadContainer, MakePublicContainer } from '../styled'
+import { ImageUploadContainer, Label, MakePublicContainer } from '../styled'
 
 import { P, TextInput, Button, SwitchInput } from '@/atoms/.'
 import { ImageUploadInput } from '@/atoms/Input/ImageUpload'
@@ -71,6 +70,7 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
         </Spin>
       ) : (
         <Formik
+          enableReinitialize
           initialValues={initialValues}
           validationSchema={Yup.object({
             nickname: Yup.string()

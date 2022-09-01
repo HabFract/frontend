@@ -1,5 +1,8 @@
-mutation updateHabit($habitFields: HabitCreateUpdateParams!) {
+mutation updateHabit($habitFields: HabitUpdateParams!) {
   updateHabit(habit: $habitFields) {
-    id
+    payload {
+      entryHash
+      headerHash
+    }
   }
 }

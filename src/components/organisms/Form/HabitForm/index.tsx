@@ -8,13 +8,19 @@ import * as Yup from 'yup'
 import { Label } from '../styled'
 
 import { TextInput, Button, TextAreaInput } from '@/atoms/.'
-import { EndFlexHorizontal } from '@/pages/styled'
+import {
+  CenteringFlexHorizontal,
+  CenteringFlexVertical,
+  EndFlexHorizontal,
+} from '@/pages/styled'
 import { useMyProfile } from '@/app/hooks/useMyProfile'
 import { useCurrentBurner } from '@/app/hooks/useCurrentBurner'
 
 import {
   useAddBurnerMutation,
+  useAddHabitMutation,
   useUpdateBurnerMutation,
+  useUpdateHabitMutation,
 } from '@/graphql/generated'
 // #endregion Local Imports
 
@@ -25,6 +31,7 @@ import {
   OnboardingProgressBarContainer,
 } from '@/pages/styled/Onboarding'
 import { Alert, Spin } from 'antd'
+import { DatePickerInput } from '@/atoms/Input/DatePicker'
 // #endregion Interface Imports
 
 export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
@@ -33,44 +40,49 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
 }: IHabitForm.IProps) => {
   const [profile, _] = useMyProfile()
   const [currentBurner, setCurrentBurner] = useCurrentBurner()
-  // const [addBurnerMutation, { data, loading, error }] = useAddBurnerMutation()
-  // const [
-  //   updateBurnerMutation,
-  //   { data: dataUpdate, loading: loadingUpdate, error: errorUpdate },
-  // ] = useUpdateBurnerMutation()
+  const [addHabitMutation, { data, loading, error }] = useAddHabitMutation()
+  const [
+    updateHabitMutation,
+    { data: dataUpdate, loading: loadingUpdate, error: errorUpdate },
+  ] = useUpdateHabitMutation()
 
-  const initialValues: IHabitForm.HabitFormValues = !!currentBurner
-    ? {
-        name: '',
-        description: 'currentBurner.metadata.description',
-        hashtag: 'currentBurner.metadata.hashtag',
-      }
-    : {
-        name: '',
-        description: '',
-        hashtag: '',
-      }
+  const initialValues: IHabitForm.HabitFormValues = {
+    name: '',
+    startTime: '',
+    endTime: '',
+    description: '',
+    isAtomic: '',
+  }
+  // !!currentHabit
+  //   ? {
+  //     name: currentHabit.name
+  //     startTime: currentHabit.startTime
+  //     endTime: currentHabit.endTime
+  //     description: currentHabit.description
+  //     isAtomic: currentHabit.isAtomic
+  //     }
+  //   :
 
-  // useEffect(() => {
-  //   if (data) onSuccess.call(null)
-  //   // This needs to trigger only if backend returned something meaningful
-  // }, [data])
+  useEffect(() => {
+    if (data) onSuccess.call(null)
+    // This needs to trigger only if backend returned something meaningful
+  }, [data])
 
   return (
     <OnboardingFormContainer>
-      {false ? (
-        <div></div>
+      {error || errorUpdate ? (
+        <Spin spinning={loading || loadingUpdate}>
+          {(error || errorUpdate) && (
+            <Alert
+              message="Alert message title"
+              description="Further details about the context of this alert."
+              type="error"
+            />
+          )}
+        </Spin>
       ) : (
-        // <Spin spinning={loading || loadingUpdate}>
-        //   {(error || errorUpdate) && (
-        //     <Alert
-        //       message="Alert message title"
-        //       description="Further details about the context of this alert."
-        //       type="error"
-        //     />
-        //   )}
-        // </Spin>
         <Formik
+          enableReinitialize
           initialValues={initialValues}
           validationSchema={Yup.object({
             name: Yup.string()
@@ -83,10 +95,12 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
           })}
           onSubmit={(values, { setSubmitting }) => {
             const variables = {
-              burnerFields: {
+              habitFields: {
                 name: values.name,
+                startTime: values.startTime,
+                endTime: values.endTime,
                 description: values.description,
-                hashtag: values.hashtag,
+                isAtomic: values.isAtomic,
               },
             }
 
@@ -124,8 +138,8 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
             return (
               <Form
                 onSubmit={handleSubmit}
-                aria-label="burner-form"
-                id="burner-form"
+                aria-label="habit-form"
+                id="habit-form"
                 className="flex flex-col pt-2 pb-12 md:pb-24 md:relative gap-y-6"
               >
                 <div className="w-full">
@@ -134,7 +148,7 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
                     component={TextInput}
                     id="name"
                     name="name"
-                    placeholder="Pick a name to label your burner"
+                    placeholder="Pick a name to label your habit"
                   />
                   {errors &&
                     errors.name &&
@@ -156,15 +170,27 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
                     touched.description &&
                     errors && <Label warning>{errors.description}</Label>}
                 </div>
-                <div className="w-full">
-                  <Label htmlFor="hashtag">Hashtag:</Label>
-                  <Field
-                    component={TextInput}
-                    id="hashtag"
-                    name="hashtag"
-                    placeholder="Pick a hashtag for social discovery"
-                  />
-                </div>
+
+                <CenteringFlexVertical>
+                  <div className="w-1/2">
+                    <Label htmlFor="date-start">Began Tracking:</Label>
+                    <Field
+                      component={DatePickerInput}
+                      id="date-start"
+                      name="date-start"
+                    />
+                  </div>
+                  {/* <span className="mx-4 text-gray-500">to</span>
+                  <div className="w-1/2">
+                    <Label htmlFor="date-end">Track Until:</Label>
+                    <Field
+                      component={DatePickerInput}
+                      id="date-end"
+                      name="date-end"
+                      placeholder=""
+                    />
+                  </div> */}
+                </CenteringFlexVertical>
 
                 <OnboardingProgressBarContainer>
                   <EndFlexHorizontal>

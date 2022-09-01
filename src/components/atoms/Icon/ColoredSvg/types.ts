@@ -5,13 +5,4 @@ export declare namespace IColoredSvg {
     button?: boolean
     className: string
   }
-
-  // export interface IState {}
-
-  // export interface IStateProps {}
-
-  // namespace Actions {
-  //   export interface IMapPayload {}
-  //   export interface IMapResponse {}
-  // }
 }

@@ -31,12 +31,16 @@ import {
 
 import Home from './Home'
 import Onboarding, { onboardingStageTitles } from './Onboarding'
+import { CurrentBurnerProvider } from '@/app/contexts'
 const [onboardingTitle1, onboardingTitle2, onboardingTitle3] =
   onboardingStageTitles
 
 // export const RouterProvider = (children: any) => (
 //   <CustomRouter history={history}>{children}</CustomRouter>
 // )
+
+const mockBurner = aBurnerEdge()
+const mockHabit = aHabitEdge()
 
 function renderPage(Page: React.FunctionComponent, options: any) {
   const profile: Profile = aProfile()
@@ -49,7 +53,7 @@ function renderPage(Page: React.FunctionComponent, options: any) {
       },
       result: {
         data: {
-          habits: { edges: withHabit ? [aHabitEdge()] : [] },
+          habits: { edges: withHabit ? [mockHabit] : [] },
         },
       },
     },
@@ -59,7 +63,7 @@ function renderPage(Page: React.FunctionComponent, options: any) {
       },
       result: {
         data: {
-          burners: { edges: withBurner ? [aBurnerEdge()] : [] },
+          burners: { edges: withBurner ? [mockBurner] : [] },
         },
       },
     },
@@ -70,7 +74,9 @@ function renderPage(Page: React.FunctionComponent, options: any) {
       <ThemeProvider>
         <MyProfileProvider value={withUser ? profile : undefined}>
           {/* <RouterProvider> */}
-          <Page />
+          <CurrentBurnerProvider>
+            <Page />
+          </CurrentBurnerProvider>
           {/* </RouterProvider> */}
         </MyProfileProvider>
       </ThemeProvider>
@@ -114,11 +120,9 @@ describe('Given a new user', () => {
       const button = await getByRole('button', { name: /Go Back/i })
 
       await act(async () => user.click(button))
-      screen.debug()
       await waitForElementToBeRemoved(() => {
-        // const profileHeader =
-        return queryByText(onboardingTitle1)
-        // expect(profileHeader).not.toBeInTheDocument()
+        const profileHeader = queryByText(onboardingTitle1)
+        expect(profileHeader).not.toBeInTheDocument()
       })
       screen.logTestingPlaygroundURL()
     })
@@ -154,7 +158,7 @@ describe('Given a registered user', () => {
         const button = await getByRole('button', { name: /Go Back/i })
 
         await user.click(button)
-
+        screen.logTestingPlaygroundURL()
         const oldHeader = queryByText(onboardingTitle2)
         expect(oldHeader).not.toBeInTheDocument()
         const newHeader = queryByText(onboardingTitle1)

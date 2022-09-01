@@ -1,9 +1,9 @@
 import { mapZomeFn } from '../../connection'
 import { DNAIdMappings } from '../../types'
 import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
-import { Habit, HabitCreateUpdateParams } from '@/graphql/generated/index'
+import { Habit, HabitCreateParams } from '@/graphql/generated/index'
 
-export type createArgs = { habit: HabitCreateUpdateParams }
+export type createArgs = { habit: HabitCreateParams }
 export type createHandler = (root: any, args: createArgs) => Promise<Habit>
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {

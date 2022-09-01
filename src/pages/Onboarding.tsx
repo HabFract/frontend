@@ -61,9 +61,15 @@ const Onboarding: React.FC<OnboardingProps> = () => {
   const [userHasHabit, setUserHasHabit] = useState(false)
 
   useEffect(() => {
-    if (!burnersPayload) return
+    if (!burnersPayload?.burners?.edges?.length) return
     setUserHasBurner(!!(burnersPayload!.burners.edges.length > 0))
-    setCurrentBurner(burnersPayload!.burners.edges[0])
+
+    const {
+      __typename: _,
+      node: { __typename, ...burner },
+    } = burnersPayload!.burners.edges[0]
+
+    setCurrentBurner(burner)
     !searchParams.get('edit') &&
       setOnboardingStage(userHasBurner ? '3' : onboardingStage)
   }, [userHasBurner, burnersPayload])
@@ -101,8 +107,22 @@ const Onboarding: React.FC<OnboardingProps> = () => {
     if (onboardingStage == '1') {
       navigate(`/`)
     } else {
-      setSearchParams({ edit: 'true' })
+      setSearchParams({ edit: 'true', stage: `${+onboardingStage - 1}` })
       setOnboardingStage(`${+onboardingStage - 1}`)
+    }
+  }
+
+  const resetParams = () => {
+    switch (onboardingStage) {
+      case '1':
+        setSearchParams(!userHasBurner ? {} : { edit: 'true', stage: '2' })
+        debugger
+        return true
+      case '2':
+        setSearchParams(!userHasHabit ? {} : { edit: 'true', stage: '3' })
+        return true
+      default:
+        break
     }
   }
 
@@ -123,17 +143,21 @@ const Onboarding: React.FC<OnboardingProps> = () => {
           {onboardingStage == '1' ? (
             <ProfileForm
               editMode={!!searchParams.get('edit')}
-              onSuccess={() => setOnboardingStage('2')}
+              onSuccess={() => {
+                resetParams()
+                debugger
+                setOnboardingStage('2')
+              }}
             />
-          ) : !userHasBurner ? (
+          ) : !userHasBurner || searchParams.get('stage') == '2' ? (
             <BurnerForm
-              editMode={!!searchParams.get('edit')}
-              onSuccess={() => setOnboardingStage('3')}
+              editMode={userHasBurner && !!searchParams.get('edit')}
+              onSuccess={() => resetParams() && setOnboardingStage('3')}
             />
-          ) : !userHasHabit ? (
+          ) : !userHasHabit || searchParams.get('stage') == '3' ? (
             <HabitForm
               editMode={!!searchParams.get('edit')}
-              onSuccess={() => setOnboardingStage('4')}
+              onSuccess={() => resetParams() && setOnboardingStage('4')}
             />
           ) : (
             <span>Summary</span>
