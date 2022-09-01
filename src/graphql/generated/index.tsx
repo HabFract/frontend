@@ -321,6 +321,7 @@ export type GetBurnersQuery = {
       __typename?: 'BurnerEdge'
       node: {
         __typename?: 'Burner'
+        id: string
         name: string
         metadata?: { __typename?: 'BurnerMetaData'; description: string } | null
       }
@@ -702,6 +703,7 @@ export const GetBurnersDocument = gql`
     burners {
       edges {
         node {
+          id
           name
           metadata {
             description

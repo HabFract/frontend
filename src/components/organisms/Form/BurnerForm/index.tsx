@@ -95,7 +95,6 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
               },
             }
 
-            debugger
             if (currentBurner?.id) {
               debugger
               if (

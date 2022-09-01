@@ -2,6 +2,7 @@ query getBurners {
   burners {
     edges {
       node {
+        id
         name
         metadata {
           description

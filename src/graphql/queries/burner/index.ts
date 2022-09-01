@@ -27,7 +27,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
 
     burners: async (): Promise<BurnerConnection> => {
       const maybeBurners = await readAll(null)
-
+      console.log('get all burners :>> ', maybeBurners)
       return Promise.resolve(maybeBurners || [])
     },
   }
