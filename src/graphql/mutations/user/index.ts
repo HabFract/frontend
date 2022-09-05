@@ -1,5 +1,6 @@
 import { mapZomeFn } from '../../connection'
 import { DNAIdMappings } from '../../types'
+import { decode } from '@msgpack/msgpack'
 import { HAPP_ID, HAPP_ZOME_NAME_PROFILES } from '@/app/constants'
 import {
   AgentProfile,
@@ -40,8 +41,15 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     _,
     { profile: { nickname, location, avatar, isPublic } },
   ) => {
-    console.log('created profile')
-    return runCreate({ nickname, fields: { location, avatar } })
+    const res = await runCreate({ nickname, fields: { location, avatar } })
+    console.log('{ nickname, fields: { location, avatar } :>> ', {
+      nickname,
+      fields: { location, avatar },
+    })
+    const agentPubKey = decode((res as any).signed_action.hashed.content.author)
+
+    console.log('created profile', agentPubKey)
+    return res
   }
   const updateProfile: updateHandler = async (
     _,

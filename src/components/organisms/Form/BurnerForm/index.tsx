@@ -51,7 +51,6 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
 
   useEffect(() => {
     if (data) {
-      debugger
       setCurrentBurner({
         ...currentBurner,
         id: data.createBurner.payload.headerHash,
@@ -96,7 +95,6 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
             }
 
             if (currentBurner?.id) {
-              debugger
               if (
                 editMode &&
                 Object.values(values).some(

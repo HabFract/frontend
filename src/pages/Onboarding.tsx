@@ -116,7 +116,6 @@ const Onboarding: React.FC<OnboardingProps> = () => {
     switch (onboardingStage) {
       case '1':
         setSearchParams(!userHasBurner ? {} : { edit: 'true', stage: '2' })
-        debugger
         return true
       case '2':
         setSearchParams(!userHasHabit ? {} : { edit: 'true', stage: '3' })
@@ -145,7 +144,6 @@ const Onboarding: React.FC<OnboardingProps> = () => {
               editMode={!!searchParams.get('edit')}
               onSuccess={() => {
                 resetParams()
-                debugger
                 setOnboardingStage('2')
               }}
             />
@@ -156,7 +154,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
             />
           ) : !userHasHabit || searchParams.get('stage') == '3' ? (
             <HabitForm
-              editMode={!!searchParams.get('edit')}
+              editMode={userHasHabit && !!searchParams.get('edit')}
               onSuccess={() => resetParams() && setOnboardingStage('4')}
             />
           ) : (
