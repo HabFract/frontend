@@ -1,31 +1,26 @@
-import { mapZomeFn } from '../../connection'
-import { DNAIdMappings, ById } from '../../types'
-import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
-import { Habit, HabitConnection } from '@/graphql/generated/index'
+import { HabitConnection } from './../../generated/index'
+import { DNAIdMappings } from '../../types'
+import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
+import { Habit } from '@/graphql/generated/index'
+import { getQueryHandlers, QueryHandlersDictionary } from '../..'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
-  const read = mapZomeFn<ById, Habit>(
+  const handlers: QueryHandlersDictionary<Habit> = getQueryHandlers(
+    ['get_habit', 'get_all_habits'],
+    HAPP_ZOME_NAME_ATOMIC,
     dnaConfig,
     conductorUri,
-    HAPP_ID,
-    HAPP_ZOME_NAME_ATOMIC,
-    'get_habit',
   )
-  const readAll = mapZomeFn<null, HabitConnection>(
-    dnaConfig,
-    conductorUri,
-    HAPP_ID,
-    HAPP_ZOME_NAME_ATOMIC,
-    'get_all_habits',
-  )
+
+  const { readOne, readMany } = handlers
 
   return {
-    habit: async (_, args): Promise<Habit> => {
-      return read(args.id)
+    habit: async (_, args): Promise<any> => {
+      return readOne(args.id)
     },
 
-    habits: async (): Promise<HabitConnection> => {
-      const maybeHabits = await readAll(null)
+    habits: async (): Promise<any> => {
+      const maybeHabits = await readMany(null)
 
       return Promise.resolve(maybeHabits || [])
     },

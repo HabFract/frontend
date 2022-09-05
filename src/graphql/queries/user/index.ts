@@ -1,32 +1,29 @@
+import { QueryHandlersDictionary } from './../../index'
 import { mapZomeFn } from '../../connection'
-import { DNAIdMappings, ById } from '../../types'
+import { DNAIdMappings } from '../../types'
+import { getQueryHandlers } from '@/graphql/.'
 import { HAPP_ID, HAPP_ZOME_NAME_PROFILES } from '@/app/constants'
 import { AgentProfile, Profile } from '@/graphql/generated/index'
-import { AgentPubKey, Record } from '@holochain/client'
+import { Record } from '@holochain/client'
 import { decode } from '@msgpack/msgpack'
 import { serializeHash } from '@holochain-open-dev/utils'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
+  const handlers: QueryHandlersDictionary<Profile> = getQueryHandlers(
+    ['get_agent_profile', 'get_all_profile'],
+    HAPP_ZOME_NAME_PROFILES,
+    dnaConfig,
+    conductorUri,
+  )
+
+  const { readOne, readMany } = handlers
+
   const readMe = mapZomeFn<null, Record>(
     dnaConfig,
     conductorUri,
     HAPP_ID,
     HAPP_ZOME_NAME_PROFILES,
     'get_my_profile',
-  )
-  const read = mapZomeFn<ById, Record>(
-    dnaConfig,
-    conductorUri,
-    HAPP_ID,
-    HAPP_ZOME_NAME_PROFILES,
-    'get_agent_profile',
-  )
-  const readAll = mapZomeFn<null, Record[]>(
-    dnaConfig,
-    conductorUri,
-    HAPP_ID,
-    HAPP_ZOME_NAME_PROFILES,
-    'get_all_profiles',
   )
 
   return {

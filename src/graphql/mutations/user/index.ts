@@ -42,10 +42,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     { profile: { nickname, location, avatar, isPublic } },
   ) => {
     const res = await runCreate({ nickname, fields: { location, avatar } })
-    console.log('{ nickname, fields: { location, avatar } :>> ', {
-      nickname,
-      fields: { location, avatar },
-    })
+
     const agentPubKey = decode((res as any).signed_action.hashed.content.author)
 
     console.log('created profile', agentPubKey)

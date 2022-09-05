@@ -1,34 +1,36 @@
-import { mapZomeFn } from '../../connection'
+import { Record } from '@holochain/client'
 import { DNAIdMappings, ById } from '../../types'
-import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
-import { BurnerConnection } from '@/graphql/generated/index'
-import { aBurnerConnection } from '@/graphql/generated/mocks'
+import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
+import { Burner, BurnerConnection } from '@/graphql/generated/index'
+import { getQueryHandlers, QueryHandlersDictionary } from '../..'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
-  // const read = mapZomeFn<ById, Burner>(
-  //   dnaConfig,
-  //   conductorUri,
-  //   HAPP_ID,
-  //   HAPP_ZOME_NAME_ATOMIC,
-  //   'get_Burner',
-  // )
-  const readAll = mapZomeFn<null, BurnerConnection>(
+  const handlers: QueryHandlersDictionary<Burner> = getQueryHandlers(
+    ['get_burner', 'get_all_burners'],
+    HAPP_ZOME_NAME_ATOMIC,
     dnaConfig,
     conductorUri,
-    HAPP_ID,
-    HAPP_ZOME_NAME_ATOMIC,
-    'get_all_burners',
   )
+  const { readOne, readMany } = handlers
 
   return {
     // Burner: async (_, args): Promise<Burner> => {
     //   return read(args.id)
     // },
 
-    burners: async (): Promise<BurnerConnection> => {
-      const maybeBurners = await readAll(null)
-      console.log('get all burners :>> ', maybeBurners)
-      return Promise.resolve(maybeBurners || [])
+    burners: async (): Promise<any> => {
+      const maybeBurners = await readMany(null)
+      const burners = (maybeBurners || []) as Record[]
+      console.log('get all burners :>> ', burners)
+
+      const response = {
+        burners: {
+          edges: burners.map((b) => ({ node: b })),
+        },
+      }
+      console.log('response :>> ', response)
+
+      return Promise.resolve(response)
     },
   }
 }
