@@ -12,14 +12,30 @@ export type ClientOptions = APIOptions & AutoConnectionOptions
 
 const errorLink = onError(
   ({ graphQLErrors, networkError, response, operation }) => {
-    console.log('error response :>> ', response)
-
     if (graphQLErrors)
-      graphQLErrors.forEach(({ message, locations, path }) =>
-        console.log(
-          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-        ),
-      )
+      graphQLErrors.forEach(({ message, locations, path }) => {
+        switch (true) {
+          case !!message.match('record is null'):
+            console.log(`[Zome Call Response]: '${path}' field is null`)
+            response!.errors = []
+            break
+          case !!message.match('Insufficient data'):
+            console.log(`[Zome Call Response]: '${path}' Insufficient data`)
+            response!.errors = []
+            break
+          case !!message.match('Extra'):
+            console.log(`[Zome Call Response]: '${path}' msgpack img error`)
+            response!.errors = []
+            break
+
+          default:
+            console.log(
+              `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+            )
+            console.log('error response :>> ', response)
+            break
+        }
+      })
     if (networkError) console.log(`[Network error]: ${networkError}`)
   },
 )

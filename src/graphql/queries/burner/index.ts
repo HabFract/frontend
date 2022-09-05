@@ -1,3 +1,5 @@
+import { BurnerEdge } from './../../generated/index'
+import { decode } from '@msgpack/msgpack'
 import { Record } from '@holochain/client'
 import { DNAIdMappings, ById } from '../../types'
 import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
@@ -14,21 +16,30 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const { readOne, readMany } = handlers
 
   return {
-    // Burner: async (_, args): Promise<Burner> => {
-    //   return read(args.id)
-    // },
+    burner: async (_, args): Promise<any> => {
+      const record = await readOne(args.id)
+
+      console.log('Burner record :>> ', record)
+      const response = {
+        cursor: '',
+        node: {},
+      } as BurnerEdge
+      return Promise.resolve(response)
+    },
 
     burners: async (): Promise<any> => {
-      const maybeBurners = await readMany(null)
-      const burners = (maybeBurners || []) as Record[]
-      console.log('get all burners :>> ', burners)
+      const records = await readMany(null)
+      const burners = (records || []) as Record[]
 
       const response = {
-        burners: {
-          edges: burners.map((b) => ({ node: b })),
-        },
+        edges: burners.map((b) => ({
+          cursor: null,
+          node: {
+            ...(decode((b.entry as any).Present.entry) as Burner),
+            id: (b as any).signed_action.hashed.hash,
+          },
+        })),
       }
-      console.log('response :>> ', response)
 
       return Promise.resolve(response)
     },

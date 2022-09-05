@@ -49,7 +49,7 @@ export type BurnerCreateParams = {
 
 export type BurnerCreateResponse = {
   __typename?: 'BurnerCreateResponse'
-  payload: ResponsePayload
+  node: Burner
 }
 
 export type BurnerEdge = {
@@ -229,11 +229,7 @@ export type AddBurnerMutation = {
   __typename?: 'Mutation'
   createBurner: {
     __typename?: 'BurnerCreateResponse'
-    payload: {
-      __typename?: 'ResponsePayload'
-      headerHash: string
-      entryHash: string
-    }
+    node: { __typename?: 'Burner'; id: string }
   }
 }
 
@@ -245,11 +241,7 @@ export type UpdateBurnerMutation = {
   __typename?: 'Mutation'
   updateBurner: {
     __typename?: 'BurnerCreateResponse'
-    payload: {
-      __typename?: 'ResponsePayload'
-      headerHash: string
-      entryHash: string
-    }
+    node: { __typename?: 'Burner'; id: string }
   }
 }
 
@@ -308,6 +300,24 @@ export type UpdateUserMutation = {
     __typename?: 'AgentProfile'
     agentPubKey: string
     profile: { __typename?: 'Profile'; nickname: string }
+  }
+}
+
+export type GetBurnerQueryVariables = Exact<{
+  id: Scalars['ID']
+}>
+
+export type GetBurnerQuery = {
+  __typename?: 'Query'
+  burner: {
+    __typename?: 'Burner'
+    id: string
+    name: string
+    metadata?: {
+      __typename?: 'BurnerMetaData'
+      description: string
+      hashtag?: string | null
+    } | null
   }
 }
 
@@ -391,9 +401,8 @@ export type GetMeQuery = {
 export const AddBurnerDocument = gql`
   mutation addBurner($burnerFields: BurnerCreateParams!) {
     createBurner(burner: $burnerFields) {
-      payload {
-        headerHash
-        entryHash
+      node {
+        id
       }
     }
   }
@@ -443,9 +452,8 @@ export type AddBurnerMutationOptions = Apollo.BaseMutationOptions<
 export const UpdateBurnerDocument = gql`
   mutation updateBurner($burnerFields: BurnerUpdateParams!) {
     updateBurner(burner: $burnerFields) {
-      payload {
-        headerHash
-        entryHash
+      node {
+        id
       }
     }
   }
@@ -697,6 +705,64 @@ export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>
 export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
   UpdateUserMutation,
   UpdateUserMutationVariables
+>
+export const GetBurnerDocument = gql`
+  query getBurner($id: ID!) {
+    burner(id: $id) {
+      id
+      name
+      metadata {
+        description
+        hashtag
+      }
+    }
+  }
+`
+
+/**
+ * __useGetBurnerQuery__
+ *
+ * To run a query within a React component, call `useGetBurnerQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBurnerQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBurnerQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetBurnerQuery(
+  baseOptions: Apollo.QueryHookOptions<GetBurnerQuery, GetBurnerQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetBurnerQuery, GetBurnerQueryVariables>(
+    GetBurnerDocument,
+    options,
+  )
+}
+export function useGetBurnerLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetBurnerQuery,
+    GetBurnerQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetBurnerQuery, GetBurnerQueryVariables>(
+    GetBurnerDocument,
+    options,
+  )
+}
+export type GetBurnerQueryHookResult = ReturnType<typeof useGetBurnerQuery>
+export type GetBurnerLazyQueryHookResult = ReturnType<
+  typeof useGetBurnerLazyQuery
+>
+export type GetBurnerQueryResult = Apollo.QueryResult<
+  GetBurnerQuery,
+  GetBurnerQueryVariables
 >
 export const GetBurnersDocument = gql`
   query getBurners {

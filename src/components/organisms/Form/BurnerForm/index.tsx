@@ -53,7 +53,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
     if (data) {
       setCurrentBurner({
         ...currentBurner,
-        id: data.createBurner.payload.headerHash,
+        id: data.createBurner.node.id,
       })
       onSuccess.call(null)
     }
@@ -67,7 +67,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
           {(error || errorUpdate) && (
             <Alert
               message="Alert message title"
-              description={`${error}`}
+              description={`${error || errorUpdate}`}
               type="error"
             />
           )}

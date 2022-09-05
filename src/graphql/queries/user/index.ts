@@ -10,7 +10,7 @@ import { serializeHash } from '@holochain-open-dev/utils'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const handlers: QueryHandlersDictionary<Profile> = getQueryHandlers(
-    ['get_agent_profile', 'get_all_profile'],
+    ['get_agent_profile', 'get_all_profiles'],
     HAPP_ZOME_NAME_PROFILES,
     dnaConfig,
     conductorUri,

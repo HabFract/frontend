@@ -1,0 +1,10 @@
+query getBurner($id: ID!) {
+  burner(id: $id) {
+    id
+    name
+    metadata {
+      description
+      hashtag
+    }
+  }
+}

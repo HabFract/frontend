@@ -1,8 +1,7 @@
 mutation addBurner($burnerFields: BurnerCreateParams!) {
   createBurner(burner: $burnerFields) {
-    payload {
-      headerHash
-      entryHash
+    node {
+      id
     }
   }
 }

@@ -94,10 +94,10 @@ export const aBurnerCreateResponse = (
   overrides?: Partial<BurnerCreateResponse>,
 ): BurnerCreateResponse => {
   return {
-    payload:
-      overrides && overrides.hasOwnProperty('payload')
-        ? overrides.payload!
-        : aResponsePayload(),
+    node:
+      overrides && overrides.hasOwnProperty('node')
+        ? overrides.node!
+        : aBurner(),
   }
 }
 

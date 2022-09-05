@@ -41,19 +41,46 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     _,
     { profile: { nickname, location, avatar, isPublic } },
   ) => {
-    const res = await runCreate({ nickname, fields: { location, avatar } })
+    const record: any = await runCreate({
+      nickname,
+      fields: { location, avatar },
+    })
 
-    const agentPubKey = decode((res as any).signed_action.hashed.content.author)
+    const agentPubKey = decode(
+      (record as any).signed_action.hashed.content.author,
+    )
+    const element = decode((record.entry as any).Present.entry) as Profile
+
+    const returnedProfile = {
+      agentPubKey,
+      profile: element,
+    } as AgentProfile
 
     console.log('created profile', agentPubKey)
-    return res
+    return Promise.resolve(returnedProfile)
   }
+
   const updateProfile: updateHandler = async (
     _,
     { profile: { nickname, location, avatar, isPublic } },
   ) => {
+    const record: any = await runUpdate({
+      nickname,
+      fields: { location, avatar },
+    })
+
+    const agentPubKey = decode(
+      (record as any).signed_action.hashed.content.author,
+    )
+    const element = decode((record.entry as any).Present.entry) as Profile
+
+    const returnedProfile = {
+      agentPubKey,
+      profile: element,
+    } as AgentProfile
+
     console.log('update profile to nickname :>> ', nickname)
-    return runUpdate({ nickname, fields: { location, avatar } })
+    return Promise.resolve(returnedProfile)
   }
 
   return {

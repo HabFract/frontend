@@ -96,7 +96,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
         setOnboardingStage('2')
     }
     if (userHasBurner) {
-      getHabits()
+      // getHabits()
     }
 
     if (userHasBurner && userHasHabit)
