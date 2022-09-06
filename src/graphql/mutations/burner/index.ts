@@ -10,8 +10,10 @@ import { decode } from '@msgpack/msgpack'
 
 export type createArgs = { burner: BurnerCreateParams }
 export type updateArgs = { burner: BurnerUpdateParams }
+export type deleteArgs = { burner: string }
 export type createHandler = (root: any, args: createArgs) => Promise<Burner>
 export type updateHandler = (root: any, args: updateArgs) => Promise<Burner>
+export type deleteHandler = (root: any, args: deleteArgs) => Promise<any>
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const runCreate = mapZomeFn<Omit<Burner, 'id'>, Burner>(
@@ -27,6 +29,13 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     HAPP_ID,
     HAPP_ZOME_NAME_ATOMIC,
     'update_burner',
+  )
+  const runDelete = mapZomeFn<any, any>(
+    dnaConfig,
+    conductorUri,
+    HAPP_ID,
+    HAPP_ZOME_NAME_ATOMIC,
+    'delete_my_burner',
   )
 
   const createBurner: createHandler = async (
@@ -49,7 +58,6 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     }
     return Promise.resolve(response as any)
   }
-
   const updateBurner: updateHandler = async (
     _,
     { burner: { id, name, description, hashtag } },
@@ -71,8 +79,25 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     return Promise.resolve(response as any)
   }
 
+  const deleteBurner: deleteHandler = async (_, { burner: id }) => {
+    console.log('delete burner :>> ', id)
+    debugger
+    const record: any = await runDelete({
+      originalActionHash: id,
+    })
+
+    console.log('burner delete record :>> ', record)
+    const headerHash = record && (record as any).signed_action.hashed.hash
+    // const element = decode((record.entry as any).Present.entry) as Burner
+    const response = {
+      deleteActionHash: headerHash,
+    }
+    return Promise.resolve(response as any)
+  }
+
   return {
     createBurner,
     updateBurner,
+    deleteBurner,
   }
 }

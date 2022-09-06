@@ -8,6 +8,7 @@ import {
   Burner,
   BurnerCreateParams,
   useAddBurnerMutation,
+  useDeleteBurnerMutation,
   useGetBurnersQuery,
 } from '@/graphql/generated'
 import { Card } from '@/organisms/Card'
@@ -24,10 +25,12 @@ const Home: React.FC<HomeProps> = () => {
   const [profile, _] = useMyProfile()
   const { data: burnersPayload, loading, error } = useGetBurnersQuery()
   const [
-    mutate,
+    addBurner,
     { data: addBurnersPayload, loading: addLoading, error: addError },
   ] = useAddBurnerMutation()
 
+  const [deleteBurner, { loading: delLoading, error: delError }] =
+    useDeleteBurnerMutation()
   return (
     <Template
       illustration={4}
@@ -56,7 +59,13 @@ const Home: React.FC<HomeProps> = () => {
                           iconName="forward"
                           size="sm"
                           typeOfButton="error"
-                          onClick={() => {}}
+                          onClick={() => {
+                            deleteBurner({
+                              variables: {
+                                burnerID: id,
+                              },
+                            })
+                          }}
                         />
                         <Link
                           to={`/make/burners/update/${id}`}
@@ -84,7 +93,7 @@ const Home: React.FC<HomeProps> = () => {
                 onClick={() => {
                   const burnerFields = aBurner() as Burner
                   console.log('burnerFields :>> ', burnerFields)
-                  mutate({
+                  addBurner({
                     variables: {
                       burnerFields: {
                         name: burnerFields.name,

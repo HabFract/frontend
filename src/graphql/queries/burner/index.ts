@@ -18,17 +18,18 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   return {
     burner: async (_, args): Promise<any> => {
       const record: any = await readOne(args.id)
+
       const response = {
-        cursor: '',
-        node: (record || {}) as Burner,
-      } as BurnerEdge
+        ...(decode((record.entry as any).Present.entry) as Burner),
+        id: (record as any).signed_action.hashed.hash,
+      } as Burner
+
       return Promise.resolve(response)
     },
 
     burners: async (): Promise<any> => {
       const records = await readMany(null)
       const burners = (records || []) as Record[]
-
       const response = {
         edges: burners.map((b) => ({
           cursor: null,
