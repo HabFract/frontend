@@ -24,11 +24,6 @@ export const OnboardingContextBar = styled.div.attrs({
     @media only screen and (min-width: 1024px) {
       margin-left: -1rem;
       width: 30% !important;
-      -webkit-transition: width 1s ease-in-out;
-      -moz-transition: width 1s ease-in-out;
-      -o-transition: width 1s ease-in-out;
-      transition: width 1s ease-in-out padding-left 1s ease-in-out,
-        padding-right 1s ease-in-out;
     }
 
     .info-list {

@@ -1,5 +1,5 @@
 // #region Global Imports
-import React from 'react'
+import React, { Children } from 'react'
 // #endregion Global Imports
 
 // #region Local Imports
@@ -15,7 +15,12 @@ export const Card: React.FunctionComponent<ICard.IProps> = ({
   title,
   subTitle,
   bodyText,
+  pillText,
+  userText = '',
+  topRightText = '14 days ago',
+  readMoreText = 'Read More',
   readMoreAction,
+  children,
 }: ICard.IProps) => {
   return (
     <CardContainer>
@@ -30,9 +35,9 @@ export const Card: React.FunctionComponent<ICard.IProps> = ({
             >
               <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
             </svg>
-            Tutorial
+            {pillText}
           </span>
-          <span className="text-sm">14 days ago</span>
+          <span className="text-sm">{topRightText}</span>
         </div>
         <Heading caps={false} level={3}>
           <a href="#">{title}</a>
@@ -49,14 +54,14 @@ export const Card: React.FunctionComponent<ICard.IProps> = ({
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
               alt="Jese Leos avatar"
             />
-            <span className="font-medium dark:text-white">Jese Leos</span>
+            <span className="font-medium dark:text-white">{userText}</span>
           </div>
           <a
             href="#"
             onClick={readMoreAction}
             className="inline-flex items-center font-bold text-primary-500 dark:text-primary-500 hover:underline"
           >
-            Read more
+            {readMoreText}
             <svg
               className="w-4 h-4 ml-2"
               fill="currentColor"
@@ -71,6 +76,7 @@ export const Card: React.FunctionComponent<ICard.IProps> = ({
             </svg>
           </a>
         </div>
+        {children}
       </article>
     </CardContainer>
   )
