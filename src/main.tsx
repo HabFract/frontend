@@ -24,6 +24,7 @@ import {
   InfoPortal,
   Visualisations,
   NotFound,
+  BurnersList,
 } from './pages/.'
 import { Template } from '@/templates/CentredContentTemplate'
 import { Template as SCTemplate } from '@/templates/SplitContentTemplate'
@@ -139,6 +140,20 @@ const App: FC = () => {
               <Home />
             </Suspense>
           }
+        ></Route>
+        <Route
+          path="/:theme/burners"
+          element={
+            <Suspense
+              fallback={
+                <Template illustration={3}>
+                  <Spin size="large" spinning={true} />
+                </Template>
+              }
+            >
+              <BurnersList />
+            </Suspense>
+          } // Maybe profile needs a flag that can be fed here to redirect from oboarding
         ></Route>
         <Route
           path="/:theme/onboarding"

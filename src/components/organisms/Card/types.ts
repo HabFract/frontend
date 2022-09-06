@@ -1,7 +1,10 @@
 export declare namespace ICard {
   type TitleDict = { default: string; dark: string }
   export interface IProps {
-    children: React.ReactNode
+    title?: string
+    subTitle?: string
+    bodyText?: string
+    readMoreAction?: () => void
   }
 
   // export interface IState {}

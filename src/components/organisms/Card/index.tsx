@@ -12,7 +12,10 @@ import { ICard } from './types'
 // #endregion Interface Imports
 
 export const Card: React.FunctionComponent<ICard.IProps> = ({
-  children,
+  title,
+  subTitle,
+  bodyText,
+  readMoreAction,
 }: ICard.IProps) => {
   return (
     <CardContainer>
@@ -32,29 +35,12 @@ export const Card: React.FunctionComponent<ICard.IProps> = ({
           <span className="text-sm">14 days ago</span>
         </div>
         <Heading caps={false} level={3}>
-          <a href="#">How to quickly deploy a static website</a>
+          <a href="#">{title}</a>
         </Heading>
         <Heading caps={false} level={4}>
-          How to quickly deploy a static website
+          {subTitle}
         </Heading>
-        <P
-          level={3}
-          copyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat, diam sit amet faucibus scelerisque, diam arcu lacinia felis, eget varius ligula quam ut quam. Nullam suscipit libero libero, non fermentum ipsum consequat sit amet. Nam elementum, nibh ac sollicitudin pretium, diam nisi ornare arcu, sit amet malesuada neque erat at augue. Nam suscipit nulla eu nulla malesuada, at finibus nunc maximus. Suspendisse eu accumsan elit. Donec ante eros, consequat eu consectetur ut, fermentum sed dolor. Aenean iaculis ante nisl, et pellentesque erat vestibulum vel. Vivamus varius eu ex eu sagittis. Nulla et varius diam. Nulla varius finibus risus, vel tempus dui interdum a. Aliquam eget posuere metus. Aliquam in erat id massa finibus euismod.`}
-        />
-        <P
-          level={3}
-          copyText={`Static websites are now used to bootstrap lots of websites
-                    and are becoming the basis for a variety of tools that even
-                    influence both web designers and developers influence both
-                    web designers and developers.`}
-        />
-        <P
-          level={3}
-          copyText={`Static websites are now used to bootstrap lots of websites
-                    and are becoming the basis for a variety of tools that even
-                    influence both web designers and developers influence both
-                    web designers and developers.`}
-        />
+        <P level={3} copyText={bodyText as string} />
 
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-between space-x-4">
@@ -67,6 +53,7 @@ export const Card: React.FunctionComponent<ICard.IProps> = ({
           </div>
           <a
             href="#"
+            onClick={readMoreAction}
             className="inline-flex items-center font-bold text-primary-500 dark:text-primary-500 hover:underline"
           >
             Read more
@@ -85,7 +72,6 @@ export const Card: React.FunctionComponent<ICard.IProps> = ({
           </a>
         </div>
       </article>
-      {children}
     </CardContainer>
   )
 }

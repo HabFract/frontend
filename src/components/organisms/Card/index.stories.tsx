@@ -11,4 +11,4 @@ export default {
   title: 'Design System/Organisms/Card',
 }
 
-export const Default = () => <Card> </Card>
+export const Default = () => <Card></Card>

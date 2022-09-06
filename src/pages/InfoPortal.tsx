@@ -91,10 +91,6 @@ const InfoPortal: React.FC<InfoPortalProps> = () => {
               </div>
               <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4 xl:grid-cols-3">
                 {/* //grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4 xl:grid-cols-3 */}
-                <Card> </Card>
-                <Card> </Card>
-                <Card> </Card>
-                <Card> </Card>
               </div>
             </div>
           </section>
