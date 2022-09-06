@@ -8,7 +8,7 @@ import { getQueryHandlers, QueryHandlersDictionary } from '../..'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const handlers: QueryHandlersDictionary<Burner> = getQueryHandlers(
-    ['get_burner', 'get_all_burners'],
+    ['get_my_burner', 'get_my_burners'],
     HAPP_ZOME_NAME_ATOMIC,
     dnaConfig,
     conductorUri,
