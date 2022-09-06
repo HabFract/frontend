@@ -1,5 +1,5 @@
-mutation deleteBurner($burnerID: ID!) {
-  deleteBurner(burner: $burnerID) {
+mutation deleteBurner($id: ID!) {
+  deleteBurner(id: $id) {
     deleteActionHash
   }
 }

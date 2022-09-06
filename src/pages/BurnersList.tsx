@@ -62,7 +62,7 @@ const Home: React.FC<HomeProps> = () => {
                           onClick={() => {
                             deleteBurner({
                               variables: {
-                                burnerID: id,
+                                id,
                               },
                             })
                           }}

@@ -148,7 +148,7 @@ export type MutationCreateProfileArgs = {
 }
 
 export type MutationDeleteBurnerArgs = {
-  burner: Scalars['ID']
+  id: Scalars['ID']
 }
 
 export type MutationUpdateBurnerArgs = {
@@ -244,7 +244,7 @@ export type AddBurnerMutation = {
 }
 
 export type DeleteBurnerMutationVariables = Exact<{
-  burnerID: Scalars['ID']
+  id: Scalars['ID']
 }>
 
 export type DeleteBurnerMutation = {
@@ -473,8 +473,8 @@ export type AddBurnerMutationOptions = Apollo.BaseMutationOptions<
   AddBurnerMutationVariables
 >
 export const DeleteBurnerDocument = gql`
-  mutation deleteBurner($burnerID: ID!) {
-    deleteBurner(burner: $burnerID) {
+  mutation deleteBurner($id: ID!) {
+    deleteBurner(id: $id) {
       deleteActionHash
     }
   }
@@ -497,7 +497,7 @@ export type DeleteBurnerMutationFn = Apollo.MutationFunction<
  * @example
  * const [deleteBurnerMutation, { data, loading, error }] = useDeleteBurnerMutation({
  *   variables: {
- *      burnerID: // value for 'burnerID'
+ *      id: // value for 'id'
  *   },
  * });
  */

@@ -10,7 +10,7 @@ type Query {
 type Mutation {
   createBurner(burner: BurnerCreateParams): BurnerCreateResponse!
   updateBurner(burner: BurnerUpdateParams): BurnerCreateResponse!
-  deleteBurner(burner: ID!): DeleteResponse!
+  deleteBurner(id: ID!): DeleteResponse!
   createHabit(habit: HabitCreateParams): HabitCreateResponse!
   updateHabit(habit: HabitUpdateParams): HabitCreateResponse!
   createProfile(profile: UserProfileCreateUpdateParams): AgentProfile!

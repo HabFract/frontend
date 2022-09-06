@@ -30,6 +30,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     burners: async (): Promise<any> => {
       const records = await readMany(null)
       const burners = (records || []) as Record[]
+
       const response = {
         edges: burners.map((b) => ({
           cursor: null,
