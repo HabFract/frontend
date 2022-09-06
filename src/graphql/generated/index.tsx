@@ -71,6 +71,11 @@ export type BurnerUpdateParams = {
   name: Scalars['String']
 }
 
+export type DeleteResponse = {
+  __typename?: 'DeleteResponse'
+  deleteActionHash: Scalars['ID']
+}
+
 export type Habit = Node & {
   __typename?: 'Habit'
   id: Scalars['ID']
@@ -124,6 +129,7 @@ export type Mutation = {
   createBurner: BurnerCreateResponse
   createHabit: HabitCreateResponse
   createProfile: AgentProfile
+  deleteBurner: DeleteResponse
   updateBurner: BurnerCreateResponse
   updateHabit: HabitCreateResponse
   updateProfile: AgentProfile
@@ -139,6 +145,10 @@ export type MutationCreateHabitArgs = {
 
 export type MutationCreateProfileArgs = {
   profile?: InputMaybe<UserProfileCreateUpdateParams>
+}
+
+export type MutationDeleteBurnerArgs = {
+  burner: Scalars['ID']
 }
 
 export type MutationUpdateBurnerArgs = {
@@ -231,6 +241,15 @@ export type AddBurnerMutation = {
     __typename?: 'BurnerCreateResponse'
     node: { __typename?: 'Burner'; id: string }
   }
+}
+
+export type DeleteBurnerMutationVariables = Exact<{
+  burnerID: Scalars['ID']
+}>
+
+export type DeleteBurnerMutation = {
+  __typename?: 'Mutation'
+  deleteBurner: { __typename?: 'DeleteResponse'; deleteActionHash: string }
 }
 
 export type UpdateBurnerMutationVariables = Exact<{
@@ -452,6 +471,56 @@ export type AddBurnerMutationResult = Apollo.MutationResult<AddBurnerMutation>
 export type AddBurnerMutationOptions = Apollo.BaseMutationOptions<
   AddBurnerMutation,
   AddBurnerMutationVariables
+>
+export const DeleteBurnerDocument = gql`
+  mutation deleteBurner($burnerID: ID!) {
+    deleteBurner(burner: $burnerID) {
+      deleteActionHash
+    }
+  }
+`
+export type DeleteBurnerMutationFn = Apollo.MutationFunction<
+  DeleteBurnerMutation,
+  DeleteBurnerMutationVariables
+>
+
+/**
+ * __useDeleteBurnerMutation__
+ *
+ * To run a mutation, you first call `useDeleteBurnerMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteBurnerMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteBurnerMutation, { data, loading, error }] = useDeleteBurnerMutation({
+ *   variables: {
+ *      burnerID: // value for 'burnerID'
+ *   },
+ * });
+ */
+export function useDeleteBurnerMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteBurnerMutation,
+    DeleteBurnerMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    DeleteBurnerMutation,
+    DeleteBurnerMutationVariables
+  >(DeleteBurnerDocument, options)
+}
+export type DeleteBurnerMutationHookResult = ReturnType<
+  typeof useDeleteBurnerMutation
+>
+export type DeleteBurnerMutationResult =
+  Apollo.MutationResult<DeleteBurnerMutation>
+export type DeleteBurnerMutationOptions = Apollo.BaseMutationOptions<
+  DeleteBurnerMutation,
+  DeleteBurnerMutationVariables
 >
 export const UpdateBurnerDocument = gql`
   mutation updateBurner($burnerFields: BurnerUpdateParams!) {

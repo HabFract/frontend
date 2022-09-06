@@ -52,7 +52,7 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
         }
 
   useEffect(() => {
-    if (data) onSuccess.call(null)
+    if (data) onSuccess!.call(null)
     // This needs to trigger only if backend returned something meaningful
   }, [data])
 
@@ -108,7 +108,7 @@ export const ProfileForm: React.FunctionComponent<IProfileForm.IProps> = ({
                   nickname: values.nickname,
                   fields: { location: values.location, avatar: values.avatar },
                 })
-              } else onSuccess.call(null)
+              } else onSuccess!.call(null)
             } else {
               addUserMutation({ variables })
             }

@@ -64,7 +64,7 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
   //   :
 
   useEffect(() => {
-    if (data) onSuccess.call(null)
+    if (data) onSuccess!.call(null)
     // This needs to trigger only if backend returned something meaningful
   }, [data])
 
@@ -125,7 +125,7 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
             //         hashtag: values.hashtag,
             //       },
             //     })
-            //   } else onSuccess.call(null)
+            //   } else onSuccess!.call(null)
             // } else {
             //   addBurnerMutation({
             //     variables,

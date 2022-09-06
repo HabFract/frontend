@@ -10,6 +10,7 @@ type Query {
 type Mutation {
   createBurner(burner: BurnerCreateParams): BurnerCreateResponse!
   updateBurner(burner: BurnerUpdateParams): BurnerCreateResponse!
+  deleteBurner(burner: ID!): DeleteResponse!
   createHabit(habit: HabitCreateParams): HabitCreateResponse!
   updateHabit(habit: HabitUpdateParams): HabitCreateResponse!
   createProfile(profile: UserProfileCreateUpdateParams): AgentProfile!
@@ -32,6 +33,9 @@ interface Node {
 type ResponsePayload {
   headerHash: String!
   entryHash: String!
+}
+type DeleteResponse {
+  deleteActionHash: ID!
 }
 
 # ---- Profiles ----- #
@@ -60,29 +64,6 @@ input UserProfileCreateUpdateParams {
   location: String
   isPublic: String
   avatar: String
-}
-
-# ---- Burner ----- #
-# Burner GQL Types
-type BurnerConnection {
-  edges: [BurnerEdge!]!
-  pageInfo: PageInfo!
-}
-
-type BurnerEdge {
-  cursor: String!
-  node: Burner!
-}
-
-# Burner Types
-type Burner implements Node {
-  id: ID!
-  name: String!
-  metadata: BurnerMetaData
-}
-
-type BurnerMetaData {
-  description: String!
 }
 
 # ---- Burner ----- #

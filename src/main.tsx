@@ -28,6 +28,7 @@ import {
 } from './pages/.'
 import { Template } from '@/templates/CentredContentTemplate'
 import { Template as SCTemplate } from '@/templates/SplitContentTemplate'
+import { BurnerForm } from './components/organisms'
 
 globalThis.Buffer = Buffer
 
@@ -140,6 +141,22 @@ const App: FC = () => {
               <Home />
             </Suspense>
           }
+        ></Route>
+        <Route
+          path="/:theme/burners/update/:id"
+          element={
+            <Suspense
+              fallback={
+                <Template illustration={3}>
+                  <Spin size="large" spinning={true} />
+                </Template>
+              }
+            >
+              <Template illustration={3}>
+                <BurnerForm editMode={true} />
+              </Template>
+            </Suspense>
+          } // Maybe profile needs a flag that can be fed here to redirect from oboarding
         ></Route>
         <Route
           path="/:theme/burners"

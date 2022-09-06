@@ -5,7 +5,7 @@ type InputValues = BurnerCreateParams
 
 export declare namespace IBurnerForm {
   export interface IProps {
-    onSuccess: () => void
+    onSuccess?: () => void
     editMode: boolean
   }
   export interface BurnerFormValues extends InputValues {

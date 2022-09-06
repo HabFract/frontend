@@ -55,7 +55,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
         ...currentBurner,
         id: data.createBurner.node.id,
       })
-      onSuccess.call(null)
+      onSuccess!.call(null)
     }
     // This needs to trigger only if backend returned something meaningful
   }, [data])
@@ -115,7 +115,7 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
                     },
                   },
                 })
-              } else onSuccess.call(null)
+              } else onSuccess!.call(null)
             } else {
               addBurnerMutation({
                 variables,

@@ -59,7 +59,7 @@ const Home: React.FC<HomeProps> = () => {
                           onClick={() => {}}
                         />
                         <Link
-                          to={`/make/burners/${id}/update`}
+                          to={`/make/burners/update/${id}`}
                           role="menu-item"
                         >
                           <Button
@@ -67,7 +67,6 @@ const Home: React.FC<HomeProps> = () => {
                             iconName="success"
                             size="sm"
                             typeOfButton="warning"
-                            onClick={() => {}}
                           />
                         </Link>
                       </CenteringFlexHorizontal>

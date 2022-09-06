@@ -7,6 +7,7 @@ import {
   BurnerEdge,
   BurnerMetaData,
   BurnerUpdateParams,
+  DeleteResponse,
   Habit,
   HabitConnection,
   HabitCreateParams,
@@ -150,6 +151,17 @@ export const aBurnerUpdateParams = (
   }
 }
 
+export const aDeleteResponse = (
+  overrides?: Partial<DeleteResponse>,
+): DeleteResponse => {
+  return {
+    deleteActionHash:
+      overrides && overrides.hasOwnProperty('deleteActionHash')
+        ? overrides.deleteActionHash!
+        : 'a88bec7c-4101-4733-922b-daaf23f07872',
+  }
+}
+
 export const aHabit = (overrides?: Partial<Habit>): Habit => {
   return {
     id:
@@ -288,6 +300,10 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
       overrides && overrides.hasOwnProperty('createProfile')
         ? overrides.createProfile!
         : anAgentProfile(),
+    deleteBurner:
+      overrides && overrides.hasOwnProperty('deleteBurner')
+        ? overrides.deleteBurner!
+        : aDeleteResponse(),
     updateBurner:
       overrides && overrides.hasOwnProperty('updateBurner')
         ? overrides.updateBurner!
