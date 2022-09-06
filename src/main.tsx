@@ -57,7 +57,7 @@ const App: FC = () => {
             <Suspense
               fallback={
                 <Template illustration={1}>
-                  <Spin spinning={true} />
+                  <Spin size="large" spinning={true} />
                 </Template>
               }
             >
@@ -72,7 +72,7 @@ const App: FC = () => {
             <Suspense
               fallback={
                 <Template illustration={1}>
-                  <Spin spinning={true} />
+                  <Spin size="large" spinning={true} />
                 </Template>
               }
             >
@@ -87,7 +87,7 @@ const App: FC = () => {
             <Suspense
               fallback={
                 <Template illustration={1}>
-                  <Spin spinning={true} />
+                  <Spin size="large" spinning={true} />
                 </Template>
               }
             >
@@ -102,7 +102,7 @@ const App: FC = () => {
             <Suspense
               fallback={
                 <Template illustration={1}>
-                  <Spin spinning={true} />
+                  <Spin size="large" spinning={true} />
                 </Template>
               }
             >
@@ -117,7 +117,7 @@ const App: FC = () => {
             <Suspense
               fallback={
                 <Template illustration={1}>
-                  <Spin spinning={true} />
+                  <Spin size="large" spinning={true} />
                 </Template>
               }
             >
@@ -132,7 +132,7 @@ const App: FC = () => {
             <Suspense
               fallback={
                 <Template illustration={1}>
-                  <Spin spinning={true} />
+                  <Spin size="large" spinning={true} />
                 </Template>
               }
             >
@@ -148,8 +148,8 @@ const App: FC = () => {
             ) : (
               <Suspense
                 fallback={
-                  <Template illustration={1}>
-                    <Spin spinning={true} />
+                  <Template illustration={3}>
+                    <Spin size="large" spinning={true} />
                   </Template>
                 }
               >

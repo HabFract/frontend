@@ -132,7 +132,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
         titles={onboardingMainTitles[0]}
         backAction={handleBackAction}
       />
-      <Template illustration={+onboardingStage}>
+      <Template illustration={3}>
         <OnboardingTemplate>
           <DescriptionBox
             stage={+onboardingStage}

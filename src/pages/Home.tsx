@@ -10,7 +10,7 @@ interface HomeProps {}
 const Home: React.FC<HomeProps> = () => {
   const [profile, _] = useMyProfile()
   return (
-    <Template illustration={1} sidebar={false}>
+    <Template illustration={4} sidebar={false}>
       <nav aria-label="Information portal navigation">
         <NavList newUser={!profile}></NavList>
       </nav>

@@ -71,7 +71,7 @@ export const HabitForm: React.FunctionComponent<IHabitForm.IProps> = ({
   return (
     <OnboardingFormContainer>
       {error || errorUpdate ? (
-        <Spin spinning={loading || loadingUpdate}>
+        <Spin size="large" spinning={loading || loadingUpdate}>
           {(error || errorUpdate) && (
             <Alert
               message="Alert message title"
