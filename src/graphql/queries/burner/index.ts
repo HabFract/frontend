@@ -17,12 +17,10 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
 
   return {
     burner: async (_, args): Promise<any> => {
-      const record = await readOne(args.id)
-
-      console.log('Burner record :>> ', record)
+      const record: any = await readOne(args.id)
       const response = {
         cursor: '',
-        node: {},
+        node: (record || {}) as Burner,
       } as BurnerEdge
       return Promise.resolve(response)
     },

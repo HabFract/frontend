@@ -25,6 +25,8 @@ import {
   Visualisations,
   NotFound,
 } from './pages/.'
+import { Template } from '@/templates/CentredContentTemplate'
+import { Template as SCTemplate } from '@/templates/SplitContentTemplate'
 
 globalThis.Buffer = Buffer
 
@@ -52,7 +54,13 @@ const App: FC = () => {
         <Route
           path="*"
           element={
-            <Suspense fallback={<Spin spinning={true} />}>
+            <Suspense
+              fallback={
+                <Template illustration={1}>
+                  <Spin spinning={true} />
+                </Template>
+              }
+            >
               <NotFound />
             </Suspense>
           }
@@ -61,7 +69,13 @@ const App: FC = () => {
         <Route
           path="/info/what"
           element={
-            <Suspense fallback={<Spin spinning={true} />}>
+            <Suspense
+              fallback={
+                <Template illustration={1}>
+                  <Spin spinning={true} />
+                </Template>
+              }
+            >
               <InfoPortal />
             </Suspense>
           }
@@ -70,7 +84,13 @@ const App: FC = () => {
         <Route
           path="/info/why"
           element={
-            <Suspense fallback={<Spin spinning={true} />}>
+            <Suspense
+              fallback={
+                <Template illustration={1}>
+                  <Spin spinning={true} />
+                </Template>
+              }
+            >
               <InfoPortal />
             </Suspense>
           }
@@ -79,7 +99,13 @@ const App: FC = () => {
         <Route
           path="/info/how"
           element={
-            <Suspense fallback={<Spin spinning={true} />}>
+            <Suspense
+              fallback={
+                <Template illustration={1}>
+                  <Spin spinning={true} />
+                </Template>
+              }
+            >
               <InfoPortal />
             </Suspense>
           }
@@ -88,7 +114,13 @@ const App: FC = () => {
         <Route
           path="/:theme/vis"
           element={
-            <Suspense fallback={<Spin spinning={true} />}>
+            <Suspense
+              fallback={
+                <Template illustration={1}>
+                  <Spin spinning={true} />
+                </Template>
+              }
+            >
               <Visualisations />
             </Suspense>
           }
@@ -97,14 +129,34 @@ const App: FC = () => {
         <Route
           path="/"
           element={
-            <Suspense fallback={<Spin spinning={true} />}>
+            <Suspense
+              fallback={
+                <Template illustration={1}>
+                  <Spin spinning={true} />
+                </Template>
+              }
+            >
               <Home />
             </Suspense>
           }
         ></Route>
         <Route
           path="/:theme/onboarding"
-          element={false ? <Navigate to="/" replace /> : <Onboarding />} // Maybe profile needs a flag that can be fed here to redirect from oboarding
+          element={
+            false ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Suspense
+                fallback={
+                  <Template illustration={1}>
+                    <Spin spinning={true} />
+                  </Template>
+                }
+              >
+                <Onboarding />
+              </Suspense>
+            )
+          } // Maybe profile needs a flag that can be fed here to redirect from oboarding
         ></Route>
       </Routes>
     </BrowserRouter>

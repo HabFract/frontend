@@ -68,8 +68,8 @@ const Onboarding: React.FC<OnboardingProps> = () => {
       __typename: _,
       node: { __typename, ...burner },
     } = burnersPayload!.burners.edges[0]
-
     setCurrentBurner(burner)
+
     !searchParams.get('edit') &&
       setOnboardingStage(userHasBurner ? '3' : onboardingStage)
   }, [userHasBurner, burnersPayload])
@@ -107,6 +107,7 @@ const Onboarding: React.FC<OnboardingProps> = () => {
     if (onboardingStage == '1') {
       navigate(`/`)
     } else {
+      // navigate(`/make/onboarding?edit=true&stage=${+onboardingStage - 1}`)
       setSearchParams({ edit: 'true', stage: `${+onboardingStage - 1}` })
       setOnboardingStage(`${+onboardingStage - 1}`)
     }

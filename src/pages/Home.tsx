@@ -1,7 +1,8 @@
-import { aProfile } from '@/graphql/generated/mocks'
+import React from 'react'
+
 import { useMyProfile } from '@/hooks/useMyProfile'
 import { NavList } from '@/molecules/NavList'
-import React from 'react'
+import { Template } from '@/templates/SplitContentTemplate'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}
@@ -9,9 +10,11 @@ interface HomeProps {}
 const Home: React.FC<HomeProps> = () => {
   const [profile, _] = useMyProfile()
   return (
-    <nav aria-label="Information portal navigation">
-      <NavList newUser={!profile}></NavList>
-    </nav>
+    <Template illustration={1} sidebar={false}>
+      <nav aria-label="Information portal navigation">
+        <NavList newUser={!profile}></NavList>
+      </nav>
+    </Template>
   )
 }
 

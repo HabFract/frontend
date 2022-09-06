@@ -22,10 +22,18 @@ const errorLink = onError(
           case !!message.match('Insufficient data'):
             console.log(`[Zome Call Response]: '${path}' Insufficient data`)
             response!.errors = []
+            response!.data = ['ok']
             break
           case !!message.match('Extra'):
             console.log(`[Zome Call Response]: '${path}' msgpack img error`)
             response!.errors = []
+            response!.data = ['ok']
+            break
+          case !!message.match('Unexpected error value'):
+            console.log(
+              `[Zome Call Response]: '${path}' check Holochain conductor logs`,
+            )
+            response!.errors![0]!.message = '500 Internal Server Error'
             break
 
           default:

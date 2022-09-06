@@ -333,7 +333,11 @@ export type GetBurnersQuery = {
         __typename?: 'Burner'
         id: string
         name: string
-        metadata?: { __typename?: 'BurnerMetaData'; description: string } | null
+        metadata?: {
+          __typename?: 'BurnerMetaData'
+          description: string
+          hashtag?: string | null
+        } | null
       }
     }>
   }
@@ -773,6 +777,7 @@ export const GetBurnersDocument = gql`
           name
           metadata {
             description
+            hashtag
           }
         }
       }

@@ -56,10 +56,10 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   ) => {
     console.log('update burner :>> ', id)
     const record: any = await runUpdate({
-      originalHeaderHash: id,
+      originalActionHash: id,
       updatedBurner: { name, metadata: { description, hashtag } },
     })
-
+    console.log('burner update record :>> ', record)
     const headerHash = record && (record as any).signed_action.hashed.hash
     const element = decode((record.entry as any).Present.entry) as Burner
 
