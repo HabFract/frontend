@@ -29,6 +29,11 @@ const errorLink = onError(
             response!.errors = []
             response!.data = ['ok']
             break
+          case !!message.match(/(?<=Guest)(.*)/):
+            const guestError = message.match(/(?<=Guest)(.*)/)![0]
+            console.log(`[Zome Guest Error]: '${guestError}'`)
+            response!.errors![0]!.message = guestError
+            break
           case !!message.match('Unexpected error value'):
             console.log(
               `[Zome Call Response]: '${path}' check Holochain conductor logs`,

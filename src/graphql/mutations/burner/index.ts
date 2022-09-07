@@ -1,42 +1,24 @@
 import { serializeHash } from '@holochain-open-dev/utils'
-import { mapZomeFn } from '../../connection'
-import { ById, DNAIdMappings } from '../../types'
-import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
-import {
-  Burner,
-  BurnerCreateParams,
-  BurnerUpdateParams,
-} from '@/graphql/generated/index'
+import { DNAIdMappings } from '../../types'
+import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
+import { Burner } from '@/graphql/generated/index'
 import { decode } from '@msgpack/msgpack'
+import { getMutationHandlers, MutationHandlersDictionary } from '../..'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
-  const runCreate = mapZomeFn<Omit<Burner, 'id'>, Burner>(
+  const handlers: MutationHandlersDictionary<Burner> = getMutationHandlers(
+    ['create_burner', 'update_burner', 'delete_my_burner'],
+    HAPP_ZOME_NAME_ATOMIC,
     dnaConfig,
     conductorUri,
-    HAPP_ID,
-    HAPP_ZOME_NAME_ATOMIC,
-    'create_burner',
   )
-  const runUpdate = mapZomeFn<any, any>(
-    dnaConfig,
-    conductorUri,
-    HAPP_ID,
-    HAPP_ZOME_NAME_ATOMIC,
-    'update_burner',
-  )
-  const runDelete = mapZomeFn<ById, any>(
-    dnaConfig,
-    conductorUri,
-    HAPP_ID,
-    HAPP_ZOME_NAME_ATOMIC,
-    'delete_my_burner',
-  )
+  const { createOne, updateOne, deleteOne } = handlers
 
   const createBurner = async (
     _,
     { burner: { name, description, hashtag } },
   ) => {
-    const record: any = await runCreate({
+    const record: any = await createOne({
       name,
       metadata: { description, hashtag },
     })
@@ -56,11 +38,11 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     _,
     { burner: { id, name, description, hashtag } },
   ) => {
-    console.log('update burner :>> ', id)
-    const record: any = await runUpdate({
+    const record: any = await updateOne({
       originalActionHash: id,
       updatedBurner: { name, metadata: { description, hashtag } },
     })
+
     console.log('burner update record :>> ', record)
     const headerHash = record && (record as any).signed_action.hashed.hash
     const element = decode((record.entry as any).Present.entry) as Burner
@@ -72,8 +54,9 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     }
     return Promise.resolve(response as any)
   }
+
   const deleteBurner = async (_, { id }) => {
-    const hash: any = await runDelete(id)
+    const hash: any = await deleteOne(id)
 
     const response = {
       deleteActionHash: serializeHash(hash),

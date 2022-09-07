@@ -24,7 +24,7 @@ import {
 } from './types.js'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 
-import { Record } from '@holochain/client'
+import { ActionHash, Record } from '@holochain/client'
 
 export interface QueryHandlersDictionary<T> {
   readOne: BoundZomeFn<ById, Promise<Record>>
@@ -64,6 +64,55 @@ function getQueryHandlers<T>(
   })
   return handlers
 }
+export interface MutationHandlersDictionary<T> {
+  createOne: BoundZomeFn<Omit<T, 'id'>, Promise<Record>>
+  updateOne: BoundZomeFn<any, Promise<Record>>
+  deleteOne: BoundZomeFn<ById, Promise<ActionHash>>
+}
+
+function getMutationHandlers<T>(
+  zomeFunctionNames: Array<string>,
+  zomeName: string,
+  dnaConfig: DNAIdMappings,
+  conductorUri: string,
+): MutationHandlersDictionary<T> {
+  const handlers = {} as MutationHandlersDictionary<T>
+  zomeFunctionNames.forEach((zomeFunctionName, i) => {
+    switch (i) {
+      case 0:
+        // createOne
+        handlers['createOne'] = mapZomeFn<Omit<T, 'id'>, Record>(
+          dnaConfig,
+          conductorUri,
+          HAPP_ID,
+          zomeName,
+          zomeFunctionName,
+        )
+        break
+      case 1:
+        //updateOne
+        handlers['updateOne'] = mapZomeFn<any, Record>(
+          dnaConfig,
+          conductorUri,
+          HAPP_ID,
+          zomeName,
+          zomeFunctionName,
+        )
+        break
+      case 2:
+        //deleteOne
+        handlers['deleteOne'] = mapZomeFn<ById, ActionHash>(
+          dnaConfig,
+          conductorUri,
+          HAPP_ID,
+          zomeName,
+          zomeFunctionName,
+        )
+        break
+    }
+  })
+  return handlers
+}
 
 export {
   // direct access to resolver callbacks generator for apps that need to bind to other GraphQL schemas
@@ -75,6 +124,7 @@ export {
   // direct access to Holochain zome method bindings for authoring own custom resolvers bound to non-REA DNAs
   mapZomeFn,
   getQueryHandlers,
+  getMutationHandlers,
 }
 export type {
   // types that wrapper libraries may need to manage conductor DNA connection logic
