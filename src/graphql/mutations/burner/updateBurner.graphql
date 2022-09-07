@@ -2,6 +2,12 @@ mutation updateBurner($burnerFields: BurnerUpdateParams!) {
   updateBurner(burner: $burnerFields) {
     node {
       id
+      name
+      metadata {
+        description
+        hashtag
+      }
     }
+    newActionHash
   }
 }

@@ -24,6 +24,8 @@ import {
   OnboardingProgressBarContainer,
 } from '@/pages/styled/Onboarding'
 import { Alert, Spin } from 'antd'
+import { aBurner } from '@/graphql/generated/mocks'
+import { gql } from '@apollo/client'
 // #endregion Interface Imports
 
 export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
@@ -35,7 +37,61 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
   const [
     updateBurnerMutation,
     { data: dataUpdate, loading: loadingUpdate, error: errorUpdate },
-  ] = useUpdateBurnerMutation()
+  ] = useUpdateBurnerMutation({
+    update(cache, { data }) {
+      const newId = data?.updateBurner.newActionHash
+      const oldId = data?.updateBurner.node.id
+
+      debugger
+      const result = cache.modify({
+        fields: {
+          burners(existingBurners = []) {
+            const updatedNode = cache.writeFragment({
+              data: { ...data!.updateBurner.node, id: newId },
+              fragment: gql`
+                fragment NewId on Burner {
+                  id
+                  name
+                  metadata {
+                    description
+                    hashtag
+                  }
+                }
+              `,
+            })
+            const filteredBurners = existingBurners.edges.filter((edge) =>
+              edge.node.__ref.search(oldId),
+            )
+            return [...filteredBurners, updatedNode]
+          },
+          burner(existingBurner) {
+            debugger
+            // debugger
+            // const updatedNode = cache.writeFragment({
+            //   data: { ...data!.updateBurner.node, id: newId },
+            //   fragment: gql`
+            //     fragment NewId on Burner {
+            //       id
+            //       name
+            //       metadata {
+            //         description
+            //         hashtag
+            //       }
+            //     }
+            //   `,
+            // })
+            // console.log('updatedNode :>> ', updatedNode)
+            // existingBurners.edges.forEach((edge) =>
+            //   console.log(edge.node.__ref),
+            // )
+            console.log('existingBurner :>> ', existingBurner)
+            return existingBurner
+          },
+        },
+      })
+      console.log('cache updated? :>> ', result)
+    },
+  })
 
   const initialValues: IBurnerForm.BurnerFormValues = !!currentBurner
     ? {

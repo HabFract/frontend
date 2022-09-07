@@ -7,6 +7,7 @@ import {
   BurnerEdge,
   BurnerMetaData,
   BurnerUpdateParams,
+  BurnerUpdateResponse,
   DeleteResponse,
   Habit,
   HabitConnection,
@@ -148,6 +149,21 @@ export const aBurnerUpdateParams = (
         : 'consequatur',
     name:
       overrides && overrides.hasOwnProperty('name') ? overrides.name! : 'nobis',
+  }
+}
+
+export const aBurnerUpdateResponse = (
+  overrides?: Partial<BurnerUpdateResponse>,
+): BurnerUpdateResponse => {
+  return {
+    newActionHash:
+      overrides && overrides.hasOwnProperty('newActionHash')
+        ? overrides.newActionHash!
+        : '69f0594d-8775-41fc-9485-8419bcf67abb',
+    node:
+      overrides && overrides.hasOwnProperty('node')
+        ? overrides.node!
+        : aBurner(),
   }
 }
 
@@ -307,7 +323,7 @@ export const aMutation = (overrides?: Partial<Mutation>): Mutation => {
     updateBurner:
       overrides && overrides.hasOwnProperty('updateBurner')
         ? overrides.updateBurner!
-        : aBurnerCreateResponse(),
+        : aBurnerUpdateResponse(),
     updateHabit:
       overrides && overrides.hasOwnProperty('updateHabit')
         ? overrides.updateHabit!

@@ -9,7 +9,7 @@ type Query {
 
 type Mutation {
   createBurner(burner: BurnerCreateParams): BurnerCreateResponse!
-  updateBurner(burner: BurnerUpdateParams): BurnerCreateResponse!
+  updateBurner(burner: BurnerUpdateParams): BurnerUpdateResponse!
   deleteBurner(id: ID!): DeleteResponse!
   createHabit(habit: HabitCreateParams): HabitCreateResponse!
   updateHabit(habit: HabitUpdateParams): HabitCreateResponse!
@@ -105,6 +105,10 @@ input BurnerUpdateParams {
 
 type BurnerCreateResponse {
   node: Burner!
+}
+type BurnerUpdateResponse {
+  node: Burner!
+  newActionHash: ID!
 }
 
 # ---- Habit ----- #

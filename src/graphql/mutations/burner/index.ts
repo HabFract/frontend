@@ -1,9 +1,24 @@
 import { serializeHash } from '@holochain-open-dev/utils'
 import { DNAIdMappings } from '../../types'
-import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
-import { Burner } from '@/graphql/generated/index'
+import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
+import {
+  Burner,
+  BurnerCreateParams,
+  BurnerUpdateParams,
+} from '@/graphql/generated/index'
 import { decode } from '@msgpack/msgpack'
-import { getMutationHandlers, MutationHandlersDictionary } from '../..'
+import {
+  getMutationHandlers,
+  mapZomeFn,
+  MutationHandlersDictionary,
+} from '../..'
+
+export type createArgs = { burner: BurnerCreateParams }
+export type updateArgs = { burner: BurnerUpdateParams }
+export type deleteArgs = { burner: string }
+export type createHandler = (root: any, args: createArgs) => Promise<Burner>
+export type updateHandler = (root: any, args: updateArgs) => Promise<Burner>
+export type deleteHandler = (root: any, args: deleteArgs) => Promise<any>
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const handlers: MutationHandlersDictionary<Burner> = getMutationHandlers(
@@ -14,7 +29,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   )
   const { createOne, updateOne, deleteOne } = handlers
 
-  const createBurner = async (
+  const createBurner: createHandler = async (
     _,
     { burner: { name, description, hashtag } },
   ) => {
@@ -34,6 +49,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     }
     return Promise.resolve(response as any)
   }
+
   const updateBurner = async (
     _,
     { burner: { id, name, description, hashtag } },
@@ -43,14 +59,22 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
       updatedBurner: { name, metadata: { description, hashtag } },
     })
 
-    console.log('burner update record :>> ', record)
-    const headerHash = record && (record as any).signed_action.hashed.hash
+    // console.log('burner update record :>> ', record)
+    const newActionHash = record && (record as any).signed_action.hashed.hash
+    const previousActionHash =
+      record &&
+      (record as any).signed_action.hashed.content.original_action_address
     const element = decode((record.entry as any).Present.entry) as Burner
 
     const response = {
       node: {
-        id: headerHash,
+        id: previousActionHash,
+        name: element.name,
+        metadata: {
+          ...element.metadata,
+        },
       },
+      newActionHash,
     }
     return Promise.resolve(response as any)
   }

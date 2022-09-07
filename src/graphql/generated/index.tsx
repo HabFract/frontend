@@ -71,6 +71,12 @@ export type BurnerUpdateParams = {
   name: Scalars['String']
 }
 
+export type BurnerUpdateResponse = {
+  __typename?: 'BurnerUpdateResponse'
+  newActionHash: Scalars['ID']
+  node: Burner
+}
+
 export type DeleteResponse = {
   __typename?: 'DeleteResponse'
   deleteActionHash: Scalars['ID']
@@ -130,7 +136,7 @@ export type Mutation = {
   createHabit: HabitCreateResponse
   createProfile: AgentProfile
   deleteBurner: DeleteResponse
-  updateBurner: BurnerCreateResponse
+  updateBurner: BurnerUpdateResponse
   updateHabit: HabitCreateResponse
   updateProfile: AgentProfile
 }
@@ -259,8 +265,18 @@ export type UpdateBurnerMutationVariables = Exact<{
 export type UpdateBurnerMutation = {
   __typename?: 'Mutation'
   updateBurner: {
-    __typename?: 'BurnerCreateResponse'
-    node: { __typename?: 'Burner'; id: string }
+    __typename?: 'BurnerUpdateResponse'
+    newActionHash: string
+    node: {
+      __typename?: 'Burner'
+      id: string
+      name: string
+      metadata?: {
+        __typename?: 'BurnerMetaData'
+        description: string
+        hashtag?: string | null
+      } | null
+    }
   }
 }
 
@@ -527,7 +543,13 @@ export const UpdateBurnerDocument = gql`
     updateBurner(burner: $burnerFields) {
       node {
         id
+        name
+        metadata {
+          description
+          hashtag
+        }
       }
+      newActionHash
     }
   }
 `
