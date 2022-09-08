@@ -41,8 +41,10 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
     update(cache, { data }) {
       const newId = data?.updateBurner.newActionHash
       const oldId = data?.updateBurner.node.id
+      // Remove record with old actionHash as id
+      cache.evict({ id: 'Burner:' + oldId })
+      cache.gc()
 
-      debugger
       const result = cache.modify({
         fields: {
           burners(existingBurners = []) {
@@ -62,7 +64,12 @@ export const BurnerForm: React.FunctionComponent<IBurnerForm.IProps> = ({
             const filteredBurners = existingBurners.edges.filter((edge) =>
               edge.node.__ref.search(oldId),
             )
-            return [...filteredBurners, updatedNode]
+            console.log('filteredBurners :>> ', filteredBurners)
+            console.log('updatedNode :>> ', updatedNode)
+            return {
+              ...existingBurners,
+              edges: [...filteredBurners, updatedNode],
+            }
           },
           burner(existingBurner) {
             debugger
