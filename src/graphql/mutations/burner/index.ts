@@ -80,10 +80,11 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   }
 
   const deleteBurner = async (_, { id }) => {
-    const hash: any = await deleteOne(id)
-
+    const hashes: any = await deleteOne(id)
+    const { deleteActionHash, originalActionHash } = hashes
     const response = {
-      deleteActionHash: serializeHash(hash),
+      deleteActionHash,
+      id: originalActionHash,
     }
     console.log('delete response :>> ', response)
     return Promise.resolve(response as any)

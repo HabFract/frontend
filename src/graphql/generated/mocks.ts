@@ -174,7 +174,11 @@ export const aDeleteResponse = (
     deleteActionHash:
       overrides && overrides.hasOwnProperty('deleteActionHash')
         ? overrides.deleteActionHash!
-        : 'a88bec7c-4101-4733-922b-daaf23f07872',
+        : 'id',
+    id:
+      overrides && overrides.hasOwnProperty('id')
+        ? overrides.id!
+        : '77e7930f-54c2-49e1-b374-29e0e9d74ce9',
   }
 }
 

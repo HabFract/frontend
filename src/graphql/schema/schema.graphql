@@ -35,7 +35,8 @@ type ResponsePayload {
   entryHash: String!
 }
 type DeleteResponse {
-  deleteActionHash: ID!
+  id: ID!
+  deleteActionHash: String!
 }
 
 # ---- Profiles ----- #

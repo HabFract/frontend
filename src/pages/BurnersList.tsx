@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/atoms/index'
 import { aBurner } from '@/graphql/generated/mocks'
 import { CenteringFlexHorizontal } from './styled'
+import gql from 'graphql-tag'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomeProps {}
@@ -38,40 +39,25 @@ const Home: React.FC<HomeProps> = () => {
   const [deleteBurner, { loading: delLoading, error: delError }] =
     useDeleteBurnerMutation({
       update(cache, { data }) {
-        // const newId = data?.deleteBurner
-        // const oldId = data?.deleteBurner.node.id
-        // // Remove record with old actionHash as id
-        // cache.evict({ id: 'Burner:' + oldId })
-        // cache.gc()
-        // const result = cache.modify({
-        //   fields: {
-        //     burners(existingBurners = []) {
-        //       const updatedNode = cache.writeFragment({
-        //         data: { ...data!.updateBurner.node, id: newId },
-        //         fragment: gql`
-        //           fragment NewId on Burner {
-        //             id
-        //             name
-        //             metadata {
-        //               description
-        //               hashtag
-        //             }
-        //           }
-        //         `,
-        //       })
-        //       const filteredBurners = existingBurners.edges.filter((edge) =>
-        //         edge.node.__ref.search(oldId),
-        //       )
-        //       console.log('filteredBurners :>> ', filteredBurners)
-        //       console.log('updatedNode :>> ', updatedNode)
-        //       return {
-        //         ...existingBurners,
-        //         edges: [...filteredBurners, updatedNode],
-        //       }
-        //     },
-        //   },
-        // })
-        // console.log('cache updated? :>> ', result)
+        const oldId = data?.deleteBurner.id
+        // Remove record with old actionHash as id
+        cache.evict({ id: 'Burner:' + oldId })
+        cache.gc()
+
+        const result = cache.modify({
+          fields: {
+            burners(existingBurners = []) {
+              const filteredBurners = existingBurners.edges.filter(
+                (edge) => !edge.node.__ref.search(oldId),
+              )
+              return {
+                ...existingBurners,
+                edges: [...filteredBurners],
+              }
+            },
+          },
+        })
+        console.log('cache updated? :>> ', result)
       },
     })
   return (
@@ -104,6 +90,14 @@ const Home: React.FC<HomeProps> = () => {
                           typeOfButton="error"
                           onClick={() => {
                             deleteBurner({
+                              optimisticResponse: {
+                                __typename: 'Mutation',
+                                deleteBurner: {
+                                  __typename: 'DeleteResponse',
+                                  id,
+                                  deleteActionHash: id,
+                                },
+                              },
                               variables: {
                                 id,
                               },

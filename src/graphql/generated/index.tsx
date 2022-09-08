@@ -79,7 +79,8 @@ export type BurnerUpdateResponse = {
 
 export type DeleteResponse = {
   __typename?: 'DeleteResponse'
-  deleteActionHash: Scalars['ID']
+  deleteActionHash: Scalars['String']
+  id: Scalars['ID']
 }
 
 export type Habit = Node & {
@@ -255,7 +256,11 @@ export type DeleteBurnerMutationVariables = Exact<{
 
 export type DeleteBurnerMutation = {
   __typename?: 'Mutation'
-  deleteBurner: { __typename?: 'DeleteResponse'; deleteActionHash: string }
+  deleteBurner: {
+    __typename?: 'DeleteResponse'
+    id: string
+    deleteActionHash: string
+  }
 }
 
 export type UpdateBurnerMutationVariables = Exact<{
@@ -491,6 +496,7 @@ export type AddBurnerMutationOptions = Apollo.BaseMutationOptions<
 export const DeleteBurnerDocument = gql`
   mutation deleteBurner($id: ID!) {
     deleteBurner(id: $id) {
+      id
       deleteActionHash
     }
   }
