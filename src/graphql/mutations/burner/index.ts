@@ -39,8 +39,8 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     })
 
     const headerHash = record && (record as any).signed_action.hashed.hash
-    const element = decode((record.entry as any).Present.entry) as Burner
-    console.log('created burner :>> ', record, element)
+    const entry = decode((record.entry as any).Present.entry) as Burner
+    console.log('created burner :>> ', record, entry)
 
     const response = {
       node: {

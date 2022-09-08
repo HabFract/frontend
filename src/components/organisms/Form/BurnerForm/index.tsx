@@ -12,6 +12,7 @@ import { EndFlexHorizontal } from '@/pages/styled'
 import { useCurrentBurner } from '@/app/hooks/useCurrentBurner'
 
 import {
+  GetBurnersDocument,
   useAddBurnerMutation,
   useUpdateBurnerMutation,
 } from '@/graphql/generated'

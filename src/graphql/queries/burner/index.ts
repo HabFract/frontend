@@ -1,10 +1,10 @@
-import { BurnerEdge } from './../../generated/index'
 import { decode } from '@msgpack/msgpack'
 import { Record } from '@holochain/client'
 import { DNAIdMappings, ById } from '../../types'
 import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
 import { Burner, BurnerConnection } from '@/graphql/generated/index'
 import { getQueryHandlers, QueryHandlersDictionary } from '../..'
+import { serializeHash } from '@holochain-open-dev/utils'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const handlers: QueryHandlersDictionary<Burner> = getQueryHandlers(
@@ -30,6 +30,16 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     burners: async (): Promise<any> => {
       const records = await readMany(null)
       const burners = (records || []) as Record[]
+      console.log(
+        'burner entry hash :>> ',
+        serializeHash(
+          (burners[0].signed_action.hashed.content as any).entry_hash,
+        ),
+      )
+      // const agentPubKey = decode(
+      //   (burners[0] as any).signed_action.hashed.content.author,
+      // )
+      // console.log('agentPubKey :>> ', agentPubKey)
 
       const response = {
         edges: burners.map((b) => ({

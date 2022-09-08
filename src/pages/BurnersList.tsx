@@ -23,7 +23,13 @@ interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
   const [profile, _] = useMyProfile()
-  const { data: burnersPayload, loading, error } = useGetBurnersQuery()
+  const {
+    data: burnersPayload,
+    loading,
+    error,
+  } = useGetBurnersQuery({
+    fetchPolicy: 'cache-and-network',
+  })
   const [
     addBurner,
     { data: addBurnersPayload, loading: addLoading, error: addError },
@@ -94,6 +100,7 @@ const Home: React.FC<HomeProps> = () => {
                   const burnerFields = aBurner() as Burner
                   console.log('burnerFields :>> ', burnerFields)
                   addBurner({
+                    refetchQueries: ['getBurners'],
                     variables: {
                       burnerFields: {
                         name: burnerFields.name,
