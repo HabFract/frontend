@@ -1,11 +1,9 @@
-import { HabitConnection } from './../../generated/index'
 import { DNAIdMappings } from '../../types'
 import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
-import { Habit } from '@/graphql/generated/index'
-import { getQueryHandlers, QueryHandlersDictionary } from '../..'
+import { getQueryHandlers, QueryHandlersDictionary } from '../../helpers'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
-  const handlers: QueryHandlersDictionary<Habit> = getQueryHandlers(
+  const handlers: QueryHandlersDictionary = getQueryHandlers(
     ['get_habit', 'get_all_habits'],
     HAPP_ZOME_NAME_ATOMIC,
     dnaConfig,

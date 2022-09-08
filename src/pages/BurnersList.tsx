@@ -29,7 +29,7 @@ const Home: React.FC<HomeProps> = () => {
     loading,
     error,
   } = useGetBurnersQuery({
-    fetchPolicy: 'cache-and-network',
+    // fetchPolicy: 'cache-and-network',
   })
   const [
     addBurner,
@@ -47,12 +47,13 @@ const Home: React.FC<HomeProps> = () => {
         const result = cache.modify({
           fields: {
             burners(existingBurners = []) {
+              console.log('existingBurners :>> ', existingBurners)
               const filteredBurners = existingBurners.edges.filter(
                 (edge) => !edge.node.__ref.search(oldId),
               )
               return {
                 ...existingBurners,
-                edges: [...filteredBurners],
+                edges: filteredBurners,
               }
             },
           },
@@ -90,6 +91,7 @@ const Home: React.FC<HomeProps> = () => {
                           typeOfButton="error"
                           onClick={() => {
                             deleteBurner({
+                              refetchQueries: ['getBurners'],
                               optimisticResponse: {
                                 __typename: 'Mutation',
                                 deleteBurner: {
@@ -129,7 +131,6 @@ const Home: React.FC<HomeProps> = () => {
                 text="New"
                 onClick={() => {
                   const burnerFields = aBurner() as Burner
-                  console.log('burnerFields :>> ', burnerFields)
                   addBurner({
                     refetchQueries: ['getBurners'],
                     variables: {

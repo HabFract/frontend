@@ -1,24 +1,23 @@
-import { serializeHash } from '@holochain-open-dev/utils'
-import { DNAIdMappings } from '../../types'
-import { HAPP_ID, HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
+import { AddressableIdentifier, DNAIdMappings } from '../../types'
+import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
 import {
   Burner,
   BurnerCreateParams,
   BurnerUpdateParams,
+  DeleteResponse,
 } from '@/graphql/generated/index'
 import { decode } from '@msgpack/msgpack'
-import {
-  getMutationHandlers,
-  mapZomeFn,
-  MutationHandlersDictionary,
-} from '../..'
+import { getMutationHandlers, MutationHandlersDictionary } from '../../helpers'
 
 export type createArgs = { burner: BurnerCreateParams }
 export type updateArgs = { burner: BurnerUpdateParams }
-export type deleteArgs = { burner: string }
+export type deleteArgs = { id: AddressableIdentifier }
 export type createHandler = (root: any, args: createArgs) => Promise<Burner>
 export type updateHandler = (root: any, args: updateArgs) => Promise<Burner>
-export type deleteHandler = (root: any, args: deleteArgs) => Promise<any>
+export type deleteHandler = (
+  root: any,
+  args: deleteArgs,
+) => Promise<DeleteResponse>
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const handlers: MutationHandlersDictionary<Burner> = getMutationHandlers(
@@ -50,16 +49,16 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     return Promise.resolve(response as any)
   }
 
-  const updateBurner = async (
+  const updateBurner: updateHandler = async (
     _,
     { burner: { id, name, description, hashtag } },
   ) => {
     const record: any = await updateOne({
       originalActionHash: id,
-      updatedBurner: { name, metadata: { description, hashtag } },
+      updated: { name, metadata: { description, hashtag } },
     })
 
-    // console.log('burner update record :>> ', record)
+    console.log('burner update record :>> ', record)
     const newActionHash = record && (record as any).signed_action.hashed.hash
     const previousActionHash =
       record &&
@@ -79,7 +78,7 @@ export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
     return Promise.resolve(response as any)
   }
 
-  const deleteBurner = async (_, { id }) => {
+  const deleteBurner: deleteHandler = async (_, { id }) => {
     const hashes: any = await deleteOne(id)
     const { deleteActionHash, originalActionHash } = hashes
     const response = {
