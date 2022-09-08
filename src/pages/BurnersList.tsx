@@ -36,7 +36,44 @@ const Home: React.FC<HomeProps> = () => {
   ] = useAddBurnerMutation()
 
   const [deleteBurner, { loading: delLoading, error: delError }] =
-    useDeleteBurnerMutation()
+    useDeleteBurnerMutation({
+      update(cache, { data }) {
+        // const newId = data?.deleteBurner
+        // const oldId = data?.deleteBurner.node.id
+        // // Remove record with old actionHash as id
+        // cache.evict({ id: 'Burner:' + oldId })
+        // cache.gc()
+        // const result = cache.modify({
+        //   fields: {
+        //     burners(existingBurners = []) {
+        //       const updatedNode = cache.writeFragment({
+        //         data: { ...data!.updateBurner.node, id: newId },
+        //         fragment: gql`
+        //           fragment NewId on Burner {
+        //             id
+        //             name
+        //             metadata {
+        //               description
+        //               hashtag
+        //             }
+        //           }
+        //         `,
+        //       })
+        //       const filteredBurners = existingBurners.edges.filter((edge) =>
+        //         edge.node.__ref.search(oldId),
+        //       )
+        //       console.log('filteredBurners :>> ', filteredBurners)
+        //       console.log('updatedNode :>> ', updatedNode)
+        //       return {
+        //         ...existingBurners,
+        //         edges: [...filteredBurners, updatedNode],
+        //       }
+        //     },
+        //   },
+        // })
+        // console.log('cache updated? :>> ', result)
+      },
+    })
   return (
     <Template
       illustration={4}
