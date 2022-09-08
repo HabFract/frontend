@@ -1,4 +1,4 @@
-import { QueryHandlersDictionary, getQueryHandlers } from './../../helpers'
+import { QueryHandlersDictionary, getQueryHandlers } from '../../handler_typing'
 import { mapZomeFn } from '../../connection'
 import { DNAIdMappings } from '../../types'
 import { HAPP_ID, HAPP_ZOME_NAME_PROFILES } from '@/app/constants'

@@ -3,7 +3,7 @@ import { Record } from '@holochain/client'
 import { DNAIdMappings } from '../../types'
 import { HAPP_ZOME_NAME_ATOMIC } from '@/app/constants'
 import { Burner } from '@/graphql/generated/index'
-import { getQueryHandlers, QueryHandlersDictionary } from '../../helpers'
+import { getQueryHandlers, QueryHandlersDictionary } from '../../handler_typing'
 
 export default (dnaConfig: DNAIdMappings, conductorUri: string) => {
   const handlers: QueryHandlersDictionary = getQueryHandlers(

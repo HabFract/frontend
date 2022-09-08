@@ -7,7 +7,10 @@ import {
   DeleteResponse,
 } from '@/graphql/generated/index'
 import { decode } from '@msgpack/msgpack'
-import { getMutationHandlers, MutationHandlersDictionary } from '../../helpers'
+import {
+  getMutationHandlers,
+  MutationHandlersDictionary,
+} from '../../handler_typing'
 
 export type createArgs = { burner: BurnerCreateParams }
 export type updateArgs = { burner: BurnerUpdateParams }
