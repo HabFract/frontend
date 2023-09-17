@@ -39,7 +39,7 @@
     "fecha": "^4.2.3",
     "flowbite": "^1.5.2",
     "flowbite-react": "^0.1.8",
-    "formik": "2.2.9",
+    "formik": "2.4.5",
     "graphql": "15.8.0",
     "graphql-tag": "^2.12.6",
     "is-object": "^1.0.2",
