@@ -32,7 +32,7 @@
     "@ant-design/icons": "^4.7.0",
     "@apollo/client": "3.6.6",
     "@graphql-tools/schema": "^8.3.14",
-    "@holochain/client": "0.4.1",
+    "@holochain/client": "0.16.7",
     "@reduxjs/toolkit": "1.8.2",
     "buffer": "^6.0.3",
     "deep-for-each": "^3.0.0",
